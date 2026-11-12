@@ -107,10 +107,10 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
                 {/* REAL I-DO'KON APP SCREENSHOT */}
                 <div 
                   className="relative rounded-b-xl overflow-hidden bg-zinc-100 dark:bg-zinc-950 cursor-pointer group"
-                  onClick={() => onOpenLightbox && onOpenLightbox('/screenshots/admin_buyurtma.png', "IDO'KON Boshqaruv Paneli")}
+                  onClick={() => onOpenLightbox && onOpenLightbox('/screenshots/showcase_savdo.png', "IDO'KON Savdo Hisoboti")}
                 >
                   <img
-                    src="/screenshots/admin_buyurtma.png"
+                    src="/screenshots/showcase_savdo.png"
                     alt="IDO'KON dasturi real skrinshoti"
                     className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-200"
                     loading="eager"

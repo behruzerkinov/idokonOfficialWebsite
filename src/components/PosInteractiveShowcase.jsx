@@ -5,52 +5,44 @@ import {
 } from 'lucide-react';
 
 export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
-  const [activeTab, setActiveTab] = useState('orders');
+  const [activeTab, setActiveTab] = useState('sales');
 
   const screens = {
-    orders: {
-      src: "/screenshots/admin_buyurtma.png",
-      label: "Tavsiya etilgan buyurtmalar tizimi",
-      tabLabel: "Buyurtma",
-      badge: "Avtomatik hisob",
-      icon: <Clock className="w-3.5 h-3.5" />,
-      desc: "Qaysi mahsulot tugayotganini va yetkazib beruvchidan qancha buyurtma berish kerakligini sun'iy tahlil orqali hisoblaydi."
-    },
     sales: {
-      src: "/screenshots/admin_savdo.png",
-      label: "Savdo va cheklar monitoringi",
-      tabLabel: "Savdo",
-      badge: "Real-vaqt",
+      src: "/screenshots/showcase_savdo.png",
+      label: "Savdo hisoboti va cheklar monitoringi",
+      tabLabel: t?.software?.tabs?.sales || "Savdo",
+      badge: "Real-vaqt hisobot",
       icon: <ShoppingCart className="w-3.5 h-3.5" />,
-      desc: "Kunlik, oylik savdo tushumlari, naqd va karta orqali to'lovlar, kassirlar smenalari bitta ekranda."
+      desc: "Kunlik va oylik savdo hisoboti, tovarlar, kassirlar, Excel eksport va grafik tahlili bitta ekranda."
     },
     inventory: {
-      src: "/screenshots/admin_ombor.png",
-      label: "Ombor qoldiqlari va partiyalar hisobi",
-      tabLabel: "Ombor",
-      badge: "Shtrix-kod",
+      src: "/screenshots/showcase_ombor.png",
+      label: "Ombor qoldiqlari va tovarlar hisobi",
+      tabLabel: t?.software?.tabs?.inventory || "Ombor",
+      badge: "Shtrix-kod & Qoldiq",
       icon: <Package className="w-3.5 h-3.5" />,
-      desc: "Mahsulot qoldiqlari, tannarx va sotuv narxi, yaroqlilik muddatlari va partiyalarni nazorat qilish."
+      desc: "Qoldiqlar hisoboti, mahsulot shtrix-kodi, partiyalar qoldig'i va umumiy summa nazorati."
     },
     analytics: {
-      src: "/screenshots/admin_analitika.png",
+      src: "/screenshots/showcase_analitika.png",
       label: "ABC Tahlil va rentabellik hisoboti",
-      tabLabel: "Analitika",
-      badge: "Foyda tahlili",
+      tabLabel: t?.software?.tabs?.analytics || "Analitika",
+      badge: "Foyda & Daromad",
       icon: <BarChart2 className="w-3.5 h-3.5" />,
-      desc: "Eng ko'p foyda keltiradigan A toifadagi tovarlar, passiv tovarlar va sof marjani ko'rsatuvchi analitik grafiklar."
+      desc: "ABC tahlili, tovar sotuv summasi, sof daromad, muzlatilgan mablag' va marja toifalari."
     },
     kassa: {
-      src: "/screenshots/kassa.png",
-      label: "Kassir Ish O'rni (POS Terminal)",
-      tabLabel: "Kassa",
+      src: "/screenshots/showcase_kassirlar.png",
+      label: "Kassirlar Ish O'rni (POS Terminal)",
+      tabLabel: t?.software?.tabs?.cashiers || "Kassirlar",
       badge: "0.8 sek tezlik",
       icon: <Monitor className="w-3.5 h-3.5" />,
-      desc: "Kassirlar uchun maxsus ishlab chiqilgan tezkor interfeys: shtrix-kod skanerlash, tarozi integratsiyasi va fiskal chek chop etish."
+      desc: "Kassirlar uchun maxsus interfeys: tezkor qidiruv, shtrix-kod skanerlash, smena yopish va naqd/karta to'lov."
     }
   };
 
-  const currentScreen = screens[activeTab] || screens.orders;
+  const currentScreen = screens[activeTab] || screens.sales;
 
   return (
     <section id="terminal" className="py-20 lg:py-24 bg-zinc-50 dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 transition-colors border-y border-zinc-200 dark:border-zinc-800/80">

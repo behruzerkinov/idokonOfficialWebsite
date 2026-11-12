@@ -60,10 +60,10 @@ export const translations = {
       title: "Har bir qaror uchun aniq ko‘rinish",
       lead: "Savdo nuqtasidan boshqaruv paneligacha — jamoangizga kerakli ma’lumot har doim qo‘l ostingizda.",
       tabs: {
-        pos: "POS Kassa",
-        orders: "Buyurtmalar",
-        inventory: "Ombor nazorati",
-        analytics: "Analitika"
+        sales: "Savdo",
+        inventory: "Ombor",
+        analytics: "Analitika",
+        cashiers: "Kassirlar"
       },
       p1_title: "Inventarizatsiyani boshqarish",
       p1_desc: "Zaxira va kirim–chiqimni avtomatik kuzatib, minimal qoldiq chegarasini oldindan eslatadi.",
@@ -352,10 +352,10 @@ export const translations = {
       title: "Точная картина для каждого решения",
       lead: "От кассы до панели управления — нужные данные всегда на своем месте.",
       tabs: {
-        pos: "POS Касса",
-        orders: "Заказы",
+        sales: "Продажи",
         inventory: "Склад",
-        analytics: "Аналитика"
+        analytics: "Аналитика",
+        cashiers: "Кассиры"
       },
       p1_title: "Управление запасами",
       p1_desc: "Автоматически отслеживает остатки и поступления, напоминает о минимальном уровне.",
@@ -644,10 +644,10 @@ export const translations = {
       title: "A clear view for every decision",
       lead: "From the checkout to the admin panel, your team always has the right data in the right place.",
       tabs: {
-        pos: "POS Cashier",
-        orders: "Orders",
+        sales: "Sales",
         inventory: "Inventory",
-        analytics: "Analytics"
+        analytics: "Analytics",
+        cashiers: "Cashiers"
       },
       p1_title: "Inventory management",
       p1_desc: "Automatically tracks stock and incoming goods, with low-stock reminders.",
