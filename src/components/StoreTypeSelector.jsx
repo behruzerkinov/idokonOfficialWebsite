@@ -145,11 +145,17 @@ export const StoreTypeSelector = ({
               <div 
                 className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
                   isSelected
-                    ? 'bg-emerald-500 text-slate-950 shadow-xs'
+                    ? 'bg-emerald-500 text-slate-950 dark:text-slate-950 shadow-xs'
                     : 'bg-zinc-200/70 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <Icon 
+                  strokeWidth={isSelected ? 2.5 : 2}
+                  style={isSelected ? { color: '#020617' } : undefined}
+                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                    isSelected ? 'text-slate-950 dark:text-slate-950' : ''
+                  }`} 
+                />
               </div>
 
               {/* Text Info */}

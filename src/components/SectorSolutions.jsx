@@ -75,12 +75,18 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
               >
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
                   isSelected 
-                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs' 
+                    ? 'bg-emerald-500 text-slate-950 dark:text-slate-950 font-bold shadow-xs' 
                     : 'bg-zinc-200/80 dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400'
                 }`}>
-                  <Icon className={`w-5 h-5 transition-colors ${
-                    isSelected ? 'text-slate-950 stroke-[2.5]' : 'text-emerald-600 dark:text-emerald-400 stroke-2'
-                  }`} />
+                  <Icon 
+                    strokeWidth={isSelected ? 2.5 : 2}
+                    style={isSelected ? { color: '#020617' } : undefined}
+                    className={`w-5 h-5 transition-colors ${
+                      isSelected 
+                        ? 'text-slate-950 dark:text-slate-950' 
+                        : 'text-emerald-600 dark:text-emerald-400'
+                    }`} 
+                  />
                 </div>
                 <h3 className="font-bold text-lg mb-1.5 text-zinc-900 dark:text-zinc-50">
                   {sec.title}
