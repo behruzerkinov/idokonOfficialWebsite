@@ -62,7 +62,7 @@ export const CartDrawer = ({
           {/* Drawer Header */}
           <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between bg-zinc-50 dark:bg-zinc-950/60">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+              <div className="w-8 h-8 rounded-none bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30">
                 <ShoppingBag className="w-4 h-4" />
               </div>
               <div>
@@ -104,7 +104,7 @@ export const CartDrawer = ({
                     {cart.map((item) => (
                       <div
                         key={item.id}
-                        className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 flex items-center justify-between gap-3"
+                        className="p-3 rounded-none bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 flex items-center justify-between gap-3 tech-box"
                       >
                         <img
                           src={item.image}

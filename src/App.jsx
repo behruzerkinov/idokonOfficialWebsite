@@ -126,20 +126,14 @@ export function App() {
 
   const cartTotalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  // Windows 10 Settings App Luminous Light Effect & Smooth Trailing Follower
+  // Windows 10 Settings App Luminous Light Effect
   const [globalMousePos, setGlobalMousePos] = useState({ x: -1000, y: -1000 });
   const [isPointerActive, setIsPointerActive] = useState(false);
   
-  const targetMouseRef = useRef({ x: -1000, y: -1000 });
-  const trailPosRef = useRef({ x: -1000, y: -1000 });
-  const trailCircleRef = useRef(null);
-
   useEffect(() => {
     let rafMoveId = null;
-    let rafLoopId = null;
 
     const handlePointerMove = (e) => {
-      targetMouseRef.current = { x: e.clientX, y: e.clientY };
       if (!rafMoveId) {
         rafMoveId = requestAnimationFrame(() => {
           setGlobalMousePos({ x: e.clientX, y: e.clientY });
@@ -153,19 +147,6 @@ export function App() {
       setIsPointerActive(false);
     };
 
-    // Smooth inertia interpolation loop for the trailing circle
-    const lerp = (start, end, factor) => start + (end - start) * factor;
-    const animateTrail = () => {
-      trailPosRef.current.x = lerp(trailPosRef.current.x, targetMouseRef.current.x, 0.12);
-      trailPosRef.current.y = lerp(trailPosRef.current.y, targetMouseRef.current.y, 0.12);
-
-      if (trailCircleRef.current) {
-        trailCircleRef.current.style.transform = `translate3d(${trailPosRef.current.x}px, ${trailPosRef.current.y}px, 0)`;
-      }
-      rafLoopId = requestAnimationFrame(animateTrail);
-    };
-    rafLoopId = requestAnimationFrame(animateTrail);
-
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
     document.addEventListener('mouseleave', handlePointerLeave);
 
@@ -173,22 +154,21 @@ export function App() {
       window.removeEventListener('pointermove', handlePointerMove);
       document.removeEventListener('mouseleave', handlePointerLeave);
       if (rafMoveId) cancelAnimationFrame(rafMoveId);
-      if (rafLoopId) cancelAnimationFrame(rafLoopId);
     };
   }, []);
 
-  // Lenis Smooth Scroll Integration (ChainGPT Labs style fluid inertia)
+  // Lenis Smooth Scroll Integration (ChainGPT Labs style delayed gentle touch)
   useEffect(() => {
     let lenis;
     try {
       lenis = new Lenis({
-        duration: 1.2,
+        duration: 1.8,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         gestureOrientation: 'vertical',
         smoothWheel: true,
-        wheelMultiplier: 0.9,
-        touchMultiplier: 1.8,
+        wheelMultiplier: 0.8,
+        touchMultiplier: 1.5,
       });
 
       let rafId;
@@ -226,23 +206,6 @@ export function App() {
         aria-hidden="true"
       />
 
-      {/* Smooth Trailing Follower Circle */}
-      <div
-        ref={trailCircleRef}
-        className="pointer-events-none fixed top-0 left-0 z-40 transition-opacity duration-300 hidden md:block"
-        style={{
-          opacity: isPointerActive ? 1 : 0,
-          willChange: 'transform',
-          marginLeft: '-18px',
-          marginTop: '-18px',
-        }}
-        aria-hidden="true"
-      >
-        <div className="w-9 h-9 rounded-full border border-emerald-400/80 dark:border-emerald-400/90 bg-emerald-500/15 dark:bg-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.45)] flex items-center justify-center">
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,1)]" />
-        </div>
-      </div>
-
       {/* Emil Kowalski Sonner Toaster */}
       <Toaster 
         theme={theme} 
@@ -265,98 +228,115 @@ export function App() {
 
       <main className="flex-1 relative z-10">
         
-        {/* Hero Section */}
-        <Hero
-          t={t}
-          onOpenDemo={() => setIsDemoOpen(true)}
-          onScrollToTerminal={scrollToTerminal}
-          onOpenLightbox={(url, title) => setLightboxData({ url, title })}
-        />
+        {/* Section 1: Hero & Tickers */}
+        <div className="relative z-10 bg-zinc-50 dark:bg-[#090a0f]">
+          <Hero
+            t={t}
+            onOpenDemo={() => setIsDemoOpen(true)}
+            onScrollToTerminal={scrollToTerminal}
+            onOpenLightbox={(url, title) => setLightboxData({ url, title })}
+          />
 
-        {/* ChainGPT Labs Style High-Contrast Running Marquee Ticker */}
-        <TechMarquee
-          items={[
-            "NEXT-GEN RETAIL OS",
-            "WINDOWS & WEB TERMINAL",
-            "1C & EXCEL 1-DAY MIGRATION",
-            "REAL-TIME FISCAL SOLIQ INTEGRATION",
-            "INSTANT CARD & QR CHECKOUT",
-            "250+ ACTIVE ENTERPRISES"
-          ]}
-        />
+          <TechMarquee
+            items={[
+              "NEXT-GEN RETAIL OS",
+              "WINDOWS & WEB TERMINAL",
+              "1C & EXCEL 1-DAY MIGRATION",
+              "REAL-TIME FISCAL SOLIQ INTEGRATION",
+              "INSTANT CARD & QR CHECKOUT",
+              "250+ ACTIVE ENTERPRISES"
+            ]}
+          />
 
-        {/* Integration Partners Marquee with Real Vector Logos */}
-        <PartnerMarquee t={t} />
+          <PartnerMarquee t={t} />
+        </div>
 
-        {/* 2x2 Bento Grid Values */}
-        <ValueGrid t={t} />
+        {/* Section 2: Overlapping Values Bento Grid */}
+        <div className="stack-section z-20">
+          <ValueGrid t={t} />
+        </div>
 
-        {/* Software Showcase with Real I-Do'kon Screenshots */}
-        <PosInteractiveShowcase
-          t={t}
-          onOpenLightbox={(url, title) => setLightboxData({ url, title })}
-        />
+        {/* Section 3: Overlapping POS Terminal Showcase */}
+        <div className="stack-section z-30">
+          <PosInteractiveShowcase
+            t={t}
+            onOpenLightbox={(url, title) => setLightboxData({ url, title })}
+          />
+        </div>
 
-        {/* Target Sectors Solutions Switcher (Physical retail shops only) */}
-        <SectorSolutions
-          t={t}
-          onOpenDemo={() => setIsDemoOpen(true)}
-        />
+        {/* Section 4: Overlapping Sector Solutions */}
+        <div className="stack-section z-40">
+          <SectorSolutions
+            t={t}
+            onOpenDemo={() => setIsDemoOpen(true)}
+          />
+        </div>
 
-        {/* Hardware Catalog with Carousel Controls & Add to Cart */}
-        <HardwareMarketplace
-          lang={lang}
-          t={t}
-          cart={cart}
-          onAddToCart={handleAddToCart}
-          onOpenSpecsModal={(prod) => setSelectedSpecsProduct(prod)}
-          onOpenCart={() => setIsCartOpen(true)}
-        />
+        {/* Section 5: Overlapping Hardware Marketplace */}
+        <div className="stack-section z-50">
+          <HardwareMarketplace
+            lang={lang}
+            t={t}
+            cart={cart}
+            onAddToCart={handleAddToCart}
+            onOpenSpecsModal={(prod) => setSelectedSpecsProduct(prod)}
+            onOpenCart={() => setIsCartOpen(true)}
+          />
+        </div>
 
-        {/* Frictionless Migration & Partner Integrations */}
-        <IntegrationMigration
-          t={t}
-          onOpenContact={scrollToContact}
-        />
+        {/* Section 6: Overlapping Frictionless Migration */}
+        <div className="stack-section z-[60]">
+          <IntegrationMigration
+            t={t}
+            onOpenContact={scrollToContact}
+          />
+        </div>
 
-        {/* Transparent Pricing Matrix with 1m, 6m (5+1), 12m (10+2) */}
-        <PricingCalculator
-          t={t}
-          lang={lang}
-          onSelectPlan={handleSelectPlan}
-        />
+        {/* Section 7: Overlapping Transparent Pricing */}
+        <div className="stack-section z-[70]">
+          <PricingCalculator
+            t={t}
+            lang={lang}
+            onSelectPlan={handleSelectPlan}
+          />
+        </div>
 
-        {/* I-Do'kon Academy & Course with Authentic Screenshots */}
-        <CourseAcademy
-          lang={lang}
-          t={t}
-          onOpenLightbox={(url, title) => setLightboxData({ url, title })}
-        />
+        {/* Section 8: Overlapping Academy Course */}
+        <div className="stack-section z-[80]">
+          <CourseAcademy
+            lang={lang}
+            t={t}
+            onOpenLightbox={(url, title) => setLightboxData({ url, title })}
+          />
+        </div>
 
-        {/* Interactive FAQ Accordion with Instant Search */}
-        <FaqAccordion
-          t={t}
-          onScrollToContact={scrollToContact}
-        />
+        {/* Section 9: Overlapping FAQ */}
+        <div className="stack-section z-[90]">
+          <FaqAccordion
+            t={t}
+            onScrollToContact={scrollToContact}
+          />
+        </div>
 
-        {/* Minimalist High-Taste Contact Configurator (No filiallar soni) */}
-        <ContactConfigurator
-          t={t}
-          lang={lang}
-        />
+        {/* Section 10: Overlapping Contact Configurator & Lower Ticker */}
+        <div className="stack-section z-[100]">
+          <ContactConfigurator
+            t={t}
+            lang={lang}
+          />
 
-        {/* ChainGPT Labs Style Lower Marquee Banner */}
-        <TechMarquee
-          items={[
-            "250+ SHOPS AUTOMATED",
-            "0.8s TRANSACTION SPEED",
-            "100% SOLIQ COMPLIANT",
-            "OFFICIAL HARDWARE & MONOBLOCKS",
-            "FREE MIGRATION SERVICE",
-            "START IN 10 MINUTES"
-          ]}
-          speed={45}
-        />
+          <TechMarquee
+            items={[
+              "250+ SHOPS AUTOMATED",
+              "0.8s TRANSACTION SPEED",
+              "100% SOLIQ COMPLIANT",
+              "OFFICIAL HARDWARE & MONOBLOCKS",
+              "FREE MIGRATION SERVICE",
+              "START IN 10 MINUTES"
+            ]}
+            speed={45}
+          />
+        </div>
 
       </main>
 

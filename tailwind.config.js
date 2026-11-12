@@ -29,7 +29,8 @@ export default {
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        mono: ['RobotoMono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
+        amiga: ['LabsAmiga', 'monospace'],
       },
       boxShadow: {
         'glow': '0 0 40px -10px rgba(12, 196, 117, 0.35)',

@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'LabsAmiga';
+  src: url('/fonts/LABSAmiga-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoMono';
+  src: url('/fonts/RobotoMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoMonoBold';
+  src: url('/fonts/RobotoMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -194,4 +218,51 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* ChainGPT Labs Architectural Overlap / Stacking Section */
+.stack-section {
+  position: sticky;
+  top: 3.5rem;
+  background-color: #fafafa;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -25px 45px -10px rgba(0, 0, 0, 0.25);
+  margin-top: -1px;
+}
+
+.dark .stack-section {
+  background-color: #090a0f;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -30px 60px -15px rgba(0, 0, 0, 0.85);
+  margin-top: -1px;
+}
+
+/* ChainGPT Labs Brutalist Tech Aesthetic — Minimal / Zero Roundness */
+.rounded-3xl {
+  border-radius: 4px !important;
+}
+
+.rounded-2xl {
+  border-radius: 4px !important;
+}
+
+.rounded-xl {
+  border-radius: 3px !important;
+}
+
+.rounded-lg {
+  border-radius: 2px !important;
+}
+
+.rounded-full {
+  border-radius: 2px !important;
+}
+
+/* Interactive click feedback (every click makes a tactile interaction) */
+button, a, .cursor-pointer {
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+button:active, a:active, .cursor-pointer:active {
+  transform: scale(0.975);
 }
