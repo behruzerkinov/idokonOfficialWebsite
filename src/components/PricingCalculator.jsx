@@ -2,8 +2,22 @@ import React, { useState } from 'react';
 import { Check, Sparkles, ArrowRight, ShieldCheck, Gift } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
 
-export const PricingCalculator = ({ t, onSelectPlan }) => {
+export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
   const [billingPeriod, setBillingPeriod] = useState('monthly'); // 'monthly' | '6m' | '12m'
+
+  const currentLang = ['uz', 'ru', 'en'].includes(lang) ? lang : 'uz';
+
+  const periodSuffixMap = {
+    monthly: { uz: "so'm / oy", ru: "сум / мес", en: "UZS / mo" },
+    '6m': { uz: "so'm / 6 oy", ru: "сум / 6 мес", en: "UZS / 6 mo" },
+    '12m': { uz: "so'm / yil", ru: "сум / год", en: "UZS / yr" }
+  };
+
+  const billingHintMap = {
+    monthly: { uz: "Oylik to'lov", ru: "Ежемесячная оплата", en: "Billed monthly" },
+    '6m': { uz: "5 oy to'lanadi + 1 oy bepul", ru: "5 мес оплата + 1 мес бесплатно", en: "Pay 5 months + 1 month free" },
+    '12m': { uz: "10 oy to'lanadi + 2 oy bepul", ru: "10 мес оплата + 2 мес бесплатно", en: "Pay 10 months + 2 months free" }
+  };
 
   const plans = [
     {
@@ -146,7 +160,7 @@ export const PricingCalculator = ({ t, onSelectPlan }) => {
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-bold text-[10px] uppercase tracking-wider shadow-sm flex items-center gap-1">
                     <Sparkles className="w-3 h-3 fill-slate-950" />
-                    <span>Eng ommabop tarif</span>
+                    <span>{t.pricing?.mostPopular || "Eng ommabop tarif"}</span>
                   </div>
                 )}
 
@@ -167,17 +181,13 @@ export const PricingCalculator = ({ t, onSelectPlan }) => {
                       <span className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
                         <NumberFlow value={currentPrice} format={{ useGrouping: true }} />
                       </span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400">
-                        {billingPeriod === 'monthly' ? "so'm / oy" : billingPeriod === '6m' ? "so'm / 6 oy" : "so'm / yil"}
+                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 font-sans">
+                        {periodSuffixMap[billingPeriod]?.[currentLang] || periodSuffixMap[billingPeriod]?.uz}
                       </span>
                     </div>
 
                     <div className="text-[11px] text-zinc-400 dark:text-zinc-500 mt-1 font-mono">
-                      {billingPeriod === 'monthly' 
-                        ? "Oylik to'lov" 
-                        : billingPeriod === '6m' 
-                        ? "5 oy to'lanadi + 1 oy bepul" 
-                        : "10 oy to'lanadi + 2 oy bepul"}
+                      {billingHintMap[billingPeriod]?.[currentLang] || billingHintMap[billingPeriod]?.uz}
                     </div>
                   </div>
 
@@ -208,7 +218,7 @@ export const PricingCalculator = ({ t, onSelectPlan }) => {
                         : 'bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100'
                     }`}
                   >
-                    <span>Tarifni faollashtirish</span>
+                    <span>{t.pricing?.activatePlan || "Tarifni faollashtirish"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

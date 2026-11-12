@@ -133,11 +133,11 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
               <div className="pt-2 flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Mutaxassis taqdimoti</span>
+                  <span>{t.demoModal.expertPresentation || "Mutaxassis taqdimoti"}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Bog'lanish: ~10 daqiqa</span>
+                  <span>{t.demoModal.responseTiming || "Bog'lanish: ~10 daqiqa"}</span>
                 </div>
               </div>
 
@@ -148,7 +148,7 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
                 className="w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:bg-zinc-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
               >
                 {isSubmitting ? (
-                  <span>Yuborilmoqda...</span>
+                  <span>{t.demoModal.submitting || "Yuborilmoqda..."}</span>
                 ) : (
                   <>
                     <Send className="w-3.5 h-3.5" />

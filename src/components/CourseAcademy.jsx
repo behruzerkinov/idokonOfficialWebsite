@@ -95,7 +95,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
                 >
-                  <span>Jonli ochish</span>
+                  <span>{t.course.openLive || "Jonli ochish"}</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
@@ -113,10 +113,10 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                   type="button"
                   onClick={() => onOpenLightbox(currentShot.url, currentShot.title)}
                   className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold text-xs cursor-pointer backdrop-blur-xs"
-                  aria-label="Kattalashtirib ko'rish"
+                  aria-label={t.course.zoomView || "Kattalashtirib ko'rish"}
                 >
                   <Maximize2 className="w-4 h-4 text-emerald-400" />
-                  <span>Kattalashtirib ko'rish</span>
+                  <span>{t.course.zoomView || "Kattalashtirib ko'rish"}</span>
                 </button>
               </div>
 
@@ -183,7 +183,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 {t.course.modulesTitle}
               </h3>
-              <span className="text-xs text-zinc-400 font-mono">6 ta modul</span>
+              <span className="text-xs text-zinc-400 font-mono">{t.course.sixModules || "6 ta modul"}</span>
             </div>
 
             <div className="space-y-2">
@@ -213,11 +213,11 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                           {module.num || idx + 1}
                         </span>
                         <div>
-                          <h4 className="font-bold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100">
+                          <h4 className="font-bold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 [text-wrap:balance]">
                             {title}
                           </h4>
-                          <span className="text-[11px] text-zinc-400 font-mono">
-                            {module.duration} dars davomiyligi
+                          <span className="text-[11px] text-zinc-400 font-mono tabular-nums">
+                            {module.duration}
                           </span>
                         </div>
                       </div>
@@ -227,10 +227,10 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
 
                     {isOpen && (
                       <div className="px-3.5 pb-3.5 pt-1 text-xs text-zinc-600 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800/80 mt-1 animate-in fade-in duration-150">
-                        <p className="mb-2 leading-relaxed">{desc}</p>
+                        <p className="mb-2 leading-relaxed max-w-[65ch]">{desc}</p>
                         <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium">
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>Amaliy topshiriq va test mavjud</span>
+                          <span>{t.course.hasPractical || "Amaliy topshiriq va test mavjud"}</span>
                         </div>
                       </div>
                     )}
@@ -247,7 +247,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                 rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 cursor-pointer active:scale-98"
               >
-                <span>Bilimni sinash (/test)</span>
+                <span>{t.course.testKnowledge || "Bilimni sinash (/test)"}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
               <a
@@ -256,7 +256,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-semibold text-zinc-700 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-750 border border-zinc-200 dark:border-zinc-700 transition-all duration-150 cursor-pointer"
               >
-                <span>Kurs darsliklari</span>
+                <span>{t.course.courseSyllabus || "Kurs darsliklari"}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>

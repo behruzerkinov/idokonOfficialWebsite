@@ -41,13 +41,13 @@ export const HardwareSpecsModal = ({ isOpen, onClose, product, lang, t, onAddToC
               className="w-20 h-20 object-contain bg-white dark:bg-zinc-900 rounded-lg p-1.5 border border-zinc-200 dark:border-zinc-700"
             />
             <div>
-              <div className="text-[10px] font-mono uppercase text-zinc-400">Rasmiy Narxi:</div>
-              <div className="text-xl font-bold font-mono text-zinc-900 dark:text-zinc-50">
-                {product.price.toLocaleString()} <span className="text-xs font-normal text-zinc-500">so'm</span>
+              <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">{t?.equipment?.officialPrice || "Rasmiy Narxi:"}</div>
+              <div className="text-xl font-bold font-mono tabular-nums text-zinc-900 dark:text-zinc-50">
+                {product.price.toLocaleString()} <span className="text-xs font-normal text-zinc-500 font-sans">{t?.equipment?.currency || "so'm"}</span>
               </div>
               <div className="mt-1 flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>{product.warranty} kafolat</span>
+                <span>{product.warranty} {lang === 'ru' ? 'гарантия' : (lang === 'en' ? 'warranty' : 'kafolat')}</span>
               </div>
             </div>
           </div>

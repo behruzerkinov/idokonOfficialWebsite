@@ -64,10 +64,10 @@ export const Footer = ({ t, onOpenDemo }) => {
               {t.footer.productCol}
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#features" className="hover:text-emerald-500 transition-colors">Xususiyatlar</a></li>
-              <li><a href="#terminal" className="hover:text-emerald-500 transition-colors">POS Terminal</a></li>
-              <li><a href="#equipment" className="hover:text-emerald-500 transition-colors">Qurilmalar</a></li>
-              <li><a href="#integrations" className="hover:text-emerald-500 transition-colors">Integratsiyalar</a></li>
+              <li><a href="#features" className="hover:text-emerald-500 transition-colors">{t.nav.features}</a></li>
+              <li><a href="#terminal" className="hover:text-emerald-500 transition-colors">{t.nav.terminal}</a></li>
+              <li><a href="#equipment" className="hover:text-emerald-500 transition-colors">{t.nav.equipment}</a></li>
+              <li><a href="#integrations" className="hover:text-emerald-500 transition-colors">{t.nav.integrations}</a></li>
             </ul>
           </div>
 
@@ -77,10 +77,10 @@ export const Footer = ({ t, onOpenDemo }) => {
               {t.footer.resourceCol}
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#pricing" className="hover:text-emerald-500 transition-colors">Tariflar</a></li>
-              <li><a href="#course" className="hover:text-emerald-500 transition-colors">I-Do‘kon Kursi</a></li>
-              <li><a href="#faq" className="hover:text-emerald-500 transition-colors">FAQ</a></li>
-              <li><a href="#contact" className="hover:text-emerald-500 transition-colors">Aloqa</a></li>
+              <li><a href="#pricing" className="hover:text-emerald-500 transition-colors">{t.nav.pricing}</a></li>
+              <li><a href="#course" className="hover:text-emerald-500 transition-colors">{t.nav.course}</a></li>
+              <li><a href="#faq" className="hover:text-emerald-500 transition-colors">{t.nav.faq}</a></li>
+              <li><a href="#contact" className="hover:text-emerald-500 transition-colors">{t.nav.contact}</a></li>
             </ul>
           </div>
 
@@ -95,7 +95,7 @@ export const Footer = ({ t, onOpenDemo }) => {
                 onClick={onOpenDemo}
                 className="w-full py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold flex items-center justify-between transition-colors shadow-sm cursor-pointer"
               >
-                <span>Bepul Demo Olish</span>
+                <span>{t.footer.getDemo || "Bepul Demo Olish"}</span>
                 <span className="text-base leading-none">→</span>
               </button>
 
@@ -105,11 +105,11 @@ export const Footer = ({ t, onOpenDemo }) => {
                 rel="noopener noreferrer"
                 className="w-full py-2 px-3 rounded-lg bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold flex items-center justify-between transition-colors border border-zinc-200 dark:border-zinc-800 shadow-xs cursor-pointer"
               >
-                <span>I-Do'kon Video Kursi</span>
+                <span>{t.footer.videoCourse || "I-Do'kon Video Kursi"}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
               </a>
 
-              <div className="pt-1 text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">
+              <div className="pt-1 text-[11px] text-zinc-500 dark:text-zinc-400 font-mono tabular-nums">
                 Operator: +998 99 118 09 99
               </div>
             </div>
@@ -120,11 +120,11 @@ export const Footer = ({ t, onOpenDemo }) => {
         {/* Bottom Bar: Copyright & Scroll to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
           <div>
-            © {new Date().getFullYear()} IDO'KON. Barcha huquqlar himoyalangan.
+            {t.footer.allRights || `© ${new Date().getFullYear()} IDO'KON. Barcha huquqlar himoyalangan.`}
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="font-mono text-[11px]">Toshkent, O'zbekiston</span>
+            <span className="font-mono text-[11px]">{t.footer.location || "Toshkent, O'zbekiston"}</span>
             <button
               type="button"
               onClick={scrollToTop}
@@ -132,7 +132,7 @@ export const Footer = ({ t, onOpenDemo }) => {
               title="Yuqoriga qaytish"
             >
               <ArrowUp className="w-3.5 h-3.5" />
-              <span className="text-[11px] font-mono">Yuqoriga</span>
+              <span className="text-[11px] font-mono">{t.footer.backToTop || "Yuqoriga"}</span>
             </button>
           </div>
         </div>

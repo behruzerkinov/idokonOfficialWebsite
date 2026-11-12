@@ -122,7 +122,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-semibold text-xs sm:text-sm rounded-xl backdrop-blur-xs">
               <div className="px-4 py-2 rounded-lg bg-zinc-900/90 border border-zinc-700 flex items-center gap-2 shadow-xl">
                 <Maximize2 className="w-4 h-4 text-emerald-400" />
-                <span>To'liq hajmda ko'rish (Lightbox)</span>
+                <span>{t.software?.zoomLightbox || "To'liq hajmda ko'rish"}</span>
               </div>
             </div>
           </div>

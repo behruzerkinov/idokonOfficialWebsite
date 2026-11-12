@@ -193,6 +193,7 @@ export function App() {
         {/* Transparent Pricing Matrix with 1m, 6m (5+1), 12m (10+2) */}
         <PricingCalculator
           t={t}
+          lang={lang}
           onSelectPlan={handleSelectPlan}
         />
 

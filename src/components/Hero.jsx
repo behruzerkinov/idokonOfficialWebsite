@@ -29,7 +29,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12] mb-6 [text-wrap:balance]">
               {t.hero.titleStart}{' '}
               <span className="text-emerald-500 dark:text-emerald-400">
                 {t.hero.titleHighlight}
@@ -38,7 +38,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
             </h1>
 
             {/* Subhead */}
-            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mb-8">
+            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[65ch] mb-8">
               {t.hero.subtitle}
             </p>
 
@@ -117,7 +117,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-semibold text-xs backdrop-blur-xs">
                     <Maximize2 className="w-4 h-4 text-emerald-400" />
-                    <span>Kattalashtirish</span>
+                    <span>{t.hero.zoom || "Kattalashtirish"}</span>
                   </div>
                 </div>
 

@@ -30,7 +30,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
             <div>
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold mb-4">
                 <RefreshCw className="w-3.5 h-3.5 text-emerald-500" />
-                <span>Nol to'xtalishli migratsiya</span>
+                <span>{t.integrations.zeroDowntime || "Nol to'xtalishli migratsiya"}</span>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 leading-snug">
@@ -77,8 +77,8 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
             </div>
 
             <div className="mt-8 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500 dark:text-zinc-400 font-mono flex items-center justify-between">
-              <span>O'tish davri xizmati:</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-bold">100% BEPUL</span>
+              <span>{t.integrations.transitionService || "O'tish davri xizmati:"}</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold">{t.integrations.freeBadge || "100% BEPUL"}</span>
             </div>
           </div>
 
@@ -136,9 +136,9 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
               <button
                 type="button"
                 onClick={onOpenContact}
-                className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-950 font-bold text-xs transition-colors cursor-pointer"
+                className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:white text-white dark:text-zinc-950 font-bold text-xs transition-colors cursor-pointer"
               >
-                <span>Mutaxassis bilan bog'lanish</span>
+                <span>{t.integrations.contactSpecialist || "Mutaxassis bilan bog'lanish"}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>

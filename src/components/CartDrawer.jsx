@@ -56,8 +56,8 @@ export const CartDrawer = ({
         <Drawer.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 animate-in fade-in" />
         <Drawer.Content className="bg-white dark:bg-zinc-900 border-l border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 flex flex-col h-full w-full max-w-md fixed top-0 bottom-0 right-0 z-50 shadow-2xl focus:outline-none">
           
-          <Drawer.Title className="sr-only">Savatcha</Drawer.Title>
-          <Drawer.Description className="sr-only">Tanlangan savdo uskunalari</Drawer.Description>
+          <Drawer.Title className="sr-only">{t.cartDrawer?.cartTitle || "Savatcha"}</Drawer.Title>
+          <Drawer.Description className="sr-only">{t.cartDrawer?.cartSubtitle || "Tanlangan savdo uskunalari"}</Drawer.Description>
 
           {/* Drawer Header */}
           <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between bg-zinc-50 dark:bg-zinc-950/60">
@@ -220,9 +220,9 @@ export const CartDrawer = ({
                 <div className="w-14 h-14 rounded-full bg-emerald-500/15 text-emerald-500 mx-auto flex items-center justify-center">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h4 className="font-bold text-lg text-zinc-900 dark:text-zinc-50">Buyurtma Qabul Qilindi!</h4>
+                <h4 className="font-bold text-lg text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">{t.cartDrawer?.successTitle || "Buyurtma Qabul Qilindi!"}</h4>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xs mx-auto">
-                  Savdo operatorimiz 15 daqiqa ichida siz bilan bog'lanib, qurilmalarni yetkazib berish va sozlash vaqtini kelishadi.
+                  {t.cartDrawer?.orderSuccess || "Savdo operatorimiz tez orada siz bilan bog'lanib, buyurtmani tasdiqlaydi."}
                 </p>
                 <button
                   type="button"
@@ -232,7 +232,7 @@ export const CartDrawer = ({
                   }}
                   className="mt-3 px-5 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs uppercase cursor-pointer"
                 >
-                  Yopish
+                  {t.menu?.close || "Yopish"}
                 </button>
               </div>
             )}
@@ -243,8 +243,8 @@ export const CartDrawer = ({
             <div className="p-4 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 space-y-3">
               <div className="flex items-center justify-between text-xs font-bold">
                 <span className="text-zinc-500 dark:text-zinc-400">{t.cartDrawer.total}</span>
-                <span className="text-lg font-bold font-mono text-emerald-600 dark:text-emerald-400">
-                  <NumberFlow value={total} format={{ useGrouping: true }} /> <span className="text-xs font-normal text-zinc-500">so'm</span>
+                <span className="text-lg font-bold font-mono tabular-nums text-emerald-600 dark:text-emerald-400">
+                  <NumberFlow value={total} format={{ useGrouping: true }} /> <span className="text-xs font-normal text-zinc-500 font-sans">{t.equipment?.currency || "so'm"}</span>
                 </span>
               </div>
 
@@ -262,7 +262,7 @@ export const CartDrawer = ({
                     onClick={() => setCheckoutStep('checkout')}
                     className="py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
                   >
-                    <span>Davom etish</span>
+                    <span>{t.cartDrawer?.continueShopping || "Davom etish"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

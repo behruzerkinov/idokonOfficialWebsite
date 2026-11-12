@@ -163,9 +163,9 @@ export const HardwareMarketplace = ({
                     {/* Price & Action */}
                     <div className="flex items-center justify-between pt-4 border-t border-zinc-200 dark:border-zinc-800">
                       <div>
-                        <div className="text-[10px] font-mono uppercase text-zinc-400">Narxi</div>
-                        <div className="text-base font-extrabold text-zinc-900 dark:text-zinc-50 font-mono">
-                          {product.price.toLocaleString()} <span className="text-xs font-normal text-zinc-500">so'm</span>
+                        <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">{t.equipment?.priceLabel || "Narxi"}</div>
+                        <div className="text-base font-extrabold text-zinc-900 dark:text-zinc-50 font-mono tabular-nums">
+                          {product.price.toLocaleString()} <span className="text-xs font-normal text-zinc-500 font-sans">{t.equipment?.currency || "so'm"}</span>
                         </div>
                       </div>
 
@@ -174,7 +174,7 @@ export const HardwareMarketplace = ({
                           type="button"
                           onClick={() => onOpenSpecsModal(product)}
                           className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
-                          title="Texnik xarakteristika"
+                          title={t.equipment?.viewSpecs || "Texnik xususiyatlar"}
                         >
                           <Info className="w-4 h-4" />
                         </button>
@@ -191,12 +191,12 @@ export const HardwareMarketplace = ({
                           {inCart ? (
                             <>
                               <Check className="w-3.5 h-3.5" />
-                              <span>Savatda</span>
+                              <span>{t.equipment?.inCartBadge || "Savatda"}</span>
                             </>
                           ) : (
                             <>
                               <ShoppingCart className="w-3.5 h-3.5" />
-                              <span>Qo'shish</span>
+                              <span>{t.equipment?.addBtn || "Qo'shish"}</span>
                             </>
                           )}
                         </button>

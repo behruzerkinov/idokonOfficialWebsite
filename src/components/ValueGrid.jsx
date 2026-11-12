@@ -32,24 +32,24 @@ export const ValueGrid = ({ t }) => {
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
               {t.features.f1_title}
             </h3>
             
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
               {t.features.f1_desc}
             </p>
 
-            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-              <span>Tranzaksiya: &lt; 0.8 sek</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">100% Soliqqa muvofiq</span>
+            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono tabular-nums">
+              <span>{t.features.f1_stat_left}</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f1_stat_right}</span>
             </div>
           </div>
 
           {/* Card 2 */}
           <div className="p-7 sm:p-8 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200">
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs font-mono">
                 02
               </span>
               <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700">
@@ -57,24 +57,24 @@ export const ValueGrid = ({ t }) => {
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
               {t.features.f2_title}
             </h3>
 
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
               {t.features.f2_desc}
             </p>
 
-            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-              <span>O'rganish vaqti: ~10 daqiqa</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Sodda interfeys</span>
+            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono tabular-nums">
+              <span>{t.features.f2_stat_left}</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f2_stat_right}</span>
             </div>
           </div>
 
           {/* Card 3 */}
           <div className="p-7 sm:p-8 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200">
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs font-mono">
                 03
               </span>
               <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700">
@@ -82,24 +82,24 @@ export const ValueGrid = ({ t }) => {
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
               {t.features.f3_title}
             </h3>
 
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
               {t.features.f3_desc}
             </p>
 
-            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-              <span>Boshqaruv: Web & Windows</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">1-klikda Excel</span>
+            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono tabular-nums">
+              <span>{t.features.f3_stat_left}</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f3_stat_right}</span>
             </div>
           </div>
 
           {/* Card 4 */}
           <div className="p-7 sm:p-8 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200">
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs font-mono">
                 04
               </span>
               <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700">
@@ -107,17 +107,17 @@ export const ValueGrid = ({ t }) => {
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
               {t.features.f4_title}
             </h3>
 
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
               {t.features.f4_desc}
             </p>
 
-            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-              <span>Sozlash: 1 kunda</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Mutaxassis o'rgatishi</span>
+            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 font-mono tabular-nums">
+              <span>{t.features.f4_stat_left}</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f4_stat_right}</span>
             </div>
           </div>
 

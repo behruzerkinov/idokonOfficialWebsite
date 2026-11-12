@@ -92,8 +92,8 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">Tezkor operator raqami:</div>
-                    <div className="text-sm font-bold font-mono text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">
+                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">{t.contact.hotlineLabel || "Tezkor operator raqami:"}</div>
+                    <div className="text-sm font-bold font-mono tabular-nums text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">
                       +998 99 118 09 99
                     </div>
                   </div>
@@ -109,7 +109,7 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">Telegram orqali bog'lanish:</div>
+                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">{t.contact.telegramLabel || "Telegram orqali bog'lanish:"}</div>
                     <div className="text-sm font-bold font-mono text-zinc-900 dark:text-zinc-100 group-hover:text-teal-500 transition-colors">
                       @idokonuz
                     </div>
@@ -121,7 +121,7 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
             <div className="mt-8 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500 dark:text-zinc-400 font-mono flex items-center justify-between">
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-emerald-500" />
-                <span>Ish vaqti:</span>
+                <span>{t.contact.workingHoursLabel || "Ish vaqti:"}</span>
               </div>
               <span className="text-zinc-900 dark:text-zinc-100 font-semibold">{t.contact.workHours}</span>
             </div>
