@@ -211,9 +211,6 @@ export const PricingCalculator = ({ t, onSelectPlan }) => {
                     <span>Tarifni faollashtirish</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
-                  <p className="text-[10px] text-zinc-400 text-center mt-2">
-                    14 kunlik bepul sinov davri
-                  </p>
                 </div>
 
               </div>

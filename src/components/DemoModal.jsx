@@ -4,12 +4,13 @@ import {
   Sparkles, ArrowRight, ShieldCheck, Clock 
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { StoreTypeSelector } from './StoreTypeSelector';
 
-export const DemoModal = ({ isOpen, onClose, t }) => {
+export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '+998 ',
-    storeType: 'Oziq-ovqat / Supermarket'
+    storeType: 'grocery'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -43,7 +44,7 @@ export const DemoModal = ({ isOpen, onClose, t }) => {
 
   const handleResetAndClose = () => {
     setIsSuccess(false);
-    setFormData({ name: '', phone: '+998 ', storeType: 'Oziq-ovqat / Supermarket' });
+    setFormData({ name: '', phone: '+998 ', storeType: 'grocery' });
     onClose();
   };
 
@@ -119,36 +120,24 @@ export const DemoModal = ({ isOpen, onClose, t }) => {
                 </div>
               </div>
 
-              {/* Retail Shop Type */}
-              <div>
-                <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
-                  {t.demoModal.storeTypeLabel}
-                </label>
-                <div className="relative">
-                  <Store className="w-4 h-4 text-zinc-400 absolute left-3 top-3 pointer-events-none" />
-                  <select
-                    value={formData.storeType}
-                    onChange={(e) => setFormData(prev => ({ ...prev, storeType: e.target.value }))}
-                    className="w-full pl-9 pr-3.5 py-2.5 bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 rounded-lg text-sm text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
-                  >
-                    <option value="Oziq-ovqat / Supermarket">Oziq-ovqat do'koni / Supermarket</option>
-                    <option value="Kiyim-kechak do'koni">Kiyim-kechak / Oyoq kiyim do'koni</option>
-                    <option value="Mini-market">Mahalliy mini-market</option>
-                    <option value="Xo'jalik mollari">Xo'jalik mollari (stroy material)</option>
-                    <option value="Boshqa do'kon">Boshqa chakana savdo nuqtasi</option>
-                  </select>
-                </div>
-              </div>
+              {/* Retail Shop Type - Foundation Design */}
+              <StoreTypeSelector
+                value={formData.storeType}
+                onChange={(id, title) => setFormData(prev => ({ ...prev, storeType: id, storeTypeTitle: title }))}
+                lang={lang}
+                label={t.demoModal.storeLabel || "Do'koningiz yo'nalishi"}
+                columns={2}
+              />
 
-              {/* Trust Badges */}
+              {/* Trust Badges - Guaranteed Presentation & Prompt Contact */}
               <div className="pt-2 flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>14 kun bepul</span>
+                  <span>Mutaxassis taqdimoti</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Qo'ng'iroq: ~10 daqiqa</span>
+                  <span>Bog'lanish: ~10 daqiqa</span>
                 </div>
               </div>
 

@@ -212,6 +212,7 @@ export function App() {
         {/* Minimalist High-Taste Contact Configurator (No filiallar soni) */}
         <ContactConfigurator
           t={t}
+          lang={lang}
         />
 
       </main>
@@ -227,6 +228,7 @@ export function App() {
         isOpen={isDemoOpen}
         onClose={() => setIsDemoOpen(false)}
         t={t}
+        lang={lang}
       />
 
       <CartDrawer

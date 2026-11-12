@@ -3,12 +3,13 @@ import {
   Phone, Send, MessageSquare, Clock, ShieldCheck, Sparkles, CheckCircle2 
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { StoreTypeSelector } from './StoreTypeSelector';
 
-export const ContactConfigurator = ({ t }) => {
+export const ContactConfigurator = ({ t, lang = 'uz' }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '+998 ',
-    storeType: 'Oziq-ovqat / Supermarket',
+    storeType: 'grocery',
     message: ''
   });
 
@@ -185,23 +186,14 @@ export const ContactConfigurator = ({ t }) => {
                   </div>
                 </div>
 
-                {/* Shop Type (Retail focus) */}
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
-                    Do'kon turi
-                  </label>
-                  <select
-                    value={formData.storeType}
-                    onChange={(e) => setFormData(prev => ({ ...prev, storeType: e.target.value }))}
-                    className="w-full px-3.5 py-2.5 bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 rounded-lg text-sm text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-emerald-500 cursor-pointer"
-                  >
-                    <option value="Oziq-ovqat / Supermarket">Oziq-ovqat / Supermarket</option>
-                    <option value="Kiyim-kechak do'koni">Kiyim-kechak / Poyabzal do'koni</option>
-                    <option value="Mini-market">Mahalliy mini-market</option>
-                    <option value="Xo'jalik mollari (Stroy-material)">Xo'jalik va maishiy mollar</option>
-                    <option value="Boshqa chakana savdo">Boshqa chakana savdo nuqtasi</option>
-                  </select>
-                </div>
+                {/* Shop Type - Foundation Design */}
+                <StoreTypeSelector
+                  value={formData.storeType}
+                  onChange={(id, title) => setFormData(prev => ({ ...prev, storeType: id, storeTypeTitle: title }))}
+                  lang={lang}
+                  label={t.contact.storeTypeLabel || "Do'koningiz turi"}
+                  columns={2}
+                />
 
                 {/* Optional Message */}
                 <div>

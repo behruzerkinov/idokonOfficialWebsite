@@ -265,91 +265,91 @@ export const courseModules = [
   {
     num: "01",
     title: {
-      uz: "Dasturni o‘rnatish va kassa uskunalari integratsiyasi",
-      ru: "Установка программы и подключение кассового оборудования",
-      en: "Software Installation & POS Hardware Setup"
+      uz: "Kirish: IDOKON Docs va dasturdan foydalanish",
+      ru: "Введение: Знакомство с IDOKON Docs",
+      en: "Introduction: Getting Started with IDOKON Docs"
     },
-    duration: "45 daqiqa",
-    lessonsCount: 6,
+    duration: "25 daqiqa",
+    lessonsCount: 3,
     desc: {
-      uz: "Windows kompyuterga kassa dasturini o'rnatish, chek printeri, skaner va kassa qutisini drayversiz ulash bosqichlari.",
-      ru: "Пошаговая установка на Windows, подключение принтера чеков, 2D-сканера и денежного ящика.",
-      en: "Step-by-step setup on Windows, connecting receipt printers, 2D scanners, and drawers."
+      uz: "IDOKON platformasi haqida umumiy tushuncha, dastur imkoniyatlari, interfeys bilan tanishuv va yangiliklar moduli.",
+      ru: "Общее знакомство с платформой IDOKON, возможности интерфейса и базовые сценарии использования.",
+      en: "Platform overview, core features, UI navigation, and essential system onboarding."
     }
   },
   {
     num: "02",
     title: {
-      uz: "Tovar nomenklaturasi va Excel orqali bazani yuklash",
-      ru: "Номенклатура товаров и массовый импорт через Excel",
-      en: "Product Catalog Management & Bulk Excel Import"
+      uz: "Admin Panel: Mahsulot qabul qilish va ombor hisobi",
+      ru: "Admin Panel: Приемка товаров и складской учет",
+      en: "Admin Panel: Inventory Receiving & Catalog"
     },
-    duration: "60 daqiqa",
-    lessonsCount: 8,
+    duration: "65 daqiqa",
+    lessonsCount: 10,
     desc: {
-      uz: "Minglab tovarlarni 1 soniyada yuklash, toifalar yaratish, shtrix-kodlar va Asl Belgisi markirovkalarini biriktirish.",
-      ru: "Импорт тысяч позиций за 1 секунду, создание категорий, привязка штрихкодов и маркировки «Asl Belgisi».",
-      en: "Import thousands of items in seconds, create categories, bind barcodes and digital markings."
+      uz: "Adminga kirish, mahsulot qabul qilish, buyurtmalar SD, nomenklatura, qayta narxlash, inventarizatsiya, guruhlash va bildirishnomalar.",
+      ru: "Вход в админку, оприходование, заказы поставщикам, номенклатура, переоценка, инвентаризация и уведомления.",
+      en: "Admin login, receiving goods, supplier orders, catalog re-pricing, inventory audits, and system notifications."
     }
   },
   {
     num: "03",
     title: {
-      uz: "Tezkor savdo operatsiyalari, cheklar va qaytarishlar",
-      ru: "Быстрые продажи, чеки, возвраты и раздельная оплата",
-      en: "Fast Checkout, Receipts, Split Bills & Refunds"
+      uz: "Kassa Panel: O'rnatish, tezkor sotuv va cheklar",
+      ru: "Kassa Panel: Установка, продажи и чеки",
+      en: "Cashier POS: Installation, Sales & Receipts"
     },
-    duration: "50 daqiqa",
-    lessonsCount: 7,
+    duration: "45 daqiqa",
+    lessonsCount: 6,
     desc: {
-      uz: "Kassirning kundalik vazifalari: skanerlash, aralash to'lov (naqd + Click), chek chiqarish va tovar qaytarish jarayoni.",
-      ru: "Ежедневная работа кассира: сканирование, смешанная оплата (наличные + карта), печать чека и возврат.",
-      en: "Daily cashier operations: scanning, split payments (cash + card), receipt issuance, and returns."
+      uz: "Kassani yuklash va o'rnatish, kassada tezkor sotish, chek chop etish, tovar qaytarish, sozlamalar va sinxronizatsiya xatolarini to'g'rilash.",
+      ru: "Установка кассы, быстрые продажи, печать чеков, оформление возвратов и устранение ошибок синхронизации.",
+      en: "POS app setup, high-speed cashier checkout, receipt printing, customer returns, and sync troubleshooting."
     }
   },
   {
     num: "04",
     title: {
-      uz: "Ombor hisobi, kirim hujjatlari va inventarizatsiya",
-      ru: "Складской учет, оприходование и быстрая инвентаризация",
-      en: "Warehouse Accounting, Receiving & Fast Audits"
+      uz: "Qurilmalar: Shtrix-kod, chek printer va tarozi",
+      ru: "Оборудование: Штрихкод-принтеры, чеки и весы",
+      en: "Hardware: Barcode & Receipt Printers, Scales"
     },
-    duration: "75 daqiqa",
-    lessonsCount: 10,
+    duration: "35 daqiqa",
+    lessonsCount: 3,
     desc: {
-      uz: "Ta'minotchilardan mahsulot qabul qilish, tannarx hisobi, kam qolgan tovarlar signallari va kamomadni aniqlash.",
-      ru: "Приемка от поставщиков, расчет себестоимости, сигналы о минимальных остатках и выявление недостач.",
-      en: "Receiving goods from suppliers, cost calculation, low-stock threshold triggers, and audit discrepancy checks."
+      uz: "Etiketka va shtrix-kod printerlarini sozlash, 80mm/58mm chek printeri integratsiyasi va elektron savdo tarozilarini ulash.",
+      ru: "Настройка принтера этикеток, термопринтеров чеков 80мм/58мм и синхронизация торговых весов.",
+      en: "Configuring barcode label printers, 80mm/58mm thermal receipt printers, and digital POS scales."
     }
   },
   {
     num: "05",
     title: {
-      uz: "Soliq fiskalizatsiyasi, Arco/Multikassa va hisobotlar",
-      ru: "Налоговая фискализация, Arco/Multikassa и закрытие смены",
-      en: "Tax Fiscalization, Shift Closing & Z-Reports"
+      uz: "Savollar: Inventarizatsiya, chek va to'lov muammolari",
+      ru: "FAQ: Инвентаризация, чеки и решение проблем",
+      en: "Troubleshooting: Inventory, Receipts & Payments"
     },
-    duration: "55 daqiqa",
-    lessonsCount: 6,
+    duration: "30 daqiqa",
+    lessonsCount: 3,
     desc: {
-      uz: "Soliq qo'mitasiga onlayn cheklar jo'natish, Z-hisobot olish, kun yakuni kassa balansi va inkassatsiya qilish.",
-      ru: "Отправка фискальных чеков в налоговый комитет, Z-отчет, сверка итогов дня и инкассация кассы.",
-      en: "Automated transmission of fiscal checks to tax servers, Z-reports, day-end balancing, and cash collection."
+      uz: "Inventarizatsiya kamomadlari, chek chiqmay qolganda nima qilish kerakligi va karta/Click to'lovlarini tekshirish yo'riqnomasi.",
+      ru: "Разбор частых ситуаций: расхождения ревизии, сбои печати чеков и проверка статуса оплат картой/Click.",
+      en: "Common store scenarios: audit discrepancies, printer paper jams, and validating card/Click payment statuses."
     }
   },
   {
     num: "06",
     title: {
-      uz: "Menejer va rahbarlar uchun chuqur analitika",
-      ru: "Управленческая аналитика для владельцев бизнеса",
-      en: "Executive Margin & Financial Intelligence"
+      uz: "Test ishlash: 20 ta interaktiv bilim sinovi",
+      ru: "Тестирование: 20 контрольных вопросов",
+      en: "Knowledge Test: 20 Interactive Exam Questions"
     },
-    duration: "65 daqiqa",
-    lessonsCount: 9,
+    duration: "20 daqiqa",
+    lessonsCount: 1,
     desc: {
-      uz: "ABC va OOS tahlil, eng ko'p foyda keltiruvchi tovarlar, filiallar taqqoslashi va smartfon orqali nazorat.",
-      ru: "ABC и OOS анализ, маржинальность, сравнение эффективности филиалов и контроль через смартфон.",
-      en: "ABC & OOS analysis, product gross profit margin, store comparison, and mobile monitoring."
+      uz: "Kassirlar va do'kon xodimlari uchun 20 ta amaliy test savoli orqali bilim darajasini tekshirish va tizim sertifikatiga ega bo'lish.",
+      ru: "Проверка знаний кассиров и администраторов через 20 практических тестовых заданий с подтверждением квалификации.",
+      en: "Comprehensive 20-question exam evaluating cashier and store manager software proficiency and certification."
     }
   }
 ];
