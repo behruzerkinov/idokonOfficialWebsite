@@ -55,7 +55,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
             <span>{t.software.eyebrow}</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-[-0.03em] text-zinc-950 dark:text-zinc-50 leading-tight mb-4">
             {t.software.title}
           </h2>
           

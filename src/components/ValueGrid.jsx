@@ -10,9 +10,8 @@ export const ValueGrid = ({ t }) => {
         <div className="max-w-3xl mb-12 text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3 font-mono">
             <span>{t.features.eyebrow}</span>
-            <span className="text-zinc-400 dark:text-zinc-600">[SYS_PERFORMANCE]</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] leading-tight">
             {t.features.title}
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">

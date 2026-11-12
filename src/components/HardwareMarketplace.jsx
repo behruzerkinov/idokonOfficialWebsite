@@ -48,7 +48,7 @@ export const HardwareMarketplace = ({
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
               <span>{t.equipment.eyebrow}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight [text-wrap:balance]">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] [text-wrap:balance]">
               {t.equipment.title}
             </h2>
             <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-[65ch]">

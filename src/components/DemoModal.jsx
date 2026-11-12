@@ -177,16 +177,23 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
                 {t.demoModal.successDesc}
               </p>
 
-              <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700/80 text-left mb-6">
+              <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700/80 text-left mb-6 space-y-1.5">
                 <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mb-1">
                   {t.demoModal?.fastContact || "Tezkor bog'lanish:"}
                 </div>
                 <a 
-                  href="tel:+998991180999" 
+                  href="tel:+998991130999" 
                   className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-2"
                 >
                   <Phone className="w-3.5 h-3.5" />
-                  <span>+998 99 118 09 99</span>
+                  <span>+998 99 113 09 99</span>
+                </a>
+                <a 
+                  href="tel:+998953600999" 
+                  className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-2"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>+998 95 360 09 99</span>
                 </a>
               </div>
 

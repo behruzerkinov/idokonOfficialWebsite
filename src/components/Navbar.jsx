@@ -121,14 +121,14 @@ export const Navbar = ({
             
             {/* Phone Hotline Link: shown on ultra-wide screens to ensure CTA never clips */}
             <a 
-              href="tel:+998991180999" 
+              href="tel:+998991130999" 
               className="hidden min-[1680px]:flex items-center gap-1.5 h-9 px-3 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors whitespace-nowrap"
               title="Savdo operatori"
             >
               <div className="w-4 h-4 rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
                 <Phone className="w-2.5 h-2.5" />
               </div>
-              <span className="font-mono text-xs whitespace-nowrap tabular-nums">+998 99 118 09 99</span>
+              <span className="font-mono text-xs whitespace-nowrap tabular-nums">+998 99 113 09 99</span>
             </a>
 
             {/* Dark / Light Mode Toggle */}
@@ -251,13 +251,21 @@ export const Navbar = ({
             })}
           </div>
           
-          <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-2.5">
+          <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-2">
             <a 
-              href="tel:+998991180999" 
+              href="tel:+998991130999" 
               className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 text-xs font-semibold font-mono tabular-nums"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-500" />
-              <span>+998 99 118 09 99</span>
+              <span>+998 99 113 09 99</span>
+            </a>
+
+            <a 
+              href="tel:+998953600999" 
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 text-xs font-semibold font-mono tabular-nums"
+            >
+              <Phone className="w-3.5 h-3.5 text-emerald-500" />
+              <span>+998 95 360 09 99</span>
             </a>
             
             <button

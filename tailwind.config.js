@@ -28,7 +28,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Space Grotesk"', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['"Helvetica Now"', '"Helvetica Neue"', 'Inter', '"Space Grotesk"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['RobotoMono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
         amiga: ['LabsAmiga', 'monospace'],
       },

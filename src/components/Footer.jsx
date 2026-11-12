@@ -49,9 +49,9 @@ export const Footer = ({ t, onOpenDemo }) => {
                 </svg>
               </a>
               <a
-                href="tel:+998991180999"
+                href="tel:+998991130999"
                 className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 hover:bg-emerald-500 hover:text-slate-950 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-zinc-200 dark:border-zinc-800 shadow-xs"
-                title="Qo'ng'iroq qilish"
+                title="Qo'ng'iroq qilish: +998 99 113 09 99"
               >
                 <Phone className="w-4 h-4" />
               </a>
@@ -109,8 +109,9 @@ export const Footer = ({ t, onOpenDemo }) => {
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
               </a>
 
-              <div className="pt-1 text-[11px] text-zinc-500 dark:text-zinc-400 font-mono tabular-nums">
-                Operator: +998 99 118 09 99
+              <div className="pt-1 text-[11px] text-zinc-500 dark:text-zinc-400 font-mono tabular-nums space-y-0.5">
+                <div>+998 99 113 09 99</div>
+                <div>+998 95 360 09 99</div>
               </div>
             </div>
           </div>

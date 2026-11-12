@@ -4,6 +4,7 @@ import NumberFlow from '@number-flow/react';
 
 export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
   const [billingPeriod, setBillingPeriod] = useState('monthly'); // 'monthly' | '6m' | '12m'
+  const [selectedPlanId, setSelectedPlanId] = useState('pro'); // Interactive active plan state
 
   const currentLang = ['uz', 'ru', 'en'].includes(lang) ? lang : 'uz';
 
@@ -67,7 +68,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <span>{t.pricing.eyebrow}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] leading-tight">
             {t.pricing.title}
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
@@ -150,14 +151,16 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {plans.map((plan) => {
             const currentPrice = plan.prices[billingPeriod];
+            const isSelected = selectedPlanId === plan.id;
             
             return (
               <div
                 key={plan.id}
-                className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-150 tech-box relative ${
-                  plan.popular
-                    ? 'bg-white dark:bg-zinc-900 border-2 border-emerald-500 shadow-xl'
-                    : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700'
+                onClick={() => setSelectedPlanId(plan.id)}
+                className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-200 tech-box relative cursor-pointer ${
+                  isSelected
+                    ? 'bg-emerald-500/[0.12] dark:bg-emerald-950/60 border-2 border-emerald-500 shadow-xl ring-2 ring-emerald-500/30'
+                    : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-400 dark:hover:border-zinc-700 hover:bg-zinc-100/60 dark:hover:bg-zinc-850/60'
                 }`}
               >
                 {/* Tech Corner Squares (ChainGPT Labs style) */}
@@ -179,6 +182,11 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                     <h3 className="font-extrabold text-xl text-zinc-900 dark:text-zinc-50">
                       {plan.name}
                     </h3>
+                    {isSelected && (
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                        {t.pricing?.activeBadge || "Tanlangan"}
+                      </span>
+                    )}
                   </div>
 
                   <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-6">
@@ -221,10 +229,14 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                 <div>
                   <button
                     type="button"
-                    onClick={() => onSelectPlan(plan, billingPeriod)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedPlanId(plan.id);
+                      onSelectPlan(plan, billingPeriod);
+                    }}
                     className={`w-full py-3 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer ${
-                      plan.popular
-                        ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-sm'
+                      isSelected
+                        ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-md font-extrabold'
                         : 'bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100'
                     }`}
                   >

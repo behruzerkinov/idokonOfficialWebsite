@@ -16,18 +16,17 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
           {/* Left Column: Headlines & Call to Actions */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             
-            {/* Top Eyebrow Pill with Tech Telemetry (ChainGPT Labs style) */}
+            {/* Top Eyebrow Pill with Live Indicator */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide uppercase mb-6 font-mono">
               <span className="flex h-1.5 w-1.5 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
               </span>
               <span>{t.hero.eyebrow}</span>
-              <span className="text-zinc-400 dark:text-zinc-600 font-normal">[VER: 4.2.0]</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12] mb-6 [text-wrap:balance]">
+            {/* Main Monumental Headline (Extrafazant inspired) */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.03em] text-zinc-950 dark:text-zinc-50 leading-[1.02] mb-6 [text-wrap:balance]">
               {t.hero.titleStart}{' '}
               <span className="text-emerald-500 dark:text-emerald-400">
                 {t.hero.titleHighlight}
@@ -105,7 +104,6 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span>idokon.uz · Admin Panel</span>
                   </div>
-                  <div className="text-[10px] text-zinc-400 dark:text-zinc-500 font-mono">[SYS_STABLE]</div>
                 </div>
 
                 {/* REAL I-DO'KON APP SCREENSHOT */}

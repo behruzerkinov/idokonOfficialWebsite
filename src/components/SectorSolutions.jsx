@@ -49,7 +49,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <span>{t.sectors.eyebrow}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] leading-tight">
             {t.sectors.title}
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
@@ -67,10 +67,10 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
                 key={sec.id}
                 type="button"
                 onClick={() => setSelectedSector(idx)}
-                className={`relative p-6 rounded-2xl text-left transition-all duration-150 cursor-pointer tech-box ${
+                className={`relative p-6 rounded-2xl text-left transition-all duration-200 cursor-pointer tech-box ${
                   isSelected
-                    ? 'bg-emerald-500/10 dark:bg-emerald-500/10 border-2 border-emerald-500 shadow-sm'
-                    : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
+                    ? 'bg-emerald-500/[0.14] dark:bg-emerald-950/60 border-2 border-emerald-500 shadow-md ring-2 ring-emerald-500/25'
+                    : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-700 hover:bg-zinc-100/60 dark:hover:bg-zinc-850/60'
                 }`}
               >
                 {isSelected && (

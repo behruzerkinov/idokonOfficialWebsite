@@ -85,7 +85,7 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
 
               <div className="space-y-3">
                 <a 
-                  href="tel:+998991180999" 
+                  href="tel:+998991130999" 
                   className="flex items-center gap-3.5 p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 hover:border-emerald-500 transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-bold flex-shrink-0">
@@ -94,7 +94,22 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                   <div>
                     <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">{t.contact.hotlineLabel || "Tezkor operator raqami:"}</div>
                     <div className="text-sm font-bold font-mono tabular-nums text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">
-                      +998 99 118 09 99
+                      +998 99 113 09 99
+                    </div>
+                  </div>
+                </a>
+
+                <a 
+                  href="tel:+998953600999" 
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 hover:border-emerald-500 transition-colors group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-bold flex-shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">{t.contact.secondHotlineLabel || "Qo'shimcha operator:"}</div>
+                    <div className="text-sm font-bold font-mono tabular-nums text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">
+                      +998 95 360 09 99
                     </div>
                   </div>
                 </a>

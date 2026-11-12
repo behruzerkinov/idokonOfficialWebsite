@@ -59,7 +59,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
             <GraduationCap className="w-4 h-4 text-emerald-500" />
             <span>{t.course.eyebrow}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] leading-tight">
             {t.course.title}
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
