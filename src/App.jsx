@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Lenis from 'lenis';
 import { Toaster, toast } from 'sonner';
 import { translations } from './data/translations';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PartnerMarquee } from './components/PartnerMarquee';
+import { TechMarquee } from './components/TechMarquee';
+import { TechPreloader } from './components/TechPreloader';
 import { ValueGrid } from './components/ValueGrid';
 import { PosInteractiveShowcase } from './components/PosInteractiveShowcase';
 import { SectorSolutions } from './components/SectorSolutions';
@@ -174,9 +177,40 @@ export function App() {
     };
   }, []);
 
+  // Lenis Smooth Scroll Integration (ChainGPT Labs style fluid inertia)
+  useEffect(() => {
+    let lenis;
+    try {
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.8,
+      });
+
+      let rafId;
+      function raf(time) {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
+      rafId = requestAnimationFrame(raf);
+
+      return () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        lenis?.destroy();
+      };
+    } catch (_) {}
+  }, []);
+
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150 relative overflow-x-hidden`}>
       
+      {/* ChainGPT Labs Style Cybernetic Preloader */}
+      <TechPreloader />
+
       {/* Global Architectural Grid Background (aligned across the whole site) */}
       <div className="pointer-events-none fixed inset-0 z-0 global-grid-bg" aria-hidden="true" />
 
@@ -239,6 +273,18 @@ export function App() {
           onOpenLightbox={(url, title) => setLightboxData({ url, title })}
         />
 
+        {/* ChainGPT Labs Style High-Contrast Running Marquee Ticker */}
+        <TechMarquee
+          items={[
+            "NEXT-GEN RETAIL OS",
+            "WINDOWS & WEB TERMINAL",
+            "1C & EXCEL 1-DAY MIGRATION",
+            "REAL-TIME FISCAL SOLIQ INTEGRATION",
+            "INSTANT CARD & QR CHECKOUT",
+            "250+ ACTIVE ENTERPRISES"
+          ]}
+        />
+
         {/* Integration Partners Marquee with Real Vector Logos */}
         <PartnerMarquee t={t} />
 
@@ -297,6 +343,19 @@ export function App() {
         <ContactConfigurator
           t={t}
           lang={lang}
+        />
+
+        {/* ChainGPT Labs Style Lower Marquee Banner */}
+        <TechMarquee
+          items={[
+            "250+ SHOPS AUTOMATED",
+            "0.8s TRANSACTION SPEED",
+            "100% SOLIQ COMPLIANT",
+            "OFFICIAL HARDWARE & MONOBLOCKS",
+            "FREE MIGRATION SERVICE",
+            "START IN 10 MINUTES"
+          ]}
+          speed={45}
         />
 
       </main>

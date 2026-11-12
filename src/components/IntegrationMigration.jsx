@@ -3,6 +3,7 @@ import {
   RefreshCw, ShieldCheck, Headphones, CheckCircle2, 
   ArrowRight, Layers, FileSpreadsheet, Database 
 } from 'lucide-react';
+import { ScrambleText } from './ScrambleText';
 
 export const IntegrationMigration = ({ t, onOpenContact }) => {
   return (
@@ -25,8 +26,13 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
         {/* 2-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
-          {/* Left Column: Foundation Migration Pillar Card */}
-          <div className="lg:col-span-5 rounded-2xl p-7 sm:p-8 bg-zinc-50 dark:bg-zinc-900 border border-emerald-500/30 dark:border-emerald-500/20 shadow-sm flex flex-col justify-between">
+          {/* Left Column: Foundation Migration Pillar Card with Tech Box */}
+          <div className="lg:col-span-5 rounded-2xl p-7 sm:p-8 bg-zinc-50 dark:bg-zinc-900 border border-emerald-500/30 dark:border-emerald-500/20 shadow-sm flex flex-col justify-between tech-box relative">
+            <div className="tech-corner-square tech-corner-tl" />
+            <div className="tech-corner-square tech-corner-tr" />
+            <div className="tech-corner-square tech-corner-bl" />
+            <div className="tech-corner-square tech-corner-br" />
+
             <div>
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold mb-4">
                 <RefreshCw className="w-3.5 h-3.5 text-emerald-500" />
@@ -34,7 +40,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 leading-snug">
-                {t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"}
+                <ScrambleText text={t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"} scrambleOnHover duration={450} />
               </h3>
 
               <div className="space-y-5">

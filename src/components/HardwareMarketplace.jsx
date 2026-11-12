@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { FluentRevealCard } from './FluentReveal';
+import { ScrambleText } from './ScrambleText';
 
 export const HardwareMarketplace = ({ 
   lang, 
@@ -90,8 +91,11 @@ export const HardwareMarketplace = ({
             return (
               <FluentRevealCard
                 key={product.id}
-                className="w-[300px] sm:w-[330px] flex-shrink-0 snap-start rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-emerald-500/40 dark:hover:border-emerald-500/40 flex flex-col group"
+                className="w-[300px] sm:w-[330px] flex-shrink-0 snap-start rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-emerald-500/40 dark:hover:border-emerald-500/40 flex flex-col group tech-box relative"
               >
+                <div className="tech-corner-square tech-corner-tl" />
+                <div className="tech-corner-square tech-corner-br" />
+
                 {/* Product Image Area */}
                 <div className="relative h-48 bg-zinc-100 dark:bg-zinc-950/80 p-6 flex items-center justify-center overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
                   <img
@@ -117,7 +121,7 @@ export const HardwareMarketplace = ({
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-50 mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
-                      {title}
+                      <ScrambleText text={title} scrambleOnHover duration={350} />
                     </h3>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed mb-4">
                       {subtitle}

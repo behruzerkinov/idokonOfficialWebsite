@@ -112,3 +112,86 @@
 .spring-transition {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* ChainGPT Labs Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+/* ChainGPT Labs Tech Corner Marks & Wireframe Borders */
+.tech-box {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dark .tech-box {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-box:hover {
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.tech-corner-square {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tech-corner-tl { top: -3px; left: -3px; }
+.tech-corner-tr { top: -3px; right: -3px; }
+.tech-corner-bl { bottom: -3px; left: -3px; }
+.tech-corner-br { bottom: -3px; right: -3px; }
+
+/* Laser Beam Accent Hover */
+.tech-glow-hover {
+  position: relative;
+}
+.tech-glow-hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.tech-glow-hover:hover::after {
+  opacity: 1;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

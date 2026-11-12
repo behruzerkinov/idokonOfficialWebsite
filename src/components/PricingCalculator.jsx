@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Check, Sparkles, ArrowRight, ShieldCheck, Gift } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
+import { ScrambleText } from './ScrambleText';
 
 export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
   const [billingPeriod, setBillingPeriod] = useState('monthly'); // 'monthly' | '6m' | '12m'
@@ -154,15 +155,21 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
             return (
               <div
                 key={plan.id}
-                className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-150 ${
+                className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-150 tech-box relative ${
                   plan.popular
-                    ? 'bg-white dark:bg-zinc-900 border-2 border-emerald-500 shadow-xl relative'
+                    ? 'bg-white dark:bg-zinc-900 border-2 border-emerald-500 shadow-xl'
                     : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700'
                 }`}
               >
+                {/* Tech Corner Squares (ChainGPT Labs style) */}
+                <div className="tech-corner-square tech-corner-tl" />
+                <div className="tech-corner-square tech-corner-tr" />
+                <div className="tech-corner-square tech-corner-bl" />
+                <div className="tech-corner-square tech-corner-br" />
+
                 {/* Popular Pill */}
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-bold text-[10px] uppercase tracking-wider shadow-sm flex items-center gap-1">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-bold text-[10px] uppercase tracking-wider shadow-sm flex items-center gap-1 font-mono">
                     <Sparkles className="w-3 h-3 fill-slate-950" />
                     <span>{t.pricing?.mostPopular || "Eng ommabop tarif"}</span>
                   </div>
@@ -171,7 +178,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-extrabold text-xl text-zinc-900 dark:text-zinc-50">
-                      {plan.name}
+                      <ScrambleText text={plan.name} scrambleOnHover duration={350} />
                     </h3>
                   </div>
 
@@ -222,7 +229,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                         : 'bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100'
                     }`}
                   >
-                    <span>{t.pricing?.activatePlan || "Tarifni faollashtirish"}</span>
+                    <ScrambleText text={t.pricing?.activatePlan || "Tarifni faollashtirish"} scrambleOnHover duration={350} />
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

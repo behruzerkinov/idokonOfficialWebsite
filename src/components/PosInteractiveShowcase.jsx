@@ -3,6 +3,7 @@ import {
   Maximize2, Sparkles, ShoppingCart, 
   Package, BarChart2, Clock, Monitor
 } from 'lucide-react';
+import { ScrambleText } from './ScrambleText';
 
 export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   const [activeTab, setActiveTab] = useState('sales');
@@ -64,8 +65,12 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
           </p>
         </div>
 
-        {/* Foundation UI Screen Frame with 5 Authentic Tabs */}
-        <div className="rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden">
+        {/* Foundation UI Screen Frame with 5 Authentic Tabs & ChainGPT Tech Corners */}
+        <div className="relative rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden tech-box">
+          <div className="tech-corner-square tech-corner-tl" />
+          <div className="tech-corner-square tech-corner-tr" />
+          <div className="tech-corner-square tech-corner-bl" />
+          <div className="tech-corner-square tech-corner-br" />
           
           {/* Top Control Bar with Segmented Tabs */}
           <div className="p-3 sm:p-4 bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-3">
@@ -100,7 +105,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                 {currentScreen.badge}
               </span>
               <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
-                {currentScreen.label}
+                <ScrambleText text={currentScreen.label} scrambleOnHover duration={350} />
               </span>
             </div>
           </div>

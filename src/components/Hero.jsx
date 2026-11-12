@@ -3,6 +3,7 @@ import {
   ArrowRight, ShieldCheck, Zap, Headphones, Star, 
   Sparkles, Laptop, Maximize2 
 } from 'lucide-react';
+import { ScrambleText } from './ScrambleText';
 
 export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
   return (
@@ -16,20 +17,21 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
           {/* Left Column: Headlines & Call to Actions */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             
-            {/* Top Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide uppercase mb-6">
+            {/* Top Eyebrow Pill with Tech Telemetry (ChainGPT Labs style) */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide uppercase mb-6 font-mono">
               <span className="flex h-1.5 w-1.5 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
               </span>
               <span>{t.hero.eyebrow}</span>
+              <span className="text-zinc-400 dark:text-zinc-600 font-normal">[VER: 4.2.0]</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12] mb-6 [text-wrap:balance]">
               {t.hero.titleStart}{' '}
               <span className="text-emerald-500 dark:text-emerald-400">
-                {t.hero.titleHighlight}
+                <ScrambleText text={t.hero.titleHighlight} scrambleOnHover duration={500} />
               </span>{' '}
               {t.hero.titleEnd}
             </h1>
@@ -44,9 +46,9 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
               <button
                 type="button"
                 onClick={onOpenDemo}
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg text-sm font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 active:scale-95 group cursor-pointer"
+                className="relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg text-sm font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 active:scale-95 group cursor-pointer overflow-hidden"
               >
-                <span>{t.hero.ctaPrimary}</span>
+                <ScrambleText text={t.hero.ctaPrimary} scrambleOnHover duration={400} />
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
 
@@ -55,7 +57,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
                 onClick={onScrollToTerminal}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg text-sm font-semibold text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 shadow-sm transition-all duration-150 active:scale-95 cursor-pointer"
               >
-                <span>{t.hero.ctaSecondary}</span>
+                <ScrambleText text={t.hero.ctaSecondary} scrambleOnHover duration={400} />
                 <ArrowRight className="w-4 h-4 text-emerald-500" />
               </button>
             </div>
@@ -84,8 +86,14 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               
-              {/* Foundation UI Window Frame */}
-              <div className="relative rounded-2xl p-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden">
+              {/* Foundation UI Window Frame with Tech Corner Squares */}
+              <div className="relative rounded-2xl p-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden tech-box">
+                
+                {/* Tech Corner Squares (ChainGPT Labs signature) */}
+                <div className="tech-corner-square tech-corner-tl" />
+                <div className="tech-corner-square tech-corner-tr" />
+                <div className="tech-corner-square tech-corner-bl" />
+                <div className="tech-corner-square tech-corner-br" />
                 
                 {/* Window header */}
                 <div className="flex items-center justify-between px-3 py-2 bg-zinc-100 dark:bg-zinc-950 rounded-t-xl border-b border-zinc-200 dark:border-zinc-800/80">
@@ -95,10 +103,10 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
                     <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
                   </div>
                   <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-600 dark:text-zinc-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span>idokon.uz · Admin Panel</span>
                   </div>
-                  <div className="text-[10px] text-zinc-400 dark:text-zinc-500 font-mono">v1.2.1</div>
+                  <div className="text-[10px] text-zinc-400 dark:text-zinc-500 font-mono">[SYS_STABLE]</div>
                 </div>
 
                 {/* REAL I-DO'KON APP SCREENSHOT */}

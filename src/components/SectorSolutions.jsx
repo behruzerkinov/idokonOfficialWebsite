@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Store, ShoppingCart, ShoppingBag, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ScrambleText } from './ScrambleText';
 
 export const SectorSolutions = ({ t, onOpenDemo }) => {
   const [selectedSector, setSelectedSector] = useState(0);
@@ -57,7 +58,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
           </p>
         </div>
 
-        {/* 3 Pure Retail Shop Sectors Grid */}
+        {/* 3 Pure Retail Shop Sectors Grid with Tech Boxes */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
           {sectors.map((sec, idx) => {
             const Icon = sec.icon;
@@ -67,12 +68,21 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
                 key={sec.id}
                 type="button"
                 onClick={() => setSelectedSector(idx)}
-                className={`p-6 rounded-2xl text-left transition-all duration-150 cursor-pointer ${
+                className={`relative p-6 rounded-2xl text-left transition-all duration-150 cursor-pointer tech-box ${
                   isSelected
                     ? 'bg-emerald-500/10 dark:bg-emerald-500/10 border-2 border-emerald-500 shadow-sm'
                     : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
                 }`}
               >
+                {isSelected && (
+                  <>
+                    <div className="tech-corner-square tech-corner-tl" />
+                    <div className="tech-corner-square tech-corner-tr" />
+                    <div className="tech-corner-square tech-corner-bl" />
+                    <div className="tech-corner-square tech-corner-br" />
+                  </>
+                )}
+                
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
                   isSelected 
                     ? 'bg-emerald-500 text-slate-950 dark:text-slate-950 font-bold shadow-xs' 
@@ -89,7 +99,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
                   />
                 </div>
                 <h3 className="font-bold text-lg mb-1.5 text-zinc-900 dark:text-zinc-50">
-                  {sec.title}
+                  <ScrambleText text={sec.title} scrambleOnHover duration={350} />
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   {sec.desc}

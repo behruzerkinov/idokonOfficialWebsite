@@ -4,6 +4,7 @@ import {
 } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
 import { motion } from 'motion/react';
+import { ScrambleText } from './ScrambleText';
 
 export const Navbar = ({ 
   lang, 
@@ -111,7 +112,9 @@ export const Navbar = ({
                       transition={{ type: "spring", stiffness: 400, damping: 32 }}
                     />
                   )}
-                  <span className="relative z-10">{link.label}</span>
+                  <span className="relative z-10">
+                    <ScrambleText text={link.label} scrambleOnHover duration={280} />
+                  </span>
                 </a>
               );
             })}
@@ -210,7 +213,9 @@ export const Navbar = ({
               className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer flex-shrink-0"
             >
               <Sparkles className="w-3.5 h-3.5 shrink-0" />
-              <span className="shrink-0">{t.nav.tryDemo}</span>
+              <span className="shrink-0">
+                <ScrambleText text={t.nav.tryDemo} scrambleOnHover duration={300} />
+              </span>
             </button>
 
             {/* Mobile Hamburger Toggle */}

@@ -4,6 +4,7 @@ import {
   GraduationCap, PlayCircle, Award, BookOpen, Clock, 
   ExternalLink, ChevronDown, CheckCircle2, Maximize2 
 } from 'lucide-react';
+import { ScrambleText } from './ScrambleText';
 
 export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
   const [activeModule, setActiveModule] = useState(0);
@@ -73,8 +74,12 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
           {/* Left Column: Real Course Screenshots & Platform Preview */}
           <div className="lg:col-span-7 space-y-4">
             
-            {/* Main Interactive Screen with Foundation Frame */}
-            <div className="relative rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl group">
+            {/* Main Interactive Screen with Foundation Frame & Tech Box */}
+            <div className="relative rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl group tech-box">
+              <div className="tech-corner-square tech-corner-tl" />
+              <div className="tech-corner-square tech-corner-tr" />
+              <div className="tech-corner-square tech-corner-bl" />
+              <div className="tech-corner-square tech-corner-br" />
               
               {/* Browser chrome header */}
               <div className="px-4 py-2.5 bg-zinc-100 dark:bg-zinc-950/80 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs">
