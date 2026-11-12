@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { courseModules } from '../data/mockData';
 import { 
   GraduationCap, PlayCircle, Award, BookOpen, Clock, 
@@ -50,7 +51,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
   const currentShot = courseScreenshots[activeShot] || courseScreenshots[0];
 
   return (
-    <section id="course" className="py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200 dark:border-zinc-800/80">
+    <section id="course" className="py-28 sm:py-36 lg:py-44 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -186,7 +187,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
               <span className="text-xs text-zinc-400 font-mono">{t.course.sixModules || "6 ta modul"}</span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {courseModules.map((module, idx) => {
                 const isOpen = activeModule === idx;
                 const title = module.title?.[lang] || module.title?.uz || '';
@@ -195,25 +196,25 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                 return (
                   <div
                     key={module.num || idx}
-                    className={`rounded-xl border transition-all duration-150 overflow-hidden ${
+                    className={`rounded-2xl border transition-colors duration-300 overflow-hidden ${
                       isOpen
-                        ? 'bg-zinc-50 dark:bg-zinc-900/90 border-emerald-500/40 shadow-sm'
-                        : 'bg-white dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
+                        ? 'bg-zinc-50 dark:bg-[#12141c] border-emerald-500/40 shadow-md'
+                        : 'bg-white dark:bg-[#0c0d13] border-zinc-200/80 dark:border-white/[0.08] hover:border-zinc-300 dark:hover:border-white/[0.15]'
                     }`}
                   >
                     <button
                       type="button"
                       onClick={() => setActiveModule(isOpen ? -1 : idx)}
-                      className="w-full p-3.5 flex items-center justify-between text-left cursor-pointer"
+                      className="w-full p-4 flex items-center justify-between text-left cursor-pointer"
                     >
-                      <div className="flex items-center gap-3">
-                        <span className={`w-6 h-6 rounded-md flex items-center justify-center font-mono text-xs font-bold ${
-                          isOpen ? 'bg-emerald-500 text-slate-950' : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
+                      <div className="flex items-center gap-3.5">
+                        <span className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold transition-colors ${
+                          isOpen ? 'bg-emerald-500 text-white shadow-xs' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
                         }`}>
                           {module.num || idx + 1}
                         </span>
                         <div>
-                          <h4 className="font-bold text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 [text-wrap:balance]">
+                          <h4 className="font-serif font-normal text-sm sm:text-base text-zinc-950 dark:text-zinc-50 [text-wrap:balance]">
                             {title}
                           </h4>
                           <span className="text-[11px] text-zinc-400 font-mono tabular-nums">
@@ -222,18 +223,33 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                         </div>
                       </div>
 
-                      <ChevronDown className={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                      <motion.div
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <ChevronDown className="w-4 h-4 text-zinc-400" />
+                      </motion.div>
                     </button>
 
-                    {isOpen && (
-                      <div className="px-3.5 pb-3.5 pt-1 text-xs text-zinc-600 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800/80 mt-1 animate-in fade-in duration-150">
-                        <p className="mb-2 leading-relaxed max-w-[65ch]">{desc}</p>
-                        <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>{t.course.hasPractical || "Amaliy topshiriq va test mavjud"}</span>
-                        </div>
-                      </div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-4 pb-4 pt-1 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 border-t border-zinc-200/80 dark:border-white/[0.07] mt-1">
+                            <p className="mb-2 leading-relaxed max-w-[65ch] font-normal">{desc}</p>
+                            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span>{t.course.hasPractical || "Amaliy topshiriq va test mavjud"}</span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}

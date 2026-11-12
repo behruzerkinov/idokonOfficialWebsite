@@ -3,7 +3,7 @@ import { FluentRevealCard } from './FluentReveal';
 
 export const ValueGrid = ({ t }) => {
   return (
-    <section id="features" className="py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
+    <section id="features" className="py-28 sm:py-36 lg:py-44 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

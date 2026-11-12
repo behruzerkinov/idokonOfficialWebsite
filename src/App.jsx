@@ -17,6 +17,7 @@ import { PricingCalculator } from './components/PricingCalculator';
 import { CourseAcademy } from './components/CourseAcademy';
 import { FaqAccordion } from './components/FaqAccordion';
 import { ContactConfigurator } from './components/ContactConfigurator';
+import { HugeBrandTextSection } from './components/HugeBrandTextSection';
 import { Footer } from './components/Footer';
 
 // Modals & Drawers
@@ -187,22 +188,22 @@ export function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150 relative overflow-x-hidden`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#07080a] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150 relative overflow-x-hidden`}>
       
-      {/* ChainGPT Labs Style Cybernetic Preloader */}
+      {/* Tech Preloader */}
       <TechPreloader />
 
-      {/* Global Architectural Grid Background (aligned across the whole site) */}
-      <div className="pointer-events-none fixed inset-0 z-0 global-grid-bg" aria-hidden="true" />
+      {/* Global Subtle Architectural Grid Background */}
+      <div className="pointer-events-none fixed inset-0 z-0 global-grid-bg opacity-40 dark:opacity-20" aria-hidden="true" />
 
-      {/* Windows 10 Settings App Luminous Light Effect (Vibrant Global Reveal Spotlight) */}
+      {/* Ultra-subtle, neutral ambient spotlight (Zero murky green AI slop) */}
       <div
-        className="pointer-events-none fixed inset-0 z-20 transition-opacity duration-300"
+        className="pointer-events-none fixed inset-0 z-20 transition-opacity duration-500"
         style={{
           opacity: isPointerActive ? 1 : 0,
           background: theme === 'dark'
-            ? `radial-gradient(750px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.22), rgba(16, 185, 129, 0.08) 35%, rgba(16, 185, 129, 0.015) 65%, transparent 75%)`
-            : `radial-gradient(650px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.18), rgba(16, 185, 129, 0.05) 35%, rgba(16, 185, 129, 0.01) 60%, transparent 70%)`,
+            ? `radial-gradient(600px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(255, 255, 255, 0.03), transparent 65%)`
+            : `radial-gradient(500px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(0, 0, 0, 0.02), transparent 60%)`,
         }}
         aria-hidden="true"
       />
@@ -322,23 +323,19 @@ export function App() {
           />
         </div>
 
-        {/* Section 10: Overlapping Contact Configurator & Lower Ticker */}
-        <div className="stack-section z-[100]">
+        {/* Section 10: Contact Configurator */}
+        <div className="relative z-[100] bg-zinc-50 dark:bg-[#07080a]">
           <ContactConfigurator
             t={t}
             lang={lang}
           />
+        </div>
 
-          <TechMarquee
-            items={[
-              "250+ SHOPS AUTOMATED",
-              "0.8s TRANSACTION SPEED",
-              "100% SOLIQ COMPLIANT",
-              "OFFICIAL HARDWARE & MONOBLOCKS",
-              "FREE MIGRATION SERVICE",
-              "START IN 10 MINUTES"
-            ]}
-            speed={45}
+        {/* Section 11: Monumental Twain-style Huge Text Animation Stage */}
+        <div className="relative z-[110]">
+          <HugeBrandTextSection
+            t={t}
+            onOpenDemo={() => setIsDemoOpen(true)}
           />
         </div>
 
