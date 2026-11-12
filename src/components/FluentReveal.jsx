@@ -8,8 +8,8 @@ import React, { useRef, useState, useCallback } from 'react';
 export const FluentRevealCard = ({ 
   children, 
   className = '', 
-  spotlightColor = 'rgba(16, 185, 129, 0.16)', 
-  borderColor = 'rgba(16, 185, 129, 0.45)',
+  spotlightColor = 'rgba(16, 185, 129, 0.28)', 
+  borderColor = 'rgba(16, 185, 129, 0.65)',
   radius = 320,
   ...props 
 }) => {

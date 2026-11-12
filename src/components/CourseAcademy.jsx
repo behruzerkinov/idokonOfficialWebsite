@@ -4,7 +4,6 @@ import {
   GraduationCap, PlayCircle, Award, BookOpen, Clock, 
   ExternalLink, ChevronDown, CheckCircle2, Maximize2 
 } from 'lucide-react';
-import { ScrambleText } from './ScrambleText';
 
 export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
   const [activeModule, setActiveModule] = useState(0);

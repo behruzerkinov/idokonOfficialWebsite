@@ -3,7 +3,6 @@ import {
   ArrowRight, ShieldCheck, Zap, Headphones, Star, 
   Sparkles, Laptop, Maximize2 
 } from 'lucide-react';
-import { ScrambleText } from './ScrambleText';
 
 export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
   return (
@@ -31,7 +30,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12] mb-6 [text-wrap:balance]">
               {t.hero.titleStart}{' '}
               <span className="text-emerald-500 dark:text-emerald-400">
-                <ScrambleText text={t.hero.titleHighlight} scrambleOnHover duration={500} />
+                {t.hero.titleHighlight}
               </span>{' '}
               {t.hero.titleEnd}
             </h1>
@@ -48,7 +47,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
                 onClick={onOpenDemo}
                 className="relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg text-sm font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 active:scale-95 group cursor-pointer overflow-hidden"
               >
-                <ScrambleText text={t.hero.ctaPrimary} scrambleOnHover duration={400} />
+                <span>{t.hero.ctaPrimary}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
 
@@ -57,7 +56,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
                 onClick={onScrollToTerminal}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg text-sm font-semibold text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 shadow-sm transition-all duration-150 active:scale-95 cursor-pointer"
               >
-                <ScrambleText text={t.hero.ctaSecondary} scrambleOnHover duration={400} />
+                <span>{t.hero.ctaSecondary}</span>
                 <ArrowRight className="w-4 h-4 text-emerald-500" />
               </button>
             </div>

@@ -3,7 +3,6 @@ import {
   Maximize2, Sparkles, ShoppingCart, 
   Package, BarChart2, Clock, Monitor
 } from 'lucide-react';
-import { ScrambleText } from './ScrambleText';
 
 export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   const [activeTab, setActiveTab] = useState('sales');
@@ -105,7 +104,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                 {currentScreen.badge}
               </span>
               <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
-                <ScrambleText text={currentScreen.label} scrambleOnHover duration={350} />
+                {currentScreen.label}
               </span>
             </div>
           </div>

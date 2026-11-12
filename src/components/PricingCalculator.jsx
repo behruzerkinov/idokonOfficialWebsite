@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Check, Sparkles, ArrowRight, ShieldCheck, Gift } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
-import { ScrambleText } from './ScrambleText';
 
 export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
   const [billingPeriod, setBillingPeriod] = useState('monthly'); // 'monthly' | '6m' | '12m'
@@ -178,7 +177,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-extrabold text-xl text-zinc-900 dark:text-zinc-50">
-                      <ScrambleText text={plan.name} scrambleOnHover duration={350} />
+                      {plan.name}
                     </h3>
                   </div>
 
@@ -229,7 +228,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                         : 'bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100'
                     }`}
                   >
-                    <ScrambleText text={t.pricing?.activatePlan || "Tarifni faollashtirish"} scrambleOnHover duration={350} />
+                    <span>{t.pricing?.activatePlan || "Tarifni faollashtirish"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

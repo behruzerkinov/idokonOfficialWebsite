@@ -17,7 +17,7 @@ export function TechPreloader({ onComplete }) {
 
     let count = 0;
     const interval = setInterval(() => {
-      count += Math.floor(Math.random() * 4) + 1;
+      count += 1;
       if (count >= 99) {
         count = 99;
         setDigits({ d1: '0', d2: '9', d3: '9' });
@@ -42,7 +42,7 @@ export function TechPreloader({ onComplete }) {
           d3: padded[2]
         });
       }
-    }, 28);
+    }, 14);
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -139,7 +139,7 @@ export function TechPreloader({ onComplete }) {
                   }}
                   transition={{ 
                     duration: 0.6, 
-                    delay: (i % 12) * 0.025 + Math.random() * 0.2 
+                    delay: (i % 12) * 0.03 + Math.floor(i / 12) * 0.035
                   }}
                   className="border border-emerald-500/20"
                 />

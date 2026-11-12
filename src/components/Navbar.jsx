@@ -4,7 +4,6 @@ import {
 } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
 import { motion } from 'motion/react';
-import { ScrambleText } from './ScrambleText';
 
 export const Navbar = ({ 
   lang, 
@@ -75,10 +74,10 @@ export const Navbar = ({
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 foundation-nav py-2 sm:py-2.5 overflow-x-clip ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 foundation-nav py-2 sm:py-2.5 ${
       isScrolled ? 'shadow-md shadow-zinc-950/5 dark:shadow-black/20' : ''
     }`}>
-      <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6">
+      <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between gap-2 sm:gap-3">
           
           {/* Logo & Brand */}
@@ -99,7 +98,7 @@ export const Navbar = ({
                   key={link.href}
                   href={link.href}
                   onClick={() => setActiveSection(link.id)}
-                  className={`relative px-2 2xl:px-3 py-1.5 rounded-lg text-[11px] 2xl:text-xs font-medium transition-colors whitespace-nowrap select-none cursor-pointer ${
+                  className={`relative px-1.5 2xl:px-2.5 py-1.5 rounded-lg text-[11px] 2xl:text-xs font-medium transition-colors whitespace-nowrap select-none cursor-pointer ${
                     isActive
                       ? 'text-emerald-700 dark:text-emerald-300 font-bold'
                       : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100'
@@ -112,21 +111,19 @@ export const Navbar = ({
                       transition={{ type: "spring", stiffness: 400, damping: 32 }}
                     />
                   )}
-                  <span className="relative z-10">
-                    <ScrambleText text={link.label} scrambleOnHover duration={280} />
-                  </span>
+                  <span className="relative z-10">{link.label}</span>
                 </a>
               );
             })}
           </nav>
 
           {/* Right Action Bar */}
-          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 ml-auto">
             
-            {/* Phone Hotline Link: shown on 2xl to preserve breathing room for CTA */}
+            {/* Phone Hotline Link: shown on ultra-wide screens to ensure CTA never clips */}
             <a 
               href="tel:+998991180999" 
-              className="hidden 2xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors whitespace-nowrap"
+              className="hidden min-[1680px]:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors whitespace-nowrap"
               title="Savdo operatori"
             >
               <div className="w-4 h-4 rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
@@ -213,9 +210,7 @@ export const Navbar = ({
               className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer flex-shrink-0"
             >
               <Sparkles className="w-3.5 h-3.5 shrink-0" />
-              <span className="shrink-0">
-                <ScrambleText text={t.nav.tryDemo} scrambleOnHover duration={300} />
-              </span>
+              <span className="shrink-0">{t.nav.tryDemo}</span>
             </button>
 
             {/* Mobile Hamburger Toggle */}

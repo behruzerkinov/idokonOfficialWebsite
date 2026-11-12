@@ -6,7 +6,6 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { FluentRevealCard } from './FluentReveal';
-import { ScrambleText } from './ScrambleText';
 
 export const HardwareMarketplace = ({ 
   lang, 
@@ -121,7 +120,7 @@ export const HardwareMarketplace = ({
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-50 mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
-                      <ScrambleText text={title} scrambleOnHover duration={350} />
+                      {title}
                     </h3>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed mb-4">
                       {subtitle}

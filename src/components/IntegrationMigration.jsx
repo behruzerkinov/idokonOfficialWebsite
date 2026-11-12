@@ -3,7 +3,6 @@ import {
   RefreshCw, ShieldCheck, Headphones, CheckCircle2, 
   ArrowRight, Layers, FileSpreadsheet, Database 
 } from 'lucide-react';
-import { ScrambleText } from './ScrambleText';
 
 export const IntegrationMigration = ({ t, onOpenContact }) => {
   return (
@@ -40,7 +39,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 leading-snug">
-                <ScrambleText text={t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"} scrambleOnHover duration={450} />
+                {t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"}
               </h3>
 
               <div className="space-y-5">

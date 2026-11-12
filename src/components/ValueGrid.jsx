@@ -1,6 +1,5 @@
 import React from 'react';
 import { FluentRevealCard } from './FluentReveal';
-import { ScrambleText } from './ScrambleText';
 
 export const ValueGrid = ({ t }) => {
   return (
@@ -30,16 +29,16 @@ export const ValueGrid = ({ t }) => {
             <div className="tech-corner-square tech-corner-br" />
             
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs font-mono group-hover:bg-emerald-500 group-hover:text-slate-950 group-hover:shadow-xs transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-all duration-300">
                 01
               </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
+              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
                 {t.features.f1_tag}
               </span>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
-              <ScrambleText text={t.features.f1_title} scrambleOnHover duration={400} />
+              {t.features.f1_title}
             </h3>
             
             <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
@@ -47,8 +46,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f1_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f1_stat_right}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f1_stat_left}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f1_stat_right}</span>
             </div>
           </FluentRevealCard>
 
@@ -58,16 +57,16 @@ export const ValueGrid = ({ t }) => {
             <div className="tech-corner-square tech-corner-br" />
 
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs font-mono group-hover:bg-emerald-500 group-hover:text-slate-950 group-hover:shadow-xs transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-all duration-300">
                 02
               </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
+              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
                 {t.features.f2_tag}
               </span>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
-              <ScrambleText text={t.features.f2_title} scrambleOnHover duration={400} />
+              {t.features.f2_title}
             </h3>
 
             <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
@@ -75,8 +74,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f2_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f2_stat_right}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f2_stat_left}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f2_stat_right}</span>
             </div>
           </FluentRevealCard>
 
@@ -86,16 +85,16 @@ export const ValueGrid = ({ t }) => {
             <div className="tech-corner-square tech-corner-br" />
 
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs font-mono group-hover:bg-emerald-500 group-hover:text-slate-950 group-hover:shadow-xs transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-all duration-300">
                 03
               </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
+              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
                 {t.features.f3_tag}
               </span>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
-              <ScrambleText text={t.features.f3_title} scrambleOnHover duration={400} />
+              {t.features.f3_title}
             </h3>
 
             <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
@@ -103,8 +102,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f3_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f3_stat_right}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f3_stat_left}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f3_stat_right}</span>
             </div>
           </FluentRevealCard>
 
@@ -114,16 +113,16 @@ export const ValueGrid = ({ t }) => {
             <div className="tech-corner-square tech-corner-br" />
 
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs font-mono group-hover:bg-emerald-500 group-hover:text-slate-950 group-hover:shadow-xs transition-all duration-300">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-all duration-300">
                 04
               </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
+              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all duration-300">
                 {t.features.f4_tag}
               </span>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-3 text-zinc-900 dark:text-zinc-50 [text-wrap:balance]">
-              <ScrambleText text={t.features.f4_title} scrambleOnHover duration={400} />
+              {t.features.f4_title}
             </h3>
 
             <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
@@ -131,8 +130,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f4_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f4_stat_right}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f4_stat_left}</span>
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{t.features.f4_stat_right}</span>
             </div>
           </FluentRevealCard>
 
