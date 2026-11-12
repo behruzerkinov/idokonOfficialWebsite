@@ -7,6 +7,7 @@ import { Hero } from './components/Hero';
 import { PartnerMarquee } from './components/PartnerMarquee';
 import { TechMarquee } from './components/TechMarquee';
 import { TechPreloader } from './components/TechPreloader';
+import { EditorialStatement } from './components/EditorialStatement';
 import { ValueGrid } from './components/ValueGrid';
 import { PosInteractiveShowcase } from './components/PosInteractiveShowcase';
 import { SectorSolutions } from './components/SectorSolutions';
@@ -249,19 +250,22 @@ export function App() {
           />
 
           <PartnerMarquee t={t} />
+
+          {/* Twain AI Editorial Statement Block (Pain Story) */}
+          <EditorialStatement t={t} />
         </div>
 
-        {/* Section 2: Overlapping Values Bento Grid */}
-        <div className="stack-section z-20">
-          <ValueGrid t={t} />
-        </div>
-
-        {/* Section 3: Overlapping POS Terminal Showcase */}
-        <div className="stack-section z-30">
+        {/* Section 2: Twain AI Pinned Scroll-Driven Storytelling Stage (#features-and-benefits) */}
+        <div className="relative z-20 bg-zinc-50/50 dark:bg-[#090a0f]/50">
           <PosInteractiveShowcase
             t={t}
             onOpenLightbox={(url, title) => setLightboxData({ url, title })}
           />
+        </div>
+
+        {/* Section 3: Values Bento Grid */}
+        <div className="relative z-30 bg-zinc-50 dark:bg-[#090a0f] border-t border-zinc-200/80 dark:border-zinc-800/80">
+          <ValueGrid t={t} />
         </div>
 
         {/* Section 4: Overlapping Sector Solutions */}

@@ -64,14 +64,14 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-10 px-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-4xl mx-auto mb-12 px-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
             <span>{t.pricing.eyebrow}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] leading-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08]">
             {t.pricing.title}
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal">
             {t.pricing.lead}
           </p>
 
@@ -157,29 +157,23 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
               <div
                 key={plan.id}
                 onClick={() => setSelectedPlanId(plan.id)}
-                className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-200 tech-box relative cursor-pointer ${
+                className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-200 relative cursor-pointer ${
                   isSelected
                     ? 'bg-emerald-500/[0.12] dark:bg-emerald-950/60 border-2 border-emerald-500 shadow-xl ring-2 ring-emerald-500/30'
-                    : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-400 dark:hover:border-zinc-700 hover:bg-zinc-100/60 dark:hover:bg-zinc-850/60'
+                    : 'bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md'
                 }`}
               >
-                {/* Tech Corner Squares (ChainGPT Labs style) */}
-                <div className="tech-corner-square tech-corner-tl" />
-                <div className="tech-corner-square tech-corner-tr" />
-                <div className="tech-corner-square tech-corner-bl" />
-                <div className="tech-corner-square tech-corner-br" />
-
                 {/* Popular Pill */}
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-bold text-[10px] uppercase tracking-wider shadow-sm flex items-center gap-1 font-mono">
-                    <Sparkles className="w-3 h-3 fill-slate-950" />
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-emerald-500 text-white font-semibold text-[11px] tracking-tight shadow-sm flex items-center gap-1.5">
+                    <Sparkles className="w-3 h-3 fill-white" />
                     <span>{t.pricing?.mostPopular || "Eng ommabop tarif"}</span>
                   </div>
                 )}
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-extrabold text-xl text-zinc-900 dark:text-zinc-50">
+                    <h3 className="font-serif font-normal text-2xl text-zinc-900 dark:text-zinc-50">
                       {plan.name}
                     </h3>
                     {isSelected && (

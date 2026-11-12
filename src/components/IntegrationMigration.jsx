@@ -10,35 +10,30 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-left max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="text-left max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
             <span>{t.integrations.eyebrow}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] leading-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08]">
             {t.integrations.title}
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
             {t.integrations.lead}
           </p>
         </div>
 
         {/* 2-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Left Column: Foundation Migration Pillar Card with Tech Box */}
-          <div className="lg:col-span-5 rounded-2xl p-7 sm:p-8 bg-zinc-50 dark:bg-zinc-900 border border-emerald-500/30 dark:border-emerald-500/20 shadow-sm flex flex-col justify-between tech-box relative">
-            <div className="tech-corner-square tech-corner-tl" />
-            <div className="tech-corner-square tech-corner-tr" />
-            <div className="tech-corner-square tech-corner-bl" />
-            <div className="tech-corner-square tech-corner-br" />
-
+          {/* Left Column: Foundation Migration Pillar Card with Twain Styling */}
+          <div className="lg:col-span-5 rounded-2xl p-7 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/80 shadow-md flex flex-col justify-between relative">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold mb-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-medium mb-4">
                 <RefreshCw className="w-3.5 h-3.5 text-emerald-500" />
                 <span>{t.integrations.zeroDowntime || "Nol to'xtalishli migratsiya"}</span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 leading-snug">
+              <h3 className="font-serif text-2xl sm:text-3xl font-normal text-zinc-900 dark:text-zinc-50 mb-6 leading-snug">
                 {t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"}
               </h3>
 

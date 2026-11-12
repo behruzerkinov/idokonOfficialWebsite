@@ -28,9 +28,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Helvetica Now"', '"Helvetica Neue"', 'Inter', '"Space Grotesk"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['RobotoMono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
-        amiga: ['LabsAmiga', 'monospace'],
+        serif: ['Fraunces', 'Produkt', 'Newsreader', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'Graphik', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'RobotoMono', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
         'glow': '0 0 40px -10px rgba(12, 196, 117, 0.35)',

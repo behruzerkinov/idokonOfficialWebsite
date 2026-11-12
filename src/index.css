@@ -167,12 +167,7 @@
 }
 
 .tech-corner-square {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background-color: #10b981;
-  pointer-events: none;
-  z-index: 10;
+  display: none !important;
 }
 
 .tech-corner-tl { top: -3px; left: -3px; }
@@ -245,32 +240,36 @@ html.lenis, html.lenis body {
   margin-top: -1px;
 }
 
-/* ChainGPT Labs Brutalist Tech Aesthetic — Minimal / Zero Roundness */
-.rounded-3xl {
-  border-radius: 4px !important;
+/* Twain AI Inspired Design Tokens */
+.font-serif {
+  font-family: 'Fraunces', 'Produkt', 'Newsreader', Georgia, serif;
+  font-optical-sizing: auto;
 }
 
-.rounded-2xl {
-  border-radius: 4px !important;
+.font-sans {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Graphik', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.rounded-xl {
-  border-radius: 3px !important;
+/* Twain Deep Research Scroll Animation Helpers */
+.twain-blur-inactive {
+  filter: blur(5px);
+  opacity: 0.22;
+  transform: translateY(14px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.rounded-lg {
-  border-radius: 2px !important;
+.twain-blur-active {
+  filter: blur(0px);
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.rounded-full {
-  border-radius: 2px !important;
-}
-
-/* Interactive click feedback (every click makes a tactile interaction) */
+/* Interactive click feedback */
 button, a, .cursor-pointer {
-  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
 
 button:active, a:active, .cursor-pointer:active {
-  transform: scale(0.975);
+  transform: scale(0.98);
 }

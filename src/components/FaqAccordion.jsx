@@ -18,16 +18,16 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
           
           {/* Left Column: Heading and Contact Action */}
           <div className="lg:col-span-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
-              <HelpCircle className="w-4 h-4 text-emerald-500" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
+              <HelpCircle className="w-3.5 h-3.5 text-emerald-500" />
               <span>{t.faq.eyebrow}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight leading-tight mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-zinc-900 dark:text-zinc-50 tracking-[-0.025em] leading-tight mb-4">
               {t.faq.title}
             </h2>
 
-            <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mb-6">
+            <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mb-6 font-normal">
               {t.faq.lead}
             </p>
 
@@ -35,7 +35,7 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
             <button
               type="button"
               onClick={onScrollToContact}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-emerald-500 hover:text-slate-950 text-zinc-800 dark:text-zinc-200 font-bold text-xs uppercase tracking-wider transition-colors shadow-sm cursor-pointer border border-zinc-200 dark:border-zinc-700"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-emerald-500 hover:text-white text-zinc-800 dark:text-zinc-200 font-medium text-xs uppercase tracking-wider transition-all shadow-sm cursor-pointer border border-zinc-200 dark:border-zinc-700"
             >
               <span>{t.faq.askQuestionBtn}</span>
               <ArrowRight className="w-3.5 h-3.5" />

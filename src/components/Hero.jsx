@@ -17,34 +17,34 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             
             {/* Top Eyebrow Pill with Live Indicator */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide uppercase mb-6 font-mono">
-              <span className="flex h-1.5 w-1.5 relative">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium tracking-tight mb-6 backdrop-blur-md">
+              <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span>{t.hero.eyebrow}</span>
             </div>
 
-            {/* Main Monumental Headline (Extrafazant inspired) */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.03em] text-zinc-950 dark:text-zinc-50 leading-[1.02] mb-6 [text-wrap:balance]">
+            {/* Main Monumental Headline (Twain AI Produkt editorial serif) */}
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-[72px] font-normal tracking-[-0.025em] text-zinc-950 dark:text-zinc-50 leading-[1.06] mb-6 [text-wrap:balance]">
               {t.hero.titleStart}{' '}
-              <span className="text-emerald-500 dark:text-emerald-400">
+              <span className="text-emerald-600 dark:text-emerald-400 font-serif italic">
                 {t.hero.titleHighlight}
               </span>{' '}
               {t.hero.titleEnd}
             </h1>
 
             {/* Subhead */}
-            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[65ch] mb-8">
+            <p className="font-sans text-base sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[62ch] mb-8 font-normal">
               {t.hero.subtitle}
             </p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Twain AI Pill styling */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-10">
               <button
                 type="button"
                 onClick={onOpenDemo}
-                className="relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg text-sm font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 active:scale-95 group cursor-pointer overflow-hidden"
+                className="relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-500/15 transition-all duration-200 active:scale-95 group cursor-pointer"
               >
                 <span>{t.hero.ctaPrimary}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -53,15 +53,15 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
               <button
                 type="button"
                 onClick={onScrollToTerminal}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg text-sm font-semibold text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 shadow-sm transition-all duration-150 active:scale-95 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900/90 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 transition-all duration-200 active:scale-95 cursor-pointer shadow-sm"
               >
                 <span>{t.hero.ctaSecondary}</span>
                 <ArrowRight className="w-4 h-4 text-emerald-500" />
               </button>
             </div>
 
-            {/* Trust Badges: NO 24/7 fake claim */}
-            <div className="flex flex-wrap items-center gap-y-3 gap-x-6 pt-6 border-t border-zinc-200 dark:border-zinc-800/80 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center gap-y-3 gap-x-6 pt-6 border-t border-zinc-200/80 dark:border-zinc-800/80 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
               <div className="flex items-center gap-2">
                 <Laptop className="w-4 h-4 text-emerald-500" />
                 <span className="text-zinc-700 dark:text-zinc-300">{t.hero.meta1}</span>
@@ -84,17 +84,11 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               
-              {/* Foundation UI Window Frame with Tech Corner Squares */}
-              <div className="relative rounded-2xl p-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden tech-box">
-                
-                {/* Tech Corner Squares (ChainGPT Labs signature) */}
-                <div className="tech-corner-square tech-corner-tl" />
-                <div className="tech-corner-square tech-corner-tr" />
-                <div className="tech-corner-square tech-corner-bl" />
-                <div className="tech-corner-square tech-corner-br" />
+              {/* Foundation UI Window Frame */}
+              <div className="relative rounded-2xl p-2.5 bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/80 shadow-2xl overflow-hidden backdrop-blur-xl">
                 
                 {/* Window header */}
-                <div className="flex items-center justify-between px-3 py-2 bg-zinc-100 dark:bg-zinc-950 rounded-t-xl border-b border-zinc-200 dark:border-zinc-800/80">
+                <div className="flex items-center justify-between px-3 py-2 bg-zinc-100/90 dark:bg-zinc-950/80 rounded-t-xl border-b border-zinc-200 dark:border-zinc-800/80">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
                     <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>

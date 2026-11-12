@@ -45,20 +45,20 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
             <span>{t.sectors.eyebrow}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] leading-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08]">
             {t.sectors.title}
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal">
             {t.sectors.lead}
           </p>
         </div>
 
-        {/* 3 Pure Retail Shop Sectors Grid with Tech Boxes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+        {/* 3 Pure Retail Shop Sectors Grid with Twain Styling */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {sectors.map((sec, idx) => {
             const Icon = sec.icon;
             const isSelected = selectedSector === idx;
@@ -67,40 +67,26 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
                 key={sec.id}
                 type="button"
                 onClick={() => setSelectedSector(idx)}
-                className={`relative p-6 rounded-2xl text-left transition-all duration-200 cursor-pointer tech-box ${
+                className={`relative p-7 rounded-2xl text-left transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? 'bg-emerald-500/[0.14] dark:bg-emerald-950/60 border-2 border-emerald-500 shadow-md ring-2 ring-emerald-500/25'
-                    : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-700 hover:bg-zinc-100/60 dark:hover:bg-zinc-850/60'
+                    ? 'bg-emerald-500/[0.12] dark:bg-emerald-950/50 border-2 border-emerald-500 shadow-lg ring-2 ring-emerald-500/20'
+                    : 'bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md'
                 }`}
               >
-                {isSelected && (
-                  <>
-                    <div className="tech-corner-square tech-corner-tl" />
-                    <div className="tech-corner-square tech-corner-tr" />
-                    <div className="tech-corner-square tech-corner-bl" />
-                    <div className="tech-corner-square tech-corner-br" />
-                  </>
-                )}
-                
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
+                <div className={`w-11 h-11 rounded-full flex items-center justify-center mb-5 transition-colors ${
                   isSelected 
-                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs' 
-                    : 'bg-zinc-200/80 dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400'
+                    ? 'bg-emerald-500 text-white font-bold shadow-sm' 
+                    : 'bg-zinc-100 dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400'
                 }`}>
                   <Icon 
                     strokeWidth={isSelected ? 2.5 : 2}
-                    style={isSelected ? { color: '#09090b', stroke: '#09090b' } : undefined}
-                    className={`w-5 h-5 transition-colors ${
-                      isSelected 
-                        ? 'text-slate-950' 
-                        : 'text-emerald-600 dark:text-emerald-400'
-                    }`} 
+                    className="w-5 h-5" 
                   />
                 </div>
-                <h3 className="font-bold text-lg mb-1.5 text-zinc-900 dark:text-zinc-50">
+                <h3 className="font-serif font-normal text-xl sm:text-2xl mb-2 text-zinc-900 dark:text-zinc-50">
                   {sec.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
                   {sec.desc}
                 </p>
               </button>

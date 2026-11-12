@@ -43,15 +43,15 @@ export const HardwareMarketplace = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Carousel Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="text-left max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
               <span>{t.equipment.eyebrow}</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-[-0.03em] [text-wrap:balance]">
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08] [text-wrap:balance]">
               {t.equipment.title}
             </h2>
-            <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-[65ch]">
+            <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal max-w-[65ch]">
               {t.equipment.lead}
             </p>
           </div>
@@ -61,7 +61,7 @@ export const HardwareMarketplace = ({
             <button
               type="button"
               onClick={() => scroll(-1)}
-              className="p-2.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors shadow-sm cursor-pointer"
+              className="p-3 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors shadow-sm cursor-pointer"
               aria-label="Oldingi qurilmalar"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -69,7 +69,7 @@ export const HardwareMarketplace = ({
             <button
               type="button"
               onClick={() => scroll(1)}
-              className="p-2.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors shadow-sm cursor-pointer"
+              className="p-3 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors shadow-sm cursor-pointer"
               aria-label="Keyingi qurilmalar"
             >
               <ChevronRight className="w-5 h-5" />
