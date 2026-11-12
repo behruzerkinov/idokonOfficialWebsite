@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=71bdf5ac-74bc-4578-aee8-b7f311e0c9fa
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- Preserved SEO metadata -->
+  <title>IDO'KON — Do‘kon avtomatlashtirish va POS tizimi O‘zbekistonda</title>
+  <meta name="description" content="IDO'KON — O‘zbekiston uchun yaratilgan zamonaviy do‘kon avtomatlashtirish dasturi. POS tizimi, to‘lovlar, hisobotlar, fiskal chek va Click/Payme integratsiyasi bilan. Bepul demo mavjud.">
+  <meta name="keywords" content="do'kon avtomatlashtirish, pos tizimi, kassa programma, idokon uz, savdo hisobot, fiskal chek, click payme tolov, market avtomatlashtirish, virtual pos uz, arzon kassa dasturi">
+  <meta name="author" content="IDO'KON Team">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="uz_UZ">
+  <meta name="revisit-after" content="7 days">
+  <meta name="theme-color" content="#0CC475">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IDO'KON — Do‘kon avtomatlashtirish tizimi">
+  <meta property="og:description" content="O‘zbekiston uchun eng qulay POS tizimi. Hisobot, to‘lov va kassa bir joyda. Click, Payme, Uzum bilan to‘liq integratsiya!">
+  <meta property="og:image" content="https://idokon.uz/assets/img/home.png">
+  <meta property="og:url" content="https://idokon.uz">
+  <meta property="og:site_name" content="IDO'KON">
+  <meta property="og:locale" content="uz_UZ">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IDO'KON — POS va do‘kon avtomatlashtirish tizimi">
+  <meta name="twitter:description" content="O‘zbekistonda biznesni avtomatlashtiring — IDO'KON bilan kassa, hisobot va to‘lov tizimi yagona platformada.">
+  <meta name="twitter:image" content="https://idokon.uz/assets/img/home.png">
+
+  <link rel="canonical" href="https://idokon.uz">
+  <link rel="icon" href="assets/img/logo_only.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo_only.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "IDO'KON",
+    "url": "https://idokon.uz",
+    "logo": "https://idokon.uz/assets/img/logo.png",
+    "description": "O‘zbekistondagi do‘konlar uchun POS tizimi va savdo avtomatlashtirish dasturi.",
+    "sameAs": ["https://www.instagram.com/idokon_uz/", "https://t.me/idokonuz"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+998991180999",
+      "contactType": "customer service",
+      "availableLanguage": ["uz", "ru", "en"]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "IDO'KON POS",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, Web",
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "215"},
+    "offers": {"@type": "Offer", "price": "100000", "priceCurrency": "UZS"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"POS tizimi biznesimga qanday foyda keltiradi?","acceptedAnswer":{"@type":"Answer","text":"POS tizimi sotuv, ombor, hisobot va mijozlar bilan ishlashni bitta boshqaruv nuqtasida birlashtiradi."}},
+      {"@type":"Question","name":"POS tizimini onlayn do‘konim bilan integratsiya qila olamanmi?","acceptedAnswer":{"@type":"Answer","text":"IDO‘KON mavjud kassa va to‘lov tizimlari bilan integratsiya qilinadi; boshqa tizimlar bo‘yicha imkoniyat alohida muhokama qilinadi."}},
+      {"@type":"Question","name":"POS tizimidan foydalanish uchun maxsus o‘qitish kerakmi?","acceptedAnswer":{"@type":"Answer","text":"Interfeys sodda, I-Dokon kursi esa modullar, amaliy misollar, video darslar va interaktiv topshiriqlarni taqdim etadi."}}
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --green: #0cc475;
+      --green-strong: #07965b;
+      --green-soft: #e8faf2;
+      --dark: #112f31;
+      --dark-2: #1e3b3d;
+      --ink: #132c2e;
+      --muted: #627577;
+      --surface: #ffffff;
+      --surface-2: #f5f8f7;
+      --line: #d9e4e1;
+      --line-strong: #bdcec9;
+      --danger: #b42318;
+      --shadow-sm: 0 8px 24px rgba(17, 47, 49, .08);
+      --shadow-lg: 0 28px 70px rgba(17, 47, 49, .16);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 30px;
+      --container: 1200px;
+      --header-h: 76px;
+      --ease: cubic-bezier(.2, .75, .25, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--surface);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open, body.modal-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3, h4 { color: var(--dark); line-height: 1.08; letter-spacing: -.035em; }
+    section { position: relative; }
+    [hidden] { display: none !important; }
+
+    :focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 10000;
+      top: 12px;
+      left: 12px;
+      padding: 10px 16px;
+      color: #fff;
+      background: var(--dark);
+      border-radius: 10px;
+      transform: translateY(-160%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .container { width: min(calc(100% - 40px), var(--container)); margin-inline: auto; }
+    .section { padding: clamp(76px, 9vw, 128px) 0; }
+    .section-sm { padding: clamp(54px, 7vw, 88px) 0; }
+    .surface { background: var(--surface-2); }
+    .dark-section { color: #dbe8e5; background: var(--dark); }
+    .dark-section h2, .dark-section h3 { color: #fff; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--green-strong);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+    .dark-section .eyebrow { color: #42df9b; }
+    .section-heading { max-width: 760px; margin-bottom: clamp(36px, 5vw, 60px); }
+    .section-heading.center { margin-inline: auto; text-align: center; }
+    .section-heading.center .eyebrow::before { display: none; }
+    .section-title { margin-bottom: 18px; font-size: clamp(34px, 5vw, 62px); }
+    .section-lead { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: clamp(17px, 2vw, 20px); }
+    .center .section-lead { margin-inline: auto; }
+    .dark-section .section-lead { color: #b9cbc7; }
+
+    .btn {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform .2s var(--ease), background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #062d20; background: var(--green); box-shadow: 0 10px 24px rgba(12, 196, 117, .22); }
+    .btn-primary:hover { background: #22d588; }
+    .btn-dark { color: #fff; background: var(--dark); }
+    .btn-dark:hover { background: #24484a; }
+    .btn-outline { color: var(--dark); background: transparent; border-color: var(--line-strong); }
+    .btn-outline:hover { border-color: var(--dark); }
+    .btn-light { color: var(--dark); background: #fff; }
+    .btn-light:hover { background: #eaf7f1; }
+    .btn-link { min-height: auto; padding: 0; color: var(--green-strong); border-radius: 4px; }
+
+    .site-header {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      height: var(--header-h);
+      border-bottom: 1px solid rgba(189, 206, 201, .8);
+      background: rgba(255, 255, 255, .96);
+    }
+    .header-inner { display: flex; height: 100%; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; width: 156px; flex: 0 0 auto; align-items: center; }
+    .brand img { width: 100%; height: 48px; object-fit: contain; object-position: left center; }
+    .nav-wrap { display: flex; align-items: center; gap: 24px; }
+    .main-nav { display: flex; align-items: center; gap: 4px; }
+    .main-nav a { padding: 9px 11px; border-radius: 8px; color: #3e5759; font-size: 14px; font-weight: 700; }
+    .main-nav a:hover, .main-nav a[aria-current="true"] { color: var(--dark); background: var(--green-soft); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .language { position: relative; }
+    .language-toggle {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 11px;
+      color: var(--dark);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .lang-dot { width: 9px; height: 9px; background: var(--green); border-radius: 50%; }
+    .language-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      width: 160px;
+      margin: 0;
+      padding: 6px;
+      list-style: none;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .language-menu button { width: 100%; padding: 10px 12px; color: var(--ink); background: transparent; border: 0; border-radius: 8px; text-align: left; cursor: pointer; }
+    .language-menu button:hover, .language-menu button[aria-checked="true"] { background: var(--green-soft); }
+    .menu-toggle { display: none; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; }
+    .menu-toggle span, .menu-toggle::before, .menu-toggle::after { display: block; width: 19px; height: 2px; margin: 4px auto; background: var(--dark); content: ""; transition: transform .2s ease, opacity .2s ease; }
+
+    .hero {
+      overflow: hidden;
+      padding: clamp(70px, 9vw, 124px) 0 clamp(62px, 8vw, 100px);
+      background: linear-gradient(180deg, #f2fbf7 0%, #fff 100%);
+    }
+    .hero::before {
+      position: absolute;
+      top: -280px;
+      right: -260px;
+      width: 660px;
+      height: 660px;
+      border: 1px solid rgba(12, 196, 117, .18);
+      border-radius: 50%;
+      content: "";
+      box-shadow: inset 0 0 0 90px rgba(12, 196, 117, .025), inset 0 0 0 180px rgba(12, 196, 117, .02);
+    }
+    .hero-grid { display: grid; position: relative; grid-template-columns: minmax(0, 1.02fr) minmax(440px, .98fr); align-items: center; gap: clamp(38px, 6vw, 84px); }
+    .hero h1 { max-width: 760px; margin-bottom: 24px; font-size: clamp(45px, 6.3vw, 82px); line-height: .99; }
+    .hero h1 span { color: var(--green-strong); }
+    .hero-copy > p { max-width: 680px; margin-bottom: 30px; color: var(--muted); font-size: clamp(18px, 2vw, 21px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 24px; color: #466163; font-size: 13px; font-weight: 700; }
+    .hero-meta span::before { content: "✓"; margin-right: 7px; color: var(--green-strong); font-weight: 900; }
+
+    .product-visual { position: relative; min-height: 520px; }
+    .product-visual::before {
+      position: absolute;
+      inset: 38px -10px 20px 38px;
+      background: var(--dark);
+      border-radius: var(--radius-lg);
+      content: "";
+      transform: rotate(2deg);
+    }
+    .app-window {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      margin-top: 24px;
+      background: #fff;
+      border: 1px solid #cad8d5;
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+    .window-bar { display: flex; height: 42px; align-items: center; gap: 6px; padding: 0 14px; background: #eff4f2; border-bottom: 1px solid var(--line); }
+    .window-bar i { width: 8px; height: 8px; background: #9db0ac; border-radius: 50%; }
+    .window-label { margin-left: 8px; color: #627577; font-size: 11px; font-style: normal; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .app-window img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; }
+    .floating-stat {
+      position: absolute;
+      z-index: 2;
+      right: -18px;
+      bottom: 2px;
+      width: 190px;
+      padding: 18px;
+      color: #fff;
+      background: var(--dark-2);
+      border: 1px solid #3f5b5d;
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .floating-stat small { display: block; color: #b9cbc7; font-weight: 700; }
+    .floating-stat strong { display: block; margin: 3px 0; font-size: 28px; letter-spacing: -.04em; }
+    .floating-stat span { color: #42df9b; font-size: 12px; font-weight: 800; }
+    .status-chip { position: absolute; z-index: 3; top: 0; left: -18px; display: flex; align-items: center; gap: 8px; padding: 10px 13px; color: var(--dark); background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow-sm); font-size: 12px; font-weight: 800; }
+    .status-chip::before { width: 9px; height: 9px; background: var(--green); border-radius: 50%; content: ""; box-shadow: 0 0 0 4px var(--green-soft); }
+
+    .proof-bar { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .proof-grid { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); }
+    .proof-item { display: flex; min-height: 104px; align-items: center; justify-content: center; padding: 20px; border-right: 1px solid var(--line); color: #5a7072; text-align: center; }
+    .proof-item:first-child { justify-content: flex-start; color: var(--dark); font-size: 15px; font-weight: 800; }
+    .proof-item:last-child { border-right: 0; }
+    .proof-item strong { color: var(--dark); font-size: 18px; letter-spacing: -.02em; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .feature-card {
+      display: flex;
+      min-height: 310px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(24px, 3vw, 36px);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      transition: transform .25s var(--ease), border-color .25s ease, box-shadow .25s ease;
+    }
+    .feature-card:hover { transform: translateY(-5px); border-color: #a7c5bb; box-shadow: var(--shadow-sm); }
+    .feature-card:nth-child(1), .feature-card:nth-child(4) { grid-column: span 7; }
+    .feature-card:nth-child(2), .feature-card:nth-child(3) { grid-column: span 5; }
+    .feature-card:nth-child(1) { color: #dceae6; background: var(--dark); border-color: var(--dark); }
+    .feature-card:nth-child(1) h3 { color: #fff; }
+    .feature-card:nth-child(1) p { color: #b9cbc7; }
+    .feature-card:nth-child(4) { background: var(--green-soft); }
+    .feature-index { display: grid; width: 48px; height: 48px; place-items: center; color: var(--green-strong); background: var(--green-soft); border: 1px solid #b9e9d3; border-radius: 12px; font-size: 13px; font-weight: 900; }
+    .feature-card:nth-child(1) .feature-index { color: #062d20; background: var(--green); border-color: var(--green); }
+    .feature-card h3 { max-width: 430px; margin: 36px 0 12px; font-size: clamp(26px, 3vw, 40px); }
+    .feature-card p { max-width: 510px; margin-bottom: 0; color: var(--muted); }
+    .feature-tag { align-self: flex-start; margin-top: 28px; color: var(--green-strong); font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+
+    .software-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr); align-items: center; gap: clamp(44px, 7vw, 90px); }
+    .screen-stage { min-width: 0; }
+    .screen-shell { overflow: hidden; background: #fff; border: 1px solid #4c6768; border-radius: 22px; box-shadow: 0 28px 64px rgba(0, 0, 0, .24); }
+    .screen-shell .window-bar { background: #203f41; border-color: #385456; }
+    .screen-shell .window-label { color: #c3d3cf; }
+    .screen-shell img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; cursor: zoom-in; }
+    .screen-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; }
+    .screen-tab { min-width: 0; padding: 11px 8px; color: #c4d4d0; background: transparent; border: 1px solid #426163; border-radius: 10px; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .screen-tab:hover, .screen-tab[aria-selected="true"] { color: #082e21; background: var(--green); border-color: var(--green); }
+    .software-list { display: grid; gap: 0; margin: 30px 0 0; padding: 0; list-style: none; border-top: 1px solid #3b585a; }
+    .software-list li { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 18px 0; border-bottom: 1px solid #3b585a; }
+    .software-list strong { color: #fff; }
+    .software-list span { color: #b9cbc7; font-size: 14px; }
+    .list-no { color: #42df9b !important; font-weight: 900; }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+    .audience-card { min-height: 220px; padding: 26px 22px; background: #fff; border-right: 1px solid var(--line); }
+    .audience-card:last-child { border-right: 0; }
+    .audience-mark { display: grid; width: 44px; height: 44px; margin-bottom: 54px; place-items: center; color: var(--green-strong); background: var(--green-soft); border-radius: 11px; font-size: 13px; font-weight: 900; }
+    .audience-card h3 { margin-bottom: 8px; font-size: 20px; }
+    .audience-card p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+
+    .equipment-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
+    .equipment-head .section-heading { margin-bottom: 0; }
+    .scroll-controls { display: flex; gap: 8px; }
+    .scroll-btn { width: 44px; height: 44px; color: var(--dark); background: #fff; border: 1px solid var(--line-strong); border-radius: 11px; cursor: pointer; }
+    .scroll-btn:hover { background: var(--green-soft); border-color: var(--green-strong); }
+    .product-row { display: grid; grid-auto-columns: minmax(280px, 31%); grid-auto-flow: column; gap: 16px; overflow-x: auto; padding: 2px 2px 20px; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-color: var(--green) #e1e9e6; }
+    .product-card { display: flex; min-height: 470px; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); scroll-snap-align: start; }
+    .product-image { display: grid; height: 230px; place-items: center; padding: 24px; background: #f3f6f5; border-bottom: 1px solid var(--line); }
+    .product-image img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+    .product-body { display: flex; flex: 1; flex-direction: column; padding: 24px; }
+    .product-cat { margin-bottom: 10px; color: var(--green-strong); font-size: 11px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .product-body h3 { margin-bottom: 10px; font-size: 22px; }
+    .product-desc { display: -webkit-box; overflow: hidden; margin-bottom: 22px; color: var(--muted); font-size: 13px; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+    .product-bottom { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: auto; }
+    .product-price { color: var(--dark); font-size: 21px; font-weight: 900; letter-spacing: -.03em; }
+    .product-price small { display: block; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0; }
+    .square-link { display: grid; width: 42px; height: 42px; place-items: center; color: #062d20; background: var(--green); border-radius: 10px; font-size: 18px; font-weight: 900; }
+
+    .integration-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 18px; }
+    .integration-copy, .integration-panel { padding: clamp(28px, 4vw, 48px); border-radius: var(--radius-md); }
+    .integration-copy { color: #dbe8e5; background: var(--dark); }
+    .integration-copy h2 { color: #fff; font-size: clamp(34px, 4.5vw, 54px); }
+    .integration-copy > p { color: #b9cbc7; }
+    .integration-points { display: grid; gap: 14px; margin-top: 34px; }
+    .integration-point { display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: start; }
+    .integration-point b { color: #fff; }
+    .integration-point span { color: #b9cbc7; font-size: 13px; }
+    .integration-check { display: grid; width: 34px; height: 34px; place-items: center; color: #062d20; background: var(--green); border-radius: 9px; font-size: 12px; font-weight: 900; }
+    .integration-panel { background: #fff; border: 1px solid var(--line); }
+    .system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .system-card { min-height: 160px; padding: 20px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px; }
+    .system-logo { display: grid; width: 46px; height: 46px; margin-bottom: 24px; place-items: center; color: var(--green-strong); background: #fff; border: 1px solid var(--line); border-radius: 11px; font-size: 12px; font-weight: 900; }
+    .system-card h3 { margin-bottom: 6px; font-size: 17px; }
+    .system-card p { margin-bottom: 0; color: var(--muted); font-size: 12px; }
+    .payment-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 12px; overflow: hidden; background: var(--line); border: 1px solid var(--line); border-radius: 12px; }
+    .payment-strip span { padding: 18px; color: var(--dark); background: #fff; text-align: center; font-weight: 900; }
+    .other-system { margin-top: 12px; padding: 18px; background: var(--green-soft); border-radius: 12px; font-size: 13px; }
+    .other-system strong { display: block; margin-bottom: 2px; color: var(--dark); }
+
+    .pricing-toggle { display: inline-flex; padding: 4px; margin-top: 20px; background: #e8efed; border-radius: 11px; }
+    .pricing-toggle button { padding: 9px 15px; color: var(--muted); background: transparent; border: 0; border-radius: 8px; font-size: 13px; font-weight: 800; cursor: pointer; }
+    .pricing-toggle button[aria-pressed="true"] { color: #fff; background: var(--dark); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 16px; }
+    .price-card { display: flex; min-height: 650px; flex-direction: column; padding: 30px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); }
+    .price-card.featured { color: #dbe8e5; background: var(--dark); border-color: var(--dark); box-shadow: var(--shadow-lg); }
+    .plan-top { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
+    .plan-name { margin-bottom: 8px; font-size: 26px; }
+    .featured .plan-name { color: #fff; }
+    .plan-subtitle { color: var(--muted); font-size: 14px; }
+    .featured .plan-subtitle { color: #b9cbc7; }
+    .popular { padding: 6px 9px; color: #062d20; background: var(--green); border-radius: 999px; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .price { margin: 28px 0 26px; color: var(--dark); font-size: clamp(40px, 4vw, 52px); font-weight: 900; letter-spacing: -.05em; line-height: 1; }
+    .featured .price { color: #fff; }
+    .price small { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: 0; }
+    .featured .price small { color: #b9cbc7; }
+    .plan-features { display: grid; gap: 13px; margin: 0 0 30px; padding: 24px 0 0; list-style: none; border-top: 1px solid var(--line); }
+    .featured .plan-features { border-color: #3a5759; }
+    .plan-features li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; color: #435b5d; font-size: 13px; }
+    .featured .plan-features li { color: #dbe8e5; }
+    .plan-features li::before { content: "✓"; color: var(--green-strong); font-weight: 900; }
+    .featured .plan-features li::before { color: #42df9b; }
+    .price-card .btn { width: 100%; margin-top: auto; }
+
+    .course-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, .9fr); align-items: center; gap: clamp(44px, 7vw, 92px); }
+    .course-collage { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .course-shot { overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-sm); cursor: zoom-in; }
+    .course-shot:first-child { grid-column: span 2; }
+    .course-shot img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+    .course-copy h2 { font-size: clamp(38px, 5vw, 62px); }
+    .course-copy p { color: var(--muted); font-size: 18px; }
+    .course-note { margin: 28px 0; padding: 20px; background: var(--green-soft); border-left: 4px solid var(--green); border-radius: 0 12px 12px 0; color: var(--dark); font-weight: 700; }
+
+    .faq-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(36px, 7vw, 100px); }
+    .faq-aside { position: sticky; top: calc(var(--header-h) + 32px); align-self: start; }
+    .faq-aside h2 { font-size: clamp(38px, 5vw, 62px); }
+    .faq-aside p { color: var(--muted); }
+    .faq-list { border-top: 1px solid var(--line-strong); }
+    details { border-bottom: 1px solid var(--line-strong); }
+    summary { display: grid; grid-template-columns: 1fr 32px; gap: 20px; padding: 24px 0; color: var(--dark); font-size: 18px; font-weight: 800; line-height: 1.35; list-style: none; cursor: pointer; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { display: grid; width: 30px; height: 30px; place-items: center; content: "+"; color: var(--dark); background: var(--green-soft); border-radius: 8px; }
+    details[open] summary::after { content: "−"; color: #062d20; background: var(--green); }
+    .faq-answer { padding: 0 48px 26px 0; color: var(--muted); }
+
+    .contact-wrap { overflow: hidden; background: var(--dark); border-radius: var(--radius-lg); }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; }
+    .contact-copy { padding: clamp(34px, 6vw, 72px); color: #dbe8e5; background: linear-gradient(145deg, #173638, #0f292b); }
+    .contact-copy h2 { color: #fff; font-size: clamp(38px, 5vw, 62px); }
+    .contact-copy > p { color: #b9cbc7; }
+    .contact-list { display: grid; gap: 12px; margin-top: 38px; }
+    .contact-link { display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 800; }
+    .contact-link i { display: grid; width: 36px; height: 36px; place-items: center; color: #062d20; background: var(--green); border-radius: 9px; font-size: 12px; font-style: normal; }
+    .contact-form { padding: clamp(34px, 6vw, 72px); background: #fff; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: span 2; }
+    .field label { color: var(--dark); font-size: 13px; font-weight: 800; }
+    .field input, .field textarea { width: 100%; padding: 14px 15px; color: var(--ink); background: #f7f9f8; border: 1px solid var(--line-strong); border-radius: 11px; outline: none; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+    .field input:focus, .field textarea:focus { background: #fff; border-color: var(--green-strong); box-shadow: 0 0 0 4px rgba(12, 196, 117, .12); }
+    .field textarea { min-height: 140px; resize: vertical; }
+    .form-footer { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+    .form-status { min-height: 24px; margin: 0; color: var(--muted); font-size: 13px; }
+    .privacy-note { margin: 14px 0 0; color: #768789; font-size: 11px; }
+
+    .site-footer { padding: 70px 0 28px; color: #b9cbc7; background: #0a2224; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 50px; }
+    .footer-brand img { width: 164px; margin-bottom: 22px; filter: brightness(0) invert(1); }
+    .footer-brand p { max-width: 360px; font-size: 13px; }
+    .footer-col h3 { margin-bottom: 18px; color: #fff; font-size: 14px; letter-spacing: .02em; }
+    .footer-links { display: grid; gap: 10px; padding: 0; list-style: none; font-size: 13px; }
+    .footer-links a:hover { color: #42df9b; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 58px; padding-top: 22px; border-top: 1px solid #244345; font-size: 12px; }
+    .footer-social { display: flex; gap: 14px; }
+    .footer-social a { color: #fff; font-weight: 800; }
+
+    .back-top { position: fixed; z-index: 700; right: 20px; bottom: 20px; display: grid; width: 46px; height: 46px; place-items: center; color: #062d20; background: var(--green); border: 0; border-radius: 12px; box-shadow: var(--shadow-sm); cursor: pointer; transition: opacity .2s ease, visibility .2s ease, transform .2s ease; }
+    .back-top[hidden] { display: grid !important; opacity: 0; visibility: hidden; transform: translateY(10px); }
+
+    .modal { position: fixed; z-index: 3000; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(5, 24, 25, .72); }
+    .modal-card { position: relative; width: min(100%, 620px); max-height: min(760px, calc(100vh - 40px)); overflow-y: auto; padding: clamp(26px, 5vw, 42px); background: #fff; border-radius: 22px; box-shadow: var(--shadow-lg); }
+    .modal-close { position: absolute; top: 16px; right: 16px; display: grid; width: 38px; height: 38px; place-items: center; color: var(--dark); background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; font-size: 22px; cursor: pointer; }
+    .modal-card h2 { padding-right: 44px; font-size: 34px; }
+    .demo-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 28px 0 24px; padding: 5px; background: var(--surface-2); border-radius: 12px; }
+    .demo-tab { padding: 11px; color: var(--muted); background: transparent; border: 0; border-radius: 9px; font-weight: 800; cursor: pointer; }
+    .demo-tab[aria-selected="true"] { color: #062d20; background: var(--green); }
+    .demo-panel { padding: 24px; background: var(--green-soft); border: 1px solid #c8ebdc; border-radius: 14px; }
+    .credentials { display: grid; gap: 10px; margin-top: 18px; }
+    .credential { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+    .copy-btn { padding: 7px 10px; color: var(--green-strong); background: var(--green-soft); border: 0; border-radius: 7px; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .toast { position: fixed; z-index: 5000; left: 50%; bottom: 28px; padding: 12px 18px; color: #fff; background: var(--dark); border-radius: 10px; box-shadow: var(--shadow-sm); transform: translateX(-50%); font-size: 13px; font-weight: 800; }
+
+    .lightbox { position: fixed; z-index: 3500; inset: 0; display: grid; place-items: center; padding: 32px; background: rgba(5, 24, 25, .9); cursor: zoom-out; }
+    .lightbox img { width: min(1400px, 100%); max-height: calc(100vh - 64px); object-fit: contain; border-radius: 12px; box-shadow: var(--shadow-lg); }
+    .lightbox-close { position: absolute; top: 18px; right: 18px; display: grid; width: 44px; height: 44px; place-items: center; color: #fff; background: #183638; border: 1px solid #486365; border-radius: 11px; font-size: 24px; cursor: pointer; }
+
+    @media (max-width: 1080px) {
+      .main-nav { gap: 0; }
+      .main-nav a { padding-inline: 8px; font-size: 13px; }
+      .header-actions > .btn { display: none; }
+      .hero-grid { grid-template-columns: 1fr 430px; gap: 40px; }
+      .audience-grid { grid-template-columns: repeat(3, 1fr); }
+      .audience-card { border-bottom: 1px solid var(--line); }
+      .audience-card:nth-child(3) { border-right: 0; }
+      .audience-card:nth-child(n+4) { border-bottom: 0; }
+      .audience-card:last-child { border-right: 0; }
+      .product-row { grid-auto-columns: minmax(280px, 40%); }
+      .price-card { min-height: 690px; padding: 24px; }
+    }
+
+    @media (max-width: 900px) {
+      :root { --header-h: 68px; }
+      .container { width: min(calc(100% - 32px), var(--container)); }
+      .brand { width: 142px; }
+      .menu-toggle { display: block; }
+      .nav-wrap {
+        position: fixed;
+        z-index: 990;
+        top: var(--header-h);
+        right: 0;
+        bottom: 0;
+        width: min(360px, 88vw);
+        align-items: stretch;
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px;
+        background: #fff;
+        border-left: 1px solid var(--line);
+        box-shadow: -24px 0 60px rgba(17, 47, 49, .12);
+        transform: translateX(110%);
+        transition: transform .25s var(--ease);
+      }
+      .nav-wrap.open { transform: translateX(0); }
+      .main-nav { align-items: stretch; flex-direction: column; }
+      .main-nav a { padding: 13px; font-size: 15px; }
+      .nav-wrap .header-actions { flex-direction: column; align-items: stretch; }
+      .nav-wrap .header-actions > .btn { display: flex; }
+      .language-toggle { width: 100%; justify-content: space-between; }
+      .language-menu { position: static; width: 100%; margin-top: 8px; box-shadow: none; }
+      .menu-toggle[aria-expanded="true"] span { opacity: 0; }
+      .menu-toggle[aria-expanded="true"]::before { transform: translateY(6px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"]::after { transform: translateY(-6px) rotate(-45deg); }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { max-width: 740px; }
+      .product-visual { width: min(680px, 100%); min-height: auto; }
+      .floating-stat { right: 10px; bottom: -26px; }
+      .proof-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-item { min-height: 82px; border-bottom: 1px solid var(--line); }
+      .proof-item:first-child { grid-column: span 2; justify-content: center; }
+      .proof-item:nth-child(3), .proof-item:nth-child(5) { border-right: 0; }
+      .feature-card:nth-child(n) { grid-column: span 6; min-height: 320px; }
+      .software-grid, .integration-grid, .course-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; }
+      .software-copy { order: -1; }
+      .faq-aside { position: static; }
+      .system-grid { grid-template-columns: repeat(3, 1fr); }
+      .product-row { grid-auto-columns: minmax(280px, 48%); }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .price-card { min-height: 0; }
+      .footer-grid { grid-template-columns: 1.4fr repeat(2, 1fr); }
+      .footer-col:last-child { grid-column: 2 / 4; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 24px), var(--container)); }
+      .section { padding: 72px 0; }
+      .section-title { font-size: 36px; }
+      .hero { padding-top: 58px; }
+      .hero h1 { font-size: clamp(42px, 13vw, 58px); }
+      .hero-actions .btn { width: 100%; }
+      .hero-meta { display: grid; gap: 8px; }
+      .product-visual { padding-bottom: 36px; }
+      .product-visual::before { inset: 26px 0 30px 20px; }
+      .status-chip { left: 8px; top: -12px; }
+      .floating-stat { right: 8px; bottom: 0; width: 166px; padding: 13px; }
+      .floating-stat strong { font-size: 22px; }
+      .proof-grid { grid-template-columns: 1fr 1fr; }
+      .proof-item { padding: 14px; }
+      .feature-card:nth-child(n) { grid-column: span 12; min-height: 290px; }
+      .screen-tabs { grid-template-columns: 1fr 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .audience-card { display: grid; min-height: auto; grid-template-columns: 48px 1fr; gap: 14px; border-right: 0; border-bottom: 1px solid var(--line) !important; }
+      .audience-card:last-child { border-bottom: 0 !important; }
+      .audience-mark { margin: 0; }
+      .equipment-head { align-items: start; flex-direction: column; }
+      .product-row { grid-auto-columns: 86%; }
+      .system-grid { grid-template-columns: 1fr; }
+      .payment-strip { grid-template-columns: 1fr; }
+      .course-collage { grid-template-columns: 1fr; }
+      .course-shot:first-child { grid-column: auto; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .form-footer { align-items: stretch; flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 34px 24px; }
+      .footer-brand { grid-column: span 2; }
+      .footer-col:last-child { grid-column: auto; }
+      .footer-bottom { align-items: start; flex-direction: column; }
+      .lightbox { padding: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Asosiy mazmunga o‘tish</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="IDO‘KON bosh sahifa">
+        <img src="assets/img/logo.png" alt="IDO‘KON" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/logo.png'">
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navWrap" aria-label="Menyuni ochish"><span></span></button>
+
+      <div class="nav-wrap" id="navWrap">
+        <nav class="main-nav" aria-label="Asosiy navigatsiya">
+          <a href="#home" data-i18n="nav.home">Asosiy</a>
+          <a href="#features" data-i18n="nav.features">Xususiyatlar</a>
+          <a href="#equipment" data-i18n="nav.equipment">Qurilmalar</a>
+          <a href="#integrations" data-i18n="nav.integrations">Integratsiyalar</a>
+          <a href="#pricing" data-i18n="nav.pricing">Tariflar</a>
+          <a href="#course" data-i18n="nav.course">I-Do‘kon Kurs</a>
+          <a href="#contact" data-i18n="nav.contact">Aloqa</a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="language">
+            <button class="language-toggle" id="languageToggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="lang-dot" aria-hidden="true"></span><span id="languageName">O‘zbekcha</span><span aria-hidden="true">⌄</span>
+            </button>
+            <ul class="language-menu" id="languageMenu" role="listbox" aria-label="Tilni tanlash" hidden>
+              <li><button type="button" role="option" aria-checked="true" data-lang="uz">O‘zbekcha</button></li>
+              <li><button type="button" role="option" aria-checked="false" data-lang="ru">Русский</button></li>
+              <li><button type="button" role="option" aria-checked="false" data-lang="en">English</button></li>
+            </ul>
+          </div>
+          <button class="btn btn-dark" type="button" data-open-demo data-i18n="hero.demo">Demo ishlatib ko‘rish</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow" data-i18n="hero.eyebrow">Savdo boshqaruvining yangi standarti</span>
+          <h1 data-i18n-html="hero.title">Savdoni <span>aniq raqamlar</span> bilan boshqaring</h1>
+          <p data-i18n="hero.subtitle">Zamonaviy POS, ombor nazorati, real vaqt hisobotlari va to‘lov integratsiyalari — do‘koningiz uchun yagona, sodda platformada.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button" data-open-demo><span data-i18n="hero.demo">Demo ishlatib ko‘rish</span><span aria-hidden="true">→</span></button>
+            <a class="btn btn-outline" href="tel:+998991180999"><span data-i18n="hero.contact">Bog‘lanish</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-meta" aria-label="Asosiy afzalliklar">
+            <span data-i18n="hero.meta1">Windows va Web</span>
+            <span data-i18n="hero.meta2">10 daqiqada ishga tushadi</span>
+            <span data-i18n="hero.meta3">24/7 qo‘llab-quvvatlash</span>
+          </div>
+        </div>
+
+        <div class="product-visual" aria-label="IDO‘KON admin panel ko‘rinishi">
+          <div class="status-chip" data-i18n="hero.status">Tizim ishlamoqda</div>
+          <div class="app-window">
+            <div class="window-bar"><i></i><i></i><i></i><em class="window-label">IDO‘KON · Analytics</em></div>
+            <img src="assets/img/admin.png" alt="IDO‘KON admin panelida tavsiya etilgan buyurtmalar hisoboti" data-lightbox onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/admin.png'">
+          </div>
+          <div class="floating-stat">
+            <small data-i18n="hero.stat_label">Mijozlar bahosi</small>
+            <strong>4.9 / 5</strong>
+            <span data-i18n="hero.stat_note">215 ta sharh asosida</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="proof-bar" aria-label="IDO‘KON asosiy ko‘rsatkichlari">
+      <div class="container proof-grid">
+        <div class="proof-item" data-i18n="proof.title">Do‘koningiz ishlatadigan tizimlar bilan mos</div>
+        <div class="proof-item"><strong>Click · Payme · Uzum</strong></div>
+        <div class="proof-item"><strong>Arco</strong></div>
+        <div class="proof-item"><strong>Multikassa</strong></div>
+        <div class="proof-item"><strong>E-imzo SMS</strong></div>
+      </div>
+    </div>
+
+    <section class="section surface" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow" data-i18n="features.eyebrow">I-Do‘kon bilan biznesingizni rivojlantiring</span>
+          <h2 class="section-title" data-i18n="features.title">Sodda interfeys. Kuchli boshqaruv.</h2>
+          <p class="section-lead" data-i18n="features.lead">Kassirga tezlik, rahbarga nazorat, mijozga esa silliq xarid tajribasi beradigan savdo nuqtasi tizimi.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-index">01</span>
+            <div>
+              <h3 data-i18n="feature.1.title">Savdo tezligi ↑</h3>
+              <p data-i18n="feature.1.body">Bir bosishda to‘lov — kam xatolik va tez navbat. Kunning oxirida natijalar darhol ko‘rinadi.</p>
+              <span class="feature-tag" data-i18n="feature.1.tag">Naqd · Karta · QR</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">02</span>
+            <div>
+              <h3 data-i18n="feature.2.title">Kassirlar uchun sodda</h3>
+              <p data-i18n="feature.2.body">Skaner bilan tez qidiruv, chegirma va bonuslar. Yangi kassir ham interfeysni tez o‘rganadi.</p>
+              <span class="feature-tag" data-i18n="feature.2.tag">Qulay interfeys</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">03</span>
+            <div>
+              <h3 data-i18n="feature.3.title">Hisobot va nazorat</h3>
+              <p data-i18n="feature.3.body">Aylanma, foyda va top mahsulotlar onlayn. Filiallar kesimida ko‘rish va eksport bir tugmada.</p>
+              <span class="feature-tag" data-i18n="feature.3.tag">Real vaqt</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">04</span>
+            <div>
+              <h3 data-i18n="feature.4.title">O‘rnatish va integratsiya</h3>
+              <p data-i18n="feature.4.body">Windows’da 10 daqiqada ishga tushadi. Printer, skaner, terminal, Tez QR va API bilan kengayadi.</p>
+              <span class="feature-tag" data-i18n="feature.4.tag">Tayyor ekotizim</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="software">
+      <div class="container software-grid">
+        <div class="screen-stage">
+          <div class="screen-shell">
+            <div class="window-bar"><i></i><i></i><i></i><em class="window-label" id="screenLabel">Tavsiya etilgan buyurtma</em></div>
+            <img id="softwareImage" src="assets/img/admin.png" alt="IDO‘KON dasturiy ta’minoti skrinshoti" data-lightbox onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/admin.png'">
+          </div>
+          <div class="screen-tabs" role="tablist" aria-label="Dastur skrinshotlari">
+            <button class="screen-tab" type="button" role="tab" aria-selected="true" data-screen="assets/img/admin.png" data-label="Tavsiya etilgan buyurtma" data-i18n="screen.1">Buyurtma</button>
+            <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen="assets/img/admin1.png" data-label="Savdo boshqaruvi" data-i18n="screen.2">Savdo</button>
+            <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen="assets/img/admin2.png" data-label="Ombor va mahsulotlar" data-i18n="screen.3">Ombor</button>
+            <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen="assets/img/admin3.png" data-label="Analitika va hisobot" data-i18n="screen.4">Analitika</button>
+          </div>
+        </div>
+
+        <div class="software-copy">
+          <span class="eyebrow" data-i18n="software.eyebrow">Dasturning asosiy xususiyatlari</span>
+          <h2 class="section-title" data-i18n="software.title">Har bir qaror uchun aniq ko‘rinish</h2>
+          <p class="section-lead" data-i18n="software.lead">Savdo nuqtasidan boshqaruv paneligacha — jamoangizga kerakli ma’lumot har doim o‘z joyida.</p>
+          <ol class="software-list">
+            <li><span class="list-no">01</span><div><strong data-i18n="software.1.title">Inventarizatsiyani boshqarish</strong><br><span data-i18n="software.1.body">Zaxira va kirim–chiqimni avtomatik kuzatib, minimal qoldiqni eslatadi.</span></div></li>
+            <li><span class="list-no">02</span><div><strong data-i18n="software.2.title">Sotish va to‘lov jarayoni</strong><br><span data-i18n="software.2.body">Naqd, karta va QR to‘lovni bir bosishda qabul qilib, xatolikni kamaytiradi.</span></div></li>
+            <li><span class="list-no">03</span><div><strong data-i18n="software.3.title">Hisobot va tahlil</strong><br><span data-i18n="software.3.body">Aylanma va foydani real vaqtda ko‘rsatib, eksport va filial kesimini beradi.</span></div></li>
+            <li><span class="list-no">04</span><div><strong data-i18n="software.4.title">Xavfsiz tezkor tranzaksiya</strong><br><span data-i18n="software.4.body">EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija.</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="users">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow" data-i18n="users.eyebrow">Kimlar uchun</span>
+          <h2 class="section-title" data-i18n="users.title">Har xil savdo formati. Bitta ishonchli tizim.</h2>
+          <p class="section-lead" data-i18n="users.lead">Dasturiy ta’minotimiz keng ko‘lamli biznes va sanoat sohalariga moslashtirilgan.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card"><span class="audience-mark">01</span><div><h3 data-i18n="users.1">Chakana do‘konlar</h3><p data-i18n="users.1.desc">Kundalik savdo va qoldiq nazorati</p></div></article>
+          <article class="audience-card"><span class="audience-mark">02</span><div><h3 data-i18n="users.2">Supermarketlar</h3><p data-i18n="users.2.desc">Yuqori oqim va ko‘p kassali savdo</p></div></article>
+          <article class="audience-card"><span class="audience-mark">03</span><div><h3 data-i18n="users.3">Mini-marketlar</h3><p data-i18n="users.3.desc">Sodda, tez va tejamkor boshqaruv</p></div></article>
+          <article class="audience-card"><span class="audience-mark">04</span><div><h3 data-i18n="users.4">Onlayn savdo</h3><p data-i18n="users.4.desc">Buyurtma va qoldiqni uyg‘unlashtirish</p></div></article>
+          <article class="audience-card"><span class="audience-mark">05</span><div><h3 data-i18n="users.5">Yana ko‘plab sohalar</h3><p data-i18n="users.5.desc">Biznesingizga mos integratsiya</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="equipment">
+      <div class="container">
+        <div class="equipment-head">
+          <div class="section-heading">
+            <span class="eyebrow" data-i18n="equipment.eyebrow">POS qurilmalari</span>
+            <h2 class="section-title" data-i18n="equipment.title">Savdo uchun zarur qurilmalar to‘plami</h2>
+            <p class="section-lead" data-i18n="equipment.lead">Kassa sistemasini to‘liq ishga tushirish uchun kerakli barcha qurilmalarni bir joydan oling.</p>
+          </div>
+          <div class="scroll-controls" aria-label="Qurilmalar ro‘yxatini boshqarish">
+            <button class="scroll-btn" id="productPrev" type="button" aria-label="Oldingi qurilmalar">←</button>
+            <button class="scroll-btn" id="productNext" type="button" aria-label="Keyingi qurilmalar">→</button>
+          </div>
+        </div>
+
+        <div class="product-row" id="productRow" tabindex="0" aria-label="IDO‘KON POS uskunalari">
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/monoblok1.png" alt="Monoblok J/s POS" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/monoblok1.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.monoblock">Monoblok terminal</span><h3 data-i18n="product.1.title">Monoblok J/s POS</h3><p class="product-desc" data-i18n="product.1.desc">Sensor displey, SSD 8/128 GB, Wi‑Fi, Windows 10 Pro, Intel Core i5. Sifat kafolati 1 yil.</p><div class="product-bottom"><div class="product-price">3 694 875 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="Monoblokni ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/monoblok2.png" alt="POS monoblok" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/monoblok2.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.monoblock">Monoblok terminal</span><h3 data-i18n="product.2.title">POS monoblok</h3><p class="product-desc" data-i18n="product.2.desc">i5‑3230M, ikkita 15″ ekran, 8 GB RAM, 128 GB SSD, Wi‑Fi, Bluetooth, HDMI, VGA va 6 ta USB.</p><div class="product-bottom"><div class="product-price">4 802 000 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="POS monoblokni ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/printer1.png" alt="Xprinter 365B barkod printer" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/printer1.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.printer">Chek va etiketka printeri</span><h3 data-i18n="product.3.title">Xprinter 365B</h3><p class="product-desc" data-i18n="product.3.desc">Qog‘oz kengligi 20–82 mm, tezligi 127 mm/sek, USB + LAN. Sifat kafolati 1 yil.</p><div class="product-bottom"><div class="product-price">751 500 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="Printerni ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/printer2.png" alt="Xprinter chek printer" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/printer2.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.printer">Chek va etiketka printeri</span><h3 data-i18n="product.4.title">Xprinter Check Q‑80</h3><p class="product-desc" data-i18n="product.4.desc">80 mm chek printeri, USB va LAN ulanishlari bilan.</p><div class="product-bottom"><div class="product-price">626 250 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="Chek printerni ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/scanner1.png" alt="WINSON A780 skaner" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/scanner1.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.scanner">Shtrix skaner</span><h3 data-i18n="product.5.title">WINSON A780</h3><p class="product-desc" data-i18n="product.5.desc">USB, QR kod, shtrix kod va markirovkani o‘qish. Sifat kafolati 1 yil.</p><div class="product-bottom"><div class="product-price">751 500 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="Skanerni ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/box1.png" alt="Pul qo‘yish uchun quti" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/box1.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.box">Kassa qutisi</span><h3 data-i18n="product.6.title">Pul qo‘yish uchun quti</h3><p class="product-desc" data-i18n="product.6.desc">Elektromexanik qulf, RJ‑11, 5 ta banknot va 5 ta tanga bo‘limi, metall korpus.</p><div class="product-bottom"><div class="product-price">751 500 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="Kassa qutisini ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/scale1.png" alt="Rongta tarozi" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/scale1.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.scale">Tarozi</span><h3 data-i18n="product.7.title">Rongta 1510</h3><p class="product-desc" data-i18n="product.7.desc">Shtrix kodli 15 kg tarozi. Sifat kafolati 6 oy.</p><div class="product-bottom"><div class="product-price">5 886 750 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="Rongta tarozini ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/scale2.png" alt="Shtrix kodli savdo tarozisi" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/scale2.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.scale">Tarozi</span><h3 data-i18n="product.8.title">Shtrix kodli savdo tarozisi</h3><p class="product-desc" data-i18n="product.8.desc">Rossiyada ishlab chiqarilgan, 77 tugma, 40 g–15 kg, 58 mm qog‘oz. Kafolat 1 yil.</p><div class="product-bottom"><div class="product-price">7 142 250 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="Savdo tarozisini ko‘rish">↗</a></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="assets/img/Oborodvniya/scale3.png" alt="TMA tarozi" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/Oborodvniya/scale3.png'"></div>
+            <div class="product-body"><span class="product-cat" data-i18n="equipment.scale">Tarozi</span><h3 data-i18n="product.9.title">TMA tarozi</h3><p class="product-desc" data-i18n="product.9.desc">Xitoy, 30 kg gacha, 4000 tagacha PLU. Kafolat 6 oy.</p><div class="product-bottom"><div class="product-price">4 383 750 <small data-i18n="currency">so‘m</small></div><a class="square-link" href="https://idokon.uz/cart.html" aria-label="TMA tarozini ko‘rish">↗</a></div></div>
+          </article>
+        </div>
+        <a class="btn btn-dark" href="https://idokon.uz/cart.html" style="margin-top:24px" data-i18n="equipment.cta">Barcha qurilmalarni ko‘rish</a>
+      </div>
+    </section>
+
+    <section class="section" id="integrations">
+      <div class="container integration-grid">
+        <div class="integration-copy">
+          <span class="eyebrow" data-i18n="integrations.eyebrow">Tizimlar bilan integratsiya</span>
+          <h2 data-i18n="integrations.title">Mavjud tizimdan uzilmasdan yangisiga o‘ting</h2>
+          <p data-i18n="integrations.lead">IDO‘KON mavjud kassa tizimlari bilan oson bog‘lanadi. Ma’lumotlaringiz saqlanadi, jamoamiz esa o‘tish jarayonida yoningizda bo‘ladi.</p>
+          <div class="integration-points">
+            <div class="integration-point"><span class="integration-check">01</span><div><b data-i18n="integrations.1.title">Tez ulanish</b><br><span data-i18n="integrations.1.body">Mavjud tizimga 1–2 kun ichida ulanish</span></div></div>
+            <div class="integration-point"><span class="integration-check">02</span><div><b data-i18n="integrations.2.title">Ma’lumotlar xavfsizligi</b><br><span data-i18n="integrations.2.body">Barcha ma’lumotlar saqlanib qoladi</span></div></div>
+            <div class="integration-point"><span class="integration-check">03</span><div><b data-i18n="integrations.3.title">Texnik yordam</b><br><span data-i18n="integrations.3.body">Integratsiya jarayonida to‘liq qo‘llab-quvvatlash</span></div></div>
+          </div>
+        </div>
+        <div class="integration-panel">
+          <span class="eyebrow" data-i18n="integrations.systems">Qo‘llab-quvvatlanadigan tizimlar</span>
+          <div class="system-grid">
+            <article class="system-card"><span class="system-logo">MK</span><h3>Multikassa</h3><p data-i18n="system.multikassa">Soliq idorasi bilan bog‘langan onlayn kassa tizimi</p></article>
+            <article class="system-card"><span class="system-logo">AR</span><h3>Arco</h3><p data-i18n="system.arco">Keng tarqalgan kassa va hisobot tizimi</p></article>
+            <article class="system-card"><span class="system-logo">EI</span><h3>E-imzo SMS</h3><p data-i18n="system.eimzo">E-imzo orqali SMS xabarnoma yuborish tizimi</p></article>
+          </div>
+          <div class="payment-strip" aria-label="To‘lov tizimlari"><span>Click</span><span>Payme</span><span>Uzum</span></div>
+          <div class="other-system"><strong data-i18n="integrations.other.title">Boshqa tizimlar</strong><span data-i18n="integrations.other.body">Tizimingiz ro‘yxatda yo‘qmi? Integratsiya imkoniyatlarini biz bilan muhokama qiling.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="pricing">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow" data-i18n="pricing.eyebrow">Shaffof narxlash</span>
+          <h2 class="section-title" data-i18n="pricing.title">Biznesingizga mos tarifni tanlang</h2>
+          <p class="section-lead" data-i18n="pricing.lead">Kichik do‘kondan katta savdo tarmog‘igacha — kerakli imkoniyatlar uchun aniq reja.</p>
+          <div class="pricing-toggle" role="group" aria-label="To‘lov davri">
+            <button type="button" aria-pressed="true" data-cycle="monthly" data-i18n="pricing.monthly">Oylik</button>
+            <button type="button" aria-pressed="false" data-cycle="yearly" data-i18n="pricing.yearly">Yillik</button>
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <div class="plan-top"><div><h3 class="plan-name">Start</h3><p class="plan-subtitle" data-i18n="pricing.start.subtitle">Kichik do‘konlar uchun</p></div></div>
+            <div class="price"><span data-monthly="100 000" data-yearly="1 000 000">100 000</span> <small data-price-suffix data-i18n="pricing.per_month">so‘m / oy</small></div>
+            <ul class="plan-features">
+              <li data-i18n="pricing.start.1">Cheksiz mahsulot qo‘shish</li>
+              <li data-i18n="pricing.start.2">Excel orqali tovarlarni bir zumda yuklash</li>
+              <li data-i18n="pricing.start.3">Qulay inventarizatsiya va ombor nazorati</li>
+              <li data-i18n="pricing.start.4">Ta’minotchilar va mijozlar bilan hisob-kitob</li>
+              <li data-i18n="pricing.start.5">Tushunarli va to‘liq hisobotlar</li>
+            </ul>
+            <a class="btn btn-outline" href="https://idokon.uz/cart.html?tab=plans&amp;cycle=monthly" data-plan-link data-i18n="pricing.choose">Tarifni tanlang</a>
+          </article>
+
+          <article class="price-card featured">
+            <div class="plan-top"><div><h3 class="plan-name">Standard</h3><p class="plan-subtitle" data-i18n="pricing.standard.subtitle">Standart do‘konlar uchun</p></div><span class="popular" data-i18n="pricing.popular">Ommabop</span></div>
+            <div class="price"><span data-monthly="150 000" data-yearly="1 500 000">150 000</span> <small data-price-suffix data-i18n="pricing.per_month">so‘m / oy</small></div>
+            <ul class="plan-features">
+              <li data-i18n="pricing.standard.1">Soliq tizimi bilan integratsiya (Arco, Multikassa)</li>
+              <li data-i18n="pricing.standard.2">To‘lov tizimlari bilan integratsiyalar (Click, Payme, Uzum)</li>
+              <li data-i18n="pricing.standard.3">Tavsiya etilgan tovarlar ro‘yxati</li>
+              <li data-i18n="pricing.standard.4">Muzlatilgan mablag‘ ko‘rinishidagi tovarlar</li>
+              <li data-i18n="pricing.standard.5">Aksiya va to‘plamlar yaratish</li>
+              <li data-i18n="pricing.standard.6">Valyuta bilan ishlash</li>
+              <li data-i18n="pricing.standard.7">Xarajatlarni yuritish</li>
+              <li data-i18n="pricing.standard.8">Markirovka bilan ishlash</li>
+            </ul>
+            <a class="btn btn-primary" href="https://idokon.uz/cart.html?tab=plans&amp;cycle=monthly" data-plan-link data-i18n="pricing.choose">Tarifni tanlang</a>
+          </article>
+
+          <article class="price-card">
+            <div class="plan-top"><div><h3 class="plan-name">Premium</h3><p class="plan-subtitle" data-i18n="pricing.premium.subtitle">Katta hajmdagi do‘konlar uchun</p></div></div>
+            <div class="price"><span data-monthly="250 000" data-yearly="2 500 000">250 000</span> <small data-price-suffix data-i18n="pricing.per_month">so‘m / oy</small></div>
+            <ul class="plan-features">
+              <li data-i18n="pricing.premium.1">Standard tarifidagi barcha imkoniyatlar</li>
+              <li data-i18n="pricing.premium.2">Mijozlar uchun bonus (Loyalty)</li>
+              <li data-i18n="pricing.premium.3">Analitika (ABC tahlil, OOS tahlil)</li>
+              <li data-i18n="pricing.premium.4">Mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlar</li>
+            </ul>
+            <a class="btn btn-outline" href="https://idokon.uz/cart.html?tab=plans&amp;cycle=monthly" data-plan-link data-i18n="pricing.choose">Tarifni tanlang</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="course">
+      <div class="container course-grid">
+        <div class="course-collage">
+          <button class="course-shot" type="button" data-lightbox-button aria-label="Kurs skrinshotini kattalashtirish"><img src="assets/img/course.png" alt="I-Do‘kon kursi quiz testi" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/course.png'"></button>
+          <button class="course-shot" type="button" data-lightbox-button aria-label="Kurs skrinshotini kattalashtirish"><img src="assets/img/course2.png" alt="I-Do‘kon kursi admin panel darsi" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/course2.png'"></button>
+          <button class="course-shot" type="button" data-lightbox-button aria-label="Kurs skrinshotini kattalashtirish"><img src="assets/img/course3.png" alt="I-Do‘kon kursi kassa panel darsi" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/course3.png'"></button>
+        </div>
+        <div class="course-copy">
+          <span class="eyebrow" data-i18n="course.eyebrow">Bilim bazasi</span>
+          <h2 data-i18n="course.title">I-Do‘kon Kursi</h2>
+          <p data-i18n="course.desc">POS dasturini to‘liq va oson o‘rganing. Har bir modulda amaliy misollar, video darslar va interaktiv topshiriqlar mavjud.</p>
+          <div class="course-note" data-i18n="course.note">Kursni tugatgan har bir mijoz programmani mustaqil ishlata oladi va savollarga tez javob topadi.</div>
+          <a class="btn btn-primary" href="https://idokon-course.vercel.app/" target="_blank" rel="noopener" data-i18n="course.cta">Kursni boshlash →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="faq">
+      <div class="container faq-grid">
+        <div class="faq-aside">
+          <span class="eyebrow" data-i18n="faq.eyebrow">Savolingiz bormi?</span>
+          <h2 data-i18n="faq.title">Ko‘p beriladigan savollarga javoblar</h2>
+          <p data-i18n="faq.lead">Kerakli javobni topmadingizmi? Jamoamiz sizga mos yechimni tanlashda yordam beradi.</p>
+          <a class="btn btn-dark" href="#contact" data-i18n="faq.cta">Savol berish</a>
+        </div>
+        <div class="faq-list">
+          <details open><summary data-i18n="faq.1.q">POS tizimi biznesimga qanday foyda keltiradi?</summary><div class="faq-answer" data-i18n="faq.1.a">POS tizimi savdo, ombor, hisobot va mijozlar bilan ishlashni yagona boshqaruv nuqtasida birlashtiradi. Bu xatolarni kamaytiradi, jarayonlarni tezlashtiradi va real raqamlar asosida qaror qabul qilishga yordam beradi.</div></details>
+          <details><summary data-i18n="faq.2.q">POS tizimini onlayn do‘konim bilan integratsiya qila olamanmi?</summary><div class="faq-answer" data-i18n="faq.2.a">Ha. IDO‘KON mavjud kassa va to‘lov tizimlari bilan bog‘lanadi. Muayyan onlayn do‘kon yoki boshqa tizim bo‘yicha integratsiya imkoniyatini jamoamiz bilan muhokama qilishingiz mumkin.</div></details>
+          <details><summary data-i18n="faq.3.q">POS tizimidan foydalanish uchun maxsus o‘qitish kerakmi?</summary><div class="faq-answer" data-i18n="faq.3.a">Interfeys yangi kassir ham tez o‘rganishi uchun sodda tuzilgan. Bundan tashqari, I-Do‘kon kursida modullar, amaliy misollar, video darslar va interaktiv topshiriqlar mavjud.</div></details>
+          <details><summary data-i18n="faq.4.q">POS tizimi qanday savdo tahlillarini taqdim etadi?</summary><div class="faq-answer" data-i18n="faq.4.a">Aylanma, foyda, top mahsulotlar, filiallar kesimi, ABC tahlil, OOS tahlil va mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlarni ko‘rish mumkin.</div></details>
+          <details><summary data-i18n="faq.5.q">Biznesim uchun to‘g‘ri POS tizimini qanday tanlayman?</summary><div class="faq-answer" data-i18n="faq.5.a">Biznes turi, hajmi, byudjeti, zarur integratsiyalar va kelajakdagi o‘sishni hisobga oling. Start, Standard va Premium tariflarini solishtiring yoki bepul maslahat uchun biz bilan bog‘laning.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-wrap">
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <span class="eyebrow" data-i18n="contact.eyebrow">Biz bilan bog‘lanish</span>
+            <h2 data-i18n="contact.title">Do‘koningiz uchun to‘g‘ri konfiguratsiyani topamiz</h2>
+            <p data-i18n="contact.lead">Savollaringizni yozib qoldiring — jamoamiz ehtiyojingizni o‘rganib, mos tarif va qurilmalar bo‘yicha yordam beradi.</p>
+            <div class="contact-list">
+              <a class="contact-link" href="tel:+998991180999"><i>TL</i><span>+998 99 118 09 99</span></a>
+              <a class="contact-link" href="https://t.me/idokonuz" target="_blank" rel="noopener"><i>TG</i><span>@idokonuz</span></a>
+              <a class="contact-link" href="https://www.instagram.com/idokon_uz/" target="_blank" rel="noopener"><i>IG</i><span>@idokon_uz</span></a>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="name" data-i18n="contact.name">Ismingiz</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="Ismingiz" data-i18n-placeholder="contact.name"></div>
+              <div class="field"><label for="phone" data-i18n="contact.phone">Telefon raqamingiz</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+998 90 123 45 67" aria-describedby="phoneHint"><span id="phoneHint" class="privacy-note" data-i18n="contact.phone_hint">Masalan: +998 90 123 45 67</span></div>
+              <div class="field full"><label for="message" data-i18n="contact.message">Murojaatingiz haqida batafsil</label><textarea id="message" name="message" required placeholder="Do‘kon turi, filiallar soni va kerakli imkoniyatlar..." data-i18n-placeholder="contact.message_placeholder"></textarea></div>
+            </div>
+            <div class="form-footer">
+              <button class="btn btn-primary" type="submit" data-i18n="contact.submit">Yuborish</button>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </div>
+            <p class="privacy-note" data-i18n="contact.privacy">Yuborish orqali menejerimiz siz bilan bog‘lanishiga rozilik bildirasiz.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="IDO‘KON" onerror="this.onerror=null;this.src='https://idokon.uz/assets/img/logo.png'">
+          <p data-i18n="footer.about">POS dasturimiz biznes jarayonlaringizni soddalashtirib, samaradorlikni oshiradigan yakuniy yechimdir. Oddiylik, ko‘p qirrali imkoniyatlar va ilg‘or texnologiyalar uyg‘unligiga e’tibor qaratganmiz.</p>
+        </div>
+        <div class="footer-col"><h3 data-i18n="footer.product">Mahsulot</h3><ul class="footer-links"><li><a href="#features" data-i18n="nav.features">Xususiyatlar</a></li><li><a href="#software" data-i18n="footer.software">Dastur</a></li><li><a href="#equipment" data-i18n="nav.equipment">Qurilmalar</a></li><li><a href="#integrations" data-i18n="nav.integrations">Integratsiyalar</a></li></ul></div>
+        <div class="footer-col"><h3 data-i18n="footer.resources">Resurslar</h3><ul class="footer-links"><li><a href="#pricing" data-i18n="nav.pricing">Tariflar</a></li><li><a href="#course" data-i18n="nav.course">I-Do‘kon Kurs</a></li><li><a href="#faq">FAQ</a></li><li><button class="btn-link" type="button" data-open-demo data-i18n="hero.demo">Demo ishlatib ko‘rish</button></li></ul></div>
+        <div class="footer-col"><h3 data-i18n="footer.support">Qo‘llab-quvvatlash</h3><ul class="footer-links"><li><a href="tel:+998991180999">+998 99 118 09 99</a></li><li><a href="https://t.me/idokonuz" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://www.instagram.com/idokon_uz/" target="_blank" rel="noopener">Instagram</a></li><li><a href="#contact" data-i18n="nav.contact">Aloqa</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copy">© 2025. Barcha huquqlar himoyalangan.</span>
+        <div class="footer-social"><a href="https://t.me/idokonuz" target="_blank" rel="noopener">Telegram ↗</a><a href="https://www.instagram.com/idokon_uz/" target="_blank" rel="noopener">Instagram ↗</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" type="button" aria-label="Sahifa boshiga qaytish" hidden>↑</button>
+
+  <div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoTitle" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="demoClose" type="button" aria-label="Oynani yopish">×</button>
+      <span class="eyebrow" data-i18n="demo.eyebrow">Bepul demo</span>
+      <h2 id="demoTitle" data-i18n="demo.title">Demo bo‘limini tanlang</h2>
+      <div class="demo-tabs" role="tablist" aria-label="Demo turi">
+        <button class="demo-tab" id="cashTab" type="button" role="tab" aria-selected="true" aria-controls="cashPanel" data-i18n="demo.cash">Kassa</button>
+        <button class="demo-tab" id="adminTab" type="button" role="tab" aria-selected="false" aria-controls="adminPanel" data-i18n="demo.admin">Admin</button>
+      </div>
+      <div class="demo-panel" id="cashPanel" role="tabpanel" aria-labelledby="cashTab">
+        <p data-i18n="demo.cash_desc">Kassa dasturini yuklab olish uchun quyidagi tugmani bosing.</p>
+        <a class="btn btn-primary" href="https://github.com/JaMeS-18-18/updater_test/releases/download/1.2.1/Idokon1.2.1.x64.exe" data-i18n="demo.download">Kassani yuklab olish</a>
+      </div>
+      <div class="demo-panel" id="adminPanel" role="tabpanel" aria-labelledby="adminTab" hidden>
+        <p data-i18n="demo.admin_desc">Admin panelga kirish uchun havola va demo login-parolidan foydalaning.</p>
+        <a class="btn btn-primary" href="https://my.idokon.uz/#/auth/login" target="_blank" rel="noopener" data-i18n="demo.open_admin">Admin panelga o‘tish</a>
+        <div class="credentials">
+          <div class="credential"><span><span data-i18n="demo.login">Login</span>: <strong id="demoLogin">hp</strong></span><button class="copy-btn" type="button" data-copy="demoLogin" data-i18n="demo.copy">Nusxa olish</button></div>
+          <div class="credential"><span><span data-i18n="demo.password">Parol</span>: <strong id="demoPassword">hp112233</strong></span><button class="copy-btn" type="button" data-copy="demoPassword" data-i18n="demo.copy">Nusxa olish</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Kattalashtirilgan skrinshot" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Rasmni yopish">×</button>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PVXCPFLERG');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVXCPFLERG"></script>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const translations = {
+        uz: {
+          langName: "O‘zbekcha",
+          skip: "Asosiy mazmunga o‘tish", "menu.open": "Menyuni ochish", "menu.close": "Menyuni yopish",
+          "nav.home": "Asosiy", "nav.features": "Xususiyatlar", "nav.equipment": "Qurilmalar", "nav.integrations": "Integratsiyalar", "nav.pricing": "Tariflar", "nav.course": "I-Do‘kon Kurs", "nav.contact": "Aloqa",
+          "hero.eyebrow": "Savdo boshqaruvining yangi standarti", "hero.title": "Savdoni <span>aniq raqamlar</span> bilan boshqaring", "hero.subtitle": "Zamonaviy POS, ombor nazorati, real vaqt hisobotlari va to‘lov integratsiyalari — do‘koningiz uchun yagona, sodda platformada.", "hero.demo": "Demo ishlatib ko‘rish", "hero.contact": "Bog‘lanish", "hero.meta1": "Windows va Web", "hero.meta2": "10 daqiqada ishga tushadi", "hero.meta3": "24/7 qo‘llab-quvvatlash", "hero.status": "Tizim ishlamoqda", "hero.stat_label": "Mijozlar bahosi", "hero.stat_note": "215 ta sharh asosida",
+          "proof.title": "Do‘koningiz ishlatadigan tizimlar bilan mos",
+          "features.eyebrow": "I-Do‘kon bilan biznesingizni rivojlantiring", "features.title": "Sodda interfeys. Kuchli boshqaruv.", "features.lead": "Kassirga tezlik, rahbarga nazorat, mijozga esa silliq xarid tajribasi beradigan savdo nuqtasi tizimi.",
+          "feature.1.title": "Savdo tezligi ↑", "feature.1.body": "Bir bosishda to‘lov — kam xatolik va tez navbat. Kunning oxirida natijalar darhol ko‘rinadi.", "feature.1.tag": "Naqd · Karta · QR",
+          "feature.2.title": "Kassirlar uchun sodda", "feature.2.body": "Skaner bilan tez qidiruv, chegirma va bonuslar. Yangi kassir ham interfeysni tez o‘rganadi.", "feature.2.tag": "Qulay interfeys",
+          "feature.3.title": "Hisobot va nazorat", "feature.3.body": "Aylanma, foyda va top mahsulotlar onlayn. Filiallar kesimida ko‘rish va eksport bir tugmada.", "feature.3.tag": "Real vaqt",
+          "feature.4.title": "O‘rnatish va integratsiya", "feature.4.body": "Windows’da 10 daqiqada ishga tushadi. Printer, skaner, terminal, Tez QR va API bilan kengayadi.", "feature.4.tag": "Tayyor ekotizim",
+          "software.eyebrow": "Dasturning asosiy xususiyatlari", "software.title": "Har bir qaror uchun aniq ko‘rinish", "software.lead": "Savdo nuqtasidan boshqaruv paneligacha — jamoangizga kerakli ma’lumot har doim o‘z joyida.",
+          "software.1.title": "Inventarizatsiyani boshqarish", "software.1.body": "Zaxira va kirim–chiqimni avtomatik kuzatib, minimal qoldiqni eslatadi.", "software.2.title": "Sotish va to‘lov jarayoni", "software.2.body": "Naqd, karta va QR to‘lovni bir bosishda qabul qilib, xatolikni kamaytiradi.", "software.3.title": "Hisobot va tahlil", "software.3.body": "Aylanma va foydani real vaqtda ko‘rsatib, eksport va filial kesimini beradi.", "software.4.title": "Xavfsiz tezkor tranzaksiya", "software.4.body": "EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija.",
+          "screen.1": "Buyurtma", "screen.2": "Savdo", "screen.3": "Ombor", "screen.4": "Analitika",
+          "users.eyebrow": "Kimlar uchun", "users.title": "Har xil savdo formati. Bitta ishonchli tizim.", "users.lead": "Dasturiy ta’minotimiz keng ko‘lamli biznes va sanoat sohalariga moslashtirilgan.", "users.1": "Chakana do‘konlar", "users.1.desc": "Kundalik savdo va qoldiq nazorati", "users.2": "Supermarketlar", "users.2.desc": "Yuqori oqim va ko‘p kassali savdo", "users.3": "Mini-marketlar", "users.3.desc": "Sodda, tez va tejamkor boshqaruv", "users.4": "Onlayn savdo", "users.4.desc": "Buyurtma va qoldiqni uyg‘unlashtirish", "users.5": "Yana ko‘plab sohalar", "users.5.desc": "Biznesingizga mos integratsiya",
+          "equipment.eyebrow": "POS qurilmalari", "equipment.title": "Savdo uchun zarur qurilmalar to‘plami", "equipment.lead": "Kassa sistemasini to‘liq ishga tushirish uchun kerakli barcha qurilmalarni bir joydan oling.", "equipment.cta": "Barcha qurilmalarni ko‘rish", "equipment.monoblock": "Monoblok terminal", "equipment.printer": "Chek va etiketka printeri", "equipment.scanner": "Shtrix skaner", "equipment.box": "Kassa qutisi", "equipment.scale": "Tarozi", currency: "so‘m",
+          "product.1.title": "Monoblok J/s POS", "product.1.desc": "Sensor displey, SSD 8/128 GB, Wi‑Fi, Windows 10 Pro, Intel Core i5. Sifat kafolati 1 yil.", "product.2.title": "POS monoblok", "product.2.desc": "i5‑3230M, ikkita 15″ ekran, 8 GB RAM, 128 GB SSD, Wi‑Fi, Bluetooth, HDMI, VGA va 6 ta USB.", "product.3.title": "Xprinter 365B", "product.3.desc": "Qog‘oz kengligi 20–82 mm, tezligi 127 mm/sek, USB + LAN. Sifat kafolati 1 yil.", "product.4.title": "Xprinter Check Q‑80", "product.4.desc": "80 mm chek printeri, USB va LAN ulanishlari bilan.", "product.5.title": "WINSON A780", "product.5.desc": "USB, QR kod, shtrix kod va markirovkani o‘qish. Sifat kafolati 1 yil.", "product.6.title": "Pul qo‘yish uchun quti", "product.6.desc": "Elektromexanik qulf, RJ‑11, 5 ta banknot va 5 ta tanga bo‘limi, metall korpus.", "product.7.title": "Rongta 1510", "product.7.desc": "Shtrix kodli 15 kg tarozi. Sifat kafolati 6 oy.", "product.8.title": "Shtrix kodli savdo tarozisi", "product.8.desc": "Rossiyada ishlab chiqarilgan, 77 tugma, 40 g–15 kg, 58 mm qog‘oz. Kafolat 1 yil.", "product.9.title": "TMA tarozi", "product.9.desc": "Xitoy, 30 kg gacha, 4000 tagacha PLU. Kafolat 6 oy.",
+          "integrations.eyebrow": "Tizimlar bilan integratsiya", "integrations.title": "Mavjud tizimdan uzilmasdan yangisiga o‘ting", "integrations.lead": "IDO‘KON mavjud kassa tizimlari bilan oson bog‘lanadi. Ma’lumotlaringiz saqlanadi, jamoamiz esa o‘tish jarayonida yoningizda bo‘ladi.", "integrations.1.title": "Tez ulanish", "integrations.1.body": "Mavjud tizimga 1–2 kun ichida ulanish", "integrations.2.title": "Ma’lumotlar xavfsizligi", "integrations.2.body": "Barcha ma’lumotlar saqlanib qoladi", "integrations.3.title": "Texnik yordam", "integrations.3.body": "Integratsiya jarayonida to‘liq qo‘llab-quvvatlash", "integrations.systems": "Qo‘llab-quvvatlanadigan tizimlar", "system.multikassa": "Soliq idorasi bilan bog‘langan onlayn kassa tizimi", "system.arco": "Keng tarqalgan kassa va hisobot tizimi", "system.eimzo": "E-imzo orqali SMS xabarnoma yuborish tizimi", "integrations.other.title": "Boshqa tizimlar", "integrations.other.body": "Tizimingiz ro‘yxatda yo‘qmi? Integratsiya imkoniyatlarini biz bilan muhokama qiling.",
+          "pricing.eyebrow": "Shaffof narxlash", "pricing.title": "Biznesingizga mos tarifni tanlang", "pricing.lead": "Kichik do‘kondan katta savdo tarmog‘igacha — kerakli imkoniyatlar uchun aniq reja.", "pricing.monthly": "Oylik", "pricing.yearly": "Yillik", "pricing.per_month": "so‘m / oy", "pricing.per_year": "so‘m / yil", "pricing.choose": "Tarifni tanlang", "pricing.popular": "Ommabop", "pricing.start.subtitle": "Kichik do‘konlar uchun", "pricing.standard.subtitle": "Standart do‘konlar uchun", "pricing.premium.subtitle": "Katta hajmdagi do‘konlar uchun",
+          "pricing.start.1": "Cheksiz mahsulot qo‘shish", "pricing.start.2": "Excel orqali tovarlarni bir zumda yuklash", "pricing.start.3": "Qulay inventarizatsiya va ombor nazorati", "pricing.start.4": "Ta’minotchilar va mijozlar bilan hisob-kitob", "pricing.start.5": "Tushunarli va to‘liq hisobotlar",
+          "pricing.standard.1": "Soliq tizimi bilan integratsiya (Arco, Multikassa)", "pricing.standard.2": "To‘lov tizimlari bilan integratsiyalar (Click, Payme, Uzum)", "pricing.standard.3": "Tavsiya etilgan tovarlar ro‘yxati", "pricing.standard.4": "Muzlatilgan mablag‘ ko‘rinishidagi tovarlar", "pricing.standard.5": "Aksiya va to‘plamlar yaratish", "pricing.standard.6": "Valyuta bilan ishlash", "pricing.standard.7": "Xarajatlarni yuritish", "pricing.standard.8": "Markirovka bilan ishlash",
+          "pricing.premium.1": "Standard tarifidagi barcha imkoniyatlar", "pricing.premium.2": "Mijozlar uchun bonus (Loyalty)", "pricing.premium.3": "Analitika (ABC tahlil, OOS tahlil)", "pricing.premium.4": "Mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlar",
+          "course.eyebrow": "Bilim bazasi", "course.title": "I-Do‘kon Kursi", "course.desc": "POS dasturini to‘liq va oson o‘rganing. Har bir modulda amaliy misollar, video darslar va interaktiv topshiriqlar mavjud.", "course.note": "Kursni tugatgan har bir mijoz programmani mustaqil ishlata oladi va savollarga tez javob topadi.", "course.cta": "Kursni boshlash →",
+          "faq.eyebrow": "Savolingiz bormi?", "faq.title": "Ko‘p beriladigan savollarga javoblar", "faq.lead": "Kerakli javobni topmadingizmi? Jamoamiz sizga mos yechimni tanlashda yordam beradi.", "faq.cta": "Savol berish", "faq.1.q": "POS tizimi biznesimga qanday foyda keltiradi?", "faq.1.a": "POS tizimi savdo, ombor, hisobot va mijozlar bilan ishlashni yagona boshqaruv nuqtasida birlashtiradi. Bu xatolarni kamaytiradi, jarayonlarni tezlashtiradi va real raqamlar asosida qaror qabul qilishga yordam beradi.", "faq.2.q": "POS tizimini onlayn do‘konim bilan integratsiya qila olamanmi?", "faq.2.a": "Ha. IDO‘KON mavjud kassa va to‘lov tizimlari bilan bog‘lanadi. Muayyan onlayn do‘kon yoki boshqa tizim bo‘yicha integratsiya imkoniyatini jamoamiz bilan muhokama qilishingiz mumkin.", "faq.3.q": "POS tizimidan foydalanish uchun maxsus o‘qitish kerakmi?", "faq.3.a": "Interfeys yangi kassir ham tez o‘rganishi uchun sodda tuzilgan. Bundan tashqari, I-Do‘kon kursida modullar, amaliy misollar, video darslar va interaktiv topshiriqlar mavjud.", "faq.4.q": "POS tizimi qanday savdo tahlillarini taqdim etadi?", "faq.4.a": "Aylanma, foyda, top mahsulotlar, filiallar kesimi, ABC tahlil, OOS tahlil va mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlarni ko‘rish mumkin.", "faq.5.q": "Biznesim uchun to‘g‘ri POS tizimini qanday tanlayman?", "faq.5.a": "Biznes turi, hajmi, byudjeti, zarur integratsiyalar va kelajakdagi o‘sishni hisobga oling. Start, Standard va Premium tariflarini solishtiring yoki bepul maslahat uchun biz bilan bog‘laning.",
+          "contact.eyebrow": "Biz bilan bog‘lanish", "contact.title": "Do‘koningiz uchun to‘g‘ri konfiguratsiyani topamiz", "contact.lead": "Savollaringizni yozib qoldiring — jamoamiz ehtiyojingizni o‘rganib, mos tarif va qurilmalar bo‘yicha yordam beradi.", "contact.name": "Ismingiz", "contact.phone": "Telefon raqamingiz", "contact.phone_hint": "Masalan: +998 90 123 45 67", "contact.message": "Murojaatingiz haqida batafsil", "contact.message_placeholder": "Do‘kon turi, filiallar soni va kerakli imkoniyatlar...", "contact.submit": "Yuborish", "contact.privacy": "Yuborish orqali menejerimiz siz bilan bog‘lanishiga rozilik bildirasiz.", "form.sending": "Yuborilmoqda...", "form.success": "✅ Xabaringiz yuborildi!", "form.error": "❌ Serverga ulanishda xatolik.", "form.required": "Iltimos, barcha majburiy maydonlarni to‘ldiring.",
+          "footer.about": "POS dasturimiz biznes jarayonlaringizni soddalashtirib, samaradorlikni oshiradigan yakuniy yechimdir. Oddiylik, ko‘p qirrali imkoniyatlar va ilg‘or texnologiyalar uyg‘unligiga e’tibor qaratganmiz.", "footer.product": "Mahsulot", "footer.software": "Dastur", "footer.resources": "Resurslar", "footer.support": "Qo‘llab-quvvatlash", "footer.copy": "© 2025. Barcha huquqlar himoyalangan.",
+          "demo.eyebrow": "Bepul demo", "demo.title": "Demo bo‘limini tanlang", "demo.cash": "Kassa", "demo.admin": "Admin", "demo.cash_desc": "Kassa dasturini yuklab olish uchun quyidagi tugmani bosing.", "demo.download": "Kassani yuklab olish", "demo.admin_desc": "Admin panelga kirish uchun havola va demo login-parolidan foydalaning.", "demo.open_admin": "Admin panelga o‘tish", "demo.login": "Login", "demo.password": "Parol", "demo.copy": "Nusxa olish", "demo.copied": "Nusxa olindi!"
+        },
+        ru: {
+          langName: "Русский", skip: "Перейти к содержанию", "menu.open": "Открыть меню", "menu.close": "Закрыть меню",
+          "nav.home": "Главная", "nav.features": "Функции", "nav.equipment": "Оборудование", "nav.integrations": "Интеграции", "nav.pricing": "Тарифы", "nav.course": "Курс I-Do‘kon", "nav.contact": "Контакты",
+          "hero.eyebrow": "Новый стандарт управления торговлей", "hero.title": "Управляйте продажами с <span>точными данными</span>", "hero.subtitle": "Современный POS, складской учет, отчеты в реальном времени и платежные интеграции — на единой удобной платформе для вашего магазина.", "hero.demo": "Попробовать демо", "hero.contact": "Связаться", "hero.meta1": "Windows и Web", "hero.meta2": "Запуск за 10 минут", "hero.meta3": "Поддержка 24/7", "hero.status": "Система работает", "hero.stat_label": "Оценка клиентов", "hero.stat_note": "На основе 215 отзывов", "proof.title": "Совместимо с системами вашего магазина",
+          "features.eyebrow": "Развивайте бизнес с I-Do‘kon", "features.title": "Простой интерфейс. Мощное управление.", "features.lead": "POS-система, которая дает кассиру скорость, руководителю контроль, а клиенту — удобную покупку.",
+          "feature.1.title": "Скорость продаж ↑", "feature.1.body": "Оплата в один клик — меньше ошибок и быстрее очередь. Итоги дня видны сразу.", "feature.1.tag": "Наличные · Карта · QR", "feature.2.title": "Просто для кассиров", "feature.2.body": "Быстрый поиск сканером, скидки и бонусы. Новый кассир быстро освоит интерфейс.", "feature.2.tag": "Удобный интерфейс", "feature.3.title": "Отчеты и контроль", "feature.3.body": "Оборот, прибыль и топ-товары онлайн. Филиалы и экспорт — в один клик.", "feature.3.tag": "Реальное время", "feature.4.title": "Установка и интеграция", "feature.4.body": "Запуск на Windows за 10 минут. Принтер, сканер, терминал, QR и расширение через API.", "feature.4.tag": "Готовая экосистема",
+          "software.eyebrow": "Основные возможности", "software.title": "Точная картина для каждого решения", "software.lead": "От кассы до панели управления — нужные данные всегда на своем месте.", "software.1.title": "Управление запасами", "software.1.body": "Автоматически отслеживает остатки и поступления, напоминает о минимальном уровне.", "software.2.title": "Продажи и оплата", "software.2.body": "Принимает наличные, карты и QR-платежи в один клик, снижая ошибки.", "software.3.title": "Отчетность и аналитика", "software.3.body": "Показывает оборот и прибыль онлайн, экспорт и разрез по филиалам.", "software.4.title": "Безопасные транзакции", "software.4.body": "Защита на основе EMV, быстрое подтверждение и надежный результат.", "screen.1": "Заказы", "screen.2": "Продажи", "screen.3": "Склад", "screen.4": "Аналитика",
+          "users.eyebrow": "Для кого", "users.title": "Разные форматы. Одна надежная система.", "users.lead": "Наше программное обеспечение адаптировано для широкого круга бизнеса и отраслей.", "users.1": "Розничные магазины", "users.1.desc": "Ежедневные продажи и остатки", "users.2": "Супермаркеты", "users.2.desc": "Высокий поток и несколько касс", "users.3": "Мини-маркеты", "users.3.desc": "Простое и экономичное управление", "users.4": "Онлайн-торговля", "users.4.desc": "Синхронизация заказов и остатков", "users.5": "Другие сферы", "users.5.desc": "Интеграция под ваш бизнес",
+          "equipment.eyebrow": "POS-оборудование", "equipment.title": "Все необходимое для торговли", "equipment.lead": "Получите все оборудование для полного запуска кассовой системы в одном месте.", "equipment.cta": "Посмотреть все оборудование", "equipment.monoblock": "Моноблок", "equipment.printer": "Принтер чеков и этикеток", "equipment.scanner": "Сканер штрихкода", "equipment.box": "Денежный ящик", "equipment.scale": "Весы", currency: "сум",
+          "product.1.title": "Моноблок J/s POS", "product.1.desc": "Сенсорный дисплей, SSD 8/128 ГБ, Wi‑Fi, Windows 10 Pro, Intel Core i5. Гарантия 1 год.", "product.2.title": "POS-моноблок", "product.2.desc": "i5‑3230M, два экрана 15″, 8 ГБ RAM, SSD 128 ГБ, Wi‑Fi, Bluetooth, HDMI, VGA и 6 USB.", "product.3.title": "Xprinter 365B", "product.3.desc": "Бумага 20–82 мм, скорость 127 мм/с, USB + LAN. Гарантия 1 год.", "product.4.title": "Xprinter Check Q‑80", "product.4.desc": "Чековый принтер 80 мм с подключением USB и LAN.", "product.5.title": "WINSON A780", "product.5.desc": "USB, QR-коды, штрихкоды и маркировка. Гарантия 1 год.", "product.6.title": "Денежный ящик", "product.6.desc": "Электромеханический замок, RJ‑11, 5 отделений для купюр и 5 для монет, металлический корпус.", "product.7.title": "Rongta 1510", "product.7.desc": "Весы со штрихкодом до 15 кг. Гарантия 6 месяцев.", "product.8.title": "Торговые весы со штрихкодом", "product.8.desc": "Россия, 77 клавиш, 40 г–15 кг, бумага 58 мм. Гарантия 1 год.", "product.9.title": "Весы TMA", "product.9.desc": "Китай, до 30 кг, до 4000 PLU. Гарантия 6 месяцев.",
+          "integrations.eyebrow": "Интеграции", "integrations.title": "Перейдите на новую систему без разрыва процессов", "integrations.lead": "IDO‘KON легко подключается к существующим кассовым системам. Данные сохраняются, а наша команда поддерживает переход.", "integrations.1.title": "Быстрое подключение", "integrations.1.body": "Подключение за 1–2 дня", "integrations.2.title": "Безопасность данных", "integrations.2.body": "Все данные сохраняются", "integrations.3.title": "Техническая помощь", "integrations.3.body": "Полная поддержка при интеграции", "integrations.systems": "Поддерживаемые системы", "system.multikassa": "Онлайн-касса, связанная с налоговой системой", "system.arco": "Распространенная кассовая и отчетная система", "system.eimzo": "SMS-уведомления через E-imzo", "integrations.other.title": "Другие системы", "integrations.other.body": "Нет вашей системы в списке? Обсудите интеграцию с нами.",
+          "pricing.eyebrow": "Прозрачные цены", "pricing.title": "Выберите тариф для вашего бизнеса", "pricing.lead": "От небольшого магазина до торговой сети — понятный план с нужными возможностями.", "pricing.monthly": "Ежемесячно", "pricing.yearly": "Ежегодно", "pricing.per_month": "сум / мес", "pricing.per_year": "сум / год", "pricing.choose": "Выбрать тариф", "pricing.popular": "Популярно", "pricing.start.subtitle": "Для небольших магазинов", "pricing.standard.subtitle": "Для стандартных магазинов", "pricing.premium.subtitle": "Для крупных магазинов",
+          "pricing.start.1": "Неограниченное добавление товаров", "pricing.start.2": "Мгновенная загрузка товаров через Excel", "pricing.start.3": "Удобная инвентаризация и контроль склада", "pricing.start.4": "Расчеты с поставщиками и клиентами", "pricing.start.5": "Понятные и полные отчеты", "pricing.standard.1": "Интеграция с налоговыми системами (Arco, Multikassa)", "pricing.standard.2": "Платежные интеграции (Click, Payme, Uzum)", "pricing.standard.3": "Список рекомендуемых товаров", "pricing.standard.4": "Учет замороженных в товарах средств", "pricing.standard.5": "Акции и наборы", "pricing.standard.6": "Работа с валютой", "pricing.standard.7": "Учет расходов", "pricing.standard.8": "Работа с маркировкой", "pricing.premium.1": "Все возможности Standard", "pricing.premium.2": "Бонусная программа (Loyalty)", "pricing.premium.3": "Аналитика (ABC, OOS)", "pricing.premium.4": "Расширенные отчеты по движению товаров",
+          "course.eyebrow": "База знаний", "course.title": "Курс I-Do‘kon", "course.desc": "Освойте POS полностью и легко. В каждом модуле есть практика, видеоуроки и интерактивные задания.", "course.note": "После курса каждый клиент сможет самостоятельно работать в программе и быстро находить ответы.", "course.cta": "Начать курс →",
+          "faq.eyebrow": "Есть вопросы?", "faq.title": "Ответы на частые вопросы", "faq.lead": "Не нашли ответ? Наша команда поможет подобрать решение.", "faq.cta": "Задать вопрос", "faq.1.q": "Как POS-система поможет моему бизнесу?", "faq.1.a": "POS объединяет продажи, склад, отчеты и работу с клиентами. Это снижает ошибки, ускоряет процессы и помогает принимать решения по реальным данным.", "faq.2.q": "Можно ли интегрировать POS с интернет-магазином?", "faq.2.a": "Да. IDO‘KON подключается к кассовым и платежным системам. Интеграцию с конкретным интернет-магазином можно обсудить с нашей командой.", "faq.3.q": "Нужно ли специальное обучение?", "faq.3.a": "Интерфейс прост для новых кассиров. Курс I-Do‘kon также включает модули, практику, видео и интерактивные задания.", "faq.4.q": "Какую аналитику предоставляет POS?", "faq.4.a": "Доступны оборот, прибыль, топ-товары, данные по филиалам, ABC и OOS анализ, а также отчеты о движении товаров.", "faq.5.q": "Как выбрать подходящий POS?", "faq.5.a": "Учтите тип и масштаб бизнеса, бюджет, интеграции и рост. Сравните Start, Standard и Premium или получите бесплатную консультацию.",
+          "contact.eyebrow": "Свяжитесь с нами", "contact.title": "Подберем конфигурацию для вашего магазина", "contact.lead": "Оставьте запрос — команда предложит подходящий тариф и оборудование.", "contact.name": "Ваше имя", "contact.phone": "Телефон", "contact.phone_hint": "Например: +998 90 123 45 67", "contact.message": "Расскажите о запросе", "contact.message_placeholder": "Тип магазина, число филиалов и нужные функции...", "contact.submit": "Отправить", "contact.privacy": "Отправляя форму, вы соглашаетесь на звонок менеджера.", "form.sending": "Отправляем...", "form.success": "✅ Сообщение отправлено!", "form.error": "❌ Ошибка соединения с сервером.", "form.required": "Заполните все обязательные поля.",
+          "footer.about": "Наша POS-система упрощает бизнес-процессы и повышает эффективность благодаря простоте, гибкости и современным технологиям.", "footer.product": "Продукт", "footer.software": "Программа", "footer.resources": "Ресурсы", "footer.support": "Поддержка", "footer.copy": "© 2025. Все права защищены.",
+          "demo.eyebrow": "Бесплатное демо", "demo.title": "Выберите демо-раздел", "demo.cash": "Касса", "demo.admin": "Админ", "demo.cash_desc": "Нажмите кнопку, чтобы скачать кассовую программу.", "demo.download": "Скачать кассу", "demo.admin_desc": "Используйте ссылку и демо-данные для входа.", "demo.open_admin": "Открыть админ-панель", "demo.login": "Логин", "demo.password": "Пароль", "demo.copy": "Копировать", "demo.copied": "Скопировано!"
+        },
+        en: {
+          langName: "English", skip: "Skip to main content", "menu.open": "Open menu", "menu.close": "Close menu",
+          "nav.home": "Home", "nav.features": "Features", "nav.equipment": "Equipment", "nav.integrations": "Integrations", "nav.pricing": "Pricing", "nav.course": "I-Do‘kon Course", "nav.contact": "Contact",
+          "hero.eyebrow": "A new standard in retail management", "hero.title": "Run sales with <span>accurate numbers</span>", "hero.subtitle": "Modern POS, inventory control, real-time reports and payment integrations — in one simple platform for your store.", "hero.demo": "Try the demo", "hero.contact": "Contact us", "hero.meta1": "Windows and Web", "hero.meta2": "Live in 10 minutes", "hero.meta3": "24/7 support", "hero.status": "System online", "hero.stat_label": "Customer rating", "hero.stat_note": "Based on 215 reviews", "proof.title": "Works with the systems your store already uses",
+          "features.eyebrow": "Grow your business with I-Do‘kon", "features.title": "Simple interface. Powerful control.", "features.lead": "A point-of-sale system that gives cashiers speed, managers control and customers a smooth checkout.",
+          "feature.1.title": "Faster sales ↑", "feature.1.body": "One-click payments mean fewer errors and faster lines. See daily results immediately.", "feature.1.tag": "Cash · Card · QR", "feature.2.title": "Easy for cashiers", "feature.2.body": "Fast scanner search, discounts and bonuses. New cashiers learn the interface quickly.", "feature.2.tag": "Friendly interface", "feature.3.title": "Reports and control", "feature.3.body": "Turnover, profit and top products online. Branch views and export in one click.", "feature.3.tag": "Real time", "feature.4.title": "Setup and integration", "feature.4.body": "Runs on Windows in 10 minutes. Supports printers, scanners, terminals, QR and API extensions.", "feature.4.tag": "Ready ecosystem",
+          "software.eyebrow": "Core software features", "software.title": "A clear view for every decision", "software.lead": "From the checkout to the admin panel, your team always has the right data in the right place.", "software.1.title": "Inventory management", "software.1.body": "Automatically tracks stock and incoming goods, with low-stock reminders.", "software.2.title": "Sales and payments", "software.2.body": "Accept cash, card and QR payments in one click with fewer errors.", "software.3.title": "Reporting and analytics", "software.3.body": "See turnover and profit in real time, with export and branch views.", "software.4.title": "Secure fast transactions", "software.4.body": "EMV-based protection, fast confirmation and reliable results.", "screen.1": "Orders", "screen.2": "Sales", "screen.3": "Inventory", "screen.4": "Analytics",
+          "users.eyebrow": "Built for", "users.title": "Different retail formats. One reliable system.", "users.lead": "Our software adapts to a wide range of businesses and industries.", "users.1": "Retail stores", "users.1.desc": "Daily sales and stock control", "users.2": "Supermarkets", "users.2.desc": "High traffic and multiple checkouts", "users.3": "Mini-markets", "users.3.desc": "Simple and efficient management", "users.4": "Online retail", "users.4.desc": "Synced orders and stock", "users.5": "Many more", "users.5.desc": "Integration tailored to your business",
+          "equipment.eyebrow": "POS equipment", "equipment.title": "Everything you need to start selling", "equipment.lead": "Get all the hardware required to launch a complete checkout system in one place.", "equipment.cta": "View all equipment", "equipment.monoblock": "POS terminal", "equipment.printer": "Receipt and label printer", "equipment.scanner": "Barcode scanner", "equipment.box": "Cash drawer", "equipment.scale": "Scale", currency: "UZS",
+          "product.1.title": "J/s POS monoblock", "product.1.desc": "Touch display, 8/128 GB SSD, Wi‑Fi, Windows 10 Pro and Intel Core i5. One-year warranty.", "product.2.title": "POS monoblock", "product.2.desc": "i5‑3230M, two 15″ displays, 8 GB RAM, 128 GB SSD, Wi‑Fi, Bluetooth, HDMI, VGA and six USB ports.", "product.3.title": "Xprinter 365B", "product.3.desc": "20–82 mm paper, 127 mm/s, USB + LAN. One-year warranty.", "product.4.title": "Xprinter Check Q‑80", "product.4.desc": "80 mm receipt printer with USB and LAN connectivity.", "product.5.title": "WINSON A780", "product.5.desc": "USB, QR code, barcode and product marking support. One-year warranty.", "product.6.title": "Cash drawer", "product.6.desc": "Electromechanical lock, RJ‑11, five bill and five coin compartments, metal body.", "product.7.title": "Rongta 1510", "product.7.desc": "15 kg barcode scale. Six-month warranty.", "product.8.title": "Barcode retail scale", "product.8.desc": "Made in Russia, 77 keys, 40 g–15 kg, 58 mm paper. One-year warranty.", "product.9.title": "TMA scale", "product.9.desc": "Made in China, up to 30 kg and 4,000 PLUs. Six-month warranty.",
+          "integrations.eyebrow": "System integrations", "integrations.title": "Move forward without interrupting your business", "integrations.lead": "IDO‘KON connects to existing checkout systems. Your data is preserved and our team supports the transition.", "integrations.1.title": "Fast connection", "integrations.1.body": "Connect in 1–2 days", "integrations.2.title": "Data safety", "integrations.2.body": "All existing data is preserved", "integrations.3.title": "Technical support", "integrations.3.body": "Full support throughout integration", "integrations.systems": "Supported systems", "system.multikassa": "Online checkout connected to the tax system", "system.arco": "Popular checkout and reporting system", "system.eimzo": "SMS notifications via E-imzo", "integrations.other.title": "Other systems", "integrations.other.body": "Not on the list? Talk to us about integration options.",
+          "pricing.eyebrow": "Transparent pricing", "pricing.title": "Choose a plan that fits your business", "pricing.lead": "From a small shop to a retail network — a clear plan with the capabilities you need.", "pricing.monthly": "Monthly", "pricing.yearly": "Yearly", "pricing.per_month": "UZS / month", "pricing.per_year": "UZS / year", "pricing.choose": "Choose plan", "pricing.popular": "Popular", "pricing.start.subtitle": "For small stores", "pricing.standard.subtitle": "For standard stores", "pricing.premium.subtitle": "For large stores",
+          "pricing.start.1": "Add unlimited products", "pricing.start.2": "Instant bulk upload via Excel", "pricing.start.3": "Convenient inventory and warehouse control", "pricing.start.4": "Supplier and customer settlements", "pricing.start.5": "Clear and complete reports", "pricing.standard.1": "Tax system integration (Arco, Multikassa)", "pricing.standard.2": "Payment integrations (Click, Payme, Uzum)", "pricing.standard.3": "Recommended products list", "pricing.standard.4": "Frozen-funds product tracking", "pricing.standard.5": "Create promotions and bundles", "pricing.standard.6": "Multi-currency support", "pricing.standard.7": "Expense management", "pricing.standard.8": "Product marking support", "pricing.premium.1": "All Standard plan features", "pricing.premium.2": "Customer bonus program (Loyalty)", "pricing.premium.3": "Analytics (ABC and OOS)", "pricing.premium.4": "Extended product movement reports",
+          "course.eyebrow": "Knowledge base", "course.title": "I-Do‘kon Course", "course.desc": "Learn the POS software fully and easily. Each module includes practical examples, video lessons and interactive tasks.", "course.note": "After completing the course, every client can use the program independently and find answers quickly.", "course.cta": "Start the course →",
+          "faq.eyebrow": "Have questions?", "faq.title": "Answers to common questions", "faq.lead": "Can’t find your answer? Our team will help you choose the right solution.", "faq.cta": "Ask a question", "faq.1.q": "How can a POS system help my business?", "faq.1.a": "A POS brings sales, inventory, reporting and customer workflows together. It reduces errors, speeds up work and supports decisions with real data.", "faq.2.q": "Can I integrate the POS with my online store?", "faq.2.a": "Yes. IDO‘KON connects to checkout and payment systems. Talk to our team about integration with a specific online store or platform.", "faq.3.q": "Do I need special training?", "faq.3.a": "The interface is easy for new cashiers. The I-Do‘kon course also includes modules, practice, video lessons and interactive tasks.", "faq.4.q": "What sales analytics are available?", "faq.4.a": "View turnover, profit, top products, branch breakdowns, ABC and OOS analysis, and extended product movement reports.", "faq.5.q": "How do I choose the right POS?", "faq.5.a": "Consider your business type, scale, budget, integrations and growth. Compare Start, Standard and Premium, or contact us for a free consultation.",
+          "contact.eyebrow": "Contact us", "contact.title": "We’ll find the right setup for your store", "contact.lead": "Tell us what you need and our team will recommend the right plan and equipment.", "contact.name": "Your name", "contact.phone": "Phone number", "contact.phone_hint": "Example: +998 90 123 45 67", "contact.message": "Tell us about your request", "contact.message_placeholder": "Store type, number of branches and required features...", "contact.submit": "Send", "contact.privacy": "By submitting, you agree that our manager may contact you.", "form.sending": "Sending...", "form.success": "✅ Your message was sent!", "form.error": "❌ Could not connect to the server.", "form.required": "Please complete all required fields.",
+          "footer.about": "Our POS system simplifies business processes and improves efficiency through simplicity, flexibility and modern technology.", "footer.product": "Product", "footer.software": "Software", "footer.resources": "Resources", "footer.support": "Support", "footer.copy": "© 2025. All rights reserved.",
+          "demo.eyebrow": "Free demo", "demo.title": "Choose a demo area", "demo.cash": "Checkout", "demo.admin": "Admin", "demo.cash_desc": "Use the button below to download the checkout application.", "demo.download": "Download checkout", "demo.admin_desc": "Use the link and demo credentials to enter the admin panel.", "demo.open_admin": "Open admin panel", "demo.login": "Login", "demo.password": "Password", "demo.copy": "Copy", "demo.copied": "Copied!"
+        }
+      };
+
+      let currentLang = 'uz';
+      let lastFocused = null;
+      const qs = (selector, root = document) => root.querySelector(selector);
+      const qsa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const t = key => (translations[currentLang] && translations[currentLang][key]) || translations.uz[key] || key;
+
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        try { localStorage.setItem('site_lang', lang); } catch (_) {}
+        qsa('[data-i18n]').forEach(el => {
+          const value = t(el.dataset.i18n);
+          if (value !== undefined) el.textContent = value;
+        });
+        qsa('[data-i18n-html]').forEach(el => {
+          const value = t(el.dataset.i18nHtml);
+          if (value !== undefined) el.innerHTML = value;
+        });
+        qsa('[data-i18n-placeholder]').forEach(el => {
+          const value = t(el.dataset.i18nPlaceholder);
+          if (value !== undefined) el.placeholder = value;
+        });
+        qs('#languageName').textContent = translations[lang].langName;
+        qsa('[data-lang]').forEach(btn => btn.setAttribute('aria-checked', String(btn.dataset.lang === lang)));
+        const menuIsOpen = qs('#menuToggle').getAttribute('aria-expanded') === 'true';
+        qs('#menuToggle').setAttribute('aria-label', t(menuIsOpen ? 'menu.close' : 'menu.open'));
+        const yearly = qs('[data-cycle="yearly"]').getAttribute('aria-pressed') === 'true';
+        qsa('[data-price-suffix]').forEach(el => el.textContent = t(yearly ? 'pricing.per_year' : 'pricing.per_month'));
+      }
+
+      const languageToggle = qs('#languageToggle');
+      const languageMenu = qs('#languageMenu');
+      function closeLanguageMenu() { languageMenu.hidden = true; languageToggle.setAttribute('aria-expanded', 'false'); }
+      languageToggle.addEventListener('click', () => {
+        const open = languageToggle.getAttribute('aria-expanded') === 'true';
+        languageToggle.setAttribute('aria-expanded', String(!open));
+        languageMenu.hidden = open;
+      });
+      qsa('[data-lang]').forEach(btn => btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); closeLanguageMenu(); }));
+      document.addEventListener('click', event => { if (!event.target.closest('.language')) closeLanguageMenu(); });
+
+      const menuToggle = qs('#menuToggle');
+      const navWrap = qs('#navWrap');
+      function closeMenu() { navWrap.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.setAttribute('aria-label', t('menu.open')); document.body.classList.remove('menu-open'); }
+      menuToggle.addEventListener('click', () => {
+        const open = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!open));
+        menuToggle.setAttribute('aria-label', t(open ? 'menu.open' : 'menu.close'));
+        navWrap.classList.toggle('open', !open);
+        document.body.classList.toggle('menu-open', !open);
+      });
+      qsa('.main-nav a').forEach(link => link.addEventListener('click', closeMenu));
+      window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+
+      const sections = qsa('main section[id]');
+      const navLinks = qsa('.main-nav a[href^="#"]');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) navLinks.forEach(link => link.setAttribute('aria-current', String(link.getAttribute('href') === '#' + entry.target.id)));
+          });
+        }, { rootMargin: '-25% 0px -65% 0px' });
+        sections.forEach(section => observer.observe(section));
+      }
+
+      qsa('.screen-tab').forEach(tab => tab.addEventListener('click', () => {
+        qsa('.screen-tab').forEach(item => item.setAttribute('aria-selected', 'false'));
+        tab.setAttribute('aria-selected', 'true');
+        const image = qs('#softwareImage');
+        image.src = tab.dataset.screen;
+        image.alt = tab.dataset.label;
+        qs('#screenLabel').textContent = tab.dataset.label;
+      }));
+
+      const productRow = qs('#productRow');
+      const scrollProducts = direction => productRow.scrollBy({ left: direction * Math.min(productRow.clientWidth * .82, 380), behavior: 'smooth' });
+      qs('#productPrev').addEventListener('click', () => scrollProducts(-1));
+      qs('#productNext').addEventListener('click', () => scrollProducts(1));
+
+      qsa('[data-cycle]').forEach(button => button.addEventListener('click', () => {
+        const yearly = button.dataset.cycle === 'yearly';
+        qsa('[data-cycle]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        qsa('[data-monthly]').forEach(price => price.textContent = yearly ? price.dataset.yearly : price.dataset.monthly);
+        qsa('[data-price-suffix]').forEach(suffix => suffix.textContent = t(yearly ? 'pricing.per_year' : 'pricing.per_month'));
+        qsa('[data-plan-link]').forEach(link => link.href = 'https://idokon.uz/cart.html?tab=plans&cycle=' + (yearly ? 'yearly' : 'monthly'));
+      }));
+
+      const demoModal = qs('#demoModal');
+      const demoClose = qs('#demoClose');
+      function openModal() { lastFocused = document.activeElement; demoModal.hidden = false; document.body.classList.add('modal-open'); demoClose.focus(); }
+      function closeModal() { demoModal.hidden = true; document.body.classList.remove('modal-open'); if (lastFocused) lastFocused.focus(); }
+      qsa('[data-open-demo]').forEach(button => button.addEventListener('click', openModal));
+      demoClose.addEventListener('click', closeModal);
+      demoModal.addEventListener('click', event => { if (event.target === demoModal) closeModal(); });
+      const cashTab = qs('#cashTab');
+      const adminTab = qs('#adminTab');
+      const cashPanel = qs('#cashPanel');
+      const adminPanel = qs('#adminPanel');
+      function selectDemo(admin) {
+        cashTab.setAttribute('aria-selected', String(!admin)); adminTab.setAttribute('aria-selected', String(admin));
+        cashPanel.hidden = admin; adminPanel.hidden = !admin;
+      }
+      cashTab.addEventListener('click', () => selectDemo(false));
+      adminTab.addEventListener('click', () => selectDemo(true));
+
+      const toast = qs('#toast');
+      let toastTimer;
+      function showToast(message) { clearTimeout(toastTimer); toast.textContent = message; toast.hidden = false; toastTimer = setTimeout(() => { toast.hidden = true; }, 1600); }
+      qsa('[data-copy]').forEach(button => button.addEventListener('click', async () => {
+        const value = qs('#' + button.dataset.copy).textContent;
+        try { await navigator.clipboard.writeText(value); } catch (_) {
+          const helper = document.createElement('textarea'); helper.value = value; helper.style.position = 'fixed'; helper.style.opacity = '0'; document.body.appendChild(helper); helper.select(); document.execCommand('copy'); helper.remove();
+        }
+        showToast(t('demo.copied'));
+      }));
+
+      const lightbox = qs('#lightbox');
+      const lightboxImage = qs('#lightboxImage');
+      const lightboxClose = qs('#lightboxClose');
+      function openLightbox(image) { lastFocused = document.activeElement; lightboxImage.src = image.src; lightboxImage.alt = image.alt; lightbox.hidden = false; document.body.classList.add('modal-open'); lightboxClose.focus(); }
+      function closeLightbox() { lightbox.hidden = true; lightboxImage.src = ''; document.body.classList.remove('modal-open'); if (lastFocused) lastFocused.focus(); }
+      qsa('[data-lightbox]').forEach(image => image.addEventListener('click', () => openLightbox(image)));
+      qsa('[data-lightbox-button]').forEach(button => button.addEventListener('click', () => openLightbox(qs('img', button))));
+      lightbox.addEventListener('click', event => { if (event.target === lightbox || event.target === lightboxImage) closeLightbox(); });
+      lightboxClose.addEventListener('click', closeLightbox);
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') { closeLanguageMenu(); closeMenu(); if (!demoModal.hidden) closeModal(); if (!lightbox.hidden) closeLightbox(); }
+        if (event.key === 'Tab') {
+          const activeDialog = !demoModal.hidden ? demoModal : (!lightbox.hidden ? lightbox : null);
+          if (!activeDialog) return;
+          const focusable = qsa('button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])', activeDialog).filter(el => !el.hidden);
+          if (!focusable.length) return;
+          const first = focusable[0], last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+          else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+      });
+
+      const contactForm = qs('#contactForm');
+      const formStatus = qs('#formStatus');
+      contactForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (!contactForm.checkValidity()) { contactForm.reportValidity(); formStatus.textContent = t('form.required'); formStatus.style.color = 'var(--danger)'; return; }
+        const submit = qs('[type="submit"]', contactForm);
+        submit.disabled = true; formStatus.textContent = t('form.sending'); formStatus.style.color = 'var(--muted)';
+        const payload = { name: qs('#name').value.trim(), phone: qs('#phone').value.trim(), message: qs('#message').value.trim() };
+        try {
+          const response = await fetch('https://idokon.uz/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+          const data = await response.json();
+          if (!response.ok || !data.ok) throw new Error(data.error || 'Request failed');
+          formStatus.textContent = t('form.success'); formStatus.style.color = 'var(--green-strong)'; contactForm.reset();
+        } catch (_) { formStatus.textContent = t('form.error'); formStatus.style.color = 'var(--danger)'; }
+        finally { submit.disabled = false; }
+      });
+
+      const backTop = qs('#backTop');
+      window.addEventListener('scroll', () => { backTop.hidden = window.scrollY < 700; }, { passive: true });
+      backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      let savedLang = 'uz';
+      try { savedLang = localStorage.getItem('site_lang') || 'uz'; } catch (_) {}
+      setLanguage(savedLang);
+    })();
+  </script>
+</body>
+</html>
