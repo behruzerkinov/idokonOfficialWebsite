@@ -231,7 +231,7 @@ export function App() {
       <main className="flex-1 relative z-10">
         
         {/* Section 1: Hero & Tickers */}
-        <div className="relative z-10 bg-zinc-50 dark:bg-[#090a0f]">
+        <div className="relative z-10 bg-zinc-50 dark:bg-[#07080a]">
           <Hero
             t={t}
             onOpenDemo={() => setIsDemoOpen(true)}
@@ -257,7 +257,7 @@ export function App() {
         </div>
 
         {/* Section 2: Twain AI Pinned Scroll-Driven Storytelling Stage (#features-and-benefits) */}
-        <div className="relative z-20 bg-zinc-50/50 dark:bg-[#090a0f]/50">
+        <div className="relative z-20 bg-zinc-50/50 dark:bg-[#07080a]">
           <PosInteractiveShowcase
             t={t}
             onOpenLightbox={(url, title) => setLightboxData({ url, title })}
@@ -265,7 +265,7 @@ export function App() {
         </div>
 
         {/* Section 3: Values Bento Grid */}
-        <div className="relative z-30 bg-zinc-50 dark:bg-[#090a0f] border-t border-zinc-200/80 dark:border-zinc-800/80">
+        <div className="relative z-30 bg-zinc-50 dark:bg-[#07080a] border-t border-zinc-200/80 dark:border-zinc-800/80">
           <ValueGrid t={t} />
         </div>
 

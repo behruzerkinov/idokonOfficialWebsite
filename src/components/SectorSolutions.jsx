@@ -41,7 +41,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
   ];
 
   return (
-    <section className="py-28 sm:py-36 lg:py-44 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
+    <section className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

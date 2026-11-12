@@ -42,11 +42,11 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
   ];
 
   return (
-    <section id="integrations" className="py-24 sm:py-32 lg:py-40 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
+    <section id="integrations" className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-left max-w-3xl mb-16 sm:mb-20">
+        <div className="text-left max-w-3xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-[#12141c] border border-zinc-200 dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4 shadow-sm">
             <span>{t.integrations.eyebrow}</span>
           </div>

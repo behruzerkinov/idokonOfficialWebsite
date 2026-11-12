@@ -20,7 +20,7 @@ export const HugeBrandTextSection = ({ t, onOpenDemo }) => {
   };
 
   return (
-    <section className="relative py-28 sm:py-36 lg:py-48 overflow-hidden bg-zinc-50 dark:bg-[#07080a] border-t border-zinc-200/80 dark:border-white/[0.08] transition-colors">
+    <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-zinc-50 dark:bg-[#07080a] border-t border-zinc-200/80 dark:border-white/[0.08] transition-colors">
       
       {/* Ambient Radial Depth Light */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-emerald-500/[0.04] dark:bg-emerald-500/[0.03] rounded-full blur-[140px] pointer-events-none" />

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const EditorialStatement = ({ t }) => {
   return (
-    <section className="py-24 sm:py-32 lg:py-40 bg-zinc-100/60 dark:bg-[#070b10] border-y border-zinc-200/80 dark:border-zinc-800/80 text-zinc-950 dark:text-zinc-50 transition-colors">
+    <section className="py-14 sm:py-16 lg:py-20 bg-zinc-100/60 dark:bg-[#07080a] border-y border-zinc-200/80 dark:border-white/[0.08] text-zinc-950 dark:text-zinc-50 transition-colors">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Eyebrow */}

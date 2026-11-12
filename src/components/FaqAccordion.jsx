@@ -11,7 +11,7 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
   );
 
   return (
-    <section id="faq" className="py-28 sm:py-36 lg:py-44 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
+    <section id="faq" className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
