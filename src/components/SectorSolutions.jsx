@@ -9,7 +9,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
       id: "retail",
       title: t.sectors.s1, // Chakana do'konlar
       desc: t.sectors.s1_desc,
-      icon: <Store className="w-5 h-5 text-emerald-500" />,
+      icon: Store,
       features: [
         "Shtrix-kod skaneri va etiketka printeri bilan to'liq integratsiya",
         "Kiyim-kechak, kosmetika va nooziq-ovqat tovarlar qulay nazorati",
@@ -20,7 +20,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
       id: "supermarket",
       title: t.sectors.s2, // Supermarketlar
       desc: t.sectors.s2_desc,
-      icon: <ShoppingCart className="w-5 h-5 text-emerald-500" />,
+      icon: ShoppingCart,
       features: [
         "Bir nechta kassa apparatlarini bir vaqtda tarmoqlash",
         "Elektron savdo tarozilari bilan avtomat sinxronlash",
@@ -31,7 +31,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
       id: "minimarket",
       title: t.sectors.s3, // Mini-marketlar
       desc: t.sectors.s3_desc,
-      icon: <ShoppingBag className="w-5 h-5 text-emerald-500" />,
+      icon: ShoppingBag,
       features: [
         "Tejamkor POS monoblok va planshetda ishlash imkoniyati",
         "Muzlatilgan qoldiqlarni aniqlash va muddat nazorati",
@@ -59,32 +59,38 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
 
         {/* 3 Pure Retail Shop Sectors Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
-          {sectors.map((sec, idx) => (
-            <button
-              key={sec.id}
-              type="button"
-              onClick={() => setSelectedSector(idx)}
-              className={`p-6 rounded-2xl text-left transition-all duration-150 cursor-pointer ${
-                selectedSector === idx
-                  ? 'bg-emerald-500/10 dark:bg-emerald-500/10 border-2 border-emerald-500 shadow-sm'
-                  : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
-              }`}
-            >
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
-                selectedSector === idx 
-                  ? 'bg-emerald-500 text-slate-950 font-bold' 
-                  : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'
-              }`}>
-                {sec.icon}
-              </div>
-              <h3 className="font-bold text-lg mb-1.5 text-zinc-900 dark:text-zinc-50">
-                {sec.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                {sec.desc}
-              </p>
-            </button>
-          ))}
+          {sectors.map((sec, idx) => {
+            const Icon = sec.icon;
+            const isSelected = selectedSector === idx;
+            return (
+              <button
+                key={sec.id}
+                type="button"
+                onClick={() => setSelectedSector(idx)}
+                className={`p-6 rounded-2xl text-left transition-all duration-150 cursor-pointer ${
+                  isSelected
+                    ? 'bg-emerald-500/10 dark:bg-emerald-500/10 border-2 border-emerald-500 shadow-sm'
+                    : 'bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
+                  isSelected 
+                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs' 
+                    : 'bg-zinc-200/80 dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400'
+                }`}>
+                  <Icon className={`w-5 h-5 transition-colors ${
+                    isSelected ? 'text-slate-950 stroke-[2.5]' : 'text-emerald-600 dark:text-emerald-400 stroke-2'
+                  }`} />
+                </div>
+                <h3 className="font-bold text-lg mb-1.5 text-zinc-900 dark:text-zinc-50">
+                  {sec.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {sec.desc}
+                </p>
+              </button>
+            );
+          })}
         </div>
 
         {/* Selected Sector Highlights Preview Banner */}
