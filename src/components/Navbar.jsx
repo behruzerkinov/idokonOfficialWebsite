@@ -52,22 +52,12 @@ export const Navbar = ({
         <div className="flex items-center justify-between gap-3">
           
           {/* Logo & Brand */}
-          <a href="#home" className="flex items-center gap-2.5 flex-shrink-0 group">
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500 text-slate-950 font-black text-sm shadow-sm group-hover:scale-105 transition-transform">
-              <span>ID</span>
-              <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <span className="font-extrabold text-base tracking-tight text-zinc-900 dark:text-zinc-50 group-hover:text-emerald-500 transition-colors">
-                IDO'KON
-              </span>
-              <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                POS
-              </span>
-            </div>
+          <a href="#home" className="flex items-center gap-2 flex-shrink-0 group py-1" aria-label="IDO'KON Bosh sahifa">
+            <img
+              src="/idokon_logo.png"
+              alt="IDO'KON"
+              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-150 group-hover:scale-[1.02]"
+            />
           </a>
 
           {/* Desktop Navigation Links: Strict Single Line */}

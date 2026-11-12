@@ -22,12 +22,12 @@ export const ValueGrid = ({ t }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Card 1 */}
-          <div className="p-7 sm:p-8 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-emerald-500/30 dark:border-emerald-500/20 shadow-sm transition-all duration-200">
+          <div className="p-7 sm:p-8 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200">
             <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs shadow-sm">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-xs">
                 01
               </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              <span className="text-xs font-mono font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700">
                 {t.features.f1_tag}
               </span>
             </div>

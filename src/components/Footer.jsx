@@ -15,16 +15,12 @@ export const Footer = ({ t, onOpenDemo }) => {
           
           {/* Col 1: Brand Info (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <a href="#home" className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500 text-slate-950 font-bold text-sm shadow-sm">
-                ID
-              </div>
-              <span className="font-extrabold text-base tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-                IDO'KON
-                <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                  POS
-                </span>
-              </span>
+            <a href="#home" className="inline-flex items-center gap-2 group" aria-label="IDO'KON Bosh sahifa">
+              <img
+                src="/idokon_logo.png"
+                alt="IDO'KON"
+                className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+              />
             </a>
 
             <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-sm">
