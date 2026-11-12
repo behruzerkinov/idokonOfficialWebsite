@@ -28,7 +28,7 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || formData.phone.length < 9) {
-      toast.error("Iltimos, ismingiz va telefon raqamingizni to'liq kiriting!");
+      toast.error(t.demoModal?.fillRequired || "Iltimos, ismingiz va telefon raqamingizni to'liq kiriting!");
       return;
     }
 
@@ -37,7 +37,7 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
       setIsSubmitting(false);
       setIsSuccess(true);
       toast.success(t.demoModal.successTitle, {
-        description: "Savdo bo'limi operatori siz bilan 10 daqiqada bog'lanadi."
+        description: t.demoModal?.operatorContactDesc || "Savdo bo'limi operatori siz bilan 10 daqiqada bog'lanadi."
       });
     }, 600);
   };
@@ -174,7 +174,7 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
 
               <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700/80 text-left mb-6">
                 <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mb-1">
-                  Tezkor bog'lanish:
+                  {t.demoModal?.fastContact || "Tezkor bog'lanish:"}
                 </div>
                 <a 
                   href="tel:+998991180999" 
@@ -190,7 +190,7 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
                 onClick={handleResetAndClose}
                 className="w-full py-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
               >
-                Yopish
+                {t.demoModal?.closeBtn || t.menu?.close || "Yopish"}
               </button>
             </div>
           )}

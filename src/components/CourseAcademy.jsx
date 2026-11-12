@@ -12,37 +12,37 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
   const courseScreenshots = [
     { 
       url: "/screenshots/course_test.png", 
-      title: "Bilim darajasini tekshirish — 20 ta interaktiv test savollari va sertifikatlash (/test)",
-      badge: "Test ishlash (/test)",
-      desc: "Xodimlar va mijozlar uchun 20 ta amaliy test tizimi",
+      title: t?.course?.shots?.test?.title || "Bilim darajasini tekshirish — 20 ta interaktiv test savollari va sertifikatlash (/test)",
+      badge: t?.course?.shots?.test?.badge || "Test ishlash (/test)",
+      desc: t?.course?.shots?.test?.desc || "Xodimlar va mijozlar uchun 20 ta amaliy test tizimi",
       path: "idokon-course.vercel.app/test"
     },
     { 
       url: "/screenshots/course_admin_qabul.png", 
-      title: "Admin Panel: Mahsulot qabul qilish, qayta narxlash va ombor nazorati",
-      badge: "Admin Panel",
-      desc: "Ta'minotchilardan qabul, narxlash va partiyalar hisobi",
+      title: t?.course?.shots?.admin?.title || "Admin Panel: Mahsulot qabul qilish, qayta narxlash va ombor nazorati",
+      badge: t?.course?.shots?.admin?.badge || "Admin Panel",
+      desc: t?.course?.shots?.admin?.desc || "Ta'minotchilardan qabul, narxlash va partiyalar hisobi",
       path: "idokon-course.vercel.app/admin/mahsulot-qabul"
     },
     { 
       url: "/screenshots/course_kassa_sotish.png", 
-      title: "Kassa Panel: Kassada tezkor sotuv, fiskal cheklar va tovar qaytarish",
-      badge: "Kassa Panel",
-      desc: "Kassir ish o'rni: shtrix-kod, 0.8 sek sotuv va qaytarish",
+      title: t?.course?.shots?.kassa?.title || "Kassa Panel: Kassada tezkor sotuv, fiskal cheklar va tovar qaytarish",
+      badge: t?.course?.shots?.kassa?.badge || "Kassa Panel",
+      desc: t?.course?.shots?.kassa?.desc || "Kassir ish o'rni: shtrix-kod, 0.8 sek sotuv va qaytarish",
       path: "idokon-course.vercel.app/kassa/sotish"
     },
     { 
       url: "/screenshots/course_qurilmalar.png", 
-      title: "Qurilmalar: Shtrix-kod skaneri, chek printeri va tarozi sozlamalari",
-      badge: "Qurilmalar",
-      desc: "Barcode printer, check printer va savdo tarozisi integratsiyasi",
+      title: t?.course?.shots?.qurilmalar?.title || "Qurilmalar: Shtrix-kod skaneri, chek printeri va tarozi sozlamalari",
+      badge: t?.course?.shots?.qurilmalar?.badge || "Qurilmalar",
+      desc: t?.course?.shots?.qurilmalar?.desc || "Barcode printer, check printer va savdo tarozisi integratsiyasi",
       path: "idokon-course.vercel.app/qurilmalar/barcode"
     },
     { 
       url: "/screenshots/course_kirish.png", 
-      title: "IDOKON Docs: Interaktiv video darsliklar va bosh sahifa",
-      badge: "IDOKON Docs",
-      desc: "Dastur bilan tanishuv, imkoniyatlar va yangiliklar",
+      title: t?.course?.shots?.docs?.title || "IDOKON Docs: Interaktiv video darsliklar va bosh sahifa",
+      badge: t?.course?.shots?.docs?.badge || "IDOKON Docs",
+      desc: t?.course?.shots?.docs?.desc || "Dastur bilan tanishuv, imkoniyatlar va yangiliklar",
       path: "idokon-course.vercel.app/kirish"
     }
   ];
@@ -131,7 +131,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                   </span>
                 </div>
                 <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20 whitespace-nowrap">
-                  Haqiqiy skrinshot
+                  {t?.course?.realScreenshot || "Haqiqiy skrinshot"}
                 </span>
               </div>
             </div>
@@ -217,7 +217,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                             {title}
                           </h4>
                           <span className="text-[11px] text-zinc-400 font-mono tabular-nums">
-                            {module.duration}
+                            {typeof module.duration === 'object' ? (module.duration[lang] || module.duration.uz) : module.duration}
                           </span>
                         </div>
                       </div>

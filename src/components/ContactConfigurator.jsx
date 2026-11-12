@@ -27,7 +27,7 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || formData.phone.length < 9) {
-      toast.error("Iltimos, ismingiz va telefon raqamingizni to'liq kiriting!");
+      toast.error(t.contact?.fillRequired || "Iltimos, ismingiz va telefon raqamingizni to'liq kiriting!");
       return;
     }
 
@@ -36,8 +36,8 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-      toast.success("So'rovingiz qabul qilindi!", {
-        description: "Operatorimiz 10 daqiqa ichida siz bilan bog'lanadi."
+      toast.success(t.contact?.requestReceived || "So'rovingiz qabul qilindi!", {
+        description: t.contact?.requestDesc || "Operatorimiz 10 daqiqa ichida siz bilan bog'lanadi."
       });
       setFormData({
         name: '',
@@ -72,15 +72,15 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
           <div className="lg:col-span-5 rounded-2xl p-7 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col justify-between">
             <div>
               <div className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">
-                To'g'ridan-to'g'ri aloqa
+                {t.contact?.directContact || "To'g'ridan-to'g'ri aloqa"}
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-4">
-                Do'koningiz hisobini tartibga keltiramiz
+                {t.contact?.headline || "Do'koningiz hisobini tartibga keltiramiz"}
               </h3>
 
               <p className="text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
-                Dasturni sinab ko'rish, uskunalar tanlash yoki narxlar bo'yicha savollaringiz bo'lsa, mutaxassisimizga qo'ng'iroq qiling.
+                {t.contact?.subhead || "Dasturni sinab ko'rish, uskunalar tanlash yoki narxlar bo'yicha savollaringiz bo'lsa, mutaxassisimizga qo'ng'iroq qiling."}
               </p>
 
               <div className="space-y-3">
@@ -135,23 +135,23 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h4 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-2">
-                  So'rovingiz qabul qilindi!
+                  {t.contact?.requestReceived || "So'rovingiz qabul qilindi!"}
                 </h4>
                 <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-md mx-auto mb-6">
-                  Mutaxassisimiz tez orada sizga qo'ng'iroq qilib, I-Do'kon tizimini do'koningizga moslashtirish bo'yicha maslahat beradi.
+                  {t.contact?.requestDesc || "Mutaxassisimiz tez orada sizga qo'ng'iroq qilib, I-Do'kon tizimini do'koningizga moslashtirish bo'yicha maslahat beradi."}
                 </p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
                   className="px-4 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  Yana bir so'rov yuborish
+                  {t.contact?.sendAnother || "Yana bir so'rov yuborish"}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
-                  Konsultatsiya buyurtma qilish
+                  {t.contact?.orderConsultation || "Konsultatsiya buyurtma qilish"}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -198,13 +198,13 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                 {/* Optional Message */}
                 <div>
                   <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
-                    {t.contact.messageLabel} (ixtiyoriy)
+                    {t.contact.messageLabel} {t.contact?.optional || "(ixtiyoriy)"}
                   </label>
                   <textarea
                     rows={2}
                     value={formData.message}
                     onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                    placeholder="Qanday uskunalar yoki savollaringiz bor..."
+                    placeholder={t.contact?.messagePlaceholder || "Qanday uskunalar yoki savollaringiz bor..."}
                     className="w-full px-3.5 py-2.5 bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 rounded-lg text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
                   />
                 </div>

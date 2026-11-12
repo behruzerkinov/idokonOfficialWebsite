@@ -26,7 +26,7 @@ export const CartDrawer = ({
   const handleOrderSubmit = (e) => {
     e.preventDefault();
     if (!buyerInfo.name.trim() || buyerInfo.phone.length < 9) {
-      toast.error("Iltimos, ismingiz va telefon raqamingizni to'ldiring!");
+      toast.error(t.cartDrawer?.fillRequired || t.contact?.fillRequired || "Iltimos, ismingiz va telefon raqamingizni to'ldiring!");
       return;
     }
 
@@ -36,7 +36,7 @@ export const CartDrawer = ({
       setCheckoutStep('success');
       onClearCart();
       toast.success(t.cartDrawer.orderSuccess, {
-        description: "Operatorimiz buyurtmani tasdiqlash uchun 15 daqiqada bog'lanadi."
+        description: t.cartDrawer?.operatorContactDesc || t.demoModal?.operatorContactDesc || "Operatorimiz buyurtmani tasdiqlash uchun 15 daqiqada bog'lanadi."
       });
     }, 700);
   };
@@ -70,7 +70,7 @@ export const CartDrawer = ({
                   {t.cartDrawer.title}
                 </h3>
                 <span className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">
-                  {cart.length} xil qurilma tanlandi
+                  {cart.length} {t.cartDrawer?.itemsSelected || "xil qurilma tanlandi"}
                 </span>
               </div>
             </div>
@@ -79,7 +79,7 @@ export const CartDrawer = ({
               type="button"
               onClick={onClose}
               className="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800 transition-colors cursor-pointer"
-              aria-label="Yopish"
+              aria-label={t.menu?.close || "Yopish"}
             >
               <X className="w-4 h-4" />
             </button>
@@ -117,7 +117,7 @@ export const CartDrawer = ({
                             {item.title[lang] || item.title.uz}
                           </h4>
                           <div className="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                            {item.price.toLocaleString()} so'm
+                            {item.price.toLocaleString()} {t.equipment?.currency || "so'm"}
                           </div>
 
                           {/* Quantity Buttons with NumberFlow */}
@@ -147,7 +147,7 @@ export const CartDrawer = ({
                             type="button"
                             onClick={() => onRemoveItem(item.id)}
                             className="text-zinc-400 hover:text-rose-500 p-1 cursor-pointer transition-colors"
-                            title="O'chirish"
+                            title={t.cartDrawer?.deleteTooltip || "O'chirish"}
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
@@ -165,12 +165,12 @@ export const CartDrawer = ({
             {checkoutStep === 'checkout' && (
               <form onSubmit={handleOrderSubmit} id="cartOrderForm" className="space-y-4">
                 <div className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 pb-2 border-b border-zinc-200 dark:border-zinc-800">
-                  Yetkazib berish va Aloqa
+                  {t.cartDrawer?.shippingAndContact || "Yetkazib berish va Aloqa"}
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
-                    Ismingiz *
+                    {t.cartDrawer?.yourName || "Ismingiz *"}
                   </label>
                   <input
                     type="text"
@@ -184,7 +184,7 @@ export const CartDrawer = ({
 
                 <div>
                   <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
-                    Telefon Raqamingiz *
+                    {t.cartDrawer?.yourPhone || "Telefon Raqamingiz *"}
                   </label>
                   <input
                     type="tel"
@@ -198,19 +198,19 @@ export const CartDrawer = ({
 
                 <div>
                   <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
-                    Yetkazish Manzili
+                    {t.cartDrawer?.shippingAddress || "Yetkazish Manzili"}
                   </label>
                   <input
                     type="text"
                     value={buyerInfo.address}
                     onChange={(e) => setBuyerInfo(prev => ({ ...prev, address: e.target.value }))}
-                    placeholder="Toshkent sh., Chilonzor tumani..."
+                    placeholder={t.cartDrawer?.addressPlaceholder || "Toshkent sh., Chilonzor tumani..."}
                     className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg text-xs text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-emerald-500"
                   />
                 </div>
 
                 <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  ✓ Toshkent bo'ylab bepul yetkazib beriladi va mutaxassisimiz kassa apparatini I-Do'kon tizimiga ulab beradi.
+                  {t.cartDrawer?.freeDeliveryNote || "✓ Toshkent bo'ylab bepul yetkazib beriladi va mutaxassisimiz kassa apparatini I-Do'kon tizimiga ulab beradi."}
                 </div>
               </form>
             )}
@@ -273,7 +273,7 @@ export const CartDrawer = ({
                     onClick={() => setCheckoutStep('cart')}
                     className="py-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-semibold text-xs transition-colors cursor-pointer"
                   >
-                    Orqaga
+                    {t.cartDrawer?.back || "Orqaga"}
                   </button>
                   <button
                     type="submit"
@@ -281,7 +281,7 @@ export const CartDrawer = ({
                     disabled={loading}
                     className="py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
                   >
-                    {loading ? 'Yuborilmoqda...' : t.cartDrawer.checkoutBtn}
+                    {loading ? (t.cartDrawer?.submitting || 'Yuborilmoqda...') : t.cartDrawer.checkoutBtn}
                   </button>
                 </div>
               )}

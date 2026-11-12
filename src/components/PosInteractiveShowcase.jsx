@@ -10,35 +10,35 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   const screens = {
     sales: {
       src: "/screenshots/showcase_savdo.png",
-      label: "Savdo hisoboti va cheklar monitoringi",
-      tabLabel: t?.software?.tabs?.sales || "Savdo",
-      badge: "Real-vaqt hisobot",
+      label: t?.software?.screens?.sales?.label || "Savdo hisoboti va cheklar monitoringi",
+      tabLabel: t?.software?.screens?.sales?.tabLabel || t?.software?.tabs?.sales || "Savdo",
+      badge: t?.software?.screens?.sales?.badge || "Real-vaqt hisobot",
       icon: <ShoppingCart className="w-3.5 h-3.5" />,
-      desc: "Kunlik va oylik savdo hisoboti, tovarlar, kassirlar, Excel eksport va grafik tahlili bitta ekranda."
+      desc: t?.software?.screens?.sales?.desc || "Kunlik va oylik savdo hisoboti, tovarlar, kassirlar, Excel eksport va grafik tahlili bitta ekranda."
     },
     inventory: {
       src: "/screenshots/showcase_ombor.png",
-      label: "Ombor qoldiqlari va tovarlar hisobi",
-      tabLabel: t?.software?.tabs?.inventory || "Ombor",
-      badge: "Shtrix-kod & Qoldiq",
+      label: t?.software?.screens?.inventory?.label || "Ombor qoldiqlari va tovarlar hisobi",
+      tabLabel: t?.software?.screens?.inventory?.tabLabel || t?.software?.tabs?.inventory || "Ombor",
+      badge: t?.software?.screens?.inventory?.badge || "Shtrix-kod & Qoldiq",
       icon: <Package className="w-3.5 h-3.5" />,
-      desc: "Qoldiqlar hisoboti, mahsulot shtrix-kodi, partiyalar qoldig'i va umumiy summa nazorati."
+      desc: t?.software?.screens?.inventory?.desc || "Qoldiqlar hisoboti, mahsulot shtrix-kodi, partiyalar qoldig'i va umumiy summa nazorati."
     },
     analytics: {
       src: "/screenshots/showcase_analitika.png",
-      label: "ABC Tahlil va rentabellik hisoboti",
-      tabLabel: t?.software?.tabs?.analytics || "Analitika",
-      badge: "Foyda & Daromad",
+      label: t?.software?.screens?.analytics?.label || "ABC Tahlil va rentabellik hisoboti",
+      tabLabel: t?.software?.screens?.analytics?.tabLabel || t?.software?.tabs?.analytics || "Analitika",
+      badge: t?.software?.screens?.analytics?.badge || "Foyda & Daromad",
       icon: <BarChart2 className="w-3.5 h-3.5" />,
-      desc: "ABC tahlili, tovar sotuv summasi, sof daromad, muzlatilgan mablag' va marja toifalari."
+      desc: t?.software?.screens?.analytics?.desc || "ABC tahlili, tovar sotuv summasi, sof daromad, muzlatilgan mablag' va marja toifalari."
     },
     kassa: {
       src: "/screenshots/showcase_kassirlar.png",
-      label: "Kassirlar Ish O'rni (POS Terminal)",
-      tabLabel: t?.software?.tabs?.cashiers || "Kassirlar",
-      badge: "0.8 sek tezlik",
+      label: t?.software?.screens?.kassa?.label || "Kassirlar Ish O'rni (POS Terminal)",
+      tabLabel: t?.software?.screens?.kassa?.tabLabel || t?.software?.tabs?.cashiers || "Kassirlar",
+      badge: t?.software?.screens?.kassa?.badge || "0.8 sek tezlik",
       icon: <Monitor className="w-3.5 h-3.5" />,
-      desc: "Kassirlar uchun maxsus interfeys: tezkor qidiruv, shtrix-kod skanerlash, smena yopish va naqd/karta to'lov."
+      desc: t?.software?.screens?.kassa?.desc || "Kassirlar uchun maxsus interfeys: tezkor qidiruv, shtrix-kod skanerlash, smena yopish va naqd/karta to'lov."
     }
   };
 
@@ -139,7 +139,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
             </div>
             <div className="text-right flex-shrink-0">
               <span className="text-zinc-400 font-mono text-[11px]">
-                I-DO'KON v1.2 Cloud Platform
+                {t?.software?.platformVersion || "I-DO'KON Cloud Platform"}
               </span>
             </div>
           </div>

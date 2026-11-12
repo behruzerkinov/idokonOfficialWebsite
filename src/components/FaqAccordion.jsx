@@ -61,7 +61,7 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
             <div className="space-y-2.5">
               {filteredFaqs.length === 0 ? (
                 <div className="p-8 text-center bg-zinc-50 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500">
-                  Hech qanday savol topilmadi. To'g'ridan-to'g'ri mutaxassisimizga murojaat qilishingiz mumkin.
+                  {t.faq?.noQuestions || "Hech qanday savol topilmadi. To'g'ridan-to'g'ri mutaxassisimizga murojaat qilishingiz mumkin."}
                 </div>
               ) : (
                 filteredFaqs.map((faq, idx) => {

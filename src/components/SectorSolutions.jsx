@@ -10,7 +10,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
       title: t.sectors.s1, // Chakana do'konlar
       desc: t.sectors.s1_desc,
       icon: Store,
-      features: [
+      features: t.sectors.retailFeatures || [
         "Shtrix-kod skaneri va etiketka printeri bilan to'liq integratsiya",
         "Kiyim-kechak, kosmetika va nooziq-ovqat tovarlar qulay nazorati",
         "Kechki Z-hisobot va kassir inkassatsiyasi"
@@ -21,7 +21,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
       title: t.sectors.s2, // Supermarketlar
       desc: t.sectors.s2_desc,
       icon: ShoppingCart,
-      features: [
+      features: t.sectors.supermarketFeatures || [
         "Bir nechta kassa apparatlarini bir vaqtda tarmoqlash",
         "Elektron savdo tarozilari bilan avtomat sinxronlash",
         "Tezkor navbatlarni bartaraf etish va ommaviy sotuv"
@@ -32,7 +32,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
       title: t.sectors.s3, // Mini-marketlar
       desc: t.sectors.s3_desc,
       icon: ShoppingBag,
-      features: [
+      features: t.sectors.minimarketFeatures || [
         "Tejamkor POS monoblok va planshetda ishlash imkoniyati",
         "Muzlatilgan qoldiqlarni aniqlash va muddat nazorati",
         "Qarz daftari (Nasiya) elektron boshqaruvi"
@@ -103,7 +103,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
         <div className="rounded-2xl p-6 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-              Do'koningiz uchun imkoniyatlar: {sectors[selectedSector].title}
+              {t.sectors?.opportunitiesFor || "Do'koningiz uchun imkoniyatlar:"} {sectors[selectedSector].title}
             </div>
             <div className="flex flex-wrap gap-y-2 gap-x-6 pt-1">
               {sectors[selectedSector].features.map((feat, fIdx) => (

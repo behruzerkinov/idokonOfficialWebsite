@@ -82,7 +82,34 @@ export const translations = {
       "p3_desc": "Aylanma, sof foyda va marjani real vaqtda ko‘rsatib, filiallar kesimida tahlil qiladi.",
       "p4_title": "Xavfsiz tezkor tranzaksiya",
       "p4_desc": "EMV va fiskal modul asosida himoyalangan to‘lov, oflayn rejimda ishlash imkoniyati bilan.",
-      "zoomLightbox": "To'liq hajmda ko'rish"
+      "zoomLightbox": "To'liq hajmda ko'rish",
+      "screens": {
+        "sales": {
+          "label": "Savdo hisoboti va cheklar monitoringi",
+          "tabLabel": "Savdo",
+          "badge": "Real-vaqt hisobot",
+          "desc": "Kunlik va oylik savdo hisoboti, tovarlar, kassirlar, Excel eksport va grafik tahlili bitta ekranda."
+        },
+        "inventory": {
+          "label": "Ombor qoldiqlari va tovarlar hisobi",
+          "tabLabel": "Ombor",
+          "badge": "Shtrix-kod & Qoldiq",
+          "desc": "Qoldiqlar hisoboti, mahsulot shtrix-kodi, partiyalar qoldig'i va umumiy summa nazorati."
+        },
+        "analytics": {
+          "label": "ABC Tahlil va rentabellik hisoboti",
+          "tabLabel": "Analitika",
+          "badge": "Foyda & Daromad",
+          "desc": "ABC tahlili, tovar sotuv summasi, sof daromad, muzlatilgan mablag' va marja toifalari."
+        },
+        "kassa": {
+          "label": "Kassirlar Ish O'rni (POS Terminal)",
+          "tabLabel": "Kassirlar",
+          "badge": "0.8 sek tezlik",
+          "desc": "Kassirlar uchun maxsus interfeys: tezkor qidiruv, shtrix-kod skanerlash, smena yopish va naqd/karta to'lov."
+        }
+      },
+      "platformVersion": "I-DO'KON Bulutli Platforma"
     },
     "sectors": {
       "eyebrow": "KIMLAR UCHUN",
@@ -97,7 +124,23 @@ export const translations = {
       "s4": "Onlayn savdo",
       "s4_desc": "Buyurtma va ombor qoldiqlarini sinxronlash",
       "s5": "Restoran & Kafelar",
-      "s5_desc": "Stollar bandligi va oshxona cheklari nazorati"
+      "s5_desc": "Stollar bandligi va oshxona cheklari nazorati",
+      "opportunitiesFor": "Do'koningiz uchun imkoniyatlar:",
+      "retailFeatures": [
+        "Shtrix-kod skaneri va etiketka printeri bilan to'liq integratsiya",
+        "Kiyim-kechak, kosmetika va nooziq-ovqat tovarlar qulay nazorati",
+        "Kechki Z-hisobot va kassir inkassatsiyasi"
+      ],
+      "supermarketFeatures": [
+        "Bir nechta kassa apparatlarini bir vaqtda tarmoqlash",
+        "Elektron savdo tarozilari bilan avtomat sinxronlash",
+        "Tezkor navbatlarni bartaraf etish va ommaviy sotuv"
+      ],
+      "minimarketFeatures": [
+        "Tejamkor POS monoblok va planshetda ishlash imkoniyati",
+        "Muzlatilgan qoldiqlarni aniqlash va muddat nazorati",
+        "Qarz daftari (Nasiya) elektron boshqaruvi"
+      ]
     },
     "equipment": {
       "eyebrow": "POS QURILMALARI",
@@ -118,7 +161,12 @@ export const translations = {
       "priceLabel": "Narxi",
       "inCartBadge": "Savatda",
       "addBtn": "Qo'shish",
-      "officialPrice": "Rasmiy Narxi:"
+      "officialPrice": "Rasmiy Narxi:",
+      "technicalSpecs": "Texnik Xususiyatlar",
+      "parameters": "Parametrlar:",
+      "close": "Yopish",
+      "warrantyLabel": "kafolat",
+      "addedToCartToast": "savatga qo'shildi"
     },
     "integrations": {
       "eyebrow": "EKOTIZIM VA INTEGRATSIYALAR",
@@ -139,17 +187,23 @@ export const translations = {
       "zeroDowntime": "Nol to'xtalishli migratsiya",
       "transitionService": "O'tish davri xizmati:",
       "freeBadge": "100% BEPUL",
-      "contactSpecialist": "Mutaxassis bilan bog'lanish"
+      "contactSpecialist": "Mutaxassis bilan bog'lanish",
+      "migrationHeadline": "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz",
+      "badgeTax": "Soliq / Kassa",
+      "badgePos": "To'lov / Kassa",
+      "badgePayments": "To'lovlar",
+      "calloutTitle": "Eski bazangiz formatidan qat'i nazar",
+      "calloutDesc": "Tovarlar, narxlar va qoldiqlarni to'liq ko'chirib, kassirlaringizni bepul o'qitamiz."
     },
     "pricing": {
       "eyebrow": "SHAFFOF NARXLASH",
       "title": "Biznesingizga mos tarifni tanlang",
       "lead": "Kichik do‘kondan katta savdo tarmog‘igacha — kerakli imkoniyatlar uchun aniq reja.",
       "periodMonthly": "1 oylik",
-      "period6m": "6 oylik (5 oy to‘lang + 1 oy bepul)",
-      "period12m": "12 oylik (10 oy to‘lang + 2 oy bepul)",
-      "badge1mFree": "1 OY BEPUL",
-      "badge2mFree": "2 OY BEPUL",
+      "period6m": "6 oylik",
+      "period12m": "12 oylik",
+      "badge1mFree": "+1 OY BEPUL",
+      "badge2mFree": "+2 OY BEPUL",
       "perMonth": "so‘m / oy",
       "popular": "Ommabop",
       "choosePlan": "Tarifni tanlang",
@@ -198,7 +252,10 @@ export const translations = {
         ]
       },
       "mostPopular": "Eng ommabop tarif",
-      "activatePlan": "Tarifni faollashtirish"
+      "activatePlan": "Tarifni faollashtirish",
+      "featuresHeadline": "Tarif imkoniyatlari:",
+      "gift6m": "5 oylik to'lov qiling — 1 oy sovg'a (Jami 6 oy)",
+      "gift12m": "10 oylik to'lov qiling — 2 oy sovg'a (Jami 12 oy)"
     },
     "course": {
       "eyebrow": "BILIM BAZASI",
@@ -220,7 +277,36 @@ export const translations = {
       "sixModules": "6 ta modul",
       "hasPractical": "Amaliy topshiriq va test mavjud",
       "testKnowledge": "Bilimni sinash (/test)",
-      "courseSyllabus": "Kurs darsliklari"
+      "courseSyllabus": "Kurs darsliklari",
+      "realScreenshot": "Haqiqiy skrinshot",
+      "minuteSuffix": "daqiqa",
+      "shots": {
+        "test": {
+          "title": "Bilim darajasini tekshirish — 20 ta interaktiv test savollari va sertifikatlash (/test)",
+          "badge": "Test ishlash (/test)",
+          "desc": "Xodimlar va mijozlar uchun 20 ta amaliy test tizimi"
+        },
+        "admin": {
+          "title": "Admin Panel: Mahsulot qabul qilish, qayta narxlash va ombor nazorati",
+          "badge": "Admin Panel",
+          "desc": "Ta'minotchilardan qabul, narxlash va partiyalar hisobi"
+        },
+        "kassa": {
+          "title": "Kassa Panel: Kassada tezkor sotuv, fiskal cheklar va tovar qaytarish",
+          "badge": "Kassa Panel",
+          "desc": "Kassir ish o'rni: shtrix-kod, 0.8 sek sotuv va qaytarish"
+        },
+        "qurilmalar": {
+          "title": "Qurilmalar: Shtrix-kod skaneri, chek printeri va tarozi sozlamalari",
+          "badge": "Qurilmalar",
+          "desc": "Barcode printer, check printer va savdo tarozisi integratsiyasi"
+        },
+        "docs": {
+          "title": "IDOKON Docs: Interaktiv video darsliklar va bosh sahifa",
+          "badge": "IDOKON Docs",
+          "desc": "Dastur bilan tanishuv, imkoniyatlar va yangiliklar"
+        }
+      }
     },
     "faq": {
       "eyebrow": "SAVOLINGIZ BORMI?",
@@ -276,7 +362,7 @@ export const translations = {
       ],
       "branchesLabel": "Filiallar soni",
       "messageLabel": "Murojaatingiz haqida batafsil",
-      "messagePlaceholder": "Do‘kon turi, filiallar soni va kerakli imkoniyatlar...",
+      "messagePlaceholder": "Qanday uskunalar yoki savollaringiz bor...",
       "submitBtn": "Yuborish",
       "submitting": "Yuborilmoqda...",
       "privacy": "Yuborish orqali menejerimiz siz bilan bog‘lanishiga rozilik bildirasiz.",
@@ -285,7 +371,16 @@ export const translations = {
       "workHours": "Har kuni 09:00 dan 20:00 gacha",
       "hotlineLabel": "Tezkor operator raqami:",
       "telegramLabel": "Telegram orqali bog'lanish:",
-      "workingHoursLabel": "Ish vaqti:"
+      "workingHoursLabel": "Ish vaqti:",
+      "directContact": "To'g'ridan-to'g'ri aloqa",
+      "headline": "Do'koningiz hisobini tartibga keltiramiz",
+      "subhead": "Dasturni sinab ko'rish, uskunalar tanlash yoki narxlar bo'yicha savollaringiz bo'lsa, mutaxassisimizga qo'ng'iroq qiling.",
+      "orderConsultation": "Konsultatsiya buyurtma qilish",
+      "optional": "(ixtiyoriy)",
+      "requestReceived": "So'rovingiz qabul qilindi!",
+      "requestDesc": "Mutaxassisimiz tez orada sizga qo'ng'iroq qilib, I-Do'kon tizimini do'koningizga moslashtirish bo'yicha maslahat beradi.",
+      "sendAnother": "Yana bir so'rov yuborish",
+      "fillRequired": "Iltimos, ismingiz va telefon raqamingizni to'liq kiriting!"
     },
     "footer": {
       "about": "POS dasturimiz biznes jarayonlaringizni soddalashtirib, samaradorlikni oshiradigan yakuniy yechimdir. Oddiylik, ko‘p qirrali imkoniyatlar va ilg‘or texnologiyalar uyg‘unligiga e’tibor qaratganmiz.",
@@ -312,7 +407,12 @@ export const translations = {
       "successTitle": "So'rovingiz Muvaffaqiyatli Qabul Qilindi!",
       "successDesc": "Savdo operatorimiz tez orada sizga qo'ng'iroq qilib, shaxsiy demo kabinet va dasturga kirishni yoqib beradi.",
       "directCallHint": "Yoki to'g'ridan-to'g'ri operatorga qo'ng'iroq qiling:",
-      "closeBtn": "Tushunarli, rahmat"
+      "closeBtn": "Yopish",
+      "expertPresentation": "Mutaxassis taqdimoti",
+      "responseTiming": "Bog'lanish: ~10 daqiqa",
+      "fastContact": "Tezkor bog'lanish:",
+      "operatorContactDesc": "Savdo bo'limi operatori siz bilan 10 daqiqada bog'lanadi.",
+      "fillRequired": "Iltimos, ismingiz va telefon raqamingizni to'liq kiriting!"
     },
     "cartDrawer": {
       "title": "Tanlangan Qurilmalar Savati",
@@ -325,7 +425,17 @@ export const translations = {
       "cartTitle": "Savatcha",
       "cartSubtitle": "Tanlangan savdo uskunalari",
       "successTitle": "Buyurtma Qabul Qilindi!",
-      "continueShopping": "Davom etish"
+      "continueShopping": "Davom etish",
+      "freeDeliveryNote": "✓ Toshkent bo'ylab bepul yetkazib beriladi va mutaxassisimiz kassa apparatini I-Do'kon tizimiga ulab beradi.",
+      "shippingAndContact": "Yetkazib berish va Aloqa",
+      "yourName": "Ismingiz *",
+      "yourPhone": "Telefon Raqamingiz *",
+      "shippingAddress": "Yetkazish Manzili",
+      "addressPlaceholder": "Toshkent sh., Chilonzor tumani...",
+      "back": "Orqaga",
+      "submitting": "Yuborilmoqda...",
+      "itemsSelected": "xil qurilma tanlandi",
+      "deleteTooltip": "O'chirish"
     }
   },
   "ru": {
@@ -411,7 +521,34 @@ export const translations = {
       "p3_desc": "Показывает оборот и прибыль онлайн, экспорт и разрез по филиалам.",
       "p4_title": "Безопасные транзакции",
       "p4_desc": "Защита на основе EMV и фискального модуля, стабильная работа оффлайн.",
-      "zoomLightbox": "Полноэкранный просмотр"
+      "zoomLightbox": "Полноэкранный просмотр",
+      "screens": {
+        "sales": {
+          "label": "Отчет по продажам и чекам",
+          "tabLabel": "Продажи",
+          "badge": "Отчет в реальном времени",
+          "desc": "Ежедневные и ежемесячные отчеты, товары, кассиры, экспорт в Excel и графики на одном экране."
+        },
+        "inventory": {
+          "label": "Остатки на складе и учет товаров",
+          "tabLabel": "Склад",
+          "badge": "Штрихкод и остатки",
+          "desc": "Отчеты об остатках, штрихкоды товаров, учет партий и контроль общей стоимости."
+        },
+        "analytics": {
+          "label": "ABC-анализ и отчет по рентабельности",
+          "tabLabel": "Аналитика",
+          "badge": "Прибыль и выручка",
+          "desc": "ABC-анализ, объемы продаж, чистая прибыль, замороженные средства и категории маржинальности."
+        },
+        "kassa": {
+          "label": "Рабочее место кассира (POS-терминал)",
+          "tabLabel": "Кассиры",
+          "badge": "Скорость 0.8 сек",
+          "desc": "Интерфейс кассира: быстрый поиск, сканирование штрихкодов, закрытие смены и оплата картой/наличными."
+        }
+      },
+      "platformVersion": "Облачная платформа I-DO'KON"
     },
     "sectors": {
       "eyebrow": "ДЛЯ КОГО",
@@ -426,7 +563,23 @@ export const translations = {
       "s4": "Онлайн-торговля",
       "s4_desc": "Синхронизация заказов и остатков",
       "s5": "Кафе и рестораны",
-      "s5_desc": "Бронирование столов и учет чеков"
+      "s5_desc": "Бронирование столов и учет чеков",
+      "opportunitiesFor": "Возможности для вашего бизнеса:",
+      "retailFeatures": [
+        "Полная интеграция со сканером штрихкодов и принтером этикеток",
+        "Удобный учет одежды, косметики и непродовольственных товаров",
+        "Вечерний Z-отчет и инкассация кассира"
+      ],
+      "supermarketFeatures": [
+        "Синхронизация нескольких кассовых мест в единую сеть",
+        "Автоматическое сопряжение с электронными торговыми весами",
+        "Устранение очередей и высокая пропускная способность"
+      ],
+      "minimarketFeatures": [
+        "Работа на доступных POS-моноблоках и планшетах",
+        "Выявление неликвидных остатков и контроль сроков годности",
+        "Электронная долговая книга (Насия/в долг)"
+      ]
     },
     "equipment": {
       "eyebrow": "POS-ОБОРУДОВАНИЕ",
@@ -447,7 +600,12 @@ export const translations = {
       "priceLabel": "Цена",
       "inCartBadge": "В корзине",
       "addBtn": "Добавить",
-      "officialPrice": "Официальная цена:"
+      "officialPrice": "Официальная цена:",
+      "technicalSpecs": "Технические характеристики",
+      "parameters": "Параметры:",
+      "close": "Закрыть",
+      "warrantyLabel": "гарантия",
+      "addedToCartToast": "добавлено в корзину"
     },
     "integrations": {
       "eyebrow": "ИНТЕГРАЦИИ",
@@ -468,17 +626,23 @@ export const translations = {
       "zeroDowntime": "Миграция без простоя",
       "transitionService": "Сервис переходного периода:",
       "freeBadge": "100% БЕСПЛАТНО",
-      "contactSpecialist": "Связаться со специалистом"
+      "contactSpecialist": "Связаться со специалистом",
+      "migrationHeadline": "Перенесем базу из 1C или Excel за 1 день без ошибок",
+      "badgeTax": "Налоги / Касса",
+      "badgePos": "Оплата / Касса",
+      "badgePayments": "Платежи",
+      "calloutTitle": "Независимо от формата вашей старой базы",
+      "calloutDesc": "Полностью перенесем номенклатуру, цены и остатки, а также бесплатно обучим кассиров."
     },
     "pricing": {
       "eyebrow": "ПРОЗРАЧНЫЕ ЦЕНЫ",
       "title": "Выберите тариф для вашего бизнеса",
       "lead": "От небольшого магазина до торговой сети — понятный план с нужными возможностями.",
       "periodMonthly": "1 месяц",
-      "period6m": "6 месяцев (Оплата за 5 мес + 1 мес в подарок)",
-      "period12m": "12 месяцев (Оплата за 10 мес + 2 мес в подарок)",
-      "badge1mFree": "+1 МЕС БЕСПЛАТНО",
-      "badge2mFree": "+2 МЕС БЕСПЛАТНО",
+      "period6m": "6 месяцев",
+      "period12m": "12 месяцев",
+      "badge1mFree": "+1 МЕС В ПОДАРОК",
+      "badge2mFree": "+2 МЕС В ПОДАРОК",
       "perMonth": "сум / мес",
       "popular": "Популярно",
       "choosePlan": "Выбрать тариф",
@@ -527,7 +691,10 @@ export const translations = {
         ]
       },
       "mostPopular": "Самый популярный тариф",
-      "activatePlan": "Активировать тариф"
+      "activatePlan": "Активировать тариф",
+      "featuresHeadline": "Возможности тарифа:",
+      "gift6m": "Оплата за 5 месяцев — 1 месяц в подарок (Всего 6 месяцев)",
+      "gift12m": "Оплата за 10 месяцев — 2 месяца в подарок (Всего 12 месяцев)"
     },
     "course": {
       "eyebrow": "БАЗА ЗНАНИЙ",
@@ -549,7 +716,36 @@ export const translations = {
       "sixModules": "6 модулей",
       "hasPractical": "Практические задания и тест",
       "testKnowledge": "Проверить знания (/test)",
-      "courseSyllabus": "Программа курса"
+      "courseSyllabus": "Программа курса",
+      "realScreenshot": "Реальный скриншот",
+      "minuteSuffix": "минут",
+      "shots": {
+        "test": {
+          "title": "Проверка знаний — 20 интерактивных вопросов и сертификация (/test)",
+          "badge": "Тестирование (/test)",
+          "desc": "Система из 20 практических тестов для сотрудников и клиентов"
+        },
+        "admin": {
+          "title": "Панель администратора: Приемка товаров, переоценка и складской контроль",
+          "badge": "Панель администратора",
+          "desc": "Приемка от поставщиков, ценообразование и партионный учет"
+        },
+        "kassa": {
+          "title": "Рабочее место кассира: Быстрые продажи, фискальные чеки и возврат",
+          "badge": "Рабочее место кассира",
+          "desc": "Интерфейс кассира: штрихкоды, продажа за 0.8 сек и возвраты"
+        },
+        "qurilmalar": {
+          "title": "Оборудование: Сканеры штрихкодов, чековые принтеры и весы",
+          "badge": "Оборудование",
+          "desc": "Интеграция принтеров этикеток, чеков и торговых весов"
+        },
+        "docs": {
+          "title": "IDOKON Docs: Интерактивные видеоуроки и база знаний",
+          "badge": "IDOKON Docs",
+          "desc": "Знакомство с программой, функционал и обновления"
+        }
+      }
     },
     "faq": {
       "eyebrow": "ЕСТЬ ВОПРОСЫ?",
@@ -605,7 +801,7 @@ export const translations = {
       ],
       "branchesLabel": "Количество филиалов",
       "messageLabel": "Расскажите о запросе",
-      "messagePlaceholder": "Тип магазина, число филиалов и нужные функции...",
+      "messagePlaceholder": "Какие у вас вопросы или требования к оборудованию...",
       "submitBtn": "Отправить",
       "submitting": "Отправляем...",
       "privacy": "Отправляя форму, вы соглашаетесь на звонок менеджера.",
@@ -614,7 +810,16 @@ export const translations = {
       "workHours": "Ежедневно с 09:00 до 20:00",
       "hotlineLabel": "Номер горячей линии:",
       "telegramLabel": "Связь через Telegram:",
-      "workingHoursLabel": "Режим работы:"
+      "workingHoursLabel": "Режим работы:",
+      "directContact": "Прямая связь",
+      "headline": "Наведем порядок в учете вашего магазина",
+      "subhead": "Если у вас есть вопросы по тестированию системы, подбору оборудования или тарифам, позвоните нашему специалисту.",
+      "orderConsultation": "Заказать консультацию",
+      "optional": "(необязательно)",
+      "requestReceived": "Ваша заявка принята!",
+      "requestDesc": "Наш специалист свяжется с вами в течение 10 минут и проконсультирует по внедрению системы.",
+      "sendAnother": "Отправить еще одну заявку",
+      "fillRequired": "Пожалуйста, введите ваше имя и номер телефона!"
     },
     "footer": {
       "about": "Наша POS-система упрощает бизнес-процессы и повышает эффективность благодаря простоте, гибкости и современным технологиям.",
@@ -641,7 +846,12 @@ export const translations = {
       "successTitle": "Заявка успешно принята!",
       "successDesc": "Менеджер позвонит вам в ближайшие минуты для предоставления доступа к системе.",
       "directCallHint": "Или позвоните в отдел продаж прямо сейчас:",
-      "closeBtn": "Понятно, спасибо"
+      "closeBtn": "Закрыть",
+      "expertPresentation": "Презентация от эксперта",
+      "responseTiming": "Ответ: ~10 минут",
+      "fastContact": "Прямой контакт:",
+      "operatorContactDesc": "Оператор отдела продаж свяжется с вами в течение 10 минут.",
+      "fillRequired": "Пожалуйста, введите ваше имя и номер телефона!"
     },
     "cartDrawer": {
       "title": "Корзина выбранного оборудования",
@@ -654,7 +864,17 @@ export const translations = {
       "cartTitle": "Корзина",
       "cartSubtitle": "Выбранное торговое оборудование",
       "successTitle": "Заказ успешно принят!",
-      "continueShopping": "Продолжить"
+      "continueShopping": "Продолжить",
+      "freeDeliveryNote": "✓ Бесплатная доставка по Ташкенту и подключение кассового оборудования к системе I-Do'kon нашим инженером.",
+      "shippingAndContact": "Доставка и контакты",
+      "yourName": "Ваше имя *",
+      "yourPhone": "Номер телефона *",
+      "shippingAddress": "Адрес доставки",
+      "addressPlaceholder": "г. Ташкент, Чиланзарский район...",
+      "back": "Назад",
+      "submitting": "Отправка...",
+      "itemsSelected": "позиций выбрано",
+      "deleteTooltip": "Удалить"
     }
   },
   "en": {
@@ -741,7 +961,34 @@ export const translations = {
       "p4_title": "Secure fast transactions",
       "p4_desc": "EMV-based protection, fast confirmation and reliable offline capability.",
       "currency": "UZS",
-      "zoomLightbox": "Full Screen Lightbox"
+      "zoomLightbox": "Full Screen Lightbox",
+      "screens": {
+        "sales": {
+          "label": "Sales Report & Receipt Monitoring",
+          "tabLabel": "Sales",
+          "badge": "Real-time Report",
+          "desc": "Daily and monthly sales reports, items, cashiers, Excel export, and graphical analytics on one screen."
+        },
+        "inventory": {
+          "label": "Warehouse Stock & Inventory Tracking",
+          "tabLabel": "Inventory",
+          "badge": "Barcode & Stock",
+          "desc": "Stock balance reports, product barcodes, batch tracking, and total valuation control."
+        },
+        "analytics": {
+          "label": "ABC Analysis & Profitability Report",
+          "tabLabel": "Analytics",
+          "badge": "Profit & Revenue",
+          "desc": "ABC analysis, sales revenue, net income, slow-moving stock, and margin categories."
+        },
+        "kassa": {
+          "label": "Cashier Workspace (POS Terminal)",
+          "tabLabel": "Cashiers",
+          "badge": "0.8s checkout",
+          "desc": "Fast cashier UI: quick search, barcode scanning, shift closure, and card/cash payments."
+        }
+      },
+      "platformVersion": "I-DO'KON Cloud Platform"
     },
     "sectors": {
       "eyebrow": "BUILT FOR",
@@ -756,7 +1003,23 @@ export const translations = {
       "s4": "Online retail",
       "s4_desc": "Synced orders and stock",
       "s5": "Cafés & restaurants",
-      "s5_desc": "Table orders and kitchen checks"
+      "s5_desc": "Table orders and kitchen checks",
+      "opportunitiesFor": "Capabilities for your store:",
+      "retailFeatures": [
+        "Seamless integration with barcode scanners and label printers",
+        "Easy tracking for apparel, cosmetics, and non-food goods",
+        "Evening Z-report and cashier end-of-shift reconciliation"
+      ],
+      "supermarketFeatures": [
+        "Multi-lane cashier networking in real-time",
+        "Automatic synchronization with digital retail scales",
+        "High-volume checkout to eliminate customer queues"
+      ],
+      "minimarketFeatures": [
+        "Affordable POS monoblock and tablet support",
+        "Slow-moving inventory identification and expiration tracking",
+        "Digital ledger for credit and deferred payments (Nasiya)"
+      ]
     },
     "equipment": {
       "eyebrow": "POS HARDWARE",
@@ -777,7 +1040,12 @@ export const translations = {
       "priceLabel": "Price",
       "inCartBadge": "In Cart",
       "addBtn": "Add",
-      "officialPrice": "Official Price:"
+      "officialPrice": "Official Price:",
+      "technicalSpecs": "Technical Specifications",
+      "parameters": "Parameters:",
+      "close": "Close",
+      "warrantyLabel": "warranty",
+      "addedToCartToast": "added to cart"
     },
     "integrations": {
       "eyebrow": "SYSTEM INTEGRATIONS",
@@ -798,15 +1066,21 @@ export const translations = {
       "zeroDowntime": "Zero-downtime migration",
       "transitionService": "Transition service:",
       "freeBadge": "100% FREE",
-      "contactSpecialist": "Contact a Specialist"
+      "contactSpecialist": "Contact a Specialist",
+      "migrationHeadline": "Migrate your 1C or Excel database in 1 day without errors",
+      "badgeTax": "Tax / POS",
+      "badgePos": "Payment / POS",
+      "badgePayments": "Payments",
+      "calloutTitle": "Regardless of your previous database format",
+      "calloutDesc": "We will transfer all goods, prices, and inventory, and train your cashiers for free."
     },
     "pricing": {
       "eyebrow": "TRANSPARENT PRICING",
       "title": "Choose a plan that fits your business",
       "lead": "From a small shop to a retail network — a clear plan with the capabilities you need.",
       "periodMonthly": "1 Month",
-      "period6m": "6 Months (Pay 5 mos + 1 mo free)",
-      "period12m": "12 Months (Pay 10 mos + 2 mos free)",
+      "period6m": "6 Months",
+      "period12m": "12 Months",
       "badge1mFree": "+1 MO FREE",
       "badge2mFree": "+2 MOS FREE",
       "perMonth": "UZS / mo",
@@ -857,7 +1131,10 @@ export const translations = {
         ]
       },
       "mostPopular": "Most Popular Plan",
-      "activatePlan": "Activate Plan"
+      "activatePlan": "Activate Plan",
+      "featuresHeadline": "Plan features:",
+      "gift6m": "Pay for 5 months — get 1 month free (Total 6 months)",
+      "gift12m": "Pay for 10 months — get 2 months free (Total 12 months)"
     },
     "course": {
       "eyebrow": "KNOWLEDGE BASE",
@@ -879,7 +1156,36 @@ export const translations = {
       "sixModules": "6 modules",
       "hasPractical": "Hands-on tasks and test",
       "testKnowledge": "Test Knowledge (/test)",
-      "courseSyllabus": "Course Syllabus"
+      "courseSyllabus": "Course Syllabus",
+      "realScreenshot": "Authentic Screenshot",
+      "minuteSuffix": "mins",
+      "shots": {
+        "test": {
+          "title": "Knowledge Check — 20 interactive test questions and certification (/test)",
+          "badge": "Take Test (/test)",
+          "desc": "Interactive 20-question practical test for staff and clients"
+        },
+        "admin": {
+          "title": "Admin Panel: Inventory Receiving, Re-pricing & Stock Control",
+          "badge": "Admin Panel",
+          "desc": "Supplier receiving, pricing, and batch accounting"
+        },
+        "kassa": {
+          "title": "Cashier POS: High-speed checkout, fiscal receipts, and returns",
+          "badge": "Cashier POS",
+          "desc": "Cashier station: barcodes, 0.8s checkout, and refund processing"
+        },
+        "qurilmalar": {
+          "title": "Hardware: Barcode scanners, receipt printers, and scale setup",
+          "badge": "Hardware",
+          "desc": "Barcode printer, receipt printer, and retail scale integration"
+        },
+        "docs": {
+          "title": "IDOKON Docs: Interactive video tutorials and knowledge base",
+          "badge": "IDOKON Docs",
+          "desc": "System walkthrough, features, and platform updates"
+        }
+      }
     },
     "faq": {
       "eyebrow": "HAVE QUESTIONS?",
@@ -935,7 +1241,7 @@ export const translations = {
       ],
       "branchesLabel": "Number of branches",
       "messageLabel": "Tell us about your request",
-      "messagePlaceholder": "Store type, number of branches and required features...",
+      "messagePlaceholder": "What hardware or features do you need...",
       "submitBtn": "Send request",
       "submitting": "Sending...",
       "privacy": "By submitting, you agree that our manager may contact you.",
@@ -944,7 +1250,16 @@ export const translations = {
       "workHours": "Daily 09:00 — 20:00 (GMT+5)",
       "hotlineLabel": "Direct Hotline:",
       "telegramLabel": "Telegram Support:",
-      "workingHoursLabel": "Working Hours:"
+      "workingHoursLabel": "Working Hours:",
+      "directContact": "Direct Communication",
+      "headline": "Streamline your retail store operations",
+      "subhead": "Call our specialists for software trials, hardware selection, or pricing guidance.",
+      "orderConsultation": "Request Consultation",
+      "optional": "(optional)",
+      "requestReceived": "Request Received!",
+      "requestDesc": "Our specialist will contact you within 10 minutes to assist with your store configuration.",
+      "sendAnother": "Send Another Request",
+      "fillRequired": "Please enter your full name and phone number!"
     },
     "footer": {
       "about": "Our POS system simplifies business processes and improves efficiency through simplicity, flexibility and modern technology.",
@@ -971,7 +1286,12 @@ export const translations = {
       "successTitle": "Request Received Successfully!",
       "successDesc": "Our specialist will contact you shortly to activate your live demo credentials.",
       "directCallHint": "Or call our sales desk directly:",
-      "closeBtn": "Done, thank you"
+      "closeBtn": "Close",
+      "expertPresentation": "Expert Guided Demo",
+      "responseTiming": "Contact in ~10 mins",
+      "fastContact": "Direct contact:",
+      "operatorContactDesc": "Our sales specialist will contact you within 10 minutes.",
+      "fillRequired": "Please enter your full name and phone number!"
     },
     "cartDrawer": {
       "title": "Hardware Cart",
@@ -984,7 +1304,17 @@ export const translations = {
       "cartTitle": "Cart",
       "cartSubtitle": "Selected POS Hardware",
       "successTitle": "Order Received!",
-      "continueShopping": "Continue"
+      "continueShopping": "Continue",
+      "freeDeliveryNote": "✓ Free delivery in Tashkent and turnkey hardware connection to I-Do'kon by our engineers.",
+      "shippingAndContact": "Delivery & Contact",
+      "yourName": "Your Name *",
+      "yourPhone": "Phone Number *",
+      "shippingAddress": "Delivery Address",
+      "addressPlaceholder": "Tashkent city, Chilanzar district...",
+      "back": "Back",
+      "submitting": "Submitting...",
+      "itemsSelected": "devices selected",
+      "deleteTooltip": "Delete"
     }
   }
 };

@@ -34,7 +34,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 leading-snug">
-                1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz
+                {t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"}
               </h3>
 
               <div className="space-y-5">
@@ -88,7 +88,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                 <span className="text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                  Soliq / Kassa
+                  {t.integrations?.badgeTax || "Soliq / Kassa"}
                 </span>
                 <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-base mt-2.5 mb-1">Multikassa</h4>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -98,7 +98,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
 
               <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                 <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                  To'lov / Kassa
+                  {t.integrations?.badgePos || "To'lov / Kassa"}
                 </span>
                 <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-base mt-2.5 mb-1">Arco Kassa</h4>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -108,7 +108,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
 
               <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                 <span className="text-[10px] font-mono font-bold text-blue-700 dark:text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
-                  To'lovlar
+                  {t.integrations?.badgePayments || "To'lovlar"}
                 </span>
                 <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-base mt-2.5 mb-1">Click & Payme</h4>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -125,10 +125,10 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm text-zinc-900 dark:text-zinc-100">
-                    Eski bazangiz formatidan qat'i nazar
+                    {t.integrations?.calloutTitle || "Eski bazangiz formatidan qat'i nazar"}
                   </h4>
                   <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    Tovarlar, narxlar va qoldiqlarni to'liq ko'chirib, kassirlaringizni bepul o'qitamiz.
+                    {t.integrations?.calloutDesc || "Tovarlar, narxlar va qoldiqlarni to'liq ko'chirib, kassirlaringizni bepul o'qitamiz."}
                   </p>
                 </div>
               </div>

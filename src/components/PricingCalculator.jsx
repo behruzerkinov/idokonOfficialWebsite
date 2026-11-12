@@ -63,7 +63,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
+        <div className="text-center max-w-4xl mx-auto mb-10 px-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <span>{t.pricing.eyebrow}</span>
           </div>
@@ -75,68 +75,72 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
           </p>
 
           {/* 3-Way Period Switcher with Emil Kowalski style pills */}
-          <div className="mt-8 inline-flex items-center p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex-wrap justify-center gap-1">
-            
-            {/* 1 Month */}
-            <button
-              type="button"
-              onClick={() => setBillingPeriod('monthly')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                billingPeriod === 'monthly'
-                  ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-xs'
-                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-              }`}
-            >
-              {t.pricing.periodMonthly}
-            </button>
+          <div className="mt-8 flex justify-center">
+            <div className="inline-flex items-center p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex-nowrap justify-center gap-1 max-w-full overflow-x-auto">
+              
+              {/* 1 Month */}
+              <button
+                type="button"
+                onClick={() => setBillingPeriod('monthly')}
+                className={`px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
+                  billingPeriod === 'monthly'
+                    ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+                }`}
+              >
+                {t.pricing.periodMonthly}
+              </button>
 
-            {/* 6 Months (5 paid + 1 free) */}
-            <button
-              type="button"
-              onClick={() => setBillingPeriod('6m')}
-              className={`relative px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
-                billingPeriod === '6m'
-                  ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
-                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-              }`}
-            >
-              <span>{t.pricing.period6m}</span>
-              <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
-                billingPeriod === '6m' ? 'bg-slate-950 text-white' : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
-              }`}>
-                {t.pricing.badge1mFree}
-              </span>
-            </button>
+              {/* 6 Months (5 paid + 1 free) */}
+              <button
+                type="button"
+                onClick={() => setBillingPeriod('6m')}
+                className={`relative px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                  billingPeriod === '6m'
+                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+                }`}
+              >
+                <span>{t.pricing.period6m}</span>
+                <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
+                  billingPeriod === '6m' ? 'bg-slate-950 text-white' : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
+                }`}>
+                  {t.pricing.badge1mFree}
+                </span>
+              </button>
 
-            {/* 12 Months (10 paid + 2 free) */}
-            <button
-              type="button"
-              onClick={() => setBillingPeriod('12m')}
-              className={`relative px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
-                billingPeriod === '12m'
-                  ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
-                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-              }`}
-            >
-              <span>{t.pricing.period12m}</span>
-              <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
-                billingPeriod === '12m' ? 'bg-slate-950 text-white' : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
-              }`}>
-                {t.pricing.badge2mFree}
-              </span>
-            </button>
+              {/* 12 Months (10 paid + 2 free) */}
+              <button
+                type="button"
+                onClick={() => setBillingPeriod('12m')}
+                className={`relative px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                  billingPeriod === '12m'
+                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+                }`}
+              >
+                <span>{t.pricing.period12m}</span>
+                <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
+                  billingPeriod === '12m' ? 'bg-slate-950 text-white' : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
+                }`}>
+                  {t.pricing.badge2mFree}
+                </span>
+              </button>
 
+            </div>
           </div>
 
-          {/* Discount callout note */}
+          {/* Discount callout note: adaptive 1-line badge */}
           {(billingPeriod === '6m' || billingPeriod === '12m') && (
-            <div className="mt-3 flex items-center justify-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400 animate-in fade-in">
-              <Gift className="w-3.5 h-3.5" />
-              <span>
-                {billingPeriod === '6m' 
-                  ? "5 oylik to'lov qiling — 1 oy sovg'a (Jami 6 oy)" 
-                  : "10 oylik to'lov qiling — 2 oy sovg'a (Jami 12 oy)"}
-              </span>
+            <div className="mt-3.5 flex justify-center w-full">
+              <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs sm:text-sm font-medium text-emerald-600 dark:text-emerald-400 animate-in fade-in whitespace-normal sm:whitespace-nowrap max-w-full shadow-xs">
+                <Gift className="w-4 h-4 shrink-0 text-emerald-500" />
+                <span>
+                  {billingPeriod === '6m' 
+                    ? (t.pricing?.gift6m || "5 oylik to'lov qiling — 1 oy sovg'a (Jami 6 oy)") 
+                    : (t.pricing?.gift12m || "10 oylik to'lov qiling — 2 oy sovg'a (Jami 12 oy)")}
+                </span>
+              </div>
             </div>
           )}
 
@@ -194,7 +198,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                   {/* Features List */}
                   <div className="space-y-3 mb-8">
                     <div className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
-                      Tarif imkoniyatlari:
+                      {t.pricing?.featuresHeadline || "Tarif imkoniyatlari:"}
                     </div>
                     {plan.features.map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-2.5 text-xs text-zinc-700 dark:text-zinc-300">

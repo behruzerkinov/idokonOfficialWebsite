@@ -29,7 +29,7 @@ export const HardwareMarketplace = ({
   const handleAdd = (product) => {
     onAddToCart(product);
     const title = product.title[lang] || product.title.uz;
-    toast.success(`${title} savatga qo'shildi`, {
+    toast.success(`${title} ${t.equipment?.addedToCartToast || "savatga qo'shildi"}`, {
       description: `${product.price.toLocaleString()} ${t.equipment?.currency || "so'm"}`,
       action: {
         label: t.nav?.cart || 'Savat',
@@ -103,13 +103,13 @@ export const HardwareMarketplace = ({
                   
                   {product.badge && (
                     <span className="absolute top-3 left-3 text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
-                      {product.badge}
+                      {typeof product.badge === 'object' ? (product.badge[lang] || product.badge.uz) : product.badge}
                     </span>
                   )}
 
                   <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/90 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono text-zinc-600 dark:text-zinc-400">
                     <ShieldCheck className="w-3 h-3 text-emerald-500" />
-                    <span>{product.warranty}</span>
+                    <span>{typeof product.warranty === 'object' ? (product.warranty[lang] || product.warranty.uz) : product.warranty}</span>
                   </div>
                 </div>
 

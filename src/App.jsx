@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Toaster, toast } from 'sonner';
 import { translations } from './data/translations';
 import { Navbar } from './components/Navbar';
@@ -123,23 +123,45 @@ export function App() {
 
   const cartTotalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  // Windows 10 Settings App Luminous Light Effect (Reveal Highlight)
+  // Windows 10 Settings App Luminous Light Effect & Smooth Trailing Follower
   const [globalMousePos, setGlobalMousePos] = useState({ x: -1000, y: -1000 });
   const [isPointerActive, setIsPointerActive] = useState(false);
+  
+  const targetMouseRef = useRef({ x: -1000, y: -1000 });
+  const trailPosRef = useRef({ x: -1000, y: -1000 });
+  const trailCircleRef = useRef(null);
 
   useEffect(() => {
-    let rafId = null;
+    let rafMoveId = null;
+    let rafLoopId = null;
+
     const handlePointerMove = (e) => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        setGlobalMousePos({ x: e.clientX, y: e.clientY });
-        setIsPointerActive(true);
-      });
+      targetMouseRef.current = { x: e.clientX, y: e.clientY };
+      if (!rafMoveId) {
+        rafMoveId = requestAnimationFrame(() => {
+          setGlobalMousePos({ x: e.clientX, y: e.clientY });
+          setIsPointerActive(true);
+          rafMoveId = null;
+        });
+      }
     };
 
     const handlePointerLeave = () => {
       setIsPointerActive(false);
     };
+
+    // Smooth inertia interpolation loop for the trailing circle
+    const lerp = (start, end, factor) => start + (end - start) * factor;
+    const animateTrail = () => {
+      trailPosRef.current.x = lerp(trailPosRef.current.x, targetMouseRef.current.x, 0.12);
+      trailPosRef.current.y = lerp(trailPosRef.current.y, targetMouseRef.current.y, 0.12);
+
+      if (trailCircleRef.current) {
+        trailCircleRef.current.style.transform = `translate3d(${trailPosRef.current.x}px, ${trailPosRef.current.y}px, 0)`;
+      }
+      rafLoopId = requestAnimationFrame(animateTrail);
+    };
+    rafLoopId = requestAnimationFrame(animateTrail);
 
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
     document.addEventListener('mouseleave', handlePointerLeave);
@@ -147,7 +169,8 @@ export function App() {
     return () => {
       window.removeEventListener('pointermove', handlePointerMove);
       document.removeEventListener('mouseleave', handlePointerLeave);
-      if (rafId) cancelAnimationFrame(rafId);
+      if (rafMoveId) cancelAnimationFrame(rafMoveId);
+      if (rafLoopId) cancelAnimationFrame(rafLoopId);
     };
   }, []);
 
@@ -157,17 +180,34 @@ export function App() {
       {/* Global Architectural Grid Background (aligned across the whole site) */}
       <div className="pointer-events-none fixed inset-0 z-0 global-grid-bg" aria-hidden="true" />
 
-      {/* Windows 10 Settings App Luminous Light Effect (Global Reveal Spotlight) */}
+      {/* Windows 10 Settings App Luminous Light Effect (Vibrant Global Reveal Spotlight) */}
       <div
-        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+        className="pointer-events-none fixed inset-0 z-20 transition-opacity duration-300"
         style={{
           opacity: isPointerActive ? 1 : 0,
           background: theme === 'dark'
-            ? `radial-gradient(650px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.02) 40%, transparent 70%)`
-            : `radial-gradient(550px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.015) 45%, transparent 70%)`,
+            ? `radial-gradient(750px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.22), rgba(16, 185, 129, 0.08) 35%, rgba(16, 185, 129, 0.015) 65%, transparent 75%)`
+            : `radial-gradient(650px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.18), rgba(16, 185, 129, 0.05) 35%, rgba(16, 185, 129, 0.01) 60%, transparent 70%)`,
         }}
         aria-hidden="true"
       />
+
+      {/* Smooth Trailing Follower Circle */}
+      <div
+        ref={trailCircleRef}
+        className="pointer-events-none fixed top-0 left-0 z-40 transition-opacity duration-300 hidden md:block"
+        style={{
+          opacity: isPointerActive ? 1 : 0,
+          willChange: 'transform',
+          marginLeft: '-18px',
+          marginTop: '-18px',
+        }}
+        aria-hidden="true"
+      >
+        <div className="w-9 h-9 rounded-full border border-emerald-400/80 dark:border-emerald-400/90 bg-emerald-500/15 dark:bg-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.45)] flex items-center justify-center">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,1)]" />
+        </div>
+      </div>
 
       {/* Emil Kowalski Sonner Toaster */}
       <Toaster 
