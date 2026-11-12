@@ -6,7 +6,7 @@ import {
 
 export const IntegrationMigration = ({ t, onOpenContact }) => {
   return (
-    <section id="integrations" className="py-20 lg:py-24 bg-white dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200 dark:border-zinc-800/80">
+    <section id="integrations" className="py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200 dark:border-zinc-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

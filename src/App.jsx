@@ -123,9 +123,52 @@ export function App() {
 
   const cartTotalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
+  // Windows 10 Settings App Luminous Light Effect (Reveal Highlight)
+  const [globalMousePos, setGlobalMousePos] = useState({ x: -1000, y: -1000 });
+  const [isPointerActive, setIsPointerActive] = useState(false);
+
+  useEffect(() => {
+    let rafId = null;
+    const handlePointerMove = (e) => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setGlobalMousePos({ x: e.clientX, y: e.clientY });
+        setIsPointerActive(true);
+      });
+    };
+
+    const handlePointerLeave = () => {
+      setIsPointerActive(false);
+    };
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    document.addEventListener('mouseleave', handlePointerLeave);
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('mouseleave', handlePointerLeave);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150 relative overflow-x-hidden`}>
       
+      {/* Global Architectural Grid Background (aligned across the whole site) */}
+      <div className="pointer-events-none fixed inset-0 z-0 global-grid-bg" aria-hidden="true" />
+
+      {/* Windows 10 Settings App Luminous Light Effect (Global Reveal Spotlight) */}
+      <div
+        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+        style={{
+          opacity: isPointerActive ? 1 : 0,
+          background: theme === 'dark'
+            ? `radial-gradient(650px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.02) 40%, transparent 70%)`
+            : `radial-gradient(550px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.015) 45%, transparent 70%)`,
+        }}
+        aria-hidden="true"
+      />
+
       {/* Emil Kowalski Sonner Toaster */}
       <Toaster 
         theme={theme} 
@@ -146,7 +189,7 @@ export function App() {
         onOpenDemo={() => setIsDemoOpen(true)}
       />
 
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
         
         {/* Hero Section */}
         <Hero

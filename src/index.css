@@ -55,6 +55,14 @@
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(12, 196, 117, 0.55);
   }
+
+  /* Global Architectural Grid Background (applied throughout the whole site) */
+  .global-grid-bg {
+    background-image: 
+      linear-gradient(to right, #80808012 1px, transparent 1px),
+      linear-gradient(to bottom, #80808012 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 }
 
 /* Foundation UI Glass & Surface Tokens */

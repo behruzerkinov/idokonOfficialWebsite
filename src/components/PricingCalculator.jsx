@@ -59,7 +59,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
   ];
 
   return (
-    <section id="pricing" className="py-20 lg:py-24 bg-white dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 transition-colors">
+    <section id="pricing" className="py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
