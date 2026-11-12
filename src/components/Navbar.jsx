@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Menu, X, Phone, ShoppingBag, Sparkles, Check, ChevronDown, Sun, Moon 
 } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export const Navbar = ({ 
   lang, 
@@ -18,6 +19,11 @@ export const Navbar = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [hoveredId, setHoveredId] = useState(null);
+
+  const navRef = useRef(null);
+  const linkRefs = useRef({});
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,29 +33,68 @@ export const Navbar = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Section Scroll Spy to switch tabs smoothly as user scrolls through the page
+  // Liquid bottom bar calculation: measures exact offset and width of active link
+  const updateIndicator = useCallback(() => {
+    const navEl = navRef.current;
+    const linkEl = linkRefs.current[activeSection];
+    if (navEl && linkEl) {
+      const navRect = navEl.getBoundingClientRect();
+      const linkRect = linkEl.getBoundingClientRect();
+      setIndicator({
+        left: linkRect.left - navRect.left + 6,
+        width: Math.max(linkRect.width - 12, 18),
+        opacity: 1
+      });
+    }
+  }, [activeSection]);
+
+  useEffect(() => {
+    updateIndicator();
+    const timer = setTimeout(updateIndicator, 60);
+    window.addEventListener('resize', updateIndicator);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateIndicator);
+    };
+  }, [updateIndicator, lang]);
+
+  // Section Scroll Spy using getBoundingClientRect for sticky stacking sections
   useEffect(() => {
     const sectionIds = ['home', 'features', 'terminal', 'equipment', 'integrations', 'pricing', 'course', 'faq', 'contact'];
     
     const handleScrollSpy = () => {
-      const scrollPos = window.scrollY + 140; // offset for sticky navbar + header breathing room
+      const threshold = 220; // viewport threshold from top
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const el = document.getElementById(sectionIds[i]);
         if (el) {
-          const top = el.offsetTop;
-          if (scrollPos >= top) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= threshold && rect.bottom > 80) {
             setActiveSection(sectionIds[i]);
             return;
           }
         }
       }
-      setActiveSection('home');
+      if (window.scrollY < 200) {
+        setActiveSection('home');
+      }
     };
 
     window.addEventListener('scroll', handleScrollSpy, { passive: true });
     handleScrollSpy();
     return () => window.removeEventListener('scroll', handleScrollSpy);
   }, []);
+
+  // Smooth click scroll handler that immediately glides the liquid indicator
+  const handleLinkClick = (e, id) => {
+    e.preventDefault();
+    setActiveSection(id);
+    const targetEl = document.getElementById(id);
+    if (targetEl) {
+      const offset = 80;
+      const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   // Clean language list without duplicated flag glyphs
   const languages = [
@@ -90,26 +135,61 @@ export const Navbar = ({
             </a>
           </div>
 
-          {/* Center Col: Desktop Navigation Links (True Visual Center) */}
+          {/* Center Col: Desktop Navigation Links with Liquid Bottom Bar Animation */}
           <div className="hidden xl:flex items-center justify-center">
-            <nav className="flex items-center gap-0.5 2xl:gap-1 p-1 rounded-xl bg-zinc-100/60 dark:bg-zinc-900/60 border border-zinc-200/60 dark:border-zinc-800/60 backdrop-blur-md">
+            <nav 
+              ref={navRef}
+              className="relative flex items-center gap-0.5 2xl:gap-1 p-1 rounded-xl bg-zinc-100/70 dark:bg-zinc-900/70 border border-zinc-200/70 dark:border-zinc-800/70 backdrop-blur-md overflow-hidden select-none"
+            >
+              {/* Liquid Bottom Bar Indicator (Spring-driven fluid glide) */}
+              <motion.div
+                className="absolute bottom-1 h-[3px] rounded-full bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-400 shadow-[0_0_12px_rgba(16,185,129,0.85)] pointer-events-none z-10"
+                animate={{
+                  left: indicator.left,
+                  width: indicator.width,
+                  opacity: indicator.opacity
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 380,
+                  damping: 28,
+                  mass: 0.65
+                }}
+              />
+
               {navLinks.map((link) => {
                 const isActive = activeSection === link.id;
+                const isHovered = hoveredId === link.id;
+
                 return (
                   <a
                     key={link.href}
+                    ref={(el) => { linkRefs.current[link.id] = el; }}
                     href={link.href}
-                    onClick={() => setActiveSection(link.id)}
-                    className={`relative px-2 2xl:px-2.5 py-1.5 rounded-lg text-[11px] 2xl:text-xs font-semibold transition-all duration-150 whitespace-nowrap select-none cursor-pointer ${
+                    onClick={(e) => handleLinkClick(e, link.id)}
+                    onMouseEnter={() => setHoveredId(link.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                    className={`relative px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11px] 2xl:text-xs font-semibold whitespace-nowrap cursor-pointer transition-colors duration-150 z-20 ${
                       isActive
-                        ? 'bg-white dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400 font-bold shadow-xs border border-zinc-200/80 dark:border-zinc-700/80'
-                        : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 border border-transparent'
+                        ? 'text-zinc-950 dark:text-white font-bold'
+                        : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100'
                     }`}
                   >
+                    {/* Distinct Hover Animation: Soft floating pill highlight */}
+                    <AnimatePresence>
+                      {isHovered && (
+                        <motion.div
+                          layoutId="nav-hover-pill"
+                          className="absolute inset-0 rounded-lg bg-zinc-200/70 dark:bg-zinc-800/70 -z-10 shadow-xs"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.15 }}
+                        />
+                      )}
+                    </AnimatePresence>
+
                     <span className="relative z-10">{link.label}</span>
-                    {isActive && (
-                      <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-3.5 h-[2px] bg-emerald-500 rounded-full" />
-                    )}
                   </a>
                 );
               })}
@@ -235,9 +315,9 @@ export const Navbar = ({
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => {
-                    setActiveSection(link.id);
+                  onClick={(e) => {
                     setMobileMenuOpen(false);
+                    handleLinkClick(e, link.id);
                   }}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     isActive
