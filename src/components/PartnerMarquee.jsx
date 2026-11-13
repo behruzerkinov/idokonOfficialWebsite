@@ -48,12 +48,11 @@ export const PartnerMarquee = ({ t }) => {
       name: "Uzum",
       type: "Uzum Pay & Nasiya",
       logo: (
-        <div className="flex items-center gap-1.5">
-          <svg viewBox="0 0 77 77" className="w-5 h-5 flex-shrink-0" fill="none">
-            <path d="M56.06 53.61H47.74L35.36 37.88L47.51 23.27H55.82L45.94 35.15H76.73a38.44 38.44 0 1 0 0 6.58H46.73L56.06 53.61ZM32.94 53.61H26.36V23.27H32.94V53.61Z" fill="#7000FF"/>
-          </svg>
-          <span className="font-extrabold text-zinc-900 dark:text-white text-sm tracking-tight">uzum</span>
-        </div>
+        <img
+          src="/logos/uzum.svg"
+          alt="Uzum"
+          className="h-5.5 w-auto object-contain"
+        />
       )
     },
     {
@@ -61,10 +60,12 @@ export const PartnerMarquee = ({ t }) => {
       name: "Multikassa",
       type: "Davlat Soliq Qo'mitasi",
       logo: (
-        <div className="flex items-center gap-1.5">
-          <div className="w-5 h-5 rounded-full bg-emerald-600 flex items-center justify-center text-white text-[10px] font-bold shadow-xs">
-            ✓
-          </div>
+        <div className="flex items-center gap-2">
+          <img
+            src="/logos/multikassa.png"
+            alt="Multikassa"
+            className="h-6 w-auto object-contain rounded-md shadow-xs"
+          />
           <span className="font-bold text-zinc-900 dark:text-zinc-100 text-xs tracking-tight">Multikassa</span>
         </div>
       )
@@ -87,12 +88,11 @@ export const PartnerMarquee = ({ t }) => {
       name: "E-imzo / Eskiz",
       type: "SMS va Raqamli imzo",
       logo: (
-        <div className="flex items-center gap-1.5">
-          <div className="w-5 h-5 rounded bg-blue-500 flex items-center justify-center text-white font-black text-[10px]">
-            EI
-          </div>
-          <span className="font-bold text-zinc-900 dark:text-zinc-100 text-xs tracking-tight">E-imzo SMS</span>
-        </div>
+        <img
+          src="/logos/e-imzo.png"
+          alt="E-imzo"
+          className="h-5 w-auto object-contain"
+        />
       )
     }
   ];

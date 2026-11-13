@@ -130,7 +130,7 @@ export const Navbar = ({
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-2 sm:py-2.5 backdrop-blur-3xl backdrop-saturate-[220%] bg-white/80 dark:bg-[#07080a]/80 border-b border-black/[0.06] dark:border-white/[0.08] relative before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-white/30 dark:before:via-white/20 before:to-transparent ${
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 py-2 sm:py-2.5 backdrop-blur-3xl backdrop-saturate-[220%] bg-white/85 dark:bg-[#07080a]/85 border-b border-black/[0.06] dark:border-white/[0.08] relative before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-white/30 dark:before:via-white/20 before:to-transparent ${
       isScrolled ? 'shadow-xl shadow-black/10 dark:shadow-black/60' : ''
     }`}>
       <div className="w-full max-w-[1680px] mx-auto px-3 sm:px-4 lg:px-6">

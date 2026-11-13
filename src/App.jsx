@@ -19,6 +19,8 @@ import { FaqAccordion } from './components/FaqAccordion';
 import { ContactConfigurator } from './components/ContactConfigurator';
 import { HugeBrandTextSection } from './components/HugeBrandTextSection';
 import { Footer } from './components/Footer';
+import { ThreeBackgroundGrid } from './components/ThreeBackgroundGrid';
+import { ThreeCustomCursor } from './components/ThreeCustomCursor';
 
 // Modals & Drawers
 import { DemoModal } from './components/DemoModal';
@@ -188,15 +190,18 @@ export function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#07080a] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150 relative overflow-x-hidden`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#07080a] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150 relative overflow-x-clip`}>
       
       {/* Tech Preloader */}
       <TechPreloader />
 
-      {/* Global Subtle Architectural Grid Background */}
-      <div className="pointer-events-none fixed inset-0 z-0 global-grid-bg opacity-40 dark:opacity-20" aria-hidden="true" />
+      {/* Three.js Interactive Randomized Wireframe Grid Background */}
+      <ThreeBackgroundGrid theme={theme} />
 
-      {/* Ultra-subtle, neutral ambient spotlight (Zero murky green AI slop) */}
+      {/* Three.js Custom Dynamic Cursor (Velocity-stretching aura, stardust wake, shockwaves) */}
+      <ThreeCustomCursor theme={theme} />
+
+      {/* Ultra-subtle, neutral ambient spotlight */}
       <div
         className="pointer-events-none fixed inset-0 z-20 transition-opacity duration-500"
         style={{
@@ -231,7 +236,7 @@ export function App() {
       <main className="flex-1 relative z-10">
         
         {/* Section 1: Hero & Tickers */}
-        <div className="relative z-10 bg-zinc-50 dark:bg-[#07080a]">
+        <div className="relative z-10 bg-transparent">
           <Hero
             t={t}
             onOpenDemo={() => setIsDemoOpen(true)}
@@ -257,7 +262,7 @@ export function App() {
         </div>
 
         {/* Section 2: Twain AI Pinned Scroll-Driven Storytelling Stage (#features-and-benefits) */}
-        <div className="relative z-20 bg-zinc-50/50 dark:bg-[#07080a]">
+        <div className="relative z-20 bg-zinc-50/40 dark:bg-[#07080a]/40 backdrop-blur-sm">
           <PosInteractiveShowcase
             t={t}
             onOpenLightbox={(url, title) => setLightboxData({ url, title })}
@@ -265,7 +270,7 @@ export function App() {
         </div>
 
         {/* Section 3: Values Bento Grid */}
-        <div className="relative z-30 bg-zinc-50 dark:bg-[#07080a] border-t border-zinc-200/80 dark:border-zinc-800/80">
+        <div className="relative z-30 bg-zinc-50/70 dark:bg-[#07080a]/70 backdrop-blur-md border-t border-zinc-200/80 dark:border-zinc-800/80">
           <ValueGrid t={t} />
         </div>
 

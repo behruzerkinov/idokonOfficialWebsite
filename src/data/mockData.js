@@ -833,13 +833,13 @@ export const partnerIntegrations = [
   },
   {
     "name": "Uzum Bank / Nasiya",
-    "logo": "https://idokon.uz/assets/img/integrations/uzum.png",
+    "logo": "/logos/uzum.svg",
     "label": "Uzum Pay va Nasiya bo'lib to'lash",
     "type": "Fintech"
   },
   {
     "name": "Multikassa",
-    "logo": "https://idokon.uz/assets/img/integrations/multikassa.png",
+    "logo": "/logos/multikassa.png",
     "label": "Davlat Soliq Qo'mitasi fiskalizatsiyasi",
     "type": "Fiskal modul"
   },
@@ -851,7 +851,7 @@ export const partnerIntegrations = [
   },
   {
     "name": "Eskiz SMS / E-imzo",
-    "logo": "https://idokon.uz/assets/img/integrations/eimzo.png",
+    "logo": "/logos/e-imzo.png",
     "label": "SMS xabarnomalar va raqamli imzo",
     "type": "SMS & Xavfsizlik"
   }
