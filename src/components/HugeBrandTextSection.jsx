@@ -44,7 +44,7 @@ export const HugeBrandTextSection = ({ lang = 'uz', t }) => {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="font-sans text-[22vw] sm:text-[21vw] lg:text-[240px] xl:text-[280px] font-bold leading-[0.82] tracking-[-0.05em] text-[#1d1d1f] dark:text-white [text-wrap:nowrap] transition-all duration-300">
-              IDO<span className="text-emerald-500 font-bold">'KON</span>
+              IDO<span className="text-emerald-500 font-bold">KON</span>
             </h2>
           </motion.div>
 
