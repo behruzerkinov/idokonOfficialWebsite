@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { hardwareProducts } from '../data/mockData';
-import { ShoppingCart, Check, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 export const HardwareMarketplace = ({ 
@@ -119,7 +119,7 @@ export const HardwareMarketplace = ({
                     onOpenSpecsModal(product);
                   }
                 }}
-                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.16] flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[84vw] sm:w-[320px] lg:w-[320px] snap-start"
+                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.22] flex flex-col justify-between transition-all duration-300 ease-out cursor-pointer overflow-hidden flex-shrink-0 w-[84vw] sm:w-[320px] lg:w-[320px] snap-start"
                 title={`${title} - batafsil ma'lumot olish uchun bosing`}
               >
                 <div>
@@ -131,12 +131,6 @@ export const HardwareMarketplace = ({
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       loading="lazy"
                     />
-
-                    {/* Quick View Hover Indicator */}
-                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 dark:bg-white/20 backdrop-blur-md text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>{t.equipment?.viewSpecs || "Batafsil"}</span>
-                    </div>
                   </div>
 
                   {/* Title & Description with locked sizing */}
