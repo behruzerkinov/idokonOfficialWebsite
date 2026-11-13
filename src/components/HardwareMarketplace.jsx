@@ -15,21 +15,48 @@ export const HardwareMarketplace = ({
   const isInCart = (id) => cart.some(item => item.id === id);
   const scrollRef = useRef(null);
 
-  // Mouse wheel horizontal scrolling translation
+  // Mouse wheel horizontal scrolling translation (active only when cursor is directly over hardware cards)
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
     const onWheel = (e) => {
-      // Translate vertical mouse wheel scrolling into smooth horizontal scrolling
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        const canScrollLeft = el.scrollLeft > 0;
-        const canScrollRight = el.scrollLeft < el.scrollWidth - el.clientWidth - 1;
+      // 1. Only intercept if cursor is directly on top of a hardware card
+      const card = e.target.closest('[data-hardware-card]');
+      if (!card) {
+        // Cursor is NOT on top of a card -> scroll page normally
+        return;
+      }
 
-        if ((e.deltaY > 0 && canScrollRight) || (e.deltaY < 0 && canScrollLeft)) {
-          e.preventDefault();
-          el.scrollBy({ left: e.deltaY, behavior: 'auto' });
+      // 2. If trackpad horizontal scroll, let browser handle natively
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        return;
+      }
+
+      const threshold = 6;
+      const atStart = el.scrollLeft <= threshold;
+      const atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - threshold;
+
+      // 3. Scrolling UP (e.deltaY < 0):
+      if (e.deltaY < 0) {
+        if (atStart) {
+          // Already at start -> allow page to scroll up normally!
+          return;
         }
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+        return;
+      }
+
+      // 4. Scrolling DOWN (e.deltaY > 0):
+      if (e.deltaY > 0) {
+        if (atEnd) {
+          // Already at end -> allow page to scroll down normally!
+          return;
+        }
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+        return;
       }
     };
 
@@ -100,7 +127,7 @@ export const HardwareMarketplace = ({
         {/* ONE-LINE Horizontal Touch & Mouse Wheel Responsive Gallery */}
         <div 
           ref={scrollRef}
-          className="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-6 pt-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 touch-pan-x [webkit-overflow-scrolling:touch] select-none"
+          className="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-6 pt-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 touch-pan-x [webkit-overflow-scrolling:touch] select-none"
         >
           {hardwareProducts.map((product) => {
             const inCart = isInCart(product.id);
@@ -110,6 +137,7 @@ export const HardwareMarketplace = ({
             return (
               <div
                 key={product.id}
+                data-hardware-card="true"
                 onClick={() => onOpenSpecsModal(product)}
                 role="button"
                 tabIndex={0}
