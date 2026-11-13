@@ -19,7 +19,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
       id: 'multikassa',
       badge: "Kassa / Apparat",
       badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-      title: "Multikassa & Arco Kassa",
+      title: "Multikassa & Arca Group",
       desc: "O'zbekistonda keng tarqalgan zamonaviy fiskal apparatlar va kassa printerlari bilan sinxronlash.",
       icon: <Layers className="w-4 h-4 text-blue-500" />
     },

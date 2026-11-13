@@ -251,7 +251,7 @@ export function App() {
               "1C & EXCEL 1-DAY MIGRATION",
               "REAL-TIME FISCAL SOLIQ INTEGRATION",
               "INSTANT CARD & QR CHECKOUT",
-              "250+ ACTIVE ENTERPRISES"
+              "900+ ACTIVE ENTERPRISES"
             ]}
           />
 

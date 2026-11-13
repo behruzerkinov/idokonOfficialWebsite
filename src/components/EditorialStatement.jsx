@@ -32,7 +32,7 @@ export const EditorialStatement = ({ t }) => {
             <div className="text-xs sm:text-sm text-zinc-500 font-sans mt-1">O‘rtacha chek chiqarish tezligi</div>
           </div>
           <div>
-            <div className="font-serif text-3xl sm:text-4xl text-zinc-950 dark:text-white font-normal tracking-tight">250+</div>
+            <div className="font-serif text-3xl sm:text-4xl text-zinc-950 dark:text-white font-normal tracking-tight">900+</div>
             <div className="text-xs sm:text-sm text-zinc-500 font-sans mt-1">Faol savdo nuqtalari</div>
           </div>
           <div>

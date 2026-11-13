@@ -7,7 +7,7 @@ export function TechMarquee({
     "1C & EXCEL 1-DAY MIGRATION",
     "REAL-TIME FISCAL SOLIQ INTEGRATION",
     "INSTANT CARD & QR CHECKOUT",
-    "250+ ACTIVE ENTERPRISES"
+    "900+ ACTIVE ENTERPRISES"
   ],
   speed = 35,
   direction = 'left',

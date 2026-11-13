@@ -844,9 +844,9 @@ export const partnerIntegrations = [
     "type": "Fiskal modul"
   },
   {
-    "name": "Anorbank / Arco",
-    "logo": "https://idokon.uz/assets/img/integrations/arco.png",
-    "label": "Arco avtomatlashtirilgan kassa integratsiyasi",
+    "name": "Arca Group / Smart POS",
+    "logo": "/logos/arca.svg",
+    "label": "ARCA avtomatlashtirilgan kassa integratsiyasi",
     "type": "Kassa tizimi"
   },
   {

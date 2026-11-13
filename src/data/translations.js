@@ -32,7 +32,7 @@ export const translations = {
       "meta3": "Tezkor texnik yordam",
       "badgeRating": "Mijozlar bahosi",
       "badgeScore": "4.9 / 5",
-      "badgeReviews": "250+ faol savdo nuqtasi",
+      "badgeReviews": "900+ faol savdo nuqtasi",
       "liveStatus": "Tizim onlayn",
       "zoom": "Kattalashtirish"
     },
@@ -228,7 +228,7 @@ export const translations = {
         "sixMonths": 750000,
         "yearly": 1500000,
         "features": [
-          "Soliq tizimi bilan integratsiya (Arco, Multikassa)",
+          "Soliq tizimi bilan integratsiya (Arca Group, Multikassa)",
           "To‘lov tizimlari bilan integratsiyalar (Click, Payme, Uzum)",
           "Tavsiya etilgan tovarlar ro‘yxati",
           "Muzlatilgan mablag‘ ko‘rinishidagi tovarlar",
@@ -471,7 +471,7 @@ export const translations = {
       "meta3": "Быстрая техподдержка",
       "badgeRating": "Оценка клиентов",
       "badgeScore": "4.9 / 5",
-      "badgeReviews": "250+ активных точек",
+      "badgeReviews": "900+ активных точек",
       "liveStatus": "Система онлайн",
       "zoom": "Увеличить"
     },
@@ -667,7 +667,7 @@ export const translations = {
         "sixMonths": 750000,
         "yearly": 1500000,
         "features": [
-          "Интеграция с налоговыми системами (Arco, Multikassa)",
+          "Интеграция с налоговыми системами (Arca Group, Multikassa)",
           "Платежные интеграции (Click, Payme, Uzum)",
           "Список рекомендуемых товаров",
           "Учет замороженных в товарах средств",
@@ -910,7 +910,7 @@ export const translations = {
       "meta3": "Dedicated Support",
       "badgeRating": "Customer Rating",
       "badgeScore": "4.9 / 5",
-      "badgeReviews": "250+ active stores",
+      "badgeReviews": "900+ active stores",
       "liveStatus": "System online",
       "zoom": "Zoom"
     },
@@ -1107,7 +1107,7 @@ export const translations = {
         "sixMonths": 750000,
         "yearly": 1500000,
         "features": [
-          "Tax system integration (Arco, Multikassa)",
+          "Tax system integration (Arca Group, Multikassa)",
           "Payment integrations (Click, Payme, Uzum)",
           "Recommended products list",
           "Frozen-funds product tracking",
