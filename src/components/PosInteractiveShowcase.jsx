@@ -74,39 +74,11 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
-        {/* Section Top Control Bar: Eyebrow + Reference Connected Tab Switcher */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-6 sm:mb-8 pb-3 border-b border-zinc-200/80 dark:border-white/[0.08]">
+        {/* Section Top Control Bar: Eyebrow */}
+        <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 pb-3 border-b border-zinc-200/80 dark:border-white/[0.08]">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100/90 dark:bg-[#12141c] border border-zinc-200 dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium tracking-tight shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
             <span>{t?.software?.eyebrow || "DASTUR IMKONIYATLARI"}</span>
-          </div>
-
-          {/* Connected iOS Glass Tab Switcher (Twain reference style) */}
-          <div className="flex items-center gap-1 p-1.5 rounded-2xl bg-zinc-100/80 dark:bg-[#12141c]/90 border border-zinc-200/90 dark:border-white/[0.1] shadow-lg shadow-black/10 dark:shadow-black/40 backdrop-blur-2xl">
-            {stages.map((st, idx) => {
-              const isSelected = activeStep === idx;
-              return (
-                <button
-                  key={st.id}
-                  type="button"
-                  onClick={() => setActiveStep(idx)}
-                  className={`relative px-3 sm:px-4 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                    isSelected 
-                      ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white shadow-md font-semibold ring-1 ring-black/5 dark:ring-white/10' 
-                      : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50'
-                  }`}
-                >
-                  <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-emerald-500' : 'bg-transparent'}`} />
-                  <span>{st.num}</span>
-                  <span className="hidden sm:inline font-mono uppercase tracking-wider">{st.id}</span>
-                  {isSelected && (
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-600 text-white">
-                      Live
-                    </span>
-                  )}
-                </button>
-              );
-            })}
           </div>
         </div>
 
@@ -128,7 +100,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                 >
                   {/* Eyebrow */}
                   <div>
-                    <span className="text-[11px] font-sans font-medium tracking-wider uppercase text-white bg-emerald-600 px-2.5 py-0.5 rounded-full inline-block shadow-xs">
+                    <span className="text-xs font-mono font-bold tracking-wider uppercase text-emerald-500 dark:text-emerald-400 inline-block">
                       {currentStage.eyebrow}
                     </span>
                   </div>

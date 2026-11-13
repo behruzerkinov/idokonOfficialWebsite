@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Phone, MessageSquare } from 'lucide-react';
+import { ArrowUp, Phone } from 'lucide-react';
 
 export const Footer = ({ t, onOpenDemo }) => {
   const scrollToTop = () => {
@@ -32,10 +32,12 @@ export const Footer = ({ t, onOpenDemo }) => {
                 href="https://t.me/idokonuz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 hover:bg-emerald-500 hover:text-slate-950 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-zinc-200 dark:border-zinc-800 shadow-xs"
-                title="Telegram"
+                className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 hover:bg-[#229ED9] hover:text-white text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-zinc-200 dark:border-zinc-800 shadow-xs"
+                title="Telegram: @idokonuz"
               >
-                <MessageSquare className="w-4 h-4" />
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                </svg>
               </a>
               <a
                 href="https://www.instagram.com/idokon_uz/"
