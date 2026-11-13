@@ -108,40 +108,92 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* iOS 18 & visionOS Authentic Liquid Glass Bending & Optical Refraction */
+/* Super Water-Like Liquid Glass with Meniscus Caustics & Optical Refraction */
 .liquid-glass {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(245, 245, 248, 0.52) 100%);
-  backdrop-filter: blur(28px) saturate(210%) brightness(103%) url(#ios-glass-refraction);
-  -webkit-backdrop-filter: blur(28px) saturate(210%) brightness(103%);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  /* Crystal clear liquid water - highly translucent so content underneath is clearly visible */
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.32) 0%, 
+    rgba(255, 255, 255, 0.10) 45%, 
+    rgba(240, 248, 255, 0.16) 100%
+  );
+  backdrop-filter: blur(12px) saturate(220%) contrast(106%) brightness(110%);
+  backdrop-filter: url(#glass-refraction) blur(10px) saturate(220%) contrast(106%) brightness(110%);
+  -webkit-backdrop-filter: blur(12px) saturate(220%) contrast(106%) brightness(110%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: 
-    0 20px 48px -10px rgba(0, 0, 0, 0.12),
-    0 10px 24px -5px rgba(0, 0, 0, 0.07),
-    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 3px 0 rgba(0, 0, 0, 0.06),
-    inset 0 0 18px 0 rgba(255, 255, 255, 0.35),
-    0 0 0 1px rgba(0, 0, 0, 0.04);
+    /* Ambient water drop elevation */
+    0 20px 45px -12px rgba(0, 0, 0, 0.14),
+    0 8px 18px -6px rgba(0, 0, 0, 0.07),
+    /* Top meniscus caustic highlight - water surface tension */
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95),
+    /* Bottom meniscus refraction */
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.08),
+    /* Lateral caustics */
+    inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.45),
+    inset -1.5px 0 2px 0 rgba(255, 255, 255, 0.45),
+    /* Volumetric water glow */
+    inset 0 0 24px 0 rgba(255, 255, 255, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.25);
 }
 
 .dark .liquid-glass {
-  background: linear-gradient(135deg, rgba(20, 22, 28, 0.72) 0%, rgba(10, 12, 16, 0.82) 100%);
-  backdrop-filter: blur(32px) saturate(220%) brightness(108%) url(#ios-glass-refraction);
-  -webkit-backdrop-filter: blur(32px) saturate(220%) brightness(108%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  /* Crystal dark water - ultra translucent with optical bending */
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(20, 26, 38, 0.25) 45%, 
+    rgba(10, 15, 24, 0.38) 100%
+  );
+  backdrop-filter: blur(12px) saturate(230%) contrast(108%) brightness(114%);
+  backdrop-filter: url(#glass-refraction) blur(10px) saturate(230%) contrast(108%) brightness(114%);
+  -webkit-backdrop-filter: blur(12px) saturate(230%) contrast(108%) brightness(114%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: 
-    0 25px 60px -12px rgba(0, 0, 0, 0.82),
-    0 12px 28px -6px rgba(0, 0, 0, 0.6),
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.48),
-    inset 0 -2px 6px 0 rgba(0, 0, 0, 0.5),
-    inset 0 0 20px 0 rgba(16, 185, 129, 0.06),
-    0 0 0 1px rgba(255, 255, 255, 0.06);
+    /* Deep liquid drop shadow */
+    0 25px 60px -15px rgba(0, 0, 0, 0.85),
+    0 12px 24px -8px rgba(0, 0, 0, 0.6),
+    /* Top meniscus highlight - crisp white reflection on dark water */
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.8),
+    /* Bottom meniscus depth */
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.55),
+    /* Lateral liquid rim reflections */
+    inset 2px 0 3px 0 rgba(255, 255, 255, 0.22),
+    inset -2px 0 3px 0 rgba(255, 255, 255, 0.22),
+    /* Volumetric emerald-tinted water caustic depth */
+    inset 0 0 28px 0 rgba(16, 185, 129, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-/* Liquid Glass Sheen Overlay */
+/* Water Droplet Curvature Gloss Sheen (Smooth radial reflection - ZERO vertical seams) */
 .liquid-glass-sheen {
   position: relative;
   overflow: hidden;
+}
+
+.liquid-glass-sheen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse 90% 60% at 50% 0%,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 85%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .liquid-glass-sheen::before {
+  background: radial-gradient(
+    ellipse 90% 60% at 50% 0%,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 85%
+  );
 }
 
 .liquid-glass-sheen::after {
@@ -150,23 +202,13 @@
   inset: 0;
   border-radius: inherit;
   background: linear-gradient(
-    130deg,
-    rgba(255, 255, 255, 0.28) 0%,
-    rgba(255, 255, 255, 0.04) 30%,
-    transparent 55%
+    115deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.06) 100%
   );
   pointer-events: none;
-  mix-blend-mode: overlay;
   z-index: 1;
-}
-
-.dark .liquid-glass-sheen::after {
-  background: linear-gradient(
-    130deg,
-    rgba(255, 255, 255, 0.16) 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    transparent 55%
-  );
 }
 
 /* Clean Marquee Animation */

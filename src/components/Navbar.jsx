@@ -137,7 +137,7 @@ export const Navbar = ({
     <>
       {/* Floating Island Navigation Container with Authentic iOS Liquid Glass Refraction */}
       <header className="fixed top-3 sm:top-5 inset-x-0 mx-auto z-50 w-full max-w-[1560px] px-3 sm:px-6 pointer-events-none transition-all duration-300">
-        <div className={`liquid-glass liquid-glass-sheen pointer-events-auto rounded-full px-3 sm:px-4.5 py-1.5 sm:py-2 flex items-center justify-between gap-3 sm:gap-4 transition-all duration-300 ${
+        <div className={`liquid-glass liquid-glass-sheen pointer-events-auto rounded-full px-3.5 sm:px-5 py-1.5 sm:py-2 flex items-center justify-between gap-2.5 sm:gap-4 transition-all duration-300 ${
           isScrolled 
             ? 'shadow-2xl shadow-black/25 dark:shadow-black/85' 
             : 'shadow-xl shadow-black/10 dark:shadow-black/50'
@@ -155,10 +155,10 @@ export const Navbar = ({
           </div>
 
           {/* Center Col: Desktop Navigation Links (One Circular Container) */}
-          <div className="hidden xl:flex items-center justify-center">
+          <div className="hidden xl:flex items-center justify-center min-w-0">
             <nav 
               ref={navRef}
-              className="relative flex items-center gap-0.5 2xl:gap-1 p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.04] dark:border-white/[0.08] backdrop-blur-md select-none overflow-hidden"
+              className="relative flex items-center gap-0.5 2xl:gap-1 p-1 rounded-full bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.04] dark:border-white/[0.06] select-none"
             >
               {/* Active Indicator (Clean Apple emerald pill) */}
               <motion.div
@@ -188,7 +188,7 @@ export const Navbar = ({
                     onClick={(e) => handleLinkClick(e, link.id)}
                     onMouseEnter={() => setHoveredId(link.id)}
                     onMouseLeave={() => setHoveredId(null)}
-                    className={`relative px-4 2xl:px-4.5 py-1.5 rounded-full text-[13.5px] 2xl:text-[14.5px] font-medium tracking-tight whitespace-nowrap cursor-pointer transition-colors duration-150 z-20 ${
+                    className={`relative px-3 2xl:px-4 py-1.5 rounded-full text-[13px] 2xl:text-[14px] font-medium tracking-tight whitespace-nowrap cursor-pointer transition-colors duration-150 z-20 ${
                       isActive
                         ? 'text-[#1d1d1f] dark:text-white font-semibold'
                         : 'text-zinc-600 hover:text-[#1d1d1f] dark:text-zinc-400 dark:hover:text-white'
@@ -198,7 +198,7 @@ export const Navbar = ({
                       {isHovered && (
                         <motion.div
                           layoutId="nav-hover-pill"
-                          className="absolute inset-0 rounded-full bg-black/[0.05] dark:bg-white/[0.08] -z-10"
+                          className="absolute inset-0 rounded-full bg-black/[0.04] dark:bg-white/[0.07] -z-10"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
@@ -217,10 +217,10 @@ export const Navbar = ({
           {/* Right Col: Tidy Responsive Action Bar */}
           <div className="flex items-center justify-end gap-2 sm:gap-2.5 flex-shrink-0 pr-0.5 sm:pr-1">
             
-            {/* Phone Hotline Link: Ultra-wide desktop only */}
+            {/* Phone Hotline Link: Ultra-wide desktop only (>= 1680px) */}
             <a 
               href="tel:+998991130999" 
-              className="hidden min-[1680px]:flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors whitespace-nowrap"
+              className="hidden min-[1680px]:flex items-center gap-1.5 h-9 px-3.5 rounded-full bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-white/[0.08] text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors whitespace-nowrap"
               title="Savdo operatori"
             >
               <div className="w-4 h-4 rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
@@ -233,7 +233,7 @@ export const Navbar = ({
             <button
               type="button"
               onClick={toggleTheme}
-              className="hidden xl:flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all cursor-pointer flex-shrink-0 hover:scale-105 active:scale-95 shadow-xs"
+              className="hidden xl:flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-white/[0.08] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all cursor-pointer flex-shrink-0 hover:scale-105 active:scale-95 shadow-xs"
               aria-label="Toggle theme"
               title={theme === 'dark' ? "Yorug' rejim" : "Qorong'i rejim"}
             >
@@ -249,7 +249,7 @@ export const Navbar = ({
               <button
                 type="button"
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="h-9 px-3.5 flex items-center gap-1.5 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-all cursor-pointer whitespace-nowrap hover:scale-105 active:scale-95 shadow-xs"
+                className="h-9 px-3.5 flex items-center gap-1.5 rounded-full text-xs font-semibold bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-all cursor-pointer whitespace-nowrap hover:scale-105 active:scale-95 shadow-xs"
                 aria-label="Tilni tanlash"
               >
                 <span className="font-mono font-bold tracking-wider">{currentLanguage.short}</span>
@@ -258,7 +258,7 @@ export const Navbar = ({
 
               {langDropdownOpen && (
                 <div 
-                  className="absolute right-0 mt-2 w-36 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 py-1.5 z-50 backdrop-blur-xl animate-in fade-in duration-100"
+                  className="absolute right-0 mt-2 w-36 bg-white/95 dark:bg-zinc-900/95 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 py-1.5 z-50 backdrop-blur-xl animate-in fade-in duration-100"
                   onClick={() => setLangDropdownOpen(false)}
                 >
                   {languages.map((l) => (
@@ -288,7 +288,7 @@ export const Navbar = ({
             <button
               type="button"
               onClick={onOpenCart}
-              className="h-9 w-9 sm:h-9 sm:w-9 flex items-center justify-center relative rounded-full bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all cursor-pointer flex-shrink-0 hover:scale-105 active:scale-95 shadow-xs"
+              className="h-9 w-9 sm:h-9 sm:w-9 flex items-center justify-center relative rounded-full bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all cursor-pointer flex-shrink-0 hover:scale-105 active:scale-95 shadow-xs"
               aria-label={t.nav.cart}
               title={t.nav.cart}
             >
@@ -300,21 +300,21 @@ export const Navbar = ({
               )}
             </button>
 
-            {/* Primary Demo CTA Button (pure white text & sparkles) */}
+            {/* Primary Demo CTA Button (Fixed: generous px-5 padding, unclipped text, pristine emerald pill) */}
             <button
               type="button"
               onClick={onOpenDemo}
-              className="hidden sm:inline-flex h-9 px-4.5 items-center gap-1.5 rounded-full text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-600/20 transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer flex-shrink-0"
+              className="hidden sm:inline-flex items-center justify-center gap-2 h-9 sm:h-9.5 px-5 rounded-full text-xs sm:text-[13px] font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-500/35 hover:scale-[1.03] active:scale-95 transition-all duration-150 whitespace-nowrap cursor-pointer flex-shrink-0"
             >
               <Sparkles className="w-3.5 h-3.5 shrink-0 text-white" />
-              <span className="shrink-0 text-white">{t.nav.tryDemo}</span>
+              <span className="shrink-0 text-white font-bold tracking-tight">{t.nav.tryDemo}</span>
             </button>
 
             {/* Mobile Animated Burger Button: Circular */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="xl:hidden h-9 w-9 sm:h-9 sm:w-9 flex flex-col items-center justify-center gap-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-white/[0.08] text-zinc-800 dark:text-zinc-200 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all cursor-pointer"
+              className="xl:hidden h-9 w-9 sm:h-9 sm:w-9 flex flex-col items-center justify-center gap-1.5 rounded-full bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-white/[0.08] text-zinc-800 dark:text-zinc-200 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all cursor-pointer"
               aria-label={t.menu?.open || "Menyuni ochish"}
             >
               <span className="w-4.5 h-0.5 rounded-full bg-current block" />
@@ -335,7 +335,7 @@ export const Navbar = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="liquid-glass liquid-glass-sheen fixed bottom-6 right-5 sm:bottom-8 sm:right-8 z-40 px-4 py-2.5 sm:px-4.5 sm:py-2.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-50 shadow-2xl cursor-pointer hover:scale-105 active:scale-95 transition-transform group pointer-events-auto"
+            className="liquid-glass liquid-glass-sheen fixed bottom-6 right-5 sm:bottom-8 sm:right-8 z-40 px-5 py-2.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-50 shadow-2xl cursor-pointer hover:scale-105 active:scale-95 transition-transform group pointer-events-auto"
             aria-label="Yuqoriga qaytish"
             title="Yuqoriga qaytish"
           >
