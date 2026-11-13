@@ -39,7 +39,8 @@ export const PartnerMarquee = ({ t }) => {
         <img
           src="/logos/payme.svg"
           alt="Payme"
-          className="h-5 w-auto object-contain"
+          className="w-auto object-contain"
+          style={{ height: '18px' }}
         />
       )
     },
@@ -51,7 +52,8 @@ export const PartnerMarquee = ({ t }) => {
         <img
           src="/logos/uzum.svg"
           alt="Uzum"
-          className="h-3.5 max-h-4 max-w-[55px] w-auto object-contain"
+          className="w-auto object-contain"
+          style={{ height: '14px', maxWidth: '50px' }}
         />
       )
     },
@@ -60,11 +62,12 @@ export const PartnerMarquee = ({ t }) => {
       name: "Multikassa",
       type: "Davlat Soliq Qo'mitasi",
       logo: (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <img
             src="/logos/multikassa.png"
             alt="Multikassa"
-            className="h-5.5 w-auto object-contain rounded-md shadow-xs"
+            className="rounded-md object-contain shadow-xs shrink-0"
+            style={{ width: '22px', height: '22px' }}
           />
           <span className="font-bold text-zinc-900 dark:text-zinc-100 text-xs tracking-tight">Multikassa</span>
         </div>
@@ -78,10 +81,9 @@ export const PartnerMarquee = ({ t }) => {
         <div className="flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="114"
-            height="36"
             viewBox="0 0 114 36"
-            className="h-5 w-auto aspect-[114/36] shrink-0"
+            style={{ width: '66px', height: '21px' }}
+            className="shrink-0"
             aria-label="ARCA Group"
           >
             <g className="fill-[#002d7c] dark:fill-white transition-colors">
@@ -133,7 +135,7 @@ export const PartnerMarquee = ({ t }) => {
               key={partner.id}
               className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-emerald-500/30 transition-colors group"
             >
-              <div className="h-8 flex items-center justify-center">
+              <div className="h-8 flex items-center justify-center overflow-hidden">
                 {partner.logo}
               </div>
               <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono mt-1.5 tracking-tight text-center">
