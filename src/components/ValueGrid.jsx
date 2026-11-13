@@ -23,7 +23,7 @@ export const ValueGrid = ({ t }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Card 1 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.16] hover:shadow-xl transition-all duration-300">
+          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
             <div className="flex items-center justify-between mb-6">
               <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
                 01
@@ -48,7 +48,7 @@ export const ValueGrid = ({ t }) => {
           </FluentRevealCard>
 
           {/* Card 2 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.16] hover:shadow-xl transition-all duration-300">
+          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
             <div className="flex items-center justify-between mb-6">
               <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
                 02
@@ -73,7 +73,7 @@ export const ValueGrid = ({ t }) => {
           </FluentRevealCard>
 
           {/* Card 3 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.16] hover:shadow-xl transition-all duration-300">
+          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
             <div className="flex items-center justify-between mb-6">
               <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
                 03
@@ -98,7 +98,7 @@ export const ValueGrid = ({ t }) => {
           </FluentRevealCard>
 
           {/* Card 4 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.16] hover:shadow-xl transition-all duration-300">
+          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
             <div className="flex items-center justify-between mb-6">
               <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
                 04
