@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Phone, MessageSquare, ExternalLink } from 'lucide-react';
+import { ArrowUp, Phone, MessageSquare } from 'lucide-react';
 
 export const Footer = ({ t, onOpenDemo }) => {
   const scrollToTop = () => {
@@ -13,8 +13,8 @@ export const Footer = ({ t, onOpenDemo }) => {
         {/* Main Columns Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-zinc-200 dark:border-zinc-800">
           
-          {/* Col 1: Brand Info (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* Col 1: Brand Info (6 cols) */}
+          <div className="md:col-span-2 lg:col-span-6 space-y-4">
             <a href="#home" className="inline-flex items-center gap-2 group" aria-label="IDO'KON Bosh sahifa">
               <img
                 src="/idokon_logo.png"
@@ -58,8 +58,8 @@ export const Footer = ({ t, onOpenDemo }) => {
             </div>
           </div>
 
-          {/* Col 2: Mahsulot (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
+          {/* Col 2: Mahsulot (3 cols) */}
+          <div className="md:col-span-1 lg:col-span-3 space-y-3">
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-200">
               {t.footer.productCol}
             </h4>
@@ -71,8 +71,8 @@ export const Footer = ({ t, onOpenDemo }) => {
             </ul>
           </div>
 
-          {/* Col 3: Resurslar (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
+          {/* Col 3: Resurslar (3 cols) */}
+          <div className="md:col-span-1 lg:col-span-3 space-y-3">
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-200">
               {t.footer.resourceCol}
             </h4>
@@ -82,38 +82,6 @@ export const Footer = ({ t, onOpenDemo }) => {
               <li><a href="#faq" className="hover:text-emerald-500 transition-colors">{t.nav.faq}</a></li>
               <li><a href="#contact" className="hover:text-emerald-500 transition-colors">{t.nav.contact}</a></li>
             </ul>
-          </div>
-
-          {/* Col 4: Quick Portals & Direct Links (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-200">
-              {t.footer.contactCol}
-            </h4>
-            <div className="space-y-2.5">
-              <button
-                type="button"
-                onClick={onOpenDemo}
-                className="w-full py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold flex items-center justify-between transition-colors shadow-sm cursor-pointer"
-              >
-                <span>{t.footer.getDemo || "Bepul Demo Olish"}</span>
-                <span className="text-base leading-none">→</span>
-              </button>
-
-              <a
-                href="https://idokon-course.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2 px-3 rounded-lg bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold flex items-center justify-between transition-colors border border-zinc-200 dark:border-zinc-800 shadow-xs cursor-pointer"
-              >
-                <span>{t.footer.videoCourse || "I-Do'kon Video Kursi"}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
-              </a>
-
-              <div className="pt-1 text-[11px] text-zinc-500 dark:text-zinc-400 font-mono tabular-nums space-y-0.5">
-                <div>+998 99 113 09 99</div>
-                <div>+998 95 360 09 99</div>
-              </div>
-            </div>
           </div>
 
         </div>

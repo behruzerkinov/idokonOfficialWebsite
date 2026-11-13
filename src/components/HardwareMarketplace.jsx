@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { hardwareProducts } from '../data/mockData';
-import { ShoppingCart, Check, Eye } from 'lucide-react';
+import { ShoppingCart, Check, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 export const HardwareMarketplace = ({ 
@@ -11,27 +11,16 @@ export const HardwareMarketplace = ({
   onOpenSpecsModal, 
   onOpenCart 
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const categories = [
-    { id: 'all', label: { uz: 'Barcha qurilmalar', ru: 'Все устройства', en: 'All Devices' } },
-    { id: 'monoblock', label: { uz: 'Monobloklar', ru: 'Моноблоки', en: 'Monoblocks' } },
-    { id: 'printer', label: { uz: 'Printerlar', ru: 'Принтеры', en: 'Printers' } },
-    { id: 'scanner', label: { uz: 'Skanerlar', ru: 'Сканеры', en: 'Scanners' } },
-    { id: 'other', label: { uz: 'Tarozi & Kassa', ru: 'Весы и ящики', en: 'Scales & Drawers' } },
-  ];
-
   const currentLang = ['uz', 'ru', 'en'].includes(lang) ? lang : 'uz';
-
-  const filteredProducts = hardwareProducts.filter(product => {
-    if (selectedCategory === 'all') return true;
-    if (selectedCategory === 'other') {
-      return product.category === 'scale' || product.category === 'box';
-    }
-    return product.category === selectedCategory;
-  });
-
   const isInCart = (id) => cart.some(item => item.id === id);
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === 'left' ? -320 : 320;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const handleAdd = (e, product) => {
     e.stopPropagation(); // Prevent opening modal when clicking add to cart
@@ -51,7 +40,7 @@ export const HardwareMarketplace = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/[0.06] dark:border-white/[0.08] text-zinc-600 dark:text-zinc-400 text-xs font-mono font-medium uppercase tracking-wider mb-4">
             <span>{t.equipment.eyebrow}</span>
           </div>
@@ -62,31 +51,36 @@ export const HardwareMarketplace = ({
             {t.equipment.lead}
           </p>
 
-          {/* Category Filter Pills (Apple Store style) */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-            {categories.map((cat) => {
-              const isSelected = selectedCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    isSelected
-                      ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 shadow-sm'
-                      : 'bg-zinc-100 dark:bg-[#161617] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white border border-black/[0.04] dark:border-white/[0.06]'
-                  }`}
-                >
-                  {cat.label[currentLang] || cat.label.uz}
-                </button>
-              );
-            })}
+          {/* Mobile-only scroll hint & controls */}
+          <div className="flex lg:hidden items-center justify-center gap-3 mt-6">
+            <button
+              type="button"
+              onClick={() => scroll('left')}
+              className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-black/[0.06] dark:border-white/[0.08] active:scale-95"
+              aria-label="Oldingi qurilmalar"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+              {currentLang === 'ru' ? 'Листайте влево-вправо' : currentLang === 'en' ? 'Swipe to explore' : "Surib ko'rish"}
+            </span>
+            <button
+              type="button"
+              onClick={() => scroll('right')}
+              className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-black/[0.06] dark:border-white/[0.08] active:scale-95"
+              aria-label="Keyingi qurilmalar"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        {/* Responsive Apple Store Grid (Mobile friendly 1-2 cols, Desktop 4 cols) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-          {filteredProducts.map((product) => {
+        {/* Mobile-first smooth touch responsive scroll gallery (Mobile/Tablet: snap scroll, Desktop: 4 cols) */}
+        <div 
+          ref={scrollRef}
+          className="flex lg:grid lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-4 pt-1 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 touch-pan-x [webkit-overflow-scrolling:touch]"
+        >
+          {hardwareProducts.map((product) => {
             const inCart = isInCart(product.id);
             const title = product.title?.[currentLang] || product.title?.uz || '';
             const subtitle = product.desc?.[currentLang] || product.desc?.uz || product.subtitle?.[currentLang] || product.subtitle?.uz || '';
@@ -103,25 +97,18 @@ export const HardwareMarketplace = ({
                     onOpenSpecsModal(product);
                   }
                 }}
-                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.16] flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden p-4 sm:p-5"
+                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.16] flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[84vw] sm:w-[320px] lg:w-auto snap-center sm:snap-start"
                 title={`${title} - batafsil ma'lumot olish uchun bosing`}
               >
                 <div>
-                  {/* Product Image Area */}
-                  <div className="relative h-48 sm:h-52 bg-zinc-50 dark:bg-zinc-900/60 rounded-2xl p-4 flex items-center justify-center overflow-hidden mb-4">
+                  {/* Full-width Minimalist Gallery Image Container */}
+                  <div className="relative w-full h-64 sm:h-72 lg:h-80 bg-white flex items-center justify-center overflow-hidden border-b border-black/[0.06] dark:border-white/[0.08]">
                     <img
                       src={product.image}
                       alt={title}
-                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       loading="lazy"
                     />
-                    
-                    {/* Badge (Green accent with white text) */}
-                    {product.badge && (
-                      <span className="absolute top-3 left-3 text-[11px] font-sans font-medium px-2.5 py-0.5 rounded-full bg-emerald-600 text-white shadow-xs">
-                        {typeof product.badge === 'object' ? (product.badge[currentLang] || product.badge.uz) : product.badge}
-                      </span>
-                    )}
 
                     {/* Quick View Hover Indicator */}
                     <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 dark:bg-white/20 backdrop-blur-md text-white text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
@@ -131,16 +118,18 @@ export const HardwareMarketplace = ({
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="font-semibold text-base text-[#1d1d1f] dark:text-[#f5f5f7] mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
-                    {title}
-                  </h3>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed mb-4">
-                    {subtitle}
-                  </p>
+                  <div className="p-5 sm:p-6 pb-2">
+                    <h3 className="font-semibold text-base sm:text-lg text-[#1d1d1f] dark:text-[#f5f5f7] mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1 tracking-tight">
+                      {title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+                      {subtitle}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Price & Action Footer */}
-                <div className="pt-3.5 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between gap-2">
+                <div className="p-5 sm:p-6 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
                       {t.equipment?.priceLabel || "Narxi"}
