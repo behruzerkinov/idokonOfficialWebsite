@@ -33,14 +33,10 @@ export const HardwareMarketplace = ({
         return;
       }
 
-      const threshold = 6;
-      const atStart = el.scrollLeft <= threshold;
-      const atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - threshold;
-
       // 3. Scrolling UP (e.deltaY < 0):
       if (e.deltaY < 0) {
-        if (atStart) {
-          // Already at start -> allow page to scroll up normally!
+        if (el.scrollLeft <= 2) {
+          // Already at the start -> allow page to scroll up normally!
           return;
         }
         e.preventDefault();
@@ -50,8 +46,9 @@ export const HardwareMarketplace = ({
 
       // 4. Scrolling DOWN (e.deltaY > 0):
       if (e.deltaY > 0) {
-        if (atEnd) {
-          // Already at end -> allow page to scroll down normally!
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        if (el.scrollLeft >= maxScroll - 2) {
+          // Already at the end -> allow page to scroll down normally!
           return;
         }
         e.preventDefault();
@@ -127,7 +124,7 @@ export const HardwareMarketplace = ({
         {/* ONE-LINE Horizontal Touch & Mouse Wheel Responsive Gallery */}
         <div 
           ref={scrollRef}
-          className="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-6 pt-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 touch-pan-x [webkit-overflow-scrolling:touch] select-none"
+          className="flex items-stretch gap-5 overflow-x-auto max-md:snap-x max-md:snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-6 pt-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 touch-pan-x [webkit-overflow-scrolling:touch] select-none"
         >
           {hardwareProducts.map((product) => {
             const inCart = isInCart(product.id);
@@ -147,7 +144,7 @@ export const HardwareMarketplace = ({
                     onOpenSpecsModal(product);
                   }
                 }}
-                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.22] flex flex-col justify-between transition-all duration-300 ease-out cursor-pointer overflow-hidden flex-shrink-0 w-[84vw] sm:w-[320px] lg:w-[320px] snap-start"
+                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.22] flex flex-col justify-between transition-all duration-300 ease-out cursor-pointer overflow-hidden flex-shrink-0 w-[84vw] sm:w-[320px] lg:w-[320px] max-md:snap-start"
                 title={`${title} - batafsil ma'lumot olish uchun bosing`}
               >
                 <div>
@@ -161,12 +158,12 @@ export const HardwareMarketplace = ({
                     />
                   </div>
 
-                  {/* Title & Description with locked sizing */}
+                  {/* Title & Description with locked sizing - full 2-line title without clipping */}
                   <div className="p-5 sm:p-6 pb-2">
-                    <h3 className="font-semibold text-base sm:text-lg text-[#1d1d1f] dark:text-[#f5f5f7] mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1 tracking-tight h-7 flex items-center">
+                    <h3 className="font-semibold text-base sm:text-lg text-[#1d1d1f] dark:text-[#f5f5f7] mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2 tracking-tight min-h-[3.25rem] leading-snug">
                       {title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed h-10 overflow-hidden">
+                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed min-h-[2.5rem] overflow-hidden">
                       {subtitle}
                     </p>
                   </div>
