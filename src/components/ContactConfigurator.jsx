@@ -48,7 +48,7 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
+    <section id="contact" className="scroll-mt-20 pt-16 sm:pt-20 lg:pt-24 pb-28 sm:pb-36 lg:pb-44 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

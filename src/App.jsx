@@ -15,6 +15,7 @@ import { PricingCalculator } from './components/PricingCalculator';
 import { CourseAcademy } from './components/CourseAcademy';
 import { FaqAccordion } from './components/FaqAccordion';
 import { ContactConfigurator } from './components/ContactConfigurator';
+import { HugeBrandTextSection } from './components/HugeBrandTextSection';
 import { Footer } from './components/Footer';
 
 // Modals & Drawers
@@ -250,6 +251,13 @@ export function App() {
             lang={lang}
           />
         </div>
+
+        {/* Section 11: Monumental Brand Finale Overlap Slide */}
+        <HugeBrandTextSection
+          lang={lang}
+          t={t}
+          onOpenDemo={() => setIsDemoOpen(true)}
+        />
 
       </main>
 
