@@ -28,7 +28,7 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
             {/* Main Monumental Headline */}
             <h1 className="font-sans text-4xl sm:text-6xl lg:text-[70px] font-semibold tracking-[-0.035em] text-[#1d1d1f] dark:text-[#f5f5f7] leading-[1.08] mb-6 [text-wrap:balance]">
               {t.hero.titleStart}{' '}
-              <span className="px-3.5 py-0.5 rounded-2xl bg-emerald-600 text-white font-semibold inline-block shadow-xs">
+              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">
                 {t.hero.titleHighlight}
               </span>{' '}
               {t.hero.titleEnd}

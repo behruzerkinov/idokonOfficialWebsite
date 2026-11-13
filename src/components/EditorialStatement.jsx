@@ -13,7 +13,7 @@ export const EditorialStatement = ({ t }) => {
         {/* Statement Headline */}
         <h2 className="font-sans text-3xl sm:text-5xl lg:text-[56px] font-semibold leading-[1.15] tracking-[-0.03em] text-[#1d1d1f] dark:text-[#f5f5f7] mb-8 [text-wrap:balance]">
           Do‘koningizdagi har bir tovar, har bir tranzaksiya va har bir so‘m —{' '}
-          <span className="px-3.5 py-0.5 rounded-2xl bg-emerald-600 text-white font-semibold inline-block shadow-xs">
+          <span className="text-emerald-500 dark:text-emerald-400 font-semibold">
             doim aniq hisobda
           </span>{' '}
           bo‘lishi shart.

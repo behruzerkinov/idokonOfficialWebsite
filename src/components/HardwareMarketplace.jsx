@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { hardwareProducts } from '../data/mockData';
 import { ShoppingCart, Check, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { toast } from 'sonner';
@@ -15,9 +15,31 @@ export const HardwareMarketplace = ({
   const isInCart = (id) => cart.some(item => item.id === id);
   const scrollRef = useRef(null);
 
+  // Mouse wheel horizontal scrolling translation
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onWheel = (e) => {
+      // Translate vertical mouse wheel scrolling into smooth horizontal scrolling
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        const canScrollLeft = el.scrollLeft > 0;
+        const canScrollRight = el.scrollLeft < el.scrollWidth - el.clientWidth - 1;
+
+        if ((e.deltaY > 0 && canScrollRight) || (e.deltaY < 0 && canScrollLeft)) {
+          e.preventDefault();
+          el.scrollBy({ left: e.deltaY, behavior: 'auto' });
+        }
+      }
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, []);
+
   const scroll = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -320 : 320;
+      const scrollAmount = direction === 'left' ? -340 : 340;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -36,11 +58,11 @@ export const HardwareMarketplace = ({
   };
 
   return (
-    <section id="equipment" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-black/[0.04] dark:border-white/[0.06]">
+    <section id="equipment" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-black/[0.04] dark:border-white/[0.06] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/[0.06] dark:border-white/[0.08] text-zinc-600 dark:text-zinc-400 text-xs font-mono font-medium uppercase tracking-wider mb-4">
             <span>{t.equipment.eyebrow}</span>
           </div>
@@ -51,23 +73,23 @@ export const HardwareMarketplace = ({
             {t.equipment.lead}
           </p>
 
-          {/* Mobile-only scroll hint & controls */}
-          <div className="flex lg:hidden items-center justify-center gap-3 mt-6">
+          {/* Touch & Mouse Wheel responsive navigation controls */}
+          <div className="flex items-center justify-center gap-3 mt-6">
             <button
               type="button"
               onClick={() => scroll('left')}
-              className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-black/[0.06] dark:border-white/[0.08] active:scale-95"
+              className="w-9 h-9 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-black/[0.06] dark:border-white/[0.08] active:scale-95 cursor-pointer shadow-xs"
               aria-label="Oldingi qurilmalar"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-              {currentLang === 'ru' ? 'Листайте влево-вправо' : currentLang === 'en' ? 'Swipe to explore' : "Surib ko'rish"}
+              {currentLang === 'ru' ? 'Листайте колесиком или свайпом' : currentLang === 'en' ? 'Swipe or scroll with mouse wheel' : "Gorizontal surish yoki g'ildirakcha"}
             </span>
             <button
               type="button"
               onClick={() => scroll('right')}
-              className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-black/[0.06] dark:border-white/[0.08] active:scale-95"
+              className="w-9 h-9 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-black/[0.06] dark:border-white/[0.08] active:scale-95 cursor-pointer shadow-xs"
               aria-label="Keyingi qurilmalar"
             >
               <ChevronRight className="w-4 h-4" />
@@ -75,10 +97,10 @@ export const HardwareMarketplace = ({
           </div>
         </div>
 
-        {/* Mobile-first smooth touch responsive scroll gallery (Mobile/Tablet: snap scroll, Desktop: 4 cols) */}
+        {/* ONE-LINE Horizontal Touch & Mouse Wheel Responsive Gallery */}
         <div 
           ref={scrollRef}
-          className="flex lg:grid lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-4 pt-1 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 touch-pan-x [webkit-overflow-scrolling:touch]"
+          className="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-6 pt-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 touch-pan-x [webkit-overflow-scrolling:touch] select-none"
         >
           {hardwareProducts.map((product) => {
             const inCart = isInCart(product.id);
@@ -97,12 +119,12 @@ export const HardwareMarketplace = ({
                     onOpenSpecsModal(product);
                   }
                 }}
-                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.16] flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[84vw] sm:w-[320px] lg:w-auto snap-center sm:snap-start"
+                className="group relative rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-black/[0.12] dark:hover:border-white/[0.16] flex flex-col justify-between transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[84vw] sm:w-[320px] lg:w-[320px] snap-start"
                 title={`${title} - batafsil ma'lumot olish uchun bosing`}
               >
                 <div>
-                  {/* Full-width Minimalist Gallery Image Container */}
-                  <div className="relative w-full h-64 sm:h-72 lg:h-80 bg-white flex items-center justify-center overflow-hidden border-b border-black/[0.06] dark:border-white/[0.08]">
+                  {/* Full-width Minimalist Gallery Image Container with fixed height */}
+                  <div className="relative w-full h-64 sm:h-72 bg-white flex items-center justify-center overflow-hidden border-b border-black/[0.06] dark:border-white/[0.08] flex-shrink-0">
                     <img
                       src={product.image}
                       alt={title}
@@ -117,26 +139,28 @@ export const HardwareMarketplace = ({
                     </div>
                   </div>
 
-                  {/* Title & Description */}
+                  {/* Title & Description with locked sizing */}
                   <div className="p-5 sm:p-6 pb-2">
-                    <h3 className="font-semibold text-base sm:text-lg text-[#1d1d1f] dark:text-[#f5f5f7] mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1 tracking-tight">
+                    <h3 className="font-semibold text-base sm:text-lg text-[#1d1d1f] dark:text-[#f5f5f7] mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1 tracking-tight h-7 flex items-center">
                       {title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed h-10 overflow-hidden">
                       {subtitle}
                     </p>
                   </div>
                 </div>
 
-                {/* Price & Action Footer */}
-                <div className="p-5 sm:p-6 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between gap-2">
-                  <div>
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
+                {/* Price & Action Footer - Perfectly aligned across all cards */}
+                <div className="p-5 sm:p-6 pt-3.5 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between gap-3 mt-auto">
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 mb-0.5 leading-none">
                       {t.equipment?.priceLabel || "Narxi"}
                     </div>
-                    <div className="text-base sm:text-lg font-bold text-[#1d1d1f] dark:text-zinc-50 font-mono tabular-nums">
-                      {product.price.toLocaleString()}{' '}
-                      <span className="text-xs font-normal text-zinc-500 font-sans">
+                    <div className="flex items-baseline gap-1 whitespace-nowrap">
+                      <span className="text-base sm:text-lg font-bold text-[#1d1d1f] dark:text-zinc-50 font-mono tabular-nums leading-tight">
+                        {product.price.toLocaleString()}
+                      </span>
+                      <span className="text-xs font-normal text-zinc-500 font-sans whitespace-nowrap leading-tight">
                         {t.equipment?.currency || "so'm"}
                       </span>
                     </div>
@@ -146,7 +170,7 @@ export const HardwareMarketplace = ({
                   <button
                     type="button"
                     onClick={(e) => handleAdd(e, product)}
-                    className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold text-white transition-all duration-150 cursor-pointer shadow-sm active:scale-95 flex-shrink-0 ${
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold text-white transition-all duration-150 cursor-pointer shadow-sm active:scale-95 flex-shrink-0 whitespace-nowrap ${
                       inCart
                         ? 'bg-emerald-700 hover:bg-emerald-800'
                         : 'bg-emerald-600 hover:bg-emerald-500'
