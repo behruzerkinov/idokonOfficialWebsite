@@ -31,14 +31,14 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
               {t.faq.lead}
             </p>
 
-            {/* Direct Ask Question Button */}
+            {/* Direct Ask Question Button with high-tactile hover feedback */}
             <button
               type="button"
               onClick={onScrollToContact}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-emerald-500 hover:text-white text-zinc-800 dark:text-zinc-200 font-medium text-xs uppercase tracking-wider transition-all shadow-sm cursor-pointer border border-zinc-200 dark:border-zinc-700"
+              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-zinc-100 dark:bg-zinc-800/90 text-zinc-800 dark:text-zinc-100 font-semibold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer border border-zinc-200 dark:border-zinc-700/80 shadow-sm hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white dark:hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 hover:scale-105 active:scale-95"
             >
               <span>{t.faq.askQuestionBtn}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 text-zinc-500 group-hover:text-white" />
             </button>
           </div>
 

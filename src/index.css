@@ -108,6 +108,67 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* iOS 18 & visionOS Authentic Liquid Glass Bending & Optical Refraction */
+.liquid-glass {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(245, 245, 248, 0.52) 100%);
+  backdrop-filter: blur(28px) saturate(210%) brightness(103%) url(#ios-glass-refraction);
+  -webkit-backdrop-filter: blur(28px) saturate(210%) brightness(103%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 20px 48px -10px rgba(0, 0, 0, 0.12),
+    0 10px 24px -5px rgba(0, 0, 0, 0.07),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 3px 0 rgba(0, 0, 0, 0.06),
+    inset 0 0 18px 0 rgba(255, 255, 255, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.dark .liquid-glass {
+  background: linear-gradient(135deg, rgba(20, 22, 28, 0.72) 0%, rgba(10, 12, 16, 0.82) 100%);
+  backdrop-filter: blur(32px) saturate(220%) brightness(108%) url(#ios-glass-refraction);
+  -webkit-backdrop-filter: blur(32px) saturate(220%) brightness(108%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    0 25px 60px -12px rgba(0, 0, 0, 0.82),
+    0 12px 28px -6px rgba(0, 0, 0, 0.6),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -2px 6px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 20px 0 rgba(16, 185, 129, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Liquid Glass Sheen Overlay */
+.liquid-glass-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    transparent 55%
+  );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+.dark .liquid-glass-sheen::after {
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.03) 30%,
+    transparent 55%
+  );
+}
+
 /* Clean Marquee Animation */
 @keyframes marquee {
   0% {

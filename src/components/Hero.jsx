@@ -6,7 +6,7 @@ import {
 
 export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
   return (
-    <section id="home" className="relative pt-10 pb-14 sm:pt-14 sm:pb-16 lg:pt-16 lg:pb-20 overflow-hidden bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
+    <section id="home" className="relative pt-20 pb-14 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
       {/* Gentle ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
 

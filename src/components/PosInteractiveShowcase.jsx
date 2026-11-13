@@ -302,17 +302,17 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
               </div>
 
               {/* Prev / Next Click Controls */}
-              <div className="flex items-center gap-1.5 ml-auto">
+              <div className="flex items-center gap-2 ml-auto">
                 <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     paginate(-1);
                   }}
-                  className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-xs"
+                  className="group p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800/90 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-white/[0.08] hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 hover:scale-110 active:scale-90 transition-all duration-200 cursor-pointer"
                   aria-label="Oldingi"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
                 </button>
                 <button
                   type="button"
@@ -320,10 +320,10 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                     e.stopPropagation();
                     paginate(1);
                   }}
-                  className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-xs"
+                  className="group p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800/90 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-white/[0.08] hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 hover:scale-110 active:scale-90 transition-all duration-200 cursor-pointer"
                   aria-label="Keyingi"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </button>
               </div>
             </div>
