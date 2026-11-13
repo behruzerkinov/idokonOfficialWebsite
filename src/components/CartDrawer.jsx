@@ -104,7 +104,7 @@ export const CartDrawer = ({
                     {cart.map((item) => (
                       <div
                         key={item.id}
-                        className="p-3 rounded-none bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 flex items-center justify-between gap-3 tech-box"
+                        className="p-3 rounded-2xl bg-zinc-50 dark:bg-zinc-800/40 border border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between gap-3 transition-colors"
                       >
                         <img
                           src={item.image}

@@ -43,12 +43,12 @@ export const HugeBrandTextSection = ({ t, onOpenDemo }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="font-serif text-[18vw] sm:text-[17vw] lg:text-[210px] font-normal leading-[0.88] tracking-[-0.04em] text-zinc-950 dark:text-white [text-wrap:nowrap] transition-all duration-300">
-              IDO<span className="text-emerald-500 font-serif italic">'KON</span>
+            <h2 className="font-sans text-[18vw] sm:text-[17vw] lg:text-[200px] font-bold leading-[0.88] tracking-[-0.04em] text-[#1d1d1f] dark:text-white [text-wrap:nowrap] transition-all duration-300">
+              IDO<span className="text-emerald-500">'KON</span>
             </h2>
           </motion.div>
 
-          <p className="mt-4 font-serif text-xl sm:text-2xl lg:text-3xl text-zinc-600 dark:text-zinc-400 font-normal tracking-tight max-w-2xl mx-auto">
+          <p className="mt-4 font-sans text-xl sm:text-2xl lg:text-3xl text-zinc-600 dark:text-zinc-400 font-medium tracking-tight max-w-2xl mx-auto">
             Savdo barcha nuqtalarda. Nazorat yagona tizimda.
           </p>
         </div>

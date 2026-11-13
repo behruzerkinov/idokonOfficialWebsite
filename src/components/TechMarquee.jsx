@@ -13,30 +13,27 @@ export function TechMarquee({
   direction = 'left',
   className = ''
 }) {
-  const content = items.join('  ✦  ');
+  const content = items.join('   /   ');
 
   return (
-    <div className={`relative w-full overflow-hidden border-y border-zinc-200 dark:border-zinc-800/90 bg-zinc-100/70 dark:bg-[#0c0e14] py-3.5 sm:py-4 select-none ${className}`}>
-      
-      {/* Tech Corner Accent Squares (ChainGPT Labs style) */}
-      <div className="absolute top-0 left-0 w-2 h-2 bg-emerald-500" />
-      <div className="absolute top-0 right-0 w-2 h-2 bg-emerald-500" />
-      <div className="absolute bottom-0 left-0 w-2 h-2 bg-emerald-500" />
-      <div className="absolute bottom-0 right-0 w-2 h-2 bg-emerald-500" />
+    <div className={`relative w-full overflow-hidden border-y border-black/[0.05] dark:border-white/[0.06] bg-zinc-100/40 dark:bg-[#0c0d10] py-3 sm:py-3.5 select-none ${className}`}>
+      {/* Edge gradient masks for elegant fade */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#fbfbfd] dark:from-[#000000] to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#fbfbfd] dark:from-[#000000] to-transparent z-10" />
 
       {/* Marquee Track */}
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
-        <div className="flex items-center gap-8 whitespace-nowrap px-4 font-mono text-xs sm:text-sm font-bold tracking-widest text-zinc-800 dark:text-zinc-200 uppercase">
+        <div className="flex items-center gap-8 whitespace-nowrap px-4 text-[11px] sm:text-xs font-medium tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">
           <span>{content}</span>
-          <span className="text-emerald-500">✦</span>
+          <span className="text-zinc-300 dark:text-zinc-700">/</span>
           <span>{content}</span>
-          <span className="text-emerald-500">✦</span>
+          <span className="text-zinc-300 dark:text-zinc-700">/</span>
         </div>
-        <div className="flex items-center gap-8 whitespace-nowrap px-4 font-mono text-xs sm:text-sm font-bold tracking-widest text-zinc-800 dark:text-zinc-200 uppercase" aria-hidden="true">
+        <div className="flex items-center gap-8 whitespace-nowrap px-4 text-[11px] sm:text-xs font-medium tracking-wider text-zinc-500 dark:text-zinc-400 uppercase" aria-hidden="true">
           <span>{content}</span>
-          <span className="text-emerald-500">✦</span>
+          <span className="text-zinc-300 dark:text-zinc-700">/</span>
           <span>{content}</span>
-          <span className="text-emerald-500">✦</span>
+          <span className="text-zinc-300 dark:text-zinc-700">/</span>
         </div>
       </div>
     </div>

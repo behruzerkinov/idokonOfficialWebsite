@@ -42,7 +42,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
   ];
 
   return (
-    <section id="integrations" className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
+    <section id="integrations" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -50,7 +50,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-[#12141c] border border-zinc-200 dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4 shadow-sm">
             <span>{t.integrations.eyebrow}</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08]">
+          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
             {t.integrations.title}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
@@ -62,14 +62,14 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-8">
           
           {/* Left Column: 1C & Excel Migration Showcase (5 cols) */}
-          <div className="lg:col-span-5 rounded-3xl p-7 sm:p-9 bg-white dark:bg-[#0c0d13] border border-zinc-200/90 dark:border-white/[0.09] shadow-xl flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-5 rounded-3xl p-7 sm:p-9 bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
             <div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-medium mb-5 border border-emerald-500/20">
                 <RefreshCw className="w-3.5 h-3.5 text-emerald-500 animate-spin" style={{ animationDuration: '6s' }} />
                 <span>{t.integrations.zeroDowntime || "Nol to'xtalishli migratsiya"}</span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl font-normal text-zinc-950 dark:text-zinc-50 mb-6 leading-snug">
+              <h3 className="font-sans text-2xl sm:text-3xl font-semibold text-[#1d1d1f] dark:text-zinc-50 mb-6 leading-snug tracking-[-0.02em]">
                 {t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"}
               </h3>
 
@@ -134,7 +134,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
                       {item.icon}
                     </div>
                   </div>
-                  <h4 className="font-serif text-lg sm:text-xl font-normal text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h4 className="font-sans text-lg sm:text-xl font-semibold text-[#1d1d1f] dark:text-zinc-100 mb-2 tracking-[-0.02em]">
                     {item.title}
                   </h4>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
@@ -162,7 +162,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
               <Database className="w-6 h-6 text-emerald-500" />
             </div>
             <div>
-              <h4 className="font-serif text-lg sm:text-xl font-normal text-zinc-950 dark:text-zinc-50">
+              <h4 className="font-sans text-lg sm:text-xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.02em]">
                 {t.integrations?.calloutTitle || "Eski bazangiz formatidan qat'i nazar"}
               </h4>
               <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1 font-normal">

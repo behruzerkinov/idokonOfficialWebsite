@@ -25,10 +25,10 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
               <span>{t.hero.eyebrow}</span>
             </div>
 
-            {/* Main Monumental Headline (Twain AI Produkt editorial serif) */}
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-[72px] font-normal tracking-[-0.025em] text-zinc-950 dark:text-zinc-50 leading-[1.06] mb-6 [text-wrap:balance]">
+            {/* Main Monumental Headline */}
+            <h1 className="font-sans text-4xl sm:text-6xl lg:text-[70px] font-semibold tracking-[-0.035em] text-[#1d1d1f] dark:text-[#f5f5f7] leading-[1.05] mb-6 [text-wrap:balance]">
               {t.hero.titleStart}{' '}
-              <span className="text-emerald-600 dark:text-emerald-400 font-serif italic">
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
                 {t.hero.titleHighlight}
               </span>{' '}
               {t.hero.titleEnd}
@@ -84,18 +84,18 @@ export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               
-              {/* Foundation UI Window Frame */}
-              <div className="relative rounded-2xl p-2.5 bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/80 shadow-2xl overflow-hidden backdrop-blur-xl">
+              {/* Apple macOS Window Frame */}
+              <div className="relative rounded-3xl p-2 bg-white/90 dark:bg-[#161617]/90 border border-black/[0.08] dark:border-white/[0.1] shadow-2xl overflow-hidden backdrop-blur-2xl">
                 
                 {/* Window header */}
-                <div className="flex items-center justify-between px-3 py-2 bg-zinc-100/90 dark:bg-zinc-950/80 rounded-t-xl border-b border-zinc-200 dark:border-zinc-800/80">
+                <div className="flex items-center justify-between px-3.5 py-2.5 bg-zinc-100/80 dark:bg-zinc-950/80 rounded-t-2xl border-b border-black/[0.05] dark:border-white/[0.06]">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-600 dark:text-zinc-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     <span>idokon.uz · Admin Panel</span>
                   </div>
                 </div>

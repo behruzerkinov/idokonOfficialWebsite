@@ -12,17 +12,11 @@ export const HardwareSpecsModal = ({ isOpen, onClose, product, lang = 'uz', t, o
         : (currentLang === 'ru' ? '1 год гарантии' : currentLang === 'en' ? '1 year warranty' : '1 yil kafolat'));
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
       <div 
-        className="relative w-full max-w-md rounded-none bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150 tech-box"
+        className="relative w-full max-w-md rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.08] dark:border-white/[0.1] text-zinc-900 dark:text-zinc-100 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Tech Corner Squares (ChainGPT Labs style) */}
-        <div className="tech-corner-square tech-corner-tl" />
-        <div className="tech-corner-square tech-corner-tr" />
-        <div className="tech-corner-square tech-corner-bl" />
-        <div className="tech-corner-square tech-corner-br" />
-
         {/* Header */}
         <div className="p-5 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between bg-zinc-50 dark:bg-zinc-950/60">
           <div>

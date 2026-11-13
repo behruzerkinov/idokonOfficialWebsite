@@ -39,7 +39,7 @@ export const HardwareMarketplace = ({
   };
 
   return (
-    <section id="equipment" className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
+    <section id="equipment" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Carousel Controls */}
@@ -48,7 +48,7 @@ export const HardwareMarketplace = ({
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
               <span>{t.equipment.eyebrow}</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08] [text-wrap:balance]">
+            <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08] [text-wrap:balance]">
               {t.equipment.title}
             </h2>
             <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal max-w-[65ch]">
@@ -90,13 +90,10 @@ export const HardwareMarketplace = ({
             return (
               <FluentRevealCard
                 key={product.id}
-                className="w-[300px] sm:w-[330px] flex-shrink-0 snap-start rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-emerald-500/40 dark:hover:border-emerald-500/40 flex flex-col group tech-box relative"
+                className="w-[300px] sm:w-[330px] flex-shrink-0 snap-start rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:border-black/[0.12] dark:hover:border-white/[0.16] flex flex-col group transition-all duration-300 overflow-hidden"
               >
-                <div className="tech-corner-square tech-corner-tl" />
-                <div className="tech-corner-square tech-corner-br" />
-
                 {/* Product Image Area */}
-                <div className="relative h-48 bg-zinc-100 dark:bg-zinc-950/80 p-6 flex items-center justify-center overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+                <div className="relative h-48 bg-zinc-50 dark:bg-zinc-900/60 p-6 flex items-center justify-center overflow-hidden border-b border-black/[0.04] dark:border-white/[0.06]">
                   <img
                     src={product.image}
                     alt={title}

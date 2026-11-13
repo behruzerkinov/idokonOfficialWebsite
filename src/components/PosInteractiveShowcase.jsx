@@ -68,10 +68,9 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
 
   return (
     <section 
-      id="features-and-benefits"
-      className="relative py-12 sm:py-14 lg:py-18 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]"
+      id="terminal"
+      className="scroll-mt-20 relative py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]"
     >
-      <span id="terminal" className="absolute top-0 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
@@ -132,8 +131,8 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                     {currentStage.eyebrow}
                   </span>
 
-                  {/* Editorial Title (Twain Produkt / Fraunces style) */}
-                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-[38px] font-normal tracking-[-0.025em] leading-[1.12] text-zinc-950 dark:text-zinc-50">
+                  {/* Section Title */}
+                  <h3 className="font-sans text-2xl sm:text-3xl lg:text-[36px] font-semibold tracking-[-0.03em] leading-[1.15] text-[#1d1d1f] dark:text-zinc-50">
                     {currentStage.title}
                   </h3>
 

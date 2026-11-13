@@ -49,7 +49,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
             <span>{t.sectors.eyebrow}</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08]">
+          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
             {t.sectors.title}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal">
@@ -83,7 +83,7 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
                     className="w-5 h-5" 
                   />
                 </div>
-                <h3 className="font-serif font-normal text-xl sm:text-2xl mb-2 text-zinc-900 dark:text-zinc-50">
+                <h3 className="font-sans font-semibold text-xl sm:text-2xl mb-2 text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.02em]">
                   {sec.title}
                 </h3>
                 <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">

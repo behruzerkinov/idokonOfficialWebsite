@@ -148,14 +148,11 @@ export const Navbar = ({
             <div className="hidden xl:flex items-center justify-center">
               <nav 
                 ref={navRef}
-                className="relative flex items-center gap-1 2xl:gap-1.5 p-1.5 rounded-2xl bg-zinc-100/80 dark:bg-[#0f1118]/85 border border-zinc-200/90 dark:border-white/[0.1] backdrop-blur-2xl shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.2),0_8px_24px_-4px_rgba(0,0,0,0.35)] select-none overflow-hidden"
+                className="relative flex items-center gap-0.5 2xl:gap-1 p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.04] dark:border-white/[0.08] backdrop-blur-2xl select-none overflow-hidden"
               >
-                {/* iOS Refraction Top Highlight Line */}
-                <div className="absolute inset-x-2 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-
-                {/* Liquid Bottom Bar Indicator (Spring-driven fluid glide) */}
+                {/* Active Indicator (Clean Apple pill) */}
                 <motion.div
-                  className="absolute bottom-1 h-[3px] rounded-full bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-400 shadow-[0_0_14px_rgba(16,185,129,0.9)] pointer-events-none z-10"
+                  className="absolute bottom-1 h-[2px] rounded-full bg-emerald-500 pointer-events-none z-10"
                   animate={{
                     left: indicator.left,
                     width: indicator.width,
@@ -163,9 +160,9 @@ export const Navbar = ({
                   }}
                   transition={{
                     type: "spring",
-                    stiffness: 420,
-                    damping: 30,
-                    mass: 0.6
+                    stiffness: 450,
+                    damping: 32,
+                    mass: 0.5
                   }}
                 />
 
@@ -181,21 +178,21 @@ export const Navbar = ({
                       onClick={(e) => handleLinkClick(e, link.id)}
                       onMouseEnter={() => setHoveredId(link.id)}
                       onMouseLeave={() => setHoveredId(null)}
-                      className={`relative px-3.5 2xl:px-4 py-2 rounded-xl text-[13px] 2xl:text-[14px] font-medium tracking-tight whitespace-nowrap cursor-pointer transition-colors duration-200 z-20 ${
+                      className={`relative px-3.5 2xl:px-4 py-1.5 rounded-full text-[13px] 2xl:text-[14px] font-medium tracking-tight whitespace-nowrap cursor-pointer transition-colors duration-150 z-20 ${
                         isActive
-                          ? 'text-zinc-950 dark:text-white font-semibold'
-                          : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100'
+                          ? 'text-[#1d1d1f] dark:text-white font-semibold'
+                          : 'text-zinc-600 hover:text-[#1d1d1f] dark:text-zinc-400 dark:hover:text-white'
                       }`}
                     >
                       <AnimatePresence>
                         {isHovered && (
                           <motion.div
                             layoutId="nav-hover-pill"
-                            className="absolute inset-0 rounded-xl bg-zinc-200/70 dark:bg-zinc-800/80 -z-10 shadow-xs"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.15 }}
+                            className="absolute inset-0 rounded-full bg-black/[0.05] dark:bg-white/[0.08] -z-10"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.12 }}
                           />
                         )}
                       </AnimatePresence>

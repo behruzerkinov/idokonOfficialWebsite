@@ -51,7 +51,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
   const currentShot = courseScreenshots[activeShot] || courseScreenshots[0];
 
   return (
-    <section id="course" className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
+    <section id="course" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -60,7 +60,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
             <GraduationCap className="w-4 h-4 text-emerald-500" />
             <span>{t.course.eyebrow}</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-zinc-950 dark:text-zinc-50 tracking-[-0.025em] leading-[1.08]">
+          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
             {t.course.title}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
@@ -214,7 +214,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                           {module.num || idx + 1}
                         </span>
                         <div>
-                          <h4 className="font-serif font-normal text-sm sm:text-base text-zinc-950 dark:text-zinc-50 [text-wrap:balance]">
+                          <h4 className="font-sans font-semibold text-sm sm:text-base text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.015em] [text-wrap:balance]">
                             {title}
                           </h4>
                           <span className="text-[11px] text-zinc-400 font-mono tabular-nums">

@@ -1,54 +1,33 @@
-@font-face {
-  font-family: 'LabsAmiga';
-  src: url('/fonts/LABSAmiga-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'RobotoMono';
-  src: url('/fonts/RobotoMono-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'RobotoMonoBold';
-  src: url('/fonts/RobotoMono-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --bg-page: #fafafa;
-    --text-primary: #09090b;
-    --text-secondary: #71717a;
+    --bg-page: #fbfbfd;
+    --text-primary: #1d1d1f;
+    --text-secondary: #86868b;
     --border-subtle: rgba(0, 0, 0, 0.08);
   }
 
   .dark {
-    --bg-page: #07080a;
-    --text-primary: #f4f4f5;
-    --text-secondary: #a1a1aa;
+    --bg-page: #000000;
+    --text-primary: #f5f5f7;
+    --text-secondary: #86868b;
     --border-subtle: rgba(255, 255, 255, 0.08);
   }
 
   html {
     scroll-behavior: smooth;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Web Typography Directives */
-  h1, h2, h3, h4 {
+  /* Apple-style typography balance */
+  h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
+    letter-spacing: -0.025em;
   }
 
   p {
@@ -60,46 +39,33 @@
   }
 
   body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
     overflow-x: clip;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  /* Custom WebGL Cursor support - preserve native text cursor on text inputs */
-  @media (hover: hover) and (pointer: fine) {
-    body, a, button, [role="button"], .cursor-pointer {
-      cursor: none !important;
-    }
-    input, textarea, select, [contenteditable="true"] {
-      cursor: text !important;
-    }
-  }
-
-  /* Custom sleek scrollbar */
+  /* Sleek, understated Apple-style scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(12, 196, 117, 0.25);
+    background: rgba(140, 140, 145, 0.3);
     border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(12, 196, 117, 0.55);
-  }
-
-  /* Global Architectural Grid Background (applied throughout the whole site) */
-  .global-grid-bg {
-    background-image: 
-      linear-gradient(to right, #80808012 1px, transparent 1px),
-      linear-gradient(to bottom, #80808012 1px, transparent 1px);
-    background-size: 24px 24px;
+    background: rgba(140, 140, 145, 0.55);
+    background-clip: content-box;
   }
 }
 
-/* Foundation UI Glass & Surface Tokens */
+/* Apple-style Glass & Surface Tokens */
 .foundation-border {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -109,45 +75,40 @@
 
 .foundation-card {
   background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .foundation-card:hover {
-  border-color: rgba(12, 196, 117, 0.35);
-  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.08);
 }
 
 .dark .foundation-card {
-  background-color: rgba(18, 20, 29, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  background-color: #161617;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.5);
 }
 .dark .foundation-card:hover {
-  border-color: rgba(12, 196, 117, 0.4);
-  box-shadow: 0 8px 30px -4px rgba(12, 196, 117, 0.12);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.7);
 }
 
-/* Foundation Glass Nav */
+/* Apple Frosted Glass Nav */
 .foundation-nav {
-  background: rgba(250, 250, 250, 0.85);
+  background: rgba(251, 251, 253, 0.8);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .dark .foundation-nav {
-  background: rgba(9, 10, 15, 0.85);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Emil Kowalski Spring Easing Utility */
-.spring-transition {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ChainGPT Labs Marquee Animation */
+/* Clean Marquee Animation */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -161,118 +122,33 @@
   animation: marquee 35s linear infinite;
 }
 
-/* ChainGPT Labs Tech Corner Marks & Wireframe Borders */
-.tech-box {
-  position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.dark .tech-box {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.tech-box:hover {
-  border-color: rgba(16, 185, 129, 0.45);
-}
-
-.tech-corner-square {
-  display: none !important;
-}
-
-.tech-corner-tl { top: -3px; left: -3px; }
-.tech-corner-tr { top: -3px; right: -3px; }
-.tech-corner-bl { bottom: -3px; left: -3px; }
-.tech-corner-br { bottom: -3px; right: -3px; }
-
-/* Laser Beam Accent Hover */
-.tech-glow-hover {
-  position: relative;
-}
-.tech-glow-hover::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-.tech-glow-hover:hover::after {
-  opacity: 1;
-}
-
-/* Lenis Recommended CSS */
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
-
-/* Clean Architectural Glass Section with Three.js Grid Transparency */
+/* Apple Stack Section with pure backdrop blur */
 .stack-section {
   position: relative;
-  background-color: rgba(250, 250, 250, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: rgba(251, 251, 253, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   margin-top: -1px;
 }
 
 .dark .stack-section {
-  background-color: rgba(7, 8, 10, 0.82);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: -1px;
 }
 
-/* Twain AI Inspired Design Tokens */
-.font-serif {
-  font-family: 'Fraunces', 'Produkt', 'Newsreader', Georgia, serif;
-  font-optical-sizing: auto;
+/* Subtle Apple Typography & Feedback */
+.font-sans, .font-serif {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
 }
 
-.font-sans {
-  font-family: 'Plus Jakarta Sans', 'Inter', 'Graphik', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Twain Deep Research Scroll Animation Helpers */
-.twain-blur-inactive {
-  filter: blur(5px);
-  opacity: 0.22;
-  transform: translateY(14px);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.twain-blur-active {
-  filter: blur(0px);
-  opacity: 1;
-  transform: translateY(0px);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Interactive click feedback */
-button, a, .cursor-pointer {
+button, a, [role="button"], .cursor-pointer {
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
 
-button:active, a:active, .cursor-pointer:active {
+button:active, a:active, [role="button"]:active, .cursor-pointer:active {
   transform: scale(0.98);
 }

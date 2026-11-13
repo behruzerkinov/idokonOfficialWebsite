@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Lenis from 'lenis';
+import React, { useState, useEffect } from 'react';
 import { Toaster, toast } from 'sonner';
 import { translations } from './data/translations';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PartnerMarquee } from './components/PartnerMarquee';
 import { TechMarquee } from './components/TechMarquee';
-import { TechPreloader } from './components/TechPreloader';
 import { EditorialStatement } from './components/EditorialStatement';
 import { ValueGrid } from './components/ValueGrid';
 import { PosInteractiveShowcase } from './components/PosInteractiveShowcase';
@@ -19,8 +17,6 @@ import { FaqAccordion } from './components/FaqAccordion';
 import { ContactConfigurator } from './components/ContactConfigurator';
 import { HugeBrandTextSection } from './components/HugeBrandTextSection';
 import { Footer } from './components/Footer';
-import { ThreeBackgroundGrid } from './components/ThreeBackgroundGrid';
-import { ThreeCustomCursor } from './components/ThreeCustomCursor';
 
 // Modals & Drawers
 import { DemoModal } from './components/DemoModal';
@@ -103,7 +99,7 @@ export function App() {
           return item;
         })
         .filter(Boolean)
-    );
+      );
   };
 
   const handleRemoveFromCart = (id) => {
@@ -130,90 +126,10 @@ export function App() {
 
   const cartTotalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  // Windows 10 Settings App Luminous Light Effect
-  const [globalMousePos, setGlobalMousePos] = useState({ x: -1000, y: -1000 });
-  const [isPointerActive, setIsPointerActive] = useState(false);
-  
-  useEffect(() => {
-    let rafMoveId = null;
-
-    const handlePointerMove = (e) => {
-      if (!rafMoveId) {
-        rafMoveId = requestAnimationFrame(() => {
-          setGlobalMousePos({ x: e.clientX, y: e.clientY });
-          setIsPointerActive(true);
-          rafMoveId = null;
-        });
-      }
-    };
-
-    const handlePointerLeave = () => {
-      setIsPointerActive(false);
-    };
-
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    document.addEventListener('mouseleave', handlePointerLeave);
-
-    return () => {
-      window.removeEventListener('pointermove', handlePointerMove);
-      document.removeEventListener('mouseleave', handlePointerLeave);
-      if (rafMoveId) cancelAnimationFrame(rafMoveId);
-    };
-  }, []);
-
-  // Lenis Smooth Scroll Integration (ChainGPT Labs style delayed gentle touch)
-  useEffect(() => {
-    let lenis;
-    try {
-      lenis = new Lenis({
-        duration: 1.8,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 0.8,
-        touchMultiplier: 1.5,
-      });
-
-      let rafId;
-      function raf(time) {
-        lenis.raf(time);
-        rafId = requestAnimationFrame(raf);
-      }
-      rafId = requestAnimationFrame(raf);
-
-      return () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        lenis?.destroy();
-      };
-    } catch (_) {}
-  }, []);
-
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-zinc-50 dark:bg-[#07080a] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-150 relative overflow-x-clip`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''} bg-[#fbfbfd] dark:bg-[#000000] text-[#1d1d1f] dark:text-[#f5f5f7] flex flex-col font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-200 relative overflow-x-clip`}>
       
-      {/* Tech Preloader */}
-      <TechPreloader />
-
-      {/* Three.js Interactive Randomized Wireframe Grid Background */}
-      <ThreeBackgroundGrid theme={theme} />
-
-      {/* Three.js Custom Dynamic Cursor (Velocity-stretching aura, stardust wake, shockwaves) */}
-      <ThreeCustomCursor theme={theme} />
-
-      {/* Ultra-subtle, neutral ambient spotlight */}
-      <div
-        className="pointer-events-none fixed inset-0 z-20 transition-opacity duration-500"
-        style={{
-          opacity: isPointerActive ? 1 : 0,
-          background: theme === 'dark'
-            ? `radial-gradient(600px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(255, 255, 255, 0.03), transparent 65%)`
-            : `radial-gradient(500px circle at ${globalMousePos.x}px ${globalMousePos.y}px, rgba(0, 0, 0, 0.02), transparent 60%)`,
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Emil Kowalski Sonner Toaster */}
+      {/* Sonner Toaster */}
       <Toaster 
         theme={theme} 
         position="top-right" 
@@ -221,7 +137,7 @@ export function App() {
         closeButton 
       />
 
-      {/* Sticky Foundation Header */}
+      {/* Sticky Apple-style Header */}
       <Navbar
         lang={lang}
         setLang={handleSetLang}
@@ -257,12 +173,12 @@ export function App() {
 
           <PartnerMarquee t={t} />
 
-          {/* Twain AI Editorial Statement Block (Pain Story) */}
+          {/* Editorial Statement Block */}
           <EditorialStatement t={t} />
         </div>
 
-        {/* Section 2: Twain AI Pinned Scroll-Driven Storytelling Stage (#features-and-benefits) */}
-        <div className="relative z-20 bg-zinc-50/40 dark:bg-[#07080a]/40 backdrop-blur-sm">
+        {/* Section 2: Pinned Showcase Stage */}
+        <div className="relative z-20 bg-zinc-50/50 dark:bg-[#0a0a0c]/60 border-t border-black/[0.04] dark:border-white/[0.06]">
           <PosInteractiveShowcase
             t={t}
             onOpenLightbox={(url, title) => setLightboxData({ url, title })}
@@ -270,20 +186,20 @@ export function App() {
         </div>
 
         {/* Section 3: Values Bento Grid */}
-        <div className="relative z-30 bg-zinc-50/70 dark:bg-[#07080a]/70 backdrop-blur-md border-t border-zinc-200/80 dark:border-zinc-800/80">
+        <div className="relative z-30 bg-[#fbfbfd] dark:bg-[#000000] border-t border-black/[0.04] dark:border-white/[0.06]">
           <ValueGrid t={t} />
         </div>
 
-        {/* Section 4: Overlapping Sector Solutions */}
-        <div className="stack-section z-40">
+        {/* Section 4: Sector Solutions */}
+        <div className="relative z-40 bg-zinc-50/40 dark:bg-[#0a0a0c]/50 border-t border-black/[0.04] dark:border-white/[0.06]">
           <SectorSolutions
             t={t}
             onOpenDemo={() => setIsDemoOpen(true)}
           />
         </div>
 
-        {/* Section 5: Overlapping Hardware Marketplace */}
-        <div className="stack-section z-50">
+        {/* Section 5: Hardware Marketplace */}
+        <div className="relative z-50 bg-[#fbfbfd] dark:bg-[#000000] border-t border-black/[0.04] dark:border-white/[0.06]">
           <HardwareMarketplace
             lang={lang}
             t={t}
@@ -294,16 +210,16 @@ export function App() {
           />
         </div>
 
-        {/* Section 6: Overlapping Frictionless Migration */}
-        <div className="stack-section z-[60]">
+        {/* Section 6: Frictionless Migration */}
+        <div className="relative z-[60] bg-zinc-50/40 dark:bg-[#0a0a0c]/50 border-t border-black/[0.04] dark:border-white/[0.06]">
           <IntegrationMigration
             t={t}
             onOpenContact={scrollToContact}
           />
         </div>
 
-        {/* Section 7: Overlapping Transparent Pricing */}
-        <div className="stack-section z-[70]">
+        {/* Section 7: Transparent Pricing */}
+        <div className="relative z-[70] bg-[#fbfbfd] dark:bg-[#000000] border-t border-black/[0.04] dark:border-white/[0.06]">
           <PricingCalculator
             t={t}
             lang={lang}
@@ -311,8 +227,8 @@ export function App() {
           />
         </div>
 
-        {/* Section 8: Overlapping Academy Course */}
-        <div className="stack-section z-[80]">
+        {/* Section 8: Academy Course */}
+        <div className="relative z-[80] bg-zinc-50/40 dark:bg-[#0a0a0c]/50 border-t border-black/[0.04] dark:border-white/[0.06]">
           <CourseAcademy
             lang={lang}
             t={t}
@@ -320,8 +236,8 @@ export function App() {
           />
         </div>
 
-        {/* Section 9: Overlapping FAQ */}
-        <div className="stack-section z-[90]">
+        {/* Section 9: FAQ */}
+        <div className="relative z-[90] bg-[#fbfbfd] dark:bg-[#000000] border-t border-black/[0.04] dark:border-white/[0.06]">
           <FaqAccordion
             t={t}
             onScrollToContact={scrollToContact}
@@ -329,15 +245,15 @@ export function App() {
         </div>
 
         {/* Section 10: Contact Configurator */}
-        <div className="relative z-[100] bg-zinc-50 dark:bg-[#07080a]">
+        <div className="relative z-[100] bg-zinc-50/40 dark:bg-[#0a0a0c]/50 border-t border-black/[0.04] dark:border-white/[0.06]">
           <ContactConfigurator
             t={t}
             lang={lang}
           />
         </div>
 
-        {/* Section 11: Monumental Twain-style Huge Text Animation Stage */}
-        <div className="relative z-[110]">
+        {/* Section 11: Brand Closing Stage */}
+        <div className="relative z-[110] bg-[#fbfbfd] dark:bg-[#000000] border-t border-black/[0.04] dark:border-white/[0.06]">
           <HugeBrandTextSection
             t={t}
             onOpenDemo={() => setIsDemoOpen(true)}

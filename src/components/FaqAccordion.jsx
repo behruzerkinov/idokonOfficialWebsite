@@ -11,7 +11,7 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
   );
 
   return (
-    <section id="faq" className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
+    <section id="faq" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -23,7 +23,7 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
               <span>{t.faq.eyebrow}</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-zinc-900 dark:text-zinc-50 tracking-[-0.025em] leading-tight mb-4">
+            <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-tight mb-4">
               {t.faq.title}
             </h2>
 

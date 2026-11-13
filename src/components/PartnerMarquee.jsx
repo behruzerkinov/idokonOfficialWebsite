@@ -120,11 +120,11 @@ export const PartnerMarquee = ({ t }) => {
   ];
 
   return (
-    <section className="py-8 bg-zinc-100/60 dark:bg-zinc-950 border-y border-zinc-200 dark:border-zinc-800/80 transition-colors">
+    <section className="py-8 bg-zinc-50/50 dark:bg-[#07080a] border-y border-black/[0.04] dark:border-white/[0.06] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-6">
-          <p className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+          <p className="text-[11px] sm:text-xs font-sans font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             {t.partners?.title || t.marquee?.title || "O‘zbekistondagi rasmiy to‘lov va fiskal tizimlar bilan integratsiyalashgan"}
           </p>
         </div>
@@ -133,7 +133,7 @@ export const PartnerMarquee = ({ t }) => {
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:border-emerald-500/30 transition-colors group"
+              className="flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white dark:bg-[#161617] border border-black/[0.05] dark:border-white/[0.08] shadow-xs hover:border-black/[0.12] dark:hover:border-white/[0.16] transition-all group"
             >
               <div className="h-8 flex items-center justify-center overflow-hidden">
                 {partner.logo}
