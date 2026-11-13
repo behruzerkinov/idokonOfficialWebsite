@@ -252,19 +252,18 @@ export function App() {
           />
         </div>
 
-        {/* Section 11: Monumental Brand Finale Overlap Slide */}
-        <HugeBrandTextSection
-          lang={lang}
-          t={t}
-          onOpenDemo={() => setIsDemoOpen(true)}
-        />
-
       </main>
 
       {/* Rich Footer with Back to Top Button */}
       <Footer
         t={t}
         onOpenDemo={() => setIsDemoOpen(true)}
+      />
+
+      {/* Monumental Brand Finale - Overlap Cover Slide after Footer */}
+      <HugeBrandTextSection
+        lang={lang}
+        t={t}
       />
 
       {/* Global Interactive Modals and Drawers */}

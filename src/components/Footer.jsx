@@ -7,7 +7,7 @@ export const Footer = ({ t, onOpenDemo }) => {
   };
 
   return (
-    <footer className="bg-zinc-100/80 dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 pt-16 pb-12 border-t border-zinc-200 dark:border-zinc-800 transition-colors">
+    <footer className="bg-zinc-100/80 dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 pt-16 pb-28 sm:pb-36 border-t border-zinc-200 dark:border-zinc-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Columns Grid */}
