@@ -94,10 +94,10 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                   href={`https://${currentShot.path}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 text-white text-[11px] font-medium shadow-xs hover:bg-emerald-500 transition-colors"
                 >
-                  <span>{t.course.openLive || "Jonli ochish"}</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <span className="text-white">{t.course.openLive || "Jonli ochish"}</span>
+                  <ExternalLink className="w-3 h-3 text-white" />
                 </a>
               </div>
 
@@ -131,7 +131,7 @@ export const CourseAcademy = ({ lang, t, onOpenLightbox }) => {
                     {currentShot.desc}
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20 whitespace-nowrap">
+                <span className="text-[10px] font-sans font-medium text-white bg-emerald-600 px-2.5 py-0.5 rounded-full shadow-xs whitespace-nowrap">
                   {t?.course?.realScreenshot || "Haqiqiy skrinshot"}
                 </span>
               </div>

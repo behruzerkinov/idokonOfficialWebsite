@@ -260,10 +260,10 @@ export const CartDrawer = ({
                   <button
                     type="button"
                     onClick={() => setCheckoutStep('checkout')}
-                    className="py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
+                    className="py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
                   >
-                    <span>{t.cartDrawer?.continueShopping || "Davom etish"}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span className="text-white">{t.cartDrawer?.continueShopping || "Davom etish"}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </button>
                 </div>
               ) : (
@@ -271,7 +271,7 @@ export const CartDrawer = ({
                   <button
                     type="button"
                     onClick={() => setCheckoutStep('cart')}
-                    className="py-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-semibold text-xs transition-colors cursor-pointer"
+                    className="py-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-semibold text-xs transition-colors cursor-pointer"
                   >
                     {t.cartDrawer?.back || "Orqaga"}
                   </button>
@@ -279,9 +279,9 @@ export const CartDrawer = ({
                     type="submit"
                     form="cartOrderForm"
                     disabled={loading}
-                    className="py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
+                    className="py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
                   >
-                    {loading ? (t.cartDrawer?.submitting || 'Yuborilmoqda...') : t.cartDrawer.checkoutBtn}
+                    <span className="text-white">{loading ? (t.cartDrawer?.submitting || 'Yuborilmoqda...') : t.cartDrawer.checkoutBtn}</span>
                   </button>
                 </div>
               )}

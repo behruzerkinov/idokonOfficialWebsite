@@ -97,8 +97,10 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
         {/* Selected Sector Highlights Preview Banner */}
         <div className="rounded-2xl p-6 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-              {t.sectors?.opportunitiesFor || "Do'koningiz uchun imkoniyatlar:"} {sectors[selectedSector].title}
+            <div>
+              <span className="inline-block text-[11px] font-sans font-medium text-white bg-emerald-600 px-3 py-1 rounded-full uppercase tracking-wider shadow-xs mb-2">
+                {t.sectors?.opportunitiesFor || "Do'koningiz uchun imkoniyatlar:"} {sectors[selectedSector].title}
+              </span>
             </div>
             <div className="flex flex-wrap gap-y-2 gap-x-6 pt-1">
               {sectors[selectedSector].features.map((feat, fIdx) => (
@@ -113,10 +115,10 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
           <button
             type="button"
             onClick={onOpenDemo}
-            className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 cursor-pointer"
+            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-sm transition-all duration-150 cursor-pointer active:scale-95"
           >
-            <span>{t.hero.ctaPrimary}</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span className="text-white">{t.hero.ctaPrimary}</span>
+            <ArrowRight className="w-3.5 h-3.5 text-white" />
           </button>
         </div>
 

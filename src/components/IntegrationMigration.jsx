@@ -64,9 +64,9 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
           {/* Left Column: 1C & Excel Migration Showcase (5 cols) */}
           <div className="lg:col-span-5 rounded-3xl p-7 sm:p-9 bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-medium mb-5 border border-emerald-500/20">
-                <RefreshCw className="w-3.5 h-3.5 text-emerald-500 animate-spin" style={{ animationDuration: '6s' }} />
-                <span>{t.integrations.zeroDowntime || "Nol to'xtalishli migratsiya"}</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-600 text-white text-xs font-medium mb-5 shadow-xs">
+                <RefreshCw className="w-3.5 h-3.5 text-white animate-spin" style={{ animationDuration: '6s' }} />
+                <span className="text-white">{t.integrations.zeroDowntime || "Nol to'xtalishli migratsiya"}</span>
               </div>
 
               <h3 className="font-sans text-2xl sm:text-3xl font-semibold text-[#1d1d1f] dark:text-zinc-50 mb-6 leading-snug tracking-[-0.02em]">
@@ -144,9 +144,9 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
 
                 <div className="mt-5 pt-3 border-t border-zinc-100 dark:border-white/[0.05] flex items-center justify-between text-[11px] font-mono text-zinc-400">
                   <span>Holat:</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Faol integratsiya
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] flex items-center gap-1.5 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                    <span className="text-white">Faol integratsiya</span>
                   </span>
                 </div>
               </div>

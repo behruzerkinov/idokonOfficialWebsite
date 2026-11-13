@@ -3,7 +3,6 @@ import {
   Phone, Send, MessageSquare, Clock, ShieldCheck, Sparkles, CheckCircle2 
 } from 'lucide-react';
 import { toast } from 'sonner';
-import { StoreTypeSelector } from './StoreTypeSelector';
 
 export const ContactConfigurator = ({ t, lang = 'uz' }) => {
   const [formData, setFormData] = useState({
@@ -71,7 +70,7 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
           {/* Left Column: Direct Communication Channels */}
           <div className="lg:col-span-5 rounded-2xl p-7 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col justify-between">
             <div>
-              <div className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">
+              <div className="inline-block text-[11px] font-sans font-medium text-white bg-emerald-600 px-3 py-1 rounded-full uppercase tracking-wider mb-3 shadow-xs">
                 {t.contact?.directContact || "To'g'ridan-to'g'ri aloqa"}
               </div>
 
@@ -88,8 +87,8 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                   href="tel:+998991130999" 
                   className="flex items-center gap-3.5 p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 hover:border-emerald-500 transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-bold flex-shrink-0">
-                    <Phone className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold flex-shrink-0 shadow-xs">
+                    <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">{t.contact.hotlineLabel || "Tezkor operator raqami:"}</div>
@@ -103,8 +102,8 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                   href="tel:+998953600999" 
                   className="flex items-center gap-3.5 p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/80 hover:border-emerald-500 transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-bold flex-shrink-0">
-                    <Phone className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold flex-shrink-0 shadow-xs">
+                    <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">{t.contact.secondHotlineLabel || "Qo'shimcha operator:"}</div>
@@ -201,15 +200,6 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                   </div>
                 </div>
 
-                {/* Shop Type - Foundation Design */}
-                <StoreTypeSelector
-                  value={formData.storeType}
-                  onChange={(id, title) => setFormData(prev => ({ ...prev, storeType: id, storeTypeTitle: title }))}
-                  lang={lang}
-                  label={t.contact.storeTypeLabel || "Do'koningiz turi"}
-                  columns={2}
-                />
-
                 {/* Optional Message */}
                 <div>
                   <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
@@ -233,14 +223,14 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:bg-zinc-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
+                  className="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-zinc-400 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
                 >
                   {loading ? (
-                    <span>{t.contact.submitting}</span>
+                    <span className="text-white">{t.contact.submitting}</span>
                   ) : (
                     <>
-                      <Send className="w-3.5 h-3.5" />
-                      <span>{t.contact.submitBtn}</span>
+                      <Send className="w-3.5 h-3.5 text-white" />
+                      <span className="text-white">{t.contact.submitBtn}</span>
                     </>
                   )}
                 </button>

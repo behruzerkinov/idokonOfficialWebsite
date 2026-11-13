@@ -284,7 +284,7 @@ export const Navbar = ({
               >
                 <ShoppingBag className="w-4.5 h-4.5 sm:w-4 sm:h-4 text-emerald-500" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 px-1.5 h-4.5 min-w-[18px] rounded-full bg-emerald-500 text-slate-950 font-mono font-extrabold text-[10px] flex items-center justify-center shadow-sm">
+                  <span className="absolute -top-1 -right-1 px-1.5 h-4.5 min-w-[18px] rounded-full bg-emerald-600 text-white font-mono font-bold text-[10px] flex items-center justify-center shadow-sm">
                     <NumberFlow value={cartCount} />
                   </span>
                 )}
@@ -294,10 +294,10 @@ export const Navbar = ({
               <button
                 type="button"
                 onClick={onOpenDemo}
-                className="hidden sm:inline-flex h-9 px-3.5 items-center gap-1.5 rounded-lg text-xs font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 shadow-sm transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer flex-shrink-0"
+                className="hidden sm:inline-flex h-9 px-4 items-center gap-1.5 rounded-full text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-sm transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer flex-shrink-0"
               >
-                <Sparkles className="w-3.5 h-3.5 shrink-0" />
-                <span className="shrink-0">{t.nav.tryDemo}</span>
+                <Sparkles className="w-3.5 h-3.5 shrink-0 text-white" />
+                <span className="shrink-0 text-white">{t.nav.tryDemo}</span>
               </button>
 
               {/* Prominent, Touch-Friendly Animated Burger Button */}

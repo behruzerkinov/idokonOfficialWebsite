@@ -42,8 +42,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f1_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f1_stat_right}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f1_stat_left}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f1_stat_right}</span>
             </div>
           </FluentRevealCard>
 
@@ -67,8 +67,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f2_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f2_stat_right}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f2_stat_left}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f2_stat_right}</span>
             </div>
           </FluentRevealCard>
 
@@ -92,8 +92,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f3_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f3_stat_right}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f3_stat_left}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f3_stat_right}</span>
             </div>
           </FluentRevealCard>
 
@@ -117,8 +117,8 @@ export const ValueGrid = ({ t }) => {
             </p>
 
             <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f4_stat_left}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.features.f4_stat_right}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f4_stat_left}</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f4_stat_right}</span>
             </div>
           </FluentRevealCard>
 

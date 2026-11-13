@@ -98,13 +98,13 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                 onClick={() => setBillingPeriod('6m')}
                 className={`relative px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
                   billingPeriod === '6m'
-                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
+                    ? 'bg-emerald-600 text-white font-bold shadow-xs'
                     : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                 }`}
               >
                 <span>{t.pricing.period6m}</span>
                 <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
-                  billingPeriod === '6m' ? 'bg-slate-950 text-white' : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
+                  billingPeriod === '6m' ? 'bg-black/30 text-white' : 'bg-emerald-600 text-white'
                 }`}>
                   {t.pricing.badge1mFree}
                 </span>
@@ -116,13 +116,13 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                 onClick={() => setBillingPeriod('12m')}
                 className={`relative px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
                   billingPeriod === '12m'
-                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
+                    ? 'bg-emerald-600 text-white font-bold shadow-xs'
                     : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                 }`}
               >
                 <span>{t.pricing.period12m}</span>
                 <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
-                  billingPeriod === '12m' ? 'bg-slate-950 text-white' : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
+                  billingPeriod === '12m' ? 'bg-black/30 text-white' : 'bg-emerald-600 text-white'
                 }`}>
                   {t.pricing.badge2mFree}
                 </span>
@@ -134,9 +134,9 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
           {/* Discount callout note: adaptive 1-line badge */}
           {(billingPeriod === '6m' || billingPeriod === '12m') && (
             <div className="mt-3.5 flex justify-center w-full">
-              <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs sm:text-sm font-medium text-emerald-600 dark:text-emerald-400 animate-in fade-in whitespace-normal sm:whitespace-nowrap max-w-full shadow-xs">
-                <Gift className="w-4 h-4 shrink-0 text-emerald-500" />
-                <span>
+              <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-emerald-600 text-white text-xs sm:text-sm font-medium animate-in fade-in whitespace-normal sm:whitespace-nowrap max-w-full shadow-xs">
+                <Gift className="w-4 h-4 shrink-0 text-white" />
+                <span className="text-white">
                   {billingPeriod === '6m' 
                     ? (t.pricing?.gift6m || "5 oylik to'lov qiling — 1 oy sovg'a (Jami 6 oy)") 
                     : (t.pricing?.gift12m || "10 oylik to'lov qiling — 2 oy sovg'a (Jami 12 oy)")}
@@ -177,7 +177,7 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                       {plan.name}
                     </h3>
                     {isSelected && (
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-600 text-white">
                         {t.pricing?.activeBadge || "Tanlangan"}
                       </span>
                     )}
@@ -228,10 +228,10 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
                       setSelectedPlanId(plan.id);
                       onSelectPlan(plan, billingPeriod);
                     }}
-                    className={`w-full py-3 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer ${
+                    className={`w-full py-3 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer ${
                       isSelected
-                        ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-md font-extrabold'
-                        : 'bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100'
+                        ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-md'
+                        : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[#1d1d1f] dark:text-zinc-100'
                     }`}
                   >
                     <span>{t.pricing?.activatePlan || "Tarifni faollashtirish"}</span>

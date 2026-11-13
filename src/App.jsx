@@ -15,7 +15,6 @@ import { PricingCalculator } from './components/PricingCalculator';
 import { CourseAcademy } from './components/CourseAcademy';
 import { FaqAccordion } from './components/FaqAccordion';
 import { ContactConfigurator } from './components/ContactConfigurator';
-import { HugeBrandTextSection } from './components/HugeBrandTextSection';
 import { Footer } from './components/Footer';
 
 // Modals & Drawers
@@ -249,14 +248,6 @@ export function App() {
           <ContactConfigurator
             t={t}
             lang={lang}
-          />
-        </div>
-
-        {/* Section 11: Brand Closing Stage */}
-        <div className="relative z-[110] bg-[#fbfbfd] dark:bg-[#000000] border-t border-black/[0.04] dark:border-white/[0.06]">
-          <HugeBrandTextSection
-            t={t}
-            onOpenDemo={() => setIsDemoOpen(true)}
           />
         </div>
 

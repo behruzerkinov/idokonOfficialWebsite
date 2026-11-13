@@ -70,10 +70,10 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
             {/* Header */}
             <div className="flex items-center justify-between p-5 border-b border-zinc-200/80 dark:border-white/[0.08] bg-zinc-50/80 dark:bg-white/[0.02]">
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+                <span className="text-[11px] font-sans font-medium uppercase tracking-wider text-white bg-emerald-600 px-3 py-1 rounded-full shadow-xs">
                   {t.demoModal.badge || "Bepul Demo"}
                 </span>
-                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-1">
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-2">
                   {t.demoModal.title}
                 </h3>
               </div>
@@ -148,17 +148,17 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-zinc-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 cursor-pointer active:scale-98"
+                    className="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-zinc-400 text-white font-semibold text-xs tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
                   >
                     {isSubmitting ? (
-                      <span className="flex items-center gap-2">
-                        <span className="w-3.5 h-3.5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
-                        <span>{t.demoModal.submitting || "Yuborilmoqda..."}</span>
+                      <span className="flex items-center gap-2 text-white">
+                        <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span className="text-white">{t.demoModal.submitting || "Yuborilmoqda..."}</span>
                       </span>
                     ) : (
                       <>
-                        <Send className="w-3.5 h-3.5" />
-                        <span>{t.demoModal.submitBtn}</span>
+                        <Send className="w-3.5 h-3.5 text-white" />
+                        <span className="text-white">{t.demoModal.submitBtn}</span>
                       </>
                     )}
                   </button>

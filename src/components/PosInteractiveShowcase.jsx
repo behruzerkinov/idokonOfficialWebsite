@@ -100,7 +100,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                   <span>{st.num}</span>
                   <span className="hidden sm:inline font-mono uppercase tracking-wider">{st.id}</span>
                   {isSelected && (
-                    <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-sans font-medium bg-emerald-600 text-white">
                       Live
                     </span>
                   )}
@@ -127,9 +127,11 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                   className="space-y-3"
                 >
                   {/* Eyebrow */}
-                  <span className="text-[11px] font-mono tracking-wider uppercase font-semibold text-emerald-600 dark:text-emerald-400 block">
-                    {currentStage.eyebrow}
-                  </span>
+                  <div>
+                    <span className="text-[11px] font-sans font-medium tracking-wider uppercase text-white bg-emerald-600 px-2.5 py-0.5 rounded-full inline-block shadow-xs">
+                      {currentStage.eyebrow}
+                    </span>
+                  </div>
 
                   {/* Section Title */}
                   <h3 className="font-sans text-2xl sm:text-3xl lg:text-[36px] font-semibold tracking-[-0.03em] leading-[1.15] text-[#1d1d1f] dark:text-zinc-50">
@@ -141,10 +143,12 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
                     {currentStage.desc}
                   </p>
 
-                  {/* Stats badge */}
-                  <div className="pt-2 flex items-center gap-2 text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                    <span>{currentStage.stats}</span>
+                  {/* Stats badge (Green accent with white text) */}
+                  <div className="pt-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-medium shadow-xs">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-white flex-shrink-0" />
+                      <span className="text-white">{currentStage.stats}</span>
+                    </span>
                   </div>
                 </motion.div>
               </AnimatePresence>
