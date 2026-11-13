@@ -52,7 +52,7 @@ export const Footer = ({ t, onOpenDemo }) => {
               </a>
               <a
                 href="tel:+998991130999"
-                className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 hover:bg-emerald-500 hover:text-slate-950 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-zinc-200 dark:border-zinc-800 shadow-xs"
+                className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 hover:bg-emerald-600 hover:text-white text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-colors border border-zinc-200 dark:border-zinc-800 shadow-xs"
                 title="Qo'ng'iroq qilish: +998 99 113 09 99"
               >
                 <Phone className="w-4 h-4" />

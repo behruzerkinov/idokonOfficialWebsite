@@ -145,15 +145,14 @@ export const StoreTypeSelector = ({
               <div 
                 className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
                   isSelected
-                    ? 'bg-emerald-500 text-slate-950 dark:text-slate-950 shadow-xs'
+                    ? 'bg-emerald-600 text-white shadow-xs'
                     : 'bg-zinc-200/70 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200'
                 }`}
               >
                 <Icon 
                   strokeWidth={isSelected ? 2.5 : 2}
-                  style={isSelected ? { color: '#020617' } : undefined}
                   className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                    isSelected ? 'text-slate-950 dark:text-slate-950' : ''
+                    isSelected ? 'text-white' : ''
                   }`} 
                 />
               </div>
@@ -173,10 +172,10 @@ export const StoreTypeSelector = ({
               {/* Indicator */}
               <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
                 isSelected 
-                  ? 'bg-emerald-500 text-slate-950 scale-100' 
+                  ? 'bg-emerald-600 text-white scale-100' 
                   : 'border border-zinc-300 dark:border-zinc-700 opacity-40 group-hover:opacity-75 scale-90'
               }`}>
-                {isSelected && <Check className="w-2.5 h-2.5 stroke-[3]" />}
+                {isSelected && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
               </div>
             </button>
           );

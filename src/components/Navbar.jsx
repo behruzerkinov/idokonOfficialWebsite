@@ -364,7 +364,7 @@ export const Navbar = ({
                     onClick={() => setLang(l.code)}
                     className={`px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
                       lang === l.code
-                        ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
+                        ? 'bg-emerald-600 text-white font-bold shadow-xs'
                         : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white'
                     }`}
                   >
@@ -440,7 +440,7 @@ export const Navbar = ({
                   setMobileMenuOpen(false);
                   onOpenDemo();
                 }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 active:scale-98 transition-transform cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 active:scale-98 transition-transform cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 shrink-0" />
                 <span>{t.nav.tryDemo || "Demoni Boshlash"}</span>

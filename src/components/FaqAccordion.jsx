@@ -87,9 +87,9 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
                           {faq.q}
                         </span>
                         <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
-                          isOpen ? 'bg-emerald-500 text-slate-950 font-bold' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500'
+                          isOpen ? 'bg-emerald-600 text-white font-bold shadow-xs' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500'
                         }`}>
-                          {isOpen ? <Minus className="w-3.5 h-3.5 stroke-[2.5]" /> : <Plus className="w-3.5 h-3.5 stroke-[2.5]" />}
+                          {isOpen ? <Minus className="w-3.5 h-3.5 stroke-[2.5] text-white" /> : <Plus className="w-3.5 h-3.5 stroke-[2.5]" />}
                         </div>
                       </button>
 
