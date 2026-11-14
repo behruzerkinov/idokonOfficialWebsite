@@ -16,7 +16,6 @@ export const Navbar = ({
   onOpenCart, 
   onOpenDemo 
 }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
@@ -32,7 +31,6 @@ export const Navbar = ({
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 20);
       setShowTopBtn(scrollY > 300);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });

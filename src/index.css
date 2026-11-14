@@ -108,9 +108,13 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Zero-specificity so positioning utilities (fixed, absolute) still win */
+:where(.liquid-glass, .liquid-glass-sheen) {
+  position: relative;
+}
+
 /* Super Water-Like Liquid Glass with Meniscus Caustics & Optical Refraction */
 .liquid-glass {
-  position: relative;
   /* Crystal clear liquid water - highly translucent so content underneath is clearly visible */
   background: linear-gradient(
     135deg, 
@@ -168,7 +172,6 @@
 
 /* Water Droplet Curvature Gloss Sheen (Smooth radial reflection - ZERO vertical seams) */
 .liquid-glass-sheen {
-  position: relative;
   overflow: hidden;
 }
 
