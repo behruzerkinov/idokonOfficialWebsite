@@ -23,7 +23,7 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
               <span>{t.faq.eyebrow}</span>
             </div>
 
-            <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-tight mb-4">
+            <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08] mb-4">
               {t.faq.title}
             </h2>
 

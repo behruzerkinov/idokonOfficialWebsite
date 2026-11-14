@@ -56,7 +56,7 @@ export const ContactConfigurator = ({ t, lang = 'uz' }) => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
             <span>{t.contact.eyebrow}</span>
           </div>
-          <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-tight">
+          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
             {t.contact.title}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal">

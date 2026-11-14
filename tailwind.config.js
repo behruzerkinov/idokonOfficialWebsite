@@ -37,6 +37,7 @@ export default {
         'glow': '0 0 40px -10px rgba(12, 196, 117, 0.35)',
         'glow-lg': '0 0 60px -15px rgba(12, 196, 117, 0.45)',
         'subtle': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
