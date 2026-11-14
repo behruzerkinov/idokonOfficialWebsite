@@ -1,171 +1,148 @@
 import React from 'react';
-import { 
-  RefreshCw, ShieldCheck, Headphones, CheckCircle2, 
-  ArrowRight, Layers, FileSpreadsheet, Database,
-  QrCode, CreditCard, ShoppingBag, Server
+import {
+  ArrowRight, CreditCard, Database, Headphones, Layers,
+  RefreshCw, Server, ShieldCheck, ShoppingBag
 } from 'lucide-react';
+import { Reveal, RevealWords, Stagger, StaggerItem } from './Reveal';
+
+const ICON_TILE = 'flex shrink-0 items-center justify-center border border-zinc-200 bg-zinc-50 text-emerald-600 dark:border-white/[0.08] dark:bg-white/[0.04] dark:text-emerald-400';
+const BADGE = 'rounded-full border border-zinc-200 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-zinc-600 dark:border-white/[0.08] dark:text-zinc-400';
+const MUTED_TEXT = 'text-zinc-600 dark:text-zinc-400';
 
 export const IntegrationMigration = ({ t, onOpenContact }) => {
   const integrationsList = [
     {
       id: 'soliq',
       badge: t.integrations?.badgeTax || "Soliq / Fiskal",
-      badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
       title: "Davlat Soliq Qo'mitasi",
       desc: "100% rasmiy fiskallashtirish, avtomat QR-kodli cheklar va soliq bazasiga hisobotlar yuborish.",
-      icon: <Server className="w-4 h-4 text-emerald-500" />
+      icon: Server
     },
     {
       id: 'multikassa',
       badge: "Kassa / Apparat",
-      badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
       title: "Multikassa & Arca Group",
       desc: "O'zbekistonda keng tarqalgan zamonaviy fiskal apparatlar va kassa printerlari bilan sinxronlash.",
-      icon: <Layers className="w-4 h-4 text-blue-500" />
+      icon: Layers
     },
     {
       id: 'payments',
       badge: t.integrations?.badgePayments || "To'lov tizimlari",
-      badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
       title: "Payme, Click & Uzum Pay",
       desc: "Kassada 0.8 soniyada to'lovni tasdiqlash, QR-skanerlash va har qanday bank kartalarini qabul qilish.",
-      icon: <CreditCard className="w-4 h-4 text-purple-500" />
+      icon: CreditCard
     },
     {
       id: 'marketplaces',
       badge: "E-tijorat / Ombor",
-      badgeColor: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
       title: "Uzum Market & Telegram Bot",
       desc: "Onlayn buyurtmalar va do'koningiz ombor qoldiqlarini real vaqtda bir joyda sinxronlashtirish.",
-      icon: <ShoppingBag className="w-4 h-4 text-amber-500" />
+      icon: ShoppingBag
     }
   ];
 
+  const migrationSteps = [
+    { icon: RefreshCw, title: t.integrations.card1_title, desc: t.integrations.card1_desc },
+    { icon: ShieldCheck, title: t.integrations.card2_title, desc: t.integrations.card2_desc },
+    { icon: Headphones, title: t.integrations.card3_title, desc: t.integrations.card3_desc }
+  ];
+
   return (
-    <section id="integrations" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-left max-w-3xl mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-[#12141c] border border-zinc-200 dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4 shadow-sm">
-            <span>{t.integrations.eyebrow}</span>
-          </div>
-          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
-            {t.integrations.title}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
+    <section id="integrations" className="section scroll-mt-20 border-b border-zinc-200/80 dark:border-white/[0.08]">
+      <div className="container-page">
+
+        <div className="mb-12 max-w-3xl">
+          <Reveal>
+            <span className="eyebrow mb-4">{t.integrations.eyebrow}</span>
+          </Reveal>
+          <RevealWords as="h2" text={t.integrations.title} className="display-lg text-zinc-950 dark:text-zinc-50" />
+          <Reveal as="p" delay={0.15} className={`lede mt-5 ${MUTED_TEXT}`}>
             {t.integrations.lead}
-          </p>
+          </Reveal>
         </div>
 
-        {/* Balanced, Tidy Layout with Zero Gaping White Space */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-8">
-          
-          {/* Left Column: 1C & Excel Migration Showcase (5 cols) */}
-          <div className="lg:col-span-5 rounded-3xl p-7 sm:p-9 bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+        <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-12">
+          {/* Migration showcase */}
+          <Reveal className="surface flex flex-col justify-between p-7 sm:p-9 lg:col-span-5">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-600 text-white text-xs font-medium mb-5 shadow-xs">
-                <RefreshCw className="w-3.5 h-3.5 text-white animate-spin" style={{ animationDuration: '6s' }} />
-                <span className="text-white">{t.integrations.zeroDowntime || "Nol to'xtalishli migratsiya"}</span>
-              </div>
+              <span className="mb-5 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-3.5 py-1 text-xs font-medium text-white">
+                <RefreshCw className="h-3.5 w-3.5" aria-hidden="true" />
+                <span>{t.integrations.zeroDowntime || "Nol to'xtalishli migratsiya"}</span>
+              </span>
 
-              <h3 className="font-sans text-2xl sm:text-3xl font-semibold text-[#1d1d1f] dark:text-zinc-50 mb-6 leading-snug tracking-[-0.02em]">
+              <h3 className="display-md mb-7 text-zinc-950 dark:text-zinc-50">
                 {t.integrations?.migrationHeadline || "1C yoki Excel bazangizni 1 kunda xatosiz o'tkazib beramiz"}
               </h3>
 
-              <div className="space-y-5">
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-850 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 font-bold border border-zinc-200 dark:border-white/[0.06]">
-                    <RefreshCw className="w-4 h-4 text-emerald-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">{t.integrations.card1_title}</h4>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-1 leading-relaxed">
-                      {t.integrations.card1_desc}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-850 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 font-bold border border-zinc-200 dark:border-white/[0.06]">
-                    <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">{t.integrations.card2_title}</h4>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-1 leading-relaxed">
-                      {t.integrations.card2_desc}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-850 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 font-bold border border-zinc-200 dark:border-white/[0.06]">
-                    <Headphones className="w-4 h-4 text-emerald-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">{t.integrations.card3_title}</h4>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-1 leading-relaxed">
-                      {t.integrations.card3_desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <ul className="space-y-6">
+                {migrationSteps.map((step, i) => {
+                  const Icon = step.icon;
+                  return (
+                    <li key={i} className="flex gap-4">
+                      <span className={`${ICON_TILE} h-10 w-10 rounded-xl`}>
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                      <div>
+                        <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{step.title}</h4>
+                        <p className={`mt-1 text-sm leading-relaxed ${MUTED_TEXT}`}>{step.desc}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-zinc-200/80 dark:border-white/[0.07] text-xs text-zinc-500 dark:text-zinc-400 font-mono flex items-center justify-between">
+            <div className="mt-8 flex items-center justify-between gap-4 border-t border-zinc-200/80 pt-5 font-mono text-xs text-zinc-500 dark:border-white/[0.08] dark:text-zinc-400">
               <span>{t.integrations.transitionService || "O'tish davri xizmati:"}</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">{t.integrations.freeBadge || "100% BEPUL"}</span>
+              <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">{t.integrations.freeBadge || "100% BEPUL"}</span>
             </div>
-          </div>
+          </Reveal>
 
-          {/* Right Column: 4-Card Equal Grid filling the space perfectly (7 cols) */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {integrationsList.map((item) => (
-              <div
-                key={item.id}
-                className="p-6 rounded-3xl bg-white dark:bg-[#0c0d13] border border-zinc-200/80 dark:border-white/[0.08] shadow-sm hover:border-zinc-300 dark:hover:border-white/[0.15] hover:shadow-md transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-full border ${item.badgeColor}`}>
-                      {item.badge}
-                    </span>
-                    <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-850 flex items-center justify-center border border-zinc-200/80 dark:border-white/[0.06]">
-                      {item.icon}
+          {/* Integration cards */}
+          <Stagger className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7">
+            {integrationsList.map((item) => {
+              const Icon = item.icon;
+              return (
+                <StaggerItem key={item.id} className="h-full">
+                  <article className="surface surface-lift flex h-full flex-col justify-between p-6">
+                    <div>
+                      <div className="mb-5 flex items-center justify-between gap-3">
+                        <span className={BADGE}>{item.badge}</span>
+                        <span className={`${ICON_TILE} h-8 w-8 rounded-full`}>
+                          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                        </span>
+                      </div>
+                      <h4 className="mb-2 text-lg font-semibold tracking-[-0.02em] text-zinc-950 dark:text-zinc-50 sm:text-xl">
+                        {item.title}
+                      </h4>
+                      <p className={`text-sm leading-relaxed ${MUTED_TEXT}`}>{item.desc}</p>
                     </div>
-                  </div>
-                  <h4 className="font-sans text-lg sm:text-xl font-semibold text-[#1d1d1f] dark:text-zinc-100 mb-2 tracking-[-0.02em]">
-                    {item.title}
-                  </h4>
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-                    {item.desc}
-                  </p>
-                </div>
 
-                <div className="mt-5 pt-3 border-t border-zinc-100 dark:border-white/[0.05] flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                  <span>Holat:</span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] flex items-center gap-1.5 shadow-xs">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                    <span className="text-white">Faol integratsiya</span>
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
+                    <div className="mt-6 flex items-center justify-between border-t border-zinc-200/80 pt-4 font-mono text-[11px] text-zinc-500 dark:border-white/[0.08] dark:text-zinc-400">
+                      <span>Holat:</span>
+                      <span className="flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+                        <span>Faol integratsiya</span>
+                      </span>
+                    </div>
+                  </article>
+                </StaggerItem>
+              );
+            })}
+          </Stagger>
         </div>
 
-        {/* Bottom Full-Width Cohesive Callout Banner */}
-        <div className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#0c0d13] border border-zinc-200/90 dark:border-white/[0.09] shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Callout */}
+        <Reveal className="surface flex flex-col items-start justify-between gap-6 p-6 sm:p-7 md:flex-row md:items-center">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold flex-shrink-0 border border-emerald-500/20">
-              <Database className="w-6 h-6 text-emerald-500" />
-            </div>
+            <span className={`${ICON_TILE} h-12 w-12 rounded-2xl`}>
+              <Database className="h-5 w-5" aria-hidden="true" />
+            </span>
             <div>
-              <h4 className="font-sans text-lg sm:text-xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.02em]">
+              <h4 className="text-lg font-semibold tracking-[-0.02em] text-zinc-950 dark:text-zinc-50 sm:text-xl">
                 {t.integrations?.calloutTitle || "Eski bazangiz formatidan qat'i nazar"}
               </h4>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1 font-normal">
+              <p className={`mt-1 text-sm ${MUTED_TEXT}`}>
                 {t.integrations?.calloutDesc || "Tovarlar, narxlar va qoldiqlarni to'liq ko'chirib, kassirlaringizni bepul o'qitamiz."}
               </p>
             </div>
@@ -174,12 +151,12 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
           <button
             type="button"
             onClick={onOpenContact}
-            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-100 font-medium text-xs sm:text-sm transition-all duration-150 cursor-pointer shadow-md"
+            className="btn-primary shrink-0"
           >
             <span>{t.integrations.contactSpecialist || "Mutaxassis bilan bog'lanish"}</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </button>
-        </div>
+        </Reveal>
 
       </div>
     </section>

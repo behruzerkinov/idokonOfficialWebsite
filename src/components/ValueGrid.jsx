@@ -1,128 +1,57 @@
 import React from 'react';
-import { FluentRevealCard } from './FluentReveal';
+import { Reveal, RevealWords, Stagger, StaggerItem } from './Reveal';
+
+const STAT_PILL = 'rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[11px] font-medium tabular-nums text-emerald-700 dark:text-emerald-300';
+const INDEX_BADGE = 'font-mono text-xs font-medium tabular-nums text-zinc-400 dark:text-zinc-500';
+const TAG = 'rounded-full border border-[color:var(--line)] px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400';
 
 export const ValueGrid = ({ t }) => {
+  const cards = [
+    { n: '01', tag: t.features.f1_tag, title: t.features.f1_title, desc: t.features.f1_desc, left: t.features.f1_stat_left, right: t.features.f1_stat_right },
+    { n: '02', tag: t.features.f2_tag, title: t.features.f2_title, desc: t.features.f2_desc, left: t.features.f2_stat_left, right: t.features.f2_stat_right },
+    { n: '03', tag: t.features.f3_tag, title: t.features.f3_title, desc: t.features.f3_desc, left: t.features.f3_stat_left, right: t.features.f3_stat_right },
+    { n: '04', tag: t.features.f4_tag, title: t.features.f4_title, desc: t.features.f4_desc, left: t.features.f4_stat_left, right: t.features.f4_stat_right },
+  ];
+
   return (
-    <section id="features" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl mb-14 text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/[0.06] dark:border-white/[0.08] text-zinc-600 dark:text-zinc-400 text-xs font-mono font-medium uppercase tracking-wider mb-4">
-            <span>{t.features.eyebrow}</span>
-          </div>
-          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
-            {t.features.title}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-            {t.features.lead}
-          </p>
+    <section id="features" className="section scroll-mt-20">
+      <div className="container-page">
+
+        <div className="mb-14 max-w-3xl">
+          <Reveal>
+            <span className="eyebrow mb-4">{t.features.eyebrow}</span>
+          </Reveal>
+          <RevealWords as="h2" text={t.features.title} className="display-lg text-zinc-900 dark:text-zinc-50" />
+          <Reveal delay={0.15}>
+            <p className="lede mt-5 max-w-[60ch]">{t.features.lead}</p>
+          </Reveal>
         </div>
 
-        {/* 2x2 Bento Grid with Apple Refined Aesthetics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
-          {/* Card 1 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
-            <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
-                01
-              </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
-                {t.features.f1_tag}
-              </span>
-            </div>
+        <Stagger className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          {cards.map((card) => (
+            <StaggerItem key={card.n} className="h-full">
+              <div className="surface surface-lift flex h-full flex-col p-8 sm:p-9">
+                <div className="mb-6 flex items-center justify-between">
+                  <span className={INDEX_BADGE}>{card.n}</span>
+                  <span className={TAG}>{card.tag}</span>
+                </div>
 
-            <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-[-0.02em] mb-3 text-[#1d1d1f] dark:text-zinc-50 [text-wrap:balance]">
-              {t.features.f1_title}
-            </h3>
-            
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
-              {t.features.f1_desc}
-            </p>
+                <h3 className="mb-3 font-sans text-xl font-semibold tracking-[-0.02em] text-zinc-900 dark:text-zinc-50 sm:text-2xl">
+                  {card.title}
+                </h3>
 
-            <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f1_stat_left}</span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f1_stat_right}</span>
-            </div>
-          </FluentRevealCard>
+                <p className="mb-6 max-w-[65ch] text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-base">
+                  {card.desc}
+                </p>
 
-          {/* Card 2 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
-            <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
-                02
-              </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
-                {t.features.f2_tag}
-              </span>
-            </div>
-
-            <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-[-0.02em] mb-3 text-[#1d1d1f] dark:text-zinc-50 [text-wrap:balance]">
-              {t.features.f2_title}
-            </h3>
-
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
-              {t.features.f2_desc}
-            </p>
-
-            <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f2_stat_left}</span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f2_stat_right}</span>
-            </div>
-          </FluentRevealCard>
-
-          {/* Card 3 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
-            <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
-                03
-              </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
-                {t.features.f3_tag}
-              </span>
-            </div>
-
-            <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-[-0.02em] mb-3 text-[#1d1d1f] dark:text-zinc-50 [text-wrap:balance]">
-              {t.features.f3_title}
-            </h3>
-
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
-              {t.features.f3_desc}
-            </p>
-
-            <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f3_stat_left}</span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f3_stat_right}</span>
-            </div>
-          </FluentRevealCard>
-
-          {/* Card 4 */}
-          <FluentRevealCard className="group p-8 sm:p-9 rounded-3xl bg-white dark:bg-[#161617] border border-black/[0.06] dark:border-white/[0.08] shadow-sm hover:border-black/[0.12] dark:hover:border-white/[0.22] hover:shadow-xl dark:hover:shadow-[0_16px_48px_rgba(255,255,255,0.10)] hover:-translate-y-1 transition-all duration-300 ease-out">
-            <div className="flex items-center justify-between mb-6">
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs font-mono border border-transparent group-hover:bg-emerald-500/10 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300">
-                04
-              </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
-                {t.features.f4_tag}
-              </span>
-            </div>
-
-            <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-[-0.02em] mb-3 text-[#1d1d1f] dark:text-zinc-50 [text-wrap:balance]">
-              {t.features.f4_title}
-            </h3>
-
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-[65ch]">
-              {t.features.f4_desc}
-            </p>
-
-            <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono tabular-nums">
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f4_stat_left}</span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-medium text-[11px] shadow-xs">{t.features.f4_stat_right}</span>
-            </div>
-          </FluentRevealCard>
-
-        </div>
+                <div className="mt-auto flex items-center justify-between gap-3 border-t border-[color:var(--line)] pt-4">
+                  <span className={STAT_PILL}>{card.left}</span>
+                  <span className={STAT_PILL}>{card.right}</span>
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
 
       </div>
     </section>

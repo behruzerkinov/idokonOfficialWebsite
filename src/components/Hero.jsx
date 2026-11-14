@@ -1,144 +1,153 @@
 import React from 'react';
-import { 
-  ArrowRight, ShieldCheck, Zap, Headphones, Star, 
-  Sparkles, Laptop, Maximize2 
-} from 'lucide-react';
+import { motion } from 'motion/react';
+import { ArrowRight, Laptop, Zap, Headphones, Star, Maximize2 } from 'lucide-react';
+import { EASE_OUT } from './Reveal';
+
+// Above-the-fold entrances use initial/animate (not whileInView) so the hero is never hidden on first paint.
+const rise = (delay = 0, y = 18) => ({
+  initial: { opacity: 0, y, filter: 'blur(8px)' },
+  animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  transition: { duration: 1, ease: EASE_OUT, delay },
+});
+
+const WINDOW_DOTS = ['bg-[#ff5f56]', 'bg-[#ffbd2e]', 'bg-[#27c93f]'];
+const SCREENSHOT = { src: '/screenshots/showcase_savdo.webp', width: 1353, height: 756 };
+
+const toWords = (text, accent = false) =>
+  String(text ?? '').split(' ').filter(Boolean).map((word) => ({ word, accent }));
 
 export const Hero = ({ t, onOpenDemo, onScrollToTerminal, onOpenLightbox }) => {
+  const titleWords = [
+    ...toWords(t.hero.titleStart),
+    ...toWords(t.hero.titleHighlight, true),
+    ...toWords(t.hero.titleEnd),
+  ];
+  const trustItems = [
+    { icon: Laptop, label: t.hero.meta1 },
+    { icon: Zap, label: t.hero.meta2 },
+    { icon: Headphones, label: t.hero.meta3 },
+  ];
+
   return (
-    <section id="home" className="relative pt-20 pb-14 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
-      {/* Gentle ambient glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="home" className="relative overflow-hidden pt-20 pb-14 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 text-zinc-900 dark:text-zinc-100">
+      <div className="container-page relative z-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* Left Column: Headlines & Call to Actions */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            
-            {/* Top Eyebrow Pill with Live Indicator */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium tracking-tight mb-6 backdrop-blur-md">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
+          {/* Left column: headline and calls to action */}
+          <div className="flex flex-col items-start text-left lg:col-span-7">
+
+            <motion.div
+              {...rise(0)}
+              className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium tracking-tight text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
+            >
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
               <span>{t.hero.eyebrow}</span>
-            </div>
+            </motion.div>
 
-            {/* Main Monumental Headline */}
-            <h1 className="font-sans text-4xl sm:text-6xl lg:text-[70px] font-semibold tracking-[-0.035em] text-[#1d1d1f] dark:text-[#f5f5f7] leading-[1.08] mb-6 [text-wrap:balance]">
-              {t.hero.titleStart}{' '}
-              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">
-                {t.hero.titleHighlight}
-              </span>{' '}
-              {t.hero.titleEnd}
-            </h1>
+            <motion.h1 className="display-lg mb-6 text-zinc-950 [text-wrap:balance] dark:text-zinc-50">
+              {titleWords.map(({ word, accent }, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && ' '}
+                  <motion.span
+                    initial={{ opacity: 0, y: '0.5em', filter: 'blur(6px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    transition={{ duration: 0.9, ease: EASE_OUT, delay: 0.1 + i * 0.06 }}
+                    className={`inline-block ${accent ? 'text-emerald-600 dark:text-emerald-400' : ''}`}
+                  >
+                    {word}
+                  </motion.span>
+                </React.Fragment>
+              ))}
+            </motion.h1>
 
-            {/* Subhead */}
-            <p className="font-sans text-base sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[62ch] mb-8 font-normal">
+            <motion.p {...rise(0.55)} className="lede mb-8 max-w-[62ch]">
               {t.hero.subtitle}
-            </p>
+            </motion.p>
 
-            {/* CTA Buttons - Twain AI Pill styling */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-10">
-              <button
-                type="button"
-                onClick={onOpenDemo}
-                className="relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-500/15 transition-all duration-200 active:scale-95 group cursor-pointer"
-              >
+            <motion.div
+              {...rise(0.7, 12)}
+              className="mb-10 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center"
+            >
+              <button type="button" onClick={onOpenDemo} className="btn-primary hover:-translate-y-0.5">
                 <span>{t.hero.ctaPrimary}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="h-4 w-4" />
               </button>
-
-              <button
-                type="button"
-                onClick={onScrollToTerminal}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900/90 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 transition-all duration-200 active:scale-95 cursor-pointer shadow-sm"
-              >
+              <button type="button" onClick={onScrollToTerminal} className="btn-secondary hover:-translate-y-0.5">
                 <span>{t.hero.ctaSecondary}</span>
-                <ArrowRight className="w-4 h-4 text-emerald-500" />
+                <ArrowRight className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
               </button>
-            </div>
+            </motion.div>
 
-            {/* Trust Badges */}
-            <div className="flex flex-wrap items-center gap-y-3 gap-x-6 pt-6 border-t border-zinc-200/80 dark:border-zinc-800/80 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
-              <div className="flex items-center gap-2">
-                <Laptop className="w-4 h-4 text-emerald-500" />
-                <span className="text-zinc-700 dark:text-zinc-300">{t.hero.meta1}</span>
-              </div>
-              <div className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-emerald-500" />
-                <span className="text-zinc-700 dark:text-zinc-300">{t.hero.meta2}</span>
-              </div>
-              <div className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
-              <div className="flex items-center gap-2">
-                <Headphones className="w-4 h-4 text-emerald-500" />
-                <span className="text-zinc-700 dark:text-zinc-300">{t.hero.meta3}</span>
-              </div>
-            </div>
-
+            <motion.ul
+              {...rise(0.8, 12)}
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-zinc-200 pt-6 text-xs font-medium text-zinc-500 sm:text-sm dark:border-zinc-800 dark:text-zinc-400"
+            >
+              {trustItems.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                  <span className="text-zinc-700 dark:text-zinc-300">{label}</span>
+                </li>
+              ))}
+            </motion.ul>
           </div>
 
-          {/* Right Column: Real Software Screenshot Showcase */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-lg lg:max-w-none">
-              
-              {/* Apple macOS Window Frame */}
-              <div className="relative rounded-3xl p-2 bg-white/90 dark:bg-[#161617]/90 border border-black/[0.08] dark:border-white/[0.1] shadow-2xl overflow-hidden backdrop-blur-2xl">
-                
-                {/* Window header */}
-                <div className="flex items-center justify-between px-3.5 py-2.5 bg-zinc-100/80 dark:bg-zinc-950/80 rounded-t-2xl border-b border-black/[0.05] dark:border-white/[0.06]">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
-                  </div>
-                  <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    <span>idokon.uz · Admin Panel</span>
-                  </div>
+          {/* Right column: real software screenshot */}
+          <motion.div
+            {...rise(0.9, 32)}
+            className="relative mx-auto max-w-lg lg:col-span-5 lg:max-w-none"
+          >
+            <div className="rounded-2xl border border-zinc-200 bg-white p-2 shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex items-center justify-between rounded-t-xl border-b border-zinc-200 bg-zinc-100 px-3.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-950">
+                <div className="flex items-center gap-1.5">
+                  {WINDOW_DOTS.map((color) => (
+                    <span key={color} className={`h-2.5 w-2.5 rounded-full ${color}`} />
+                  ))}
                 </div>
-
-                {/* REAL I-DO'KON APP SCREENSHOT */}
-                <div 
-                  className="relative rounded-b-xl overflow-hidden bg-zinc-100 dark:bg-zinc-950 cursor-pointer group"
-                  onClick={() => onOpenLightbox && onOpenLightbox('/screenshots/showcase_savdo.png', "IDO'KON Savdo Hisoboti")}
-                >
-                  <img
-                    src="/screenshots/showcase_savdo.png"
-                    alt="IDO'KON dasturi real skrinshoti"
-                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-200"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-semibold text-xs backdrop-blur-xs">
-                    <Maximize2 className="w-4 h-4 text-emerald-400" />
-                    <span>{t.hero.zoom || "Kattalashtirish"}</span>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Floating Customer Rating Badge: Zero overlap, positioned cleanly */}
-              <div className="absolute -bottom-5 -left-4 sm:-left-5 bg-white dark:bg-zinc-900 rounded-xl p-3 shadow-lg flex items-center gap-3 z-20 border border-zinc-200 dark:border-zinc-800">
-                <div className="w-10 h-10 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-base flex-shrink-0">
-                  <Star className="w-5 h-5 fill-emerald-500 text-emerald-500" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="font-extrabold text-zinc-900 dark:text-zinc-100 text-sm leading-none">{t.hero.badgeScore}</span>
-                    <div className="flex text-amber-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-amber-400" />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">{t.hero.badgeReviews}</div>
+                <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  <span>idokon.uz · Admin Panel</span>
                 </div>
               </div>
 
+              <div
+                className="group relative cursor-pointer overflow-hidden rounded-b-xl bg-zinc-100 dark:bg-zinc-950"
+                onClick={() => onOpenLightbox && onOpenLightbox(SCREENSHOT.src, "IDO'KON Savdo Hisoboti")}
+              >
+                <img
+                  src={SCREENSHOT.src}
+                  width={SCREENSHOT.width}
+                  height={SCREENSHOT.height}
+                  alt="IDO'KON dasturi real skrinshoti"
+                  className="block h-auto w-full"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/40 text-xs font-semibold text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  <Maximize2 className="h-4 w-4 text-emerald-400" />
+                  <span>{t.hero.zoom || 'Kattalashtirish'}</span>
+                </div>
+              </div>
             </div>
-          </div>
+
+            {/* Floating rating badge */}
+            <div className="absolute -bottom-5 -left-4 z-20 flex items-center gap-3 rounded-xl border border-zinc-200 bg-white p-3 shadow-lg sm:-left-5 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-500/15">
+                <Star className="h-5 w-5 fill-emerald-500 text-emerald-500" />
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-sm font-semibold leading-none text-zinc-900 dark:text-zinc-100">{t.hero.badgeScore}</span>
+                  <div className="flex text-amber-400">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-3 w-3 fill-amber-400" />
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400">{t.hero.badgeReviews}</div>
+              </div>
+            </div>
+          </motion.div>
 
         </div>
       </div>

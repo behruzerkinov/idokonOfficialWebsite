@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { Check, Sparkles, ArrowRight, ShieldCheck, Gift } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Check, Sparkles, ArrowRight, Gift } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
+import { EASE_OUT, Reveal, RevealWords, Stagger, StaggerItem } from './Reveal';
+
+const CARD_BASE = 'relative flex h-full cursor-pointer flex-col justify-between rounded-2xl border p-7 transition-[border-color,background-color,transform] duration-300';
+const CARD_IDLE = 'border-zinc-200/80 bg-white hover:-translate-y-0.5 hover:border-zinc-300 dark:border-white/[0.08] dark:bg-white/[0.03] dark:hover:border-white/[0.15]';
+const CARD_SELECTED = 'border-emerald-500 bg-emerald-500/[0.05] dark:bg-emerald-500/[0.08]';
+const MUTED_TEXT = 'text-zinc-600 dark:text-zinc-400';
 
 export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
   const [billingPeriod, setBillingPeriod] = useState('monthly'); // 'monthly' | '6m' | '12m'
@@ -19,6 +26,12 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
     '6m': { uz: "5 oy to'lanadi + 1 oy bepul", ru: "5 мес оплата + 1 мес бесплатно", en: "Pay 5 months + 1 month free" },
     '12m': { uz: "10 oy to'lanadi + 2 oy bepul", ru: "10 мес оплата + 2 мес бесплатно", en: "Pay 10 months + 2 months free" }
   };
+
+  const periodOptions = [
+    { key: 'monthly', label: t.pricing.periodMonthly, badge: null },
+    { key: '6m', label: t.pricing.period6m, badge: t.pricing.badge1mFree },
+    { key: '12m', label: t.pricing.period12m, badge: t.pricing.badge2mFree }
+  ];
 
   const plans = [
     {
@@ -60,189 +73,159 @@ export const PricingCalculator = ({ t, lang = 'uz', onSelectPlan }) => {
   ];
 
   return (
-    <section id="pricing" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="pricing" className="section scroll-mt-20">
+      <div className="container-page">
+
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-12 px-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
-            <span>{t.pricing.eyebrow}</span>
-          </div>
-          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
-            {t.pricing.title}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal">
+        <div className="mx-auto mb-12 max-w-4xl text-center">
+          <Reveal>
+            <span className="eyebrow mb-4">{t.pricing.eyebrow}</span>
+          </Reveal>
+          <RevealWords as="h2" text={t.pricing.title} className="display-lg text-zinc-950 dark:text-zinc-50" />
+          <Reveal as="p" delay={0.15} className={`lede mt-5 ${MUTED_TEXT}`}>
             {t.pricing.lead}
-          </p>
+          </Reveal>
 
-          {/* 3-Way Period Switcher with Emil Kowalski style pills */}
-          <div className="mt-8 flex justify-center">
-            <div className="inline-flex items-center p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex-nowrap justify-center gap-1 max-w-full overflow-x-auto">
-              
-              {/* 1 Month */}
-              <button
-                type="button"
-                onClick={() => setBillingPeriod('monthly')}
-                className={`px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  billingPeriod === 'monthly'
-                    ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-xs'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-                }`}
-              >
-                {t.pricing.periodMonthly}
-              </button>
-
-              {/* 6 Months (5 paid + 1 free) */}
-              <button
-                type="button"
-                onClick={() => setBillingPeriod('6m')}
-                className={`relative px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
-                  billingPeriod === '6m'
-                    ? 'bg-emerald-600 text-white font-bold shadow-xs'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-                }`}
-              >
-                <span>{t.pricing.period6m}</span>
-                <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
-                  billingPeriod === '6m' ? 'bg-black/30 text-white' : 'bg-emerald-600 text-white'
-                }`}>
-                  {t.pricing.badge1mFree}
-                </span>
-              </button>
-
-              {/* 12 Months (10 paid + 2 free) */}
-              <button
-                type="button"
-                onClick={() => setBillingPeriod('12m')}
-                className={`relative px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
-                  billingPeriod === '12m'
-                    ? 'bg-emerald-600 text-white font-bold shadow-xs'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-                }`}
-              >
-                <span>{t.pricing.period12m}</span>
-                <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
-                  billingPeriod === '12m' ? 'bg-black/30 text-white' : 'bg-emerald-600 text-white'
-                }`}>
-                  {t.pricing.badge2mFree}
-                </span>
-              </button>
-
+          {/* Billing period switcher */}
+          <Reveal delay={0.25} className="mt-8 flex justify-center">
+            <div
+              role="group"
+              className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-100/70 p-1 dark:border-white/[0.08] dark:bg-white/[0.04]"
+            >
+              {periodOptions.map((opt) => {
+                const isActive = billingPeriod === opt.key;
+                return (
+                  <button
+                    key={opt.key}
+                    type="button"
+                    aria-pressed={isActive}
+                    onClick={() => setBillingPeriod(opt.key)}
+                    className={`inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-lg px-3.5 py-1.5 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 sm:px-4 ${
+                      isActive
+                        ? 'bg-white text-zinc-950 shadow-sm dark:bg-zinc-800 dark:text-white'
+                        : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white'
+                    }`}
+                  >
+                    <span>{opt.label}</span>
+                    {opt.badge && (
+                      <span className="rounded bg-emerald-600 px-1.5 py-px font-mono text-[10px] font-semibold text-white">
+                        {opt.badge}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
-          </div>
+          </Reveal>
 
-          {/* Discount callout note: adaptive 1-line badge */}
+          {/* Discount callout: appears for 6m / 12m */}
           {(billingPeriod === '6m' || billingPeriod === '12m') && (
-            <div className="mt-3.5 flex justify-center w-full">
-              <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-emerald-600 text-white text-xs sm:text-sm font-medium animate-in fade-in whitespace-normal sm:whitespace-nowrap max-w-full shadow-xs">
-                <Gift className="w-4 h-4 shrink-0 text-white" />
-                <span className="text-white">
-                  {billingPeriod === '6m' 
-                    ? (t.pricing?.gift6m || "5 oylik to'lov qiling — 1 oy sovg'a (Jami 6 oy)") 
+            <motion.div
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: EASE_OUT }}
+              className="mt-4 flex justify-center"
+            >
+              <div className="inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium text-emerald-700 whitespace-normal sm:text-sm sm:whitespace-nowrap dark:text-emerald-300">
+                <Gift className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <span>
+                  {billingPeriod === '6m'
+                    ? (t.pricing?.gift6m || "5 oylik to'lov qiling — 1 oy sovg'a (Jami 6 oy)")
                     : (t.pricing?.gift12m || "10 oylik to'lov qiling — 2 oy sovg'a (Jami 12 oy)")}
                 </span>
               </div>
-            </div>
+            </motion.div>
           )}
-
         </div>
 
-        {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        {/* Pricing cards */}
+        <Stagger className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3">
           {plans.map((plan) => {
             const currentPrice = plan.prices[billingPeriod];
             const isSelected = selectedPlanId === plan.id;
-            
+
             return (
-              <div
-                key={plan.id}
-                onClick={() => setSelectedPlanId(plan.id)}
-                className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-200 relative cursor-pointer ${
-                  isSelected
-                    ? 'bg-emerald-500/[0.12] dark:bg-emerald-950/60 border-2 border-emerald-500 shadow-xl ring-2 ring-emerald-500/30'
-                    : 'bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md'
-                }`}
-              >
-                {/* Popular Pill */}
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-emerald-500 text-white font-semibold text-[11px] tracking-tight shadow-sm flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 fill-white" />
-                    <span>{t.pricing?.mostPopular || "Eng ommabop tarif"}</span>
-                  </div>
-                )}
+              <StaggerItem key={plan.id} className="h-full">
+                <div
+                  onClick={() => setSelectedPlanId(plan.id)}
+                  className={`${CARD_BASE} ${isSelected ? CARD_SELECTED : CARD_IDLE}`}
+                >
+                  {/* Popular pill */}
+                  {plan.popular && (
+                    <div className="absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-emerald-600 px-3.5 py-0.5 text-[11px] font-semibold tracking-tight text-white">
+                      <Sparkles className="h-3 w-3 fill-white" aria-hidden="true" />
+                      <span>{t.pricing?.mostPopular || "Eng ommabop tarif"}</span>
+                    </div>
+                  )}
 
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-sans font-semibold text-2xl text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.02em]">
-                      {plan.name}
-                    </h3>
-                    {isSelected && (
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-600 text-white">
-                        {t.pricing?.activeBadge || "Tanlangan"}
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-6">
-                    {plan.subtitle}
-                  </p>
-
-                  {/* Price with Emil Kowalski NumberFlow */}
-                  <div className="mb-6 pb-6 border-b border-zinc-200 dark:border-zinc-800">
-                    <div className="flex items-baseline gap-1 font-mono">
-                      <span className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
-                        <NumberFlow value={currentPrice} format={{ useGrouping: true }} />
-                      </span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 font-sans">
-                        {periodSuffixMap[billingPeriod]?.[currentLang] || periodSuffixMap[billingPeriod]?.uz}
-                      </span>
+                  <div>
+                    <div className="mb-2 flex items-center justify-between gap-3">
+                      <h3 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950 dark:text-zinc-50">
+                        {plan.name}
+                      </h3>
+                      {isSelected && (
+                        <span className="rounded bg-emerald-600 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-white">
+                          {t.pricing?.activeBadge || "Tanlangan"}
+                        </span>
+                      )}
                     </div>
 
-                    <div className="text-[11px] text-zinc-400 dark:text-zinc-500 mt-1 font-mono">
-                      {billingHintMap[billingPeriod]?.[currentLang] || billingHintMap[billingPeriod]?.uz}
-                    </div>
-                  </div>
+                    <p className="mb-6 text-xs text-zinc-500 dark:text-zinc-400">
+                      {plan.subtitle}
+                    </p>
 
-                  {/* Features List */}
-                  <div className="space-y-3 mb-8">
-                    <div className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
-                      {t.pricing?.featuresHeadline || "Tarif imkoniyatlari:"}
-                    </div>
-                    {plan.features.map((feat, fIdx) => (
-                      <div key={fIdx} className="flex items-start gap-2.5 text-xs text-zinc-700 dark:text-zinc-300">
-                        <div className="w-4 h-4 rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5">
-                          <Check className="w-2.5 h-2.5" />
-                        </div>
-                        <span className="leading-tight">{feat}</span>
+                    {/* Price */}
+                    <div className="mb-6 border-b border-zinc-200 pb-6 dark:border-white/[0.08]">
+                      <div className="flex items-baseline gap-1 font-mono">
+                        <span className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
+                          <NumberFlow value={currentPrice} format={{ useGrouping: true }} />
+                        </span>
+                        <span className="font-sans text-xs text-zinc-500 dark:text-zinc-400">
+                          {periodSuffixMap[billingPeriod]?.[currentLang] || periodSuffixMap[billingPeriod]?.uz}
+                        </span>
                       </div>
-                    ))}
+
+                      <div className="mt-1 font-mono text-[11px] text-zinc-400 dark:text-zinc-500">
+                        {billingHintMap[billingPeriod]?.[currentLang] || billingHintMap[billingPeriod]?.uz}
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    <div className="mb-8 space-y-3">
+                      <div className="mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                        {t.pricing?.featuresHeadline || "Tarif imkoniyatlari:"}
+                      </div>
+                      {plan.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-start gap-2.5 text-sm text-zinc-700 dark:text-zinc-300">
+                          <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                            <Check className="h-2.5 w-2.5" aria-hidden="true" />
+                          </span>
+                          <span className="leading-snug">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Plan CTA */}
+                  <div>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedPlanId(plan.id);
+                        onSelectPlan(plan, billingPeriod);
+                      }}
+                      className={`${isSelected ? 'btn-primary' : 'btn-secondary'} w-full`}
+                    >
+                      <span>{t.pricing?.activatePlan || "Tarifni faollashtirish"}</span>
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </button>
                   </div>
                 </div>
-
-                {/* Plan Action CTA */}
-                <div>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedPlanId(plan.id);
-                      onSelectPlan(plan, billingPeriod);
-                    }}
-                    className={`w-full py-3 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer ${
-                      isSelected
-                        ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-md'
-                        : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[#1d1d1f] dark:text-zinc-100'
-                    }`}
-                  >
-                    <span>{t.pricing?.activatePlan || "Tarifni faollashtirish"}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
 
       </div>
     </section>

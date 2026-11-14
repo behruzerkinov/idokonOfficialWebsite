@@ -839,7 +839,7 @@ export const partnerIntegrations = [
   },
   {
     "name": "Multikassa",
-    "logo": "/logos/multikassa.png",
+    "logo": "/logos/multikassa.webp",
     "label": "Davlat Soliq Qo'mitasi fiskalizatsiyasi",
     "type": "Fiskal modul"
   },
@@ -851,7 +851,7 @@ export const partnerIntegrations = [
   },
   {
     "name": "Eskiz SMS / E-imzo",
-    "logo": "/logos/e-imzo.png",
+    "logo": "/logos/e-imzo.webp",
     "label": "SMS xabarnomalar va raqamli imzo",
     "type": "SMS & Xavfsizlik"
   }

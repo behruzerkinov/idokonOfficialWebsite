@@ -1,506 +1,324 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Drawer } from 'vaul';
-import { 
-  X, Phone, ShoppingBag, Sparkles, Check, ChevronDown, Sun, Moon, ArrowRight, ArrowUp 
-} from 'lucide-react';
+import { X, Phone, ShoppingBag, Sun, Moon, ArrowUp } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export const Navbar = ({ 
-  lang, 
-  setLang, 
-  t, 
+const EASE = [0.22, 1, 0.36, 1];
+
+const SECTION_IDS = ['home', 'features', 'terminal', 'equipment', 'integrations', 'pricing', 'course', 'faq', 'contact'];
+
+export const Navbar = ({
+  lang,
+  setLang,
+  t,
   theme,
   toggleTheme,
-  cartCount, 
-  onOpenCart, 
-  onOpenDemo 
+  cartCount,
+  onOpenCart,
+  onOpenDemo
 }) => {
+  const [scrolled, setScrolled] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [hoveredId, setHoveredId] = useState(null);
+  const lockRef = useRef(null);
 
-  const navRef = useRef(null);
-  const linkRefs = useRef({});
-  const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
-  const isManualNavRef = useRef(false);
-  const navTimeoutRef = useRef(null);
-
+  // Scroll state: compact + more opaque once the page moves
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setShowTopBtn(scrollY > 300);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      setShowTopBtn(y > 600);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Liquid bottom bar calculation: measures exact offset and width of active link
-  const updateIndicator = useCallback(() => {
-    const navEl = navRef.current;
-    const linkEl = linkRefs.current[activeSection];
-    if (navEl && linkEl) {
-      const navRect = navEl.getBoundingClientRect();
-      const linkRect = linkEl.getBoundingClientRect();
-      setIndicator({
-        left: linkRect.left - navRect.left + 6,
-        width: Math.max(linkRect.width - 12, 18),
-        opacity: 1
-      });
-    }
-  }, [activeSection]);
-
+  // Scroll spy; paused briefly after a click so the indicator doesn't flicker
   useEffect(() => {
-    updateIndicator();
-    const timer = setTimeout(updateIndicator, 60);
-    window.addEventListener('resize', updateIndicator);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', updateIndicator);
-    };
-  }, [updateIndicator, lang]);
-
-  // Section Scroll Spy with lock to prevent jumping during click navigation
-  useEffect(() => {
-    const sectionIds = ['home', 'features', 'terminal', 'equipment', 'integrations', 'pricing', 'course', 'faq', 'contact'];
-    
-    const handleScrollSpy = () => {
-      if (isManualNavRef.current) return;
-
-      const threshold = 220;
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= threshold && rect.bottom > 80) {
-            setActiveSection(sectionIds[i]);
-            return;
-          }
+    const onSpy = () => {
+      if (lockRef.current) return;
+      if (window.scrollY < 200) return setActiveSection('home');
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(SECTION_IDS[i]);
+        if (el && el.getBoundingClientRect().top <= 220 && el.getBoundingClientRect().bottom > 80) {
+          return setActiveSection(SECTION_IDS[i]);
         }
       }
-      if (window.scrollY < 200) {
-        setActiveSection('home');
-      }
     };
-
-    window.addEventListener('scroll', handleScrollSpy, { passive: true });
-    handleScrollSpy();
-    return () => window.removeEventListener('scroll', handleScrollSpy);
+    window.addEventListener('scroll', onSpy, { passive: true });
+    onSpy();
+    return () => window.removeEventListener('scroll', onSpy);
   }, []);
 
-  const handleLinkClick = (e, id) => {
+  const goTo = (e, id) => {
     e.preventDefault();
-    isManualNavRef.current = true;
     setActiveSection(id);
-
-    if (navTimeoutRef.current) clearTimeout(navTimeoutRef.current);
-    navTimeoutRef.current = setTimeout(() => {
-      isManualNavRef.current = false;
-    }, 900);
-
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    clearTimeout(lockRef.current);
+    lockRef.current = setTimeout(() => { lockRef.current = null; }, 900);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const languages = [
     { code: 'uz', label: "O'zbekcha", short: "O'Z" },
-    { code: 'ru', label: "Русский", short: "РУ" },
-    { code: 'en', label: "English", short: "EN" }
+    { code: 'ru', label: 'Русский', short: 'РУ' },
+    { code: 'en', label: 'English', short: 'EN' }
   ];
 
-  const currentLanguage = languages.find(l => l.code === lang) || languages[0];
-
   const navLinks = [
-    { id: 'home', href: '#home', label: t.nav.home, num: '01' },
-    { id: 'features', href: '#features', label: t.nav.features, num: '02' },
-    { id: 'terminal', href: '#terminal', label: t.nav.terminal, num: '03' },
-    { id: 'equipment', href: '#equipment', label: t.nav.equipment, num: '04' },
-    { id: 'integrations', href: '#integrations', label: t.nav.integrations, num: '05' },
-    { id: 'pricing', href: '#pricing', label: t.nav.pricing, num: '06' },
-    { id: 'course', href: '#course', label: t.nav.course, num: '07' },
-    { id: 'faq', href: '#faq', label: t.nav.faq, num: '08' },
-    { id: 'contact', href: '#contact', label: t.nav.contact, num: '09' }
+    { id: 'home', label: t.nav.home, num: '01' },
+    { id: 'features', label: t.nav.features, num: '02' },
+    { id: 'terminal', label: t.nav.terminal, num: '03' },
+    { id: 'equipment', label: t.nav.equipment, num: '04' },
+    { id: 'integrations', label: t.nav.integrations, num: '05' },
+    { id: 'pricing', label: t.nav.pricing, num: '06' },
+    { id: 'course', label: t.nav.course, num: '07' },
+    { id: 'faq', label: t.nav.faq, num: '08' },
+    { id: 'contact', label: t.nav.contact, num: '09' }
   ];
 
   return (
     <>
-      {/* Freestanding Floating Navigation: NO outer border, NO outer glass container */}
-      <header className="fixed top-3 sm:top-5 inset-x-0 mx-auto z-50 w-full max-w-[1560px] px-3 sm:px-6 pointer-events-none transition-all duration-300">
-        <div className="w-full flex items-center justify-between gap-3 sm:gap-4 pointer-events-none">
-          
-          {/* Left Col: Logo in its own sleek liquid-glass capsule */}
-          <div className="flex items-center justify-start flex-shrink-0 pointer-events-auto">
-            <a 
-              href="#home" 
-              className="liquid-glass liquid-glass-sheen flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all duration-200 hover:scale-[1.03] active:scale-95 shadow-md group" 
-              aria-label="IDOKON Bosh sahifa"
+      <motion.header
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: EASE }}
+        className="fixed inset-x-0 top-3 sm:top-4 z-50 px-3 sm:px-6 pointer-events-none"
+      >
+        <div
+          className={`nav-bar pointer-events-auto mx-auto flex max-w-[1400px] items-center gap-3 rounded-2xl border transition-[padding,background-color,box-shadow] duration-500 ${
+            scrolled ? 'nav-bar--scrolled px-2.5 py-1.5' : 'px-3 py-2'
+          }`}
+        >
+          {/* Brand */}
+          <a href="#home" onClick={(e) => goTo(e, 'home')} className="flex shrink-0 items-center pl-1.5 pr-2" aria-label="IDOKON">
+            <img src="/idokon_logo.webp" alt="IDOKON" className="h-6 w-auto object-contain sm:h-7" />
+          </a>
+
+          {/* Desktop links */}
+          <nav className="hidden xl:flex min-w-0 flex-1 items-center justify-center gap-1" aria-label="Asosiy">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={(e) => goTo(e, link.id)}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`group relative whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[13px] font-medium tracking-tight transition-colors duration-200 2xl:px-3 ${
+                    isActive ? 'text-zinc-950 dark:text-white' : 'text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-line"
+                      transition={{ duration: 0.5, ease: EASE }}
+                      className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-emerald-500"
+                    />
+                  )}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Right cluster */}
+          <div className="ml-auto flex shrink-0 items-center gap-2 xl:ml-0">
+            {/* Hotline: ultra-wide only */}
+            <a
+              href="tel:+998991130999"
+              className="hidden min-[1680px]:flex items-center gap-2 whitespace-nowrap px-2 text-xs font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
             >
-              <img
-                src="/idokon_logo.png"
-                alt="IDOKON"
-                className="h-7 sm:h-8 w-auto object-contain"
-              />
-            </a>
-          </div>
-
-          {/* Center Col: Desktop Navigation Links - Freestanding Liquid Glass Pill Container */}
-          <div className="hidden xl:flex items-center justify-center min-w-0 pointer-events-auto">
-            <nav 
-              ref={navRef}
-              className="liquid-glass liquid-glass-sheen relative flex items-center gap-0.5 2xl:gap-1 p-1.5 rounded-full shadow-lg select-none"
-            >
-              {/* Active Indicator (Clean Apple emerald pill) */}
-              <motion.div
-                className="absolute bottom-1.5 h-[2px] rounded-full bg-emerald-500 pointer-events-none z-10"
-                animate={{
-                  left: indicator.left,
-                  width: indicator.width,
-                  opacity: indicator.opacity
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 450,
-                  damping: 32,
-                  mass: 0.5
-                }}
-              />
-
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.id;
-                const isHovered = hoveredId === link.id;
-
-                return (
-                  <a
-                    key={link.href}
-                    ref={(el) => { linkRefs.current[link.id] = el; }}
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.id)}
-                    onMouseEnter={() => setHoveredId(link.id)}
-                    onMouseLeave={() => setHoveredId(null)}
-                    className={`relative px-3.5 2xl:px-5 py-1.5 rounded-full text-[13px] 2xl:text-[14px] font-medium tracking-tight whitespace-nowrap cursor-pointer transition-colors duration-150 z-20 ${
-                      isActive
-                        ? 'text-[#1d1d1f] dark:text-white font-semibold'
-                        : 'text-zinc-600 hover:text-[#1d1d1f] dark:text-zinc-400 dark:hover:text-white'
-                    }`}
-                  >
-                    <AnimatePresence>
-                      {isHovered && (
-                        <motion.div
-                          layoutId="nav-hover-pill"
-                          className="absolute inset-0 rounded-full bg-black/[0.05] dark:bg-white/[0.08] -z-10"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.12 }}
-                        />
-                      )}
-                    </AnimatePresence>
-
-                    <span className="relative z-10">{link.label}</span>
-                  </a>
-                );
-              })}
-            </nav>
-          </div>
-
-          {/* Right Col: Action Controls as Freestanding Liquid Glass Components */}
-          <div className="flex items-center justify-end gap-2 sm:gap-2.5 flex-shrink-0 pointer-events-auto">
-            
-            {/* Phone Hotline Link: Ultra-wide desktop only (>= 1680px) */}
-            <a 
-              href="tel:+998991130999" 
-              className="hidden min-[1680px]:flex liquid-glass liquid-glass-sheen items-center gap-1.5 h-9 px-3.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all hover:scale-105 active:scale-95 whitespace-nowrap shadow-sm"
-              title="Savdo operatori"
-            >
-              <div className="w-4 h-4 rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
-                <Phone className="w-2.5 h-2.5" />
-              </div>
-              <span className="font-mono text-xs whitespace-nowrap tabular-nums">+998 99 113 09 99</span>
+              <Phone className="h-3.5 w-3.5 text-emerald-500" />
+              <span className="font-mono tabular-nums">+998 99 113 09 99</span>
             </a>
 
-            {/* Dark / Light Mode Toggle: Circular Glass Button */}
+            {/* Language segmented control (desktop) */}
+            <div className="nav-segment hidden xl:flex items-center rounded-lg p-0.5" role="group" aria-label="Til">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  type="button"
+                  onClick={() => setLang(l.code)}
+                  aria-pressed={lang === l.code}
+                  className={`relative rounded-md px-2 py-1 font-mono text-[11px] font-semibold transition-colors duration-200 ${
+                    lang === l.code ? 'text-zinc-950 dark:text-white' : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                  }`}
+                >
+                  {lang === l.code && (
+                    <motion.span
+                      layoutId="nav-lang-pill"
+                      transition={{ duration: 0.4, ease: EASE }}
+                      className="nav-segment-active absolute inset-0 rounded-md"
+                    />
+                  )}
+                  <span className="relative">{l.short}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Theme */}
             <button
               type="button"
               onClick={toggleTheme}
-              className="hidden xl:flex liquid-glass liquid-glass-sheen h-9 w-9 items-center justify-center rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all cursor-pointer flex-shrink-0 hover:scale-105 active:scale-95 shadow-sm"
-              aria-label="Toggle theme"
+              className="hidden xl:flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-black/5 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
+              aria-label="Mavzuni almashtirish"
               title={theme === 'dark' ? "Yorug' rejim" : "Qorong'i rejim"}
             >
-              {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Moon className="w-4 h-4 text-zinc-700" />
-              )}
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
 
-            {/* Language Selector Dropdown: Pill Glass Button */}
-            <div className="relative hidden xl:block">
-              <button
-                type="button"
-                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="liquid-glass liquid-glass-sheen h-9 px-3.5 flex items-center gap-1.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-all cursor-pointer whitespace-nowrap hover:scale-105 active:scale-95 shadow-sm"
-                aria-label="Tilni tanlash"
-              >
-                <span className="font-mono font-bold tracking-wider">{currentLanguage.short}</span>
-                <ChevronDown className="w-3 h-3 text-zinc-400" />
-              </button>
-
-              {langDropdownOpen && (
-                <div 
-                  className="liquid-glass liquid-glass-sheen absolute right-0 mt-2 w-36 rounded-2xl shadow-2xl py-1.5 z-50 animate-in fade-in duration-100"
-                  onClick={() => setLangDropdownOpen(false)}
-                >
-                  {languages.map((l) => (
-                    <button
-                      key={l.code}
-                      onClick={() => setLang(l.code)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold text-left transition-colors cursor-pointer ${
-                        lang === l.code 
-                          ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold' 
-                          : 'text-zinc-700 dark:text-zinc-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.06]'
-                      }`}
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
-                          {l.short}
-                        </span>
-                        <span>{l.label}</span>
-                      </span>
-                      {lang === l.code && <Check className="w-3.5 h-3.5 text-emerald-500" />}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Hardware Cart Drawer Trigger: Circular Glass Button */}
+            {/* Cart */}
             <button
               type="button"
               onClick={onOpenCart}
-              className="liquid-glass liquid-glass-sheen h-9 w-9 sm:h-9 sm:w-9 flex items-center justify-center relative rounded-full text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all cursor-pointer flex-shrink-0 hover:scale-105 active:scale-95 shadow-sm"
+              className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-600 transition-colors hover:bg-black/5 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white"
               aria-label={t.nav.cart}
               title={t.nav.cart}
             >
-              <ShoppingBag className="w-4 h-4 text-emerald-500" />
+              <ShoppingBag className="h-4 w-4" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 px-1.5 h-4.5 min-w-[18px] rounded-full bg-emerald-600 text-white font-mono font-bold text-[10px] flex items-center justify-center shadow-sm">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 font-mono text-[10px] font-bold text-white">
                   <NumberFlow value={cartCount} />
                 </span>
               )}
             </button>
 
-            {/* Primary Demo CTA Button */}
+            {/* Primary CTA */}
             <button
               type="button"
               onClick={onOpenDemo}
-              className="hidden sm:inline-flex items-center justify-center gap-2 h-9 sm:h-9.5 px-5 rounded-full text-xs sm:text-[13px] font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-500/35 hover:scale-[1.03] active:scale-95 transition-all duration-150 whitespace-nowrap cursor-pointer flex-shrink-0"
+              className="hidden sm:inline-flex h-8 items-center whitespace-nowrap rounded-lg bg-zinc-950 px-3.5 text-xs font-semibold text-white transition-colors duration-200 hover:bg-emerald-600 dark:bg-white dark:text-zinc-950 dark:hover:bg-emerald-400"
             >
-              <Sparkles className="w-3.5 h-3.5 shrink-0 text-white" />
-              <span className="shrink-0 text-white font-bold tracking-tight">{t.nav.tryDemo}</span>
+              {t.nav.tryDemo}
             </button>
 
-            {/* Mobile Animated Burger Button: Circular Glass Button */}
+            {/* Mobile menu trigger */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="xl:hidden liquid-glass liquid-glass-sheen h-9 w-9 sm:h-9 sm:w-9 flex flex-col items-center justify-center gap-1.5 rounded-full text-zinc-800 dark:text-zinc-200 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all cursor-pointer shadow-sm"
-              aria-label={t.menu?.open || "Menyuni ochish"}
+              className="xl:hidden flex h-8 w-8 flex-col items-center justify-center gap-[5px] rounded-lg text-zinc-800 transition-colors hover:bg-black/5 dark:text-zinc-200 dark:hover:bg-white/10"
+              aria-label={t.menu?.open || 'Menyuni ochish'}
             >
-              <span className="w-4.5 h-0.5 rounded-full bg-current block" />
-              <span className="w-4.5 h-0.5 rounded-full bg-current block" />
-              <span className="w-3 h-0.5 rounded-full bg-emerald-500 block self-start ml-2" />
+              <span className="block h-px w-4 bg-current" />
+              <span className="block h-px w-4 bg-current" />
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Floating Liquid Glass "Top" Button */}
+      {/* Back to top */}
       <AnimatePresence>
         {showTopBtn && (
           <motion.button
             type="button"
-            onClick={scrollToTop}
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="liquid-glass liquid-glass-sheen fixed bottom-6 right-5 sm:bottom-8 sm:right-8 z-40 px-5 py-2.5 rounded-full flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-50 shadow-2xl cursor-pointer hover:scale-105 active:scale-95 transition-transform group pointer-events-auto"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="nav-bar fixed bottom-6 right-5 z-40 flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold text-zinc-800 dark:text-zinc-100 sm:bottom-8 sm:right-8"
             aria-label="Yuqoriga qaytish"
-            title="Yuqoriga qaytish"
           >
-            <div className="w-6 h-6 rounded-full bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:-translate-y-0.5 transition-transform">
-              <ArrowUp className="w-3.5 h-3.5 stroke-[2.5]" />
-            </div>
-            <span className="font-sans font-semibold tracking-tight">Top</span>
+            <ArrowUp className="h-3.5 w-3.5" />
+            <span>Top</span>
           </motion.button>
         )}
       </AnimatePresence>
 
-      {/* Emil Kowalski Vaul Slide-over Drawer for Mobile Menu */}
-      <Drawer.Root 
-        direction="right" 
-        open={mobileMenuOpen} 
-        onOpenChange={setMobileMenuOpen}
-      >
+      {/* Mobile drawer */}
+      <Drawer.Root direction="right" open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <Drawer.Portal>
-          <Drawer.Overlay className="fixed inset-0 bg-black/65 backdrop-blur-md z-[80] transition-opacity" />
-          <Drawer.Content className="fixed right-0 top-0 bottom-0 z-[90] w-[86vw] max-w-sm bg-white dark:bg-[#0c0e15] border-l border-zinc-200/80 dark:border-white/[0.08] shadow-[0_0_50px_rgba(0,0,0,0.6)] flex flex-col focus:outline-none overflow-hidden">
-            
-            {/* Left Edge Drag Handle Pill */}
-            <div className="w-1.5 h-12 rounded-full bg-zinc-300 dark:bg-zinc-700 absolute left-2 top-1/2 -translate-y-1/2 pointer-events-none opacity-60" />
-
-            {/* Drawer Header */}
-            <div className="flex items-center justify-between p-4 pl-6 border-b border-zinc-200/80 dark:border-white/[0.08] bg-zinc-50/50 dark:bg-white/[0.02]">
-              <div className="flex items-center gap-2">
-                <img
-                  src="/idokon_logo.png"
-                  alt="IDOKON"
-                  className="h-7 w-auto object-contain"
-                />
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                  by sales doctor
-                </span>
-              </div>
-
+          <Drawer.Overlay className="fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm" />
+          <Drawer.Content className="fixed bottom-0 right-0 top-0 z-[90] flex w-[86vw] max-w-sm flex-col border-l border-zinc-200 bg-white focus:outline-none dark:border-white/10 dark:bg-[#0a0a0b]">
+            <div className="flex items-center justify-between border-b border-zinc-200 px-6 py-4 dark:border-white/10">
+              <img src="/idokon_logo.webp" alt="IDOKON" className="h-6 w-auto object-contain" />
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-white/[0.06] text-zinc-600 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:bg-black/5 hover:text-zinc-950 dark:hover:bg-white/10 dark:hover:text-white"
                 aria-label="Yopish"
               >
-                <X className="w-5 h-5" />
+                <X className="h-4 w-4" />
               </button>
             </div>
 
-            {/* Quick Controls Bar: Language & Theme Segmented Controls */}
-            <div className="p-3.5 pl-6 border-b border-zinc-200/80 dark:border-white/[0.08] flex items-center justify-between gap-3 bg-zinc-100/50 dark:bg-white/[0.01]">
-              
-              {/* Segmented Language Switcher */}
-              <div className="flex items-center p-1 rounded-xl bg-zinc-200/80 dark:bg-white/[0.05] border border-zinc-200 dark:border-white/[0.06]">
+            <div className="flex items-center justify-between gap-3 border-b border-zinc-200 px-6 py-3 dark:border-white/10">
+              <div className="nav-segment flex items-center rounded-lg p-0.5">
                 {languages.map((l) => (
                   <button
                     key={l.code}
                     type="button"
                     onClick={() => setLang(l.code)}
-                    className={`px-3 py-1 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
-                      lang === l.code
-                        ? 'bg-emerald-600 text-white font-bold shadow-xs'
-                        : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white'
+                    aria-pressed={lang === l.code}
+                    className={`rounded-md px-2.5 py-1 font-mono text-[11px] font-semibold transition-colors ${
+                      lang === l.code ? 'nav-segment-active text-zinc-950 dark:text-white' : 'text-zinc-500 dark:text-zinc-400'
                     }`}
                   >
                     {l.short}
                   </button>
                 ))}
               </div>
-
-              {/* Theme Toggle Button */}
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="h-8 px-3 flex items-center gap-2 rounded-xl bg-zinc-200/80 dark:bg-white/[0.05] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer transition-colors"
+                className="flex h-8 items-center gap-2 rounded-lg px-2.5 text-xs font-medium text-zinc-600 hover:bg-black/5 dark:text-zinc-300 dark:hover:bg-white/10"
               >
-                {theme === 'dark' ? (
-                  <>
-                    <Sun className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Yorug'</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="w-3.5 h-3.5 text-zinc-700" />
-                    <span>Tungi</span>
-                  </>
-                )}
+                {theme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+                <span>{theme === 'dark' ? "Yorug'" : 'Tungi'}</span>
               </button>
             </div>
 
-            {/* Scrollable Navigation Links List */}
-            <div className="flex-1 overflow-y-auto p-4 pl-6 space-y-1">
-              <div className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest px-3 py-1 mb-1">
-                Bo'limlar
-              </div>
-              {navLinks.map((link) => {
+            <nav className="flex-1 overflow-y-auto px-3 py-4">
+              {navLinks.map((link, i) => {
                 const isActive = activeSection === link.id;
                 return (
-                  <a
-                    key={link.href}
-                    href={link.href}
+                  <motion.a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.05 + i * 0.03 }}
                     onClick={(e) => {
                       setMobileMenuOpen(false);
-                      handleLinkClick(e, link.id);
+                      goTo(e, link.id);
                     }}
-                    className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium transition-all ${
+                    className={`flex items-center gap-4 rounded-lg px-3 py-2.5 text-[15px] transition-colors ${
                       isActive
-                        ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20'
-                        : 'text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400 hover:bg-zinc-100 dark:hover:bg-white/[0.04]'
+                        ? 'font-semibold text-zinc-950 dark:text-white'
+                        : 'font-medium text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white'
                     }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-[11px] text-zinc-400 dark:text-zinc-600">
-                        {link.num}
-                      </span>
-                      <span>{link.label}</span>
-                    </div>
-                    {isActive ? (
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                    ) : (
-                      <ArrowRight className="w-3.5 h-3.5 text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    )}
-                  </a>
+                    <span className="w-5 font-mono text-[11px] text-zinc-400 dark:text-zinc-600">{link.num}</span>
+                    <span className="flex-1">{link.label}</span>
+                    {isActive && <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />}
+                  </motion.a>
                 );
               })}
-            </div>
+            </nav>
 
-            {/* Drawer Footer Actions */}
-            <div className="p-4 pl-6 border-t border-zinc-200/80 dark:border-white/[0.08] space-y-3 bg-zinc-50/70 dark:bg-white/[0.02]">
-              
-              {/* Primary Demo Action Button */}
+            <div className="space-y-3 border-t border-zinc-200 px-6 py-5 dark:border-white/10">
               <button
                 type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenDemo();
                 }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 active:scale-98 transition-transform cursor-pointer"
+                className="w-full rounded-lg bg-zinc-950 py-3 text-sm font-semibold text-white hover:bg-emerald-600 dark:bg-white dark:text-zinc-950 dark:hover:bg-emerald-400"
               >
-                <Sparkles className="w-4 h-4 shrink-0" />
-                <span>{t.nav.tryDemo || "Demoni Boshlash"}</span>
+                {t.nav.tryDemo}
               </button>
-
-              {/* Phone Hotlines */}
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                <a 
-                  href="tel:+998991130999" 
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-700 dark:text-zinc-300 text-[11px] font-semibold font-mono tabular-nums hover:text-emerald-500 transition-colors"
-                >
-                  <Phone className="w-3 h-3 text-emerald-500" />
-                  <span>99 113 09 99</span>
+              <div className="grid grid-cols-2 gap-2 font-mono text-[11px] tabular-nums text-zinc-600 dark:text-zinc-400">
+                <a href="tel:+998991130999" className="flex items-center justify-center gap-1.5 rounded-lg border border-zinc-200 py-2 hover:text-emerald-600 dark:border-white/10 dark:hover:text-emerald-400">
+                  <Phone className="h-3 w-3 text-emerald-500" /> 99 113 09 99
                 </a>
-
-                <a 
-                  href="tel:+998953600999" 
-                  className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-700 dark:text-zinc-300 text-[11px] font-semibold font-mono tabular-nums hover:text-emerald-500 transition-colors"
-                >
-                  <Phone className="w-3 h-3 text-emerald-500" />
-                  <span>95 360 09 99</span>
+                <a href="tel:+998953600999" className="flex items-center justify-center gap-1.5 rounded-lg border border-zinc-200 py-2 hover:text-emerald-600 dark:border-white/10 dark:hover:text-emerald-400">
+                  <Phone className="h-3 w-3 text-emerald-500" /> 95 360 09 99
                 </a>
-              </div>
-
-              {/* Status footer note */}
-              <div className="text-center pt-1 text-[10px] font-mono text-zinc-400 flex items-center justify-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>IDOKON Bulutli Platforma · 24/7 Qo'llab-quvvatlash</span>
               </div>
             </div>
-
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>

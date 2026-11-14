@@ -1,66 +1,70 @@
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Plus, Minus, Search, HelpCircle, ArrowRight } from 'lucide-react';
+import { EASE_OUT, Reveal, RevealWords } from './Reveal';
+
+const MUTED_TEXT = 'text-zinc-600 dark:text-zinc-400';
 
 export const FaqAccordion = ({ t, onScrollToContact }) => {
   const [openIndex, setOpenIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredFaqs = t.faq.items.filter(item => 
+  const filteredFaqs = t.faq.items.filter(item =>
     item.q.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.a.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <section id="faq" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors border-b border-zinc-200/80 dark:border-white/[0.08]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: Heading and Contact Action */}
-          <div className="lg:col-span-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
-              <HelpCircle className="w-3.5 h-3.5 text-emerald-500" />
-              <span>{t.faq.eyebrow}</span>
-            </div>
+    <section id="faq" className="section scroll-mt-20 border-b border-zinc-200/80 dark:border-white/[0.08]">
+      <div className="container-page">
 
-            <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08] mb-4">
-              {t.faq.title}
-            </h2>
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
 
-            <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mb-6 font-normal">
+          {/* Left: heading and contact action */}
+          <div className="lg:col-span-5">
+            <Reveal>
+              <span className="eyebrow mb-4">
+                <HelpCircle className="h-3.5 w-3.5" aria-hidden="true" />
+                <span>{t.faq.eyebrow}</span>
+              </span>
+            </Reveal>
+
+            <RevealWords as="h2" text={t.faq.title} className="display-lg mb-5 text-zinc-950 dark:text-zinc-50" />
+
+            <Reveal as="p" delay={0.15} className={`lede mb-8 ${MUTED_TEXT}`}>
               {t.faq.lead}
-            </p>
+            </Reveal>
 
-            {/* Direct Ask Question Button with high-tactile hover feedback */}
-            <button
-              type="button"
-              onClick={onScrollToContact}
-              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-zinc-100 dark:bg-zinc-800/90 text-zinc-800 dark:text-zinc-100 font-semibold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer border border-zinc-200 dark:border-zinc-700/80 shadow-sm hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white dark:hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 hover:scale-105 active:scale-95"
-            >
-              <span>{t.faq.askQuestionBtn}</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 text-zinc-500 group-hover:text-white" />
-            </button>
+            <Reveal delay={0.25}>
+              <button
+                type="button"
+                onClick={onScrollToContact}
+                className="btn-secondary group"
+              >
+                <span>{t.faq.askQuestionBtn}</span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+              </button>
+            </Reveal>
           </div>
 
-          {/* Right Column: Search + Accordion Items */}
-          <div className="lg:col-span-7 space-y-4">
-            
-            {/* Instant Search Bar */}
-            <div className="relative mb-4">
-              <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3" />
+          {/* Right: search + accordion */}
+          <Reveal delay={0.1} className="space-y-4 lg:col-span-7">
+
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" aria-hidden="true" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.faq.searchPlaceholder}
-                className="w-full pl-9 pr-4 py-2.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 shadow-xs"
+                aria-label={t.faq.searchPlaceholder}
+                className="w-full rounded-xl border border-zinc-200 bg-white py-3 pl-10 pr-4 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors duration-200 focus:border-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-zinc-100"
               />
             </div>
 
-            {/* Accordion List */}
             <div className="space-y-2.5">
               {filteredFaqs.length === 0 ? (
-                <div className="p-8 text-center bg-zinc-50 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500">
+                <div className={`surface p-8 text-center text-sm ${MUTED_TEXT}`}>
                   {t.faq?.noQuestions || "Hech qanday savol topilmadi. To'g'ridan-to'g'ri mutaxassisimizga murojaat qilishingiz mumkin."}
                 </div>
               ) : (
@@ -69,42 +73,54 @@ export const FaqAccordion = ({ t, onScrollToContact }) => {
                   return (
                     <div
                       key={idx}
-                      className={`rounded-xl transition-all duration-150 border ${
+                      className={`surface overflow-hidden transition-colors duration-300 ${
                         isOpen
-                          ? 'bg-zinc-50 dark:bg-zinc-900 border-emerald-500/40 shadow-sm'
-                          : 'bg-white dark:bg-zinc-900/60 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
+                          ? 'border-emerald-500/40 bg-zinc-50 dark:bg-white/[0.05]'
+                          : 'hover:border-zinc-300 dark:hover:border-white/[0.15]'
                       }`}
                     >
                       <button
                         type="button"
                         onClick={() => setOpenIndex(isOpen ? -1 : idx)}
-                        className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer"
                         aria-expanded={isOpen}
+                        className="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-500 sm:p-5"
                       >
-                        <span className={`text-xs sm:text-sm font-bold ${
-                          isOpen ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-700 dark:text-zinc-300'
+                        <span className={`text-sm font-semibold ${
+                          isOpen ? 'text-zinc-950 dark:text-zinc-50' : 'text-zinc-700 dark:text-zinc-300'
                         }`}>
                           {faq.q}
                         </span>
-                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
-                          isOpen ? 'bg-emerald-600 text-white font-bold shadow-xs' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500'
+                        <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-colors duration-300 ${
+                          isOpen ? 'bg-emerald-600 text-white' : 'bg-zinc-100 text-zinc-500 dark:bg-white/[0.06] dark:text-zinc-400'
                         }`}>
-                          {isOpen ? <Minus className="w-3.5 h-3.5 stroke-[2.5] text-white" /> : <Plus className="w-3.5 h-3.5 stroke-[2.5]" />}
-                        </div>
+                          {isOpen
+                            ? <Minus className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />
+                            : <Plus className="h-3.5 w-3.5 stroke-[2.5]" aria-hidden="true" />}
+                        </span>
                       </button>
 
-                      {isOpen && (
-                        <div className="px-4 sm:px-5 pb-4 pt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed border-t border-zinc-200 dark:border-zinc-800/80">
-                          {faq.a}
-                        </div>
-                      )}
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.4, ease: EASE_OUT }}
+                            className="overflow-hidden"
+                          >
+                            <div className={`mx-4 border-t border-zinc-200 py-4 text-sm leading-relaxed sm:mx-5 dark:border-white/[0.08] ${MUTED_TEXT}`}>
+                              {faq.a}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   );
                 })
               )}
             </div>
 
-          </div>
+          </Reveal>
 
         </div>
 

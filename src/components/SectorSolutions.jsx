@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Store, ShoppingCart, ShoppingBag, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Reveal, RevealWords, Stagger, StaggerItem } from './Reveal';
+
+const FOCUS_RING = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500';
 
 export const SectorSolutions = ({ t, onOpenDemo }) => {
   const [selectedSector, setSelectedSector] = useState(0);
@@ -40,87 +43,81 @@ export const SectorSolutions = ({ t, onOpenDemo }) => {
     }
   ];
 
+  const active = sectors[selectedSector];
+
   return (
-    <section className="py-14 sm:py-16 lg:py-20 bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-medium uppercase tracking-wider mb-4">
-            <span>{t.sectors.eyebrow}</span>
-          </div>
-          <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.03em] leading-[1.08]">
-            {t.sectors.title}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal">
-            {t.sectors.lead}
-          </p>
+    <section className="section">
+      <div className="container-page">
+
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <Reveal>
+            <span className="eyebrow mb-4">{t.sectors.eyebrow}</span>
+          </Reveal>
+          <RevealWords as="h2" text={t.sectors.title} className="display-lg text-zinc-900 dark:text-zinc-50" />
+          <Reveal delay={0.15}>
+            <p className="lede mt-5">{t.sectors.lead}</p>
+          </Reveal>
         </div>
 
-        {/* 3 Pure Retail Shop Sectors Grid with Twain Styling */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <Stagger className="mb-6 grid grid-cols-1 gap-5 md:grid-cols-3">
           {sectors.map((sec, idx) => {
             const Icon = sec.icon;
             const isSelected = selectedSector === idx;
             return (
-              <button
-                key={sec.id}
-                type="button"
-                onClick={() => setSelectedSector(idx)}
-                className={`relative p-7 rounded-2xl text-left transition-all duration-200 cursor-pointer ${
-                  isSelected
-                    ? 'bg-emerald-500/[0.12] dark:bg-emerald-950/50 border-2 border-emerald-500 shadow-lg ring-2 ring-emerald-500/20'
-                    : 'bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md'
-                }`}
-              >
-                <div className={`w-11 h-11 rounded-full flex items-center justify-center mb-5 transition-colors ${
-                  isSelected 
-                    ? 'bg-emerald-500 text-white font-bold shadow-sm' 
-                    : 'bg-zinc-100 dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400'
-                }`}>
-                  <Icon 
-                    strokeWidth={isSelected ? 2.5 : 2}
-                    className="w-5 h-5" 
-                  />
-                </div>
-                <h3 className="font-sans font-semibold text-xl sm:text-2xl mb-2 text-[#1d1d1f] dark:text-zinc-50 tracking-[-0.02em]">
-                  {sec.title}
-                </h3>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
-                  {sec.desc}
-                </p>
-              </button>
+              <StaggerItem key={sec.id} className="h-full">
+                <button
+                  type="button"
+                  aria-pressed={isSelected}
+                  onClick={() => setSelectedSector(idx)}
+                  className={`flex h-full w-full cursor-pointer flex-col rounded-2xl border p-7 text-left transition-[border-color,background-color,transform] duration-500 ease-out hover:-translate-y-0.5 ${FOCUS_RING} ${
+                    isSelected
+                      ? 'border-emerald-500/50 bg-emerald-500/[0.06] dark:bg-emerald-400/[0.05]'
+                      : 'surface border-[color:var(--line)] hover:border-zinc-300 dark:hover:border-white/[0.16]'
+                  }`}
+                >
+                  <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-500 ${
+                    isSelected
+                      ? 'bg-emerald-600 text-white'
+                      : 'bg-zinc-100 text-emerald-600 dark:bg-white/[0.06] dark:text-emerald-400'
+                  }`}>
+                    <Icon strokeWidth={isSelected ? 2.25 : 2} className="h-5 w-5" />
+                  </div>
+                  <h3 className="mb-2 font-sans text-xl font-semibold tracking-[-0.02em] text-zinc-900 dark:text-zinc-50 sm:text-2xl">
+                    {sec.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {sec.desc}
+                  </p>
+                </button>
+              </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
 
-        {/* Selected Sector Highlights Preview Banner */}
-        <div className="rounded-2xl p-6 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div>
-              <span className="inline-block text-[11px] font-sans font-medium text-white bg-emerald-600 px-3 py-1 rounded-full uppercase tracking-wider shadow-xs mb-2">
-                {t.sectors?.opportunitiesFor || "Do'koningiz uchun imkoniyatlar:"} {sectors[selectedSector].title}
-              </span>
-            </div>
-            <div className="flex flex-wrap gap-y-2 gap-x-6 pt-1">
-              {sectors[selectedSector].features.map((feat, fIdx) => (
-                <div key={fIdx} className="flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+        <Reveal className="surface flex flex-col items-start justify-between gap-6 p-6 md:flex-row md:items-center sm:p-7">
+          <div className="space-y-3">
+            <span className="eyebrow">
+              {t.sectors?.opportunitiesFor || "Do'koningiz uchun imkoniyatlar:"} {active.title}
+            </span>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 pt-1">
+              {active.features.map((feat, fIdx) => (
+                <li key={fIdx} className="flex items-center gap-2 text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:text-sm">
+                  <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-emerald-500" />
                   <span>{feat}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           <button
             type="button"
             onClick={onOpenDemo}
-            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-sm transition-all duration-150 cursor-pointer active:scale-95"
+            className={`btn-primary flex-shrink-0 text-xs ${FOCUS_RING}`}
           >
-            <span className="text-white">{t.hero.ctaPrimary}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-white" />
+            <span>{t.hero.ctaPrimary}</span>
+            <ArrowRight className="h-3.5 w-3.5" />
           </button>
-        </div>
+        </Reveal>
 
       </div>
     </section>

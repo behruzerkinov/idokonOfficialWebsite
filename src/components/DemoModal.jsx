@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import { 
-  X, Phone, User, Send, CheckCircle2, 
-  Sparkles, ShieldCheck, Clock 
-} from 'lucide-react';
+import { X, Phone, User, Send, CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { toast } from 'sonner';
+import { EASE_OUT } from './Reveal';
 
-export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
+const FOCUS_RING = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40';
+const LABEL = 'mb-1.5 block text-xs font-semibold text-zinc-700 dark:text-zinc-300';
+const FIELD =
+  'w-full rounded-xl border border-[color:var(--line)] bg-zinc-50 py-2.5 pl-10 pr-3.5 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors duration-300 focus:border-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/30 dark:bg-white/[0.03] dark:text-zinc-100';
+const FIELD_ICON = 'pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400';
+const TRUST_ICON = 'h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400';
+const CONTACT_LINK = `flex items-center gap-2 rounded-sm font-mono text-xs font-semibold text-emerald-600 hover:underline dark:text-emerald-400 ${FOCUS_RING}`;
+
+export const DemoModal = ({ isOpen, onClose, t }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '+998 '
@@ -48,32 +54,30 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div 
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950/60 p-4 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.4, ease: EASE_OUT }}
           onClick={handleResetAndClose}
         >
-          <motion.div 
-            className="relative w-full max-w-md rounded-2xl bg-white dark:bg-[#0c0e15] border border-zinc-200/90 dark:border-white/[0.1] text-zinc-900 dark:text-zinc-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden"
-            initial={{ opacity: 0, scale: 0.92, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 12 }}
-            transition={{ type: "spring", stiffness: 380, damping: 28 }}
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="demo-modal-title"
+            className="relative w-full max-w-md overflow-hidden rounded-2xl border border-[color:var(--line)] bg-white text-zinc-900 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)] dark:bg-zinc-950 dark:text-zinc-100"
+            initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+            transition={{ duration: 0.6, ease: EASE_OUT }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Top Highlight Accent Line */}
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-zinc-200/80 dark:border-white/[0.08] bg-zinc-50/80 dark:bg-white/[0.02]">
+            <div className="flex items-start justify-between gap-4 border-b border-[color:var(--line)] p-5">
               <div>
-                <span className="text-[11px] font-sans font-medium uppercase tracking-wider text-white bg-emerald-600 px-3 py-1 rounded-full shadow-xs">
-                  {t.demoModal.badge || "Bepul Demo"}
-                </span>
-                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-2">
+                <span className="eyebrow">{t.demoModal.badge || "Bepul Demo"}</span>
+                <h3 id="demo-modal-title" className="mt-2 text-lg font-semibold tracking-[-0.02em] text-zinc-950 dark:text-zinc-50">
                   {t.demoModal.title}
                 </h3>
               </div>
@@ -81,65 +85,67 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
               <button
                 type="button"
                 onClick={handleResetAndClose}
-                className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-white/[0.06] hover:bg-zinc-200 dark:hover:bg-white/[0.12] text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors flex items-center justify-center cursor-pointer"
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-500 transition-colors duration-300 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-white/[0.06] dark:hover:text-white ${FOCUS_RING}`}
                 aria-label="Yopish"
               >
-                <X className="w-4 h-4" />
+                <X className="h-4 w-4" />
               </button>
             </div>
 
             {/* Modal Body */}
             <div className="p-6">
               {!isSuccess ? (
-                <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <form onSubmit={handleSubmit} className="space-y-5 text-left">
+                  <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                     {t.demoModal.subtitle}
                   </p>
 
                   {/* Name Field */}
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
+                    <label htmlFor="demo-name" className={LABEL}>
                       {t.demoModal.nameLabel}
                     </label>
                     <div className="relative">
-                      <User className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" />
+                      <User className={FIELD_ICON} aria-hidden="true" />
                       <input
+                        id="demo-name"
                         type="text"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                         placeholder={t.demoModal.namePlaceholder}
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-zinc-50 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.08] rounded-xl text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 transition-colors shadow-xs"
+                        className={FIELD}
                       />
                     </div>
                   </div>
 
                   {/* Phone Field */}
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
+                    <label htmlFor="demo-phone" className={LABEL}>
                       {t.demoModal.phoneLabel}
                     </label>
                     <div className="relative">
-                      <Phone className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" />
+                      <Phone className={FIELD_ICON} aria-hidden="true" />
                       <input
+                        id="demo-phone"
                         type="tel"
                         required
                         value={formData.phone}
                         onChange={handlePhoneChange}
                         placeholder={t.demoModal.phonePlaceholder}
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-zinc-50 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.08] rounded-xl text-sm font-mono text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 transition-colors shadow-xs"
+                        className={`${FIELD} font-mono`}
                       />
                     </div>
                   </div>
 
                   {/* Trust Badges */}
-                  <div className="pt-2 flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">
+                  <div className="flex items-center justify-between pt-1 font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
                     <div className="flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                      <ShieldCheck className={TRUST_ICON} />
                       <span>{t.demoModal.expertPresentation || "Mutaxassis taqdimoti"}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-emerald-500" />
+                      <Clock className={TRUST_ICON} />
                       <span>{t.demoModal.responseTiming || "Bog'lanish: ~10 daqiqa"}</span>
                     </div>
                   </div>
@@ -148,52 +154,51 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-zinc-400 text-white font-semibold text-xs tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
+                    className="btn-primary w-full disabled:cursor-wait disabled:opacity-60"
                   >
                     {isSubmitting ? (
-                      <span className="flex items-center gap-2 text-white">
-                        <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        <span className="text-white">{t.demoModal.submitting || "Yuborilmoqda..."}</span>
-                      </span>
+                      <>
+                        <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent" aria-hidden="true" />
+                        <span>{t.demoModal.submitting || "Yuborilmoqda..."}</span>
+                      </>
                     ) : (
                       <>
-                        <Send className="w-3.5 h-3.5 text-white" />
-                        <span className="text-white">{t.demoModal.submitBtn}</span>
+                        <Send className="h-3.5 w-3.5" />
+                        <span>{t.demoModal.submitBtn}</span>
                       </>
                     )}
                   </button>
 
                 </form>
               ) : (
-                <div className="text-center py-6">
-                  <div className="w-14 h-14 rounded-full bg-emerald-500/15 text-emerald-500 flex items-center justify-center mx-auto mb-4 animate-bounce">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
+                <div className="py-6 text-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: EASE_OUT }}
+                    className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                  >
+                    <CheckCircle2 className="h-8 w-8" />
+                  </motion.div>
 
-                  <h4 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mb-2">
+                  <h4 className="mb-2 text-lg font-semibold text-zinc-950 dark:text-zinc-50">
                     {t.demoModal.successTitle}
                   </h4>
 
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xs mx-auto mb-6">
+                  <p className="mx-auto mb-6 max-w-xs text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                     {t.demoModal.successDesc}
                   </p>
 
-                  <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.08] text-left mb-6 space-y-2">
-                    <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mb-1">
+                  <div className="mb-6 space-y-2 rounded-xl border border-[color:var(--line)] bg-zinc-50 p-3.5 text-left dark:bg-white/[0.03]">
+                    <div className="mb-1 font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
                       {t.demoModal?.fastContact || "Tezkor bog'lanish:"}
                     </div>
-                    <a 
-                      href="tel:+998991130999" 
-                      className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-2"
-                    >
-                      <Phone className="w-3.5 h-3.5" />
+                    <a href="tel:+998991130999" className={CONTACT_LINK}>
+                      <Phone className="h-3.5 w-3.5" />
                       <span>+998 99 113 09 99</span>
                     </a>
-                    <a 
-                      href="tel:+998953600999" 
-                      className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-2"
-                    >
-                      <Phone className="w-3.5 h-3.5" />
+                    <a href="tel:+998953600999" className={CONTACT_LINK}>
+                      <Phone className="h-3.5 w-3.5" />
                       <span>+998 95 360 09 99</span>
                     </a>
                   </div>
@@ -201,7 +206,7 @@ export const DemoModal = ({ isOpen, onClose, t, lang = 'uz' }) => {
                   <button
                     type="button"
                     onClick={handleResetAndClose}
-                    className="w-full py-2.5 rounded-xl bg-zinc-100 dark:bg-white/[0.06] text-xs font-bold text-zinc-700 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                    className="btn-secondary w-full"
                   >
                     {t.demoModal?.closeBtn || t.menu?.close || "Yopish"}
                   </button>
