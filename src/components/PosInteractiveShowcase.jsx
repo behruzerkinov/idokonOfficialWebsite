@@ -37,16 +37,13 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
       <div className="container-page">
         <SectionHead title={t.software.title} lead={t.software.lead} />
 
-        <div role="tablist" aria-label={t.software.tablist} onKeyDown={onKey} className="hide-scrollbar mb-8 flex justify-start gap-2 overflow-x-auto md:justify-center">
+        <div role="tablist" aria-label={t.software.tablist} onKeyDown={onKey} className="hide-scrollbar segmented mx-auto mb-10 flex max-w-full overflow-x-auto md:w-fit">
           {TABS.map((x, n) => (
             <button
               key={x.id} ref={(el) => (refs.current[n] = el)} role="tab" id={`tab-${x.id}`} type="button"
               aria-selected={i === n} aria-controls={`panel-${x.id}`} tabIndex={i === n ? 0 : -1}
               onClick={() => select(n)}
-              className={`min-h-[44px] shrink-0 rounded-[10px] px-5 text-sm font-medium transition-colors duration-150 ${
-                i === n ? 'bg-emerald-600 text-white dark:bg-emerald-500 dark:text-zinc-950' : 'border hover:bg-zinc-100 dark:hover:bg-white/10'
-              }`}
-              style={i === n ? undefined : { borderColor: 'var(--line)' }}
+              className="seg-btn min-h-[44px] !px-5"
             >
               {t.software.tabs[x.id]}
             </button>
@@ -71,9 +68,9 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
           </div>
           <button
             type="button" onClick={() => onOpenLightbox(tab.src, s.title)} aria-label={t.software.zoom}
-            className="group relative block overflow-hidden rounded-xl border bg-white shadow-xs" style={{ borderColor: 'var(--line)' }}
+            className="group relative block overflow-hidden rounded-2xl bg-white p-1.5" style={{ boxShadow: 'var(--ring), var(--shadow-pop)' }}
           >
-            <img src={tab.src} alt={s.title} width={tab.w} height={tab.h} loading="lazy" decoding="async" className="h-auto w-full" />
+            <img src={tab.src} alt={s.title} width={tab.w} height={tab.h} loading="lazy" decoding="async" className="h-auto w-full rounded-xl" />
             <span className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-lg bg-black/70 px-2.5 py-1.5 text-xs text-white">
               <Maximize2 size={16} strokeWidth={1.75} aria-hidden="true" />{t.software.zoom}
             </span>
