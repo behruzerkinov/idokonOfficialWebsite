@@ -21,8 +21,8 @@ export const CareSection = ({ t, lang, onOpenLightbox }) => {
   const c = t.care;
   const hours = SITE.supportHours?.[lang];
   return (
-    <section id="support" className="section scroll-mt-16" style={{ background: 'var(--surface)' }}>
-      <div className="container-page">
+    <section id="support" className="section scroll-mt-16">
+      <div className="mx-auto max-w-[1240px] px-3"><div className="stage">
         <SectionHead title={c.title} lead={c.lead} />
         <div className="grid gap-5 md:grid-cols-2">
           <Block icon={DatabaseBackup} title={c.migration.title}>
@@ -63,7 +63,7 @@ export const CareSection = ({ t, lang, onOpenLightbox }) => {
             </div>
           </Block>
         </div>
-      </div>
+      </div></div>
     </section>
   );
 };

@@ -5,8 +5,8 @@ import { SectionHead } from './SectionHead';
 import { LeadForm } from './LeadForm';
 
 export const ContactConfigurator = ({ t, lang, prefill }) => (
-  <section id="contact" className="section scroll-mt-16" style={{ background: 'var(--surface)' }}>
-    <div className="container-page">
+  <section id="contact" className="section scroll-mt-16">
+    <div className="mx-auto max-w-[1240px] px-3"><div className="stage">
       <SectionHead title={t.contact.title} lead={t.contact.lead} />
       <div className={`mx-auto grid gap-8 ${SITE.leadsEnabled ? 'max-w-4xl md:grid-cols-[2fr_3fr]' : 'max-w-md'}`}>
         {SITE.leadsEnabled && <div className="space-y-2">
@@ -25,6 +25,6 @@ export const ContactConfigurator = ({ t, lang, prefill }) => (
           <LeadForm t={t} lang={lang} type="contact" store plan message defaults={prefill} />
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 );

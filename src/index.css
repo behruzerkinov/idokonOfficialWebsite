@@ -4,9 +4,10 @@
 
 @layer base {
   :root {
-    --bg: #fafaf9;
+    --bg: #ffffff;
+    --stage: #f5f5f7;
     --fg: #0c0a09;
-    --muted: #57534e;
+    --muted: #6e6e73;
     --line: rgba(12, 10, 9, 0.08);
     --surface: #ffffff;
     --accent: #059669;
@@ -18,11 +19,12 @@
   }
 
   .dark {
-    --bg: #09090b;
+    --bg: #000000;
+    --stage: #1c1c1e;
     --fg: #fafaf9;
-    --muted: #a8a29e;
+    --muted: #a1a1a6;
     --line: rgba(255, 255, 255, 0.09);
-    --surface: #111113;
+    --surface: #2c2c2e;
     --accent: #34d399;
     --accent-soft: rgba(52, 211, 153, 0.1);
     --ring: 0 0 0 1px rgba(255, 255, 255, 0.08);
@@ -61,7 +63,7 @@
 
   /* Hairline "ring" instead of a solid border: reads softer on any background */
   .card {
-    @apply rounded-2xl bg-[var(--surface)];
+    @apply rounded-3xl bg-[var(--surface)];
     box-shadow: var(--ring), var(--shadow-card);
     transition: box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out);
   }
@@ -123,6 +125,17 @@
 
 @keyframes pop-in { from { opacity: 0; transform: scale(0.96) translateY(6px); } }
 @keyframes fade-in { from { opacity: 0; } }
+
+/* Large soft panel that frames the product, like a stage */
+.stage { border-radius: 32px; background: var(--stage); padding: 1.5rem; }
+@media (min-width: 768px) { .stage { padding: 3.5rem; border-radius: 40px; } }
+.stage .card { box-shadow: 0 1px 2px rgba(0,0,0,0.04); background: var(--bg); }
+.dark .stage .card { background: var(--surface); box-shadow: none; }
+
+/* Scroll-in words (closing statement) */
+.word { display: inline-block; opacity: 0; transform: translateY(8px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); transition-delay: calc(var(--i) * 70ms); }
+.words-in .word { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .word { opacity: 1; transform: none; transition: none; } }
 
 .hero-glow {
   background:
