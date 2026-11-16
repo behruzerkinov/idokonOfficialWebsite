@@ -19,17 +19,14 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
       <div className="container-page">
         <SectionHead title={t.pricing.title} lead={t.pricing.lead} />
 
-        <div role="group" aria-label={t.pricing.periodLabel} className="mx-auto mb-10 flex max-w-md justify-center gap-2">
+        <div role="group" aria-label={t.pricing.periodLabel} className="segmented mx-auto mb-12 flex w-fit max-w-full">
           {PERIODS.map((x) => (
             <button
               key={x.key} type="button" aria-pressed={period === x.key} onClick={() => setPeriod(x.key)}
-              className={`flex min-h-[44px] flex-1 flex-col items-center justify-center rounded-[10px] px-3 text-sm font-medium transition-colors duration-150 ${
-                period === x.key ? 'bg-emerald-600 text-white dark:bg-emerald-500 dark:text-zinc-950' : 'border hover:bg-zinc-100 dark:hover:bg-white/10'
-              }`}
-              style={period === x.key ? undefined : { borderColor: 'var(--line)' }}
+              className="seg-btn flex min-h-[48px] flex-col items-center justify-center !px-4"
             >
               {t.pricing[x.label]}
-              {x.badge && <span className="text-[11px] font-normal opacity-90">{t.pricing[x.badge]}</span>}
+              {x.badge && <span className="text-[11px] font-normal text-emerald-700 dark:text-emerald-400">{t.pricing[x.badge]}</span>}
             </button>
           ))}
         </div>
@@ -40,13 +37,13 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
             const total = plan[period];
             const perMonth = Math.round(total / p.months);
             return (
-              <div key={plan.id} className={`card relative flex flex-col p-6 ${plan.popular ? 'border-emerald-600 ring-1 ring-emerald-600 dark:border-emerald-400 dark:ring-emerald-400' : ''}`}>
+              <div key={plan.id} className={`card relative flex flex-col p-7 ${plan.popular ? '!shadow-[0_0_0_2px_var(--accent),var(--shadow-pop)] md:-translate-y-2' : ''}`}>
                 {plan.popular && (
                   <span className="absolute -top-3 left-6 rounded-full bg-emerald-600 px-3 py-0.5 text-xs font-medium text-white dark:bg-emerald-500 dark:text-zinc-950">{t.pricing.popular}</span>
                 )}
                 <h3 className="text-xl font-semibold">{info.name}</h3>
                 <p className="mt-1 text-sm" style={{ color: 'var(--muted)' }}>{info.subtitle}</p>
-                <p className="mt-5 text-3xl font-semibold tabular-nums">{formatPrice(perMonth, lang)}</p>
+                <p className="mt-6 text-3xl font-semibold tracking-tight tabular-nums">{formatPrice(perMonth, lang)}</p>
                 <p className="text-sm" style={{ color: 'var(--muted)' }}>
                   {t.pricing.perMonth}{period !== 'monthly' && <> · {t.pricing.total}: {formatPrice(total, lang)}</>}
                 </p>

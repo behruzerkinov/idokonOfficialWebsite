@@ -10,13 +10,11 @@ const LANGS = [
 const LINKS = ['features', 'equipment', 'pricing', 'support', 'contact'];
 
 export const LangSwitch = ({ lang, setLang, label }) => (
-  <div role="group" aria-label={label} className="flex rounded-[10px] border p-0.5" style={{ borderColor: 'var(--line)' }}>
+  <div role="group" aria-label={label} className="segmented">
     {LANGS.map((l) => (
       <button
         key={l.code} type="button" onClick={() => setLang(l.code)} aria-pressed={lang === l.code}
-        className={`min-h-[40px] min-w-[44px] rounded-lg px-2 text-sm font-medium transition-colors duration-150 ${
-          lang === l.code ? 'bg-emerald-600 text-white dark:bg-emerald-500 dark:text-zinc-950' : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-white/10'
-        }`}
+        className="seg-btn min-w-[44px] !px-2"
       >
         {l.short}
       </button>
@@ -53,7 +51,7 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b bg-[var(--bg)] transition-colors duration-150 ${scrolled ? '' : 'border-transparent'}`}
+      className={`fixed inset-x-0 top-0 z-50 border-b bg-[var(--bg)]/80 backdrop-blur-md transition-colors duration-200 ${scrolled ? '' : 'border-transparent'}`}
       style={scrolled ? { borderColor: 'var(--line)' } : undefined}
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-black">{t.skip}</a>
@@ -64,7 +62,7 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
 
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {LINKS.map((id) => (
-            <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); go(id); }} className="inline-flex min-h-[44px] items-center rounded-[10px] px-3 text-sm font-medium text-zinc-600 transition-colors duration-150 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white">
+            <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); go(id); }} className="inline-flex min-h-[44px] items-center rounded-xl px-3 text-sm font-medium text-[var(--muted)] transition-colors duration-150 hover:text-[var(--fg)]">
               {t.nav[id]}
             </a>
           ))}
