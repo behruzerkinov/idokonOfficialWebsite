@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { SITE } from '../src/data/site.js';
 
 const SECTION_LINKS = ['features', 'equipment', 'pricing', 'support', 'contact'];
 
@@ -43,7 +44,17 @@ const fillContact = async (page, phone) => {
   return form;
 };
 
+test('offline mode: contact shows call and Telegram, no form', async ({ page }) => {
+  test.skip(SITE.leadsEnabled, 'leads are enabled');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  await expect(page.locator('#contact form')).toHaveCount(0);
+  await expect(page.locator('#contact a[href^="tel:"]').first()).toBeVisible();
+  await expect(page.locator('#contact a[href^="https://t.me/"]')).toBeVisible();
+});
+
 test('contact form: invalid phone, success, failure fallback', async ({ page }) => {
+  test.skip(!SITE.leadsEnabled, 'leads are disabled (offline mode)');
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   let form = await fillContact(page, '901234');
@@ -88,9 +99,11 @@ test('sticky bar visible at 375, hidden at 1024', async ({ page }) => {
   await expect(page.locator('.sticky-bar')).toBeHidden();
 });
 
-test('no horizontal scroll at 360', async ({ page }) => {
-  await page.setViewportSize({ width: 360, height: 800 });
-  await page.goto('/');
-  await page.waitForLoadState('networkidle');
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(360);
-});
+for (const width of [360, 375, 768, 1024, 1440]) {
+  test(`no horizontal scroll at ${width}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  });
+}

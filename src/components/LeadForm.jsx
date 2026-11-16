@@ -51,6 +51,19 @@ export const LeadForm = ({
     }
   };
 
+  // Offline mode: no form yet, just direct channels. Flip SITE.leadsEnabled to bring the form back.
+  if (!SITE.leadsEnabled) {
+    return (
+      <div className="space-y-3">
+        <p className="text-sm" style={{ color: 'var(--muted)' }}>{f.offlineDesc}</p>
+        {SITE.phones.map((p) => (
+          <a key={p} href={`tel:${p}`} className="btn-primary w-full"><Phone size={20} strokeWidth={1.75} aria-hidden="true" />{formatPhone(p)}</a>
+        ))}
+        <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="btn-secondary w-full"><Send size={20} strokeWidth={1.75} aria-hidden="true" />Telegram</a>
+      </div>
+    );
+  }
+
   if (state === 'done') {
     return (
       <div className="py-6 text-center" role="status">

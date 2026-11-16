@@ -5,6 +5,9 @@ export const SITE = {
   courseUrl: 'https://idokon-course.vercel.app',
   domain: 'https://idokon.uz',
   currency: 'UZS',
+  // Offline mode: forms are hidden and visitors see call / Telegram buttons.
+  // Later: set true once TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are set (see api/lead.js).
+  leadsEnabled: false,
   // Owner fills e.g. { uz: 'Har kuni 09:00 – 20:00', ru: '...', en: '...' }. Hidden while null.
   supportHours: null,
   plans: [

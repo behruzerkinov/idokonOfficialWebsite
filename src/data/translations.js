@@ -225,10 +225,10 @@ export const translations = {
     },
     "contact": {
       "title": "Bog'laning — yordam beramiz",
-      "lead": "Ma'lumotlaringizni qoldiring, biz sizga qo'ng'iroq qilamiz. Yoki o'zingiz qo'ng'iroq qiling.",
+      "lead": "Qo'ng'iroq qiling yoki Telegramda yozing — savollaringizga javob beramiz.",
       "callUs": "Qo'ng'iroq qiling",
       "telegram": "Telegramda yozing",
-      "formTitle": "Qo'ng'iroq so'rash",
+      "formTitle": "Biz bilan bog'laning",
       "storeTypeOptions": [
         "Oziq-ovqat / Supermarket",
         "Kiyim-kechak va poyabzal",
@@ -260,11 +260,12 @@ export const translations = {
       "successDesc": "Ish vaqtida tez qayta qo'ng'iroq qilamiz.",
       "again": "Yana so'rov yuborish",
       "failTitle": "Yuborib bo'lmadi",
-      "failDesc": "Iltimos, qo'ng'iroq qiling yoki Telegramda yozing:"
+      "failDesc": "Iltimos, qo'ng'iroq qiling yoki Telegramda yozing:",
+      "offlineDesc": "Qo'ng'iroq qiling yoki Telegramda yozing."
     },
     "demoModal": {
       "title": "Bepul demo so'rash",
-      "subtitle": "Ismingiz va telefoningizni qoldiring — ish vaqtida tez qayta qo'ng'iroq qilamiz."
+      "subtitle": "Demo uchun qo'ng'iroq qiling yoki Telegramda yozing."
     },
     "cartDrawer": {
       "title": "Savat",
@@ -524,10 +525,10 @@ export const translations = {
     },
     "contact": {
       "title": "Свяжитесь — мы поможем",
-      "lead": "Оставьте контакты — мы вам позвоним. Или позвоните сами.",
+      "lead": "Позвоните или напишите в Telegram — ответим на ваши вопросы.",
       "callUs": "Позвоните",
       "telegram": "Напишите в Telegram",
-      "formTitle": "Заказать звонок",
+      "formTitle": "Свяжитесь с нами",
       "storeTypeOptions": [
         "Продукты питания / Супермаркет",
         "Одежда и обувь",
@@ -559,11 +560,12 @@ export const translations = {
       "successDesc": "В рабочее время мы быстро перезвоним.",
       "again": "Отправить ещё одну заявку",
       "failTitle": "Не удалось отправить",
-      "failDesc": "Пожалуйста, позвоните или напишите в Telegram:"
+      "failDesc": "Пожалуйста, позвоните или напишите в Telegram:",
+      "offlineDesc": "Позвоните или напишите в Telegram."
     },
     "demoModal": {
       "title": "Заказать бесплатное демо",
-      "subtitle": "Оставьте имя и телефон — в рабочее время мы быстро перезвоним."
+      "subtitle": "Для демо позвоните или напишите в Telegram."
     },
     "cartDrawer": {
       "title": "Корзина",
@@ -823,10 +825,10 @@ export const translations = {
     },
     "contact": {
       "title": "Get in touch — we will help",
-      "lead": "Leave your details and we will call you. Or call us yourself.",
+      "lead": "Call us or message us on Telegram — we will answer your questions.",
       "callUs": "Call us",
       "telegram": "Message on Telegram",
-      "formTitle": "Request a call",
+      "formTitle": "Contact us",
       "storeTypeOptions": [
         "Grocery / Supermarket",
         "Apparel & Footwear",
@@ -858,11 +860,12 @@ export const translations = {
       "successDesc": "We will call you back quickly during working hours.",
       "again": "Send another request",
       "failTitle": "Could not send",
-      "failDesc": "Please call us or message on Telegram:"
+      "failDesc": "Please call us or message on Telegram:",
+      "offlineDesc": "Call us or message us on Telegram."
     },
     "demoModal": {
       "title": "Request a free demo",
-      "subtitle": "Leave your name and phone — we will call back quickly during working hours."
+      "subtitle": "For a demo, call us or message us on Telegram."
     },
     "cartDrawer": {
       "title": "Cart",
