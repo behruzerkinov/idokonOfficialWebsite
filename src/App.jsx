@@ -1,201 +1,125 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Toaster, toast } from 'sonner';
+import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import { Toaster } from 'sonner';
 import { MotionConfig } from 'motion/react';
 import { translations } from './data/translations';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { TechMarquee } from './components/TechMarquee';
-import { PartnerMarquee } from './components/PartnerMarquee';
-import { EditorialStatement } from './components/EditorialStatement';
+import { Partners } from './components/Partners';
+import { HowItWorks } from './components/HowItWorks';
 import { PosInteractiveShowcase } from './components/PosInteractiveShowcase';
-import { ValueGrid } from './components/ValueGrid';
 import { SectorSolutions } from './components/SectorSolutions';
+import { CareSection } from './components/CareSection';
 import { HardwareMarketplace } from './components/HardwareMarketplace';
-import { IntegrationMigration } from './components/IntegrationMigration';
 import { PricingCalculator } from './components/PricingCalculator';
-import { CourseAcademy } from './components/CourseAcademy';
 import { FaqAccordion } from './components/FaqAccordion';
 import { ContactConfigurator } from './components/ContactConfigurator';
-import { HugeBrandTextSection } from './components/HugeBrandTextSection';
 import { Footer } from './components/Footer';
-import { DemoModal } from './components/DemoModal';
-import { CartDrawer } from './components/CartDrawer';
-import { HardwareSpecsModal } from './components/HardwareSpecsModal';
-import { LightboxModal } from './components/LightboxModal';
+import { StickyBar } from './components/StickyBar';
 
-const readStorage = (key, fallback) => {
-  try {
-    return localStorage.getItem(key) || fallback;
-  } catch (_) {
-    return fallback;
-  }
+const DemoModal = lazy(() => import('./components/DemoModal').then((m) => ({ default: m.DemoModal })));
+const CartDrawer = lazy(() => import('./components/CartDrawer').then((m) => ({ default: m.CartDrawer })));
+const HardwareSpecsModal = lazy(() => import('./components/HardwareSpecsModal').then((m) => ({ default: m.HardwareSpecsModal })));
+const LightboxModal = lazy(() => import('./components/LightboxModal').then((m) => ({ default: m.LightboxModal })));
+
+const read = (key, fallback) => {
+  try { return localStorage.getItem(key) || fallback; } catch { return fallback; }
 };
-
-const writeStorage = (key, value) => {
-  try {
-    localStorage.setItem(key, value);
-  } catch (_) {}
+const write = (key, value) => {
+  try { localStorage.setItem(key, value); } catch { /* storage unavailable */ }
 };
-
-const TECH_ITEMS = [
-  'NEXT-GEN RETAIL OS',
-  'WINDOWS & WEB TERMINAL',
-  '1C & EXCEL 1-DAY MIGRATION',
-  'REAL-TIME FISCAL SOLIQ INTEGRATION',
-  'INSTANT CARD & QR CHECKOUT',
-  '900+ ACTIVE ENTERPRISES',
-];
+const readCart = () => {
+  try { return JSON.parse(localStorage.getItem('idokon_cart')) || []; } catch { return []; }
+};
+const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
 export function App() {
-  const [lang, setLang] = useState(() => readStorage('site_lang', 'uz'));
-  const [theme, setTheme] = useState(() => readStorage('site_theme', 'dark'));
-  const [cart, setCart] = useState([]);
+  const [lang, setLang] = useState(() => (translations[read('site_lang', 'uz')] ? read('site_lang', 'uz') : 'uz'));
+  const [theme, setTheme] = useState(() => (read('site_theme', 'light') === 'dark' ? 'dark' : 'light'));
+  const [cart, setCart] = useState(readCart);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isDemoOpen, setIsDemoOpen] = useState(false);
-  const [selectedSpecsProduct, setSelectedSpecsProduct] = useState(null);
-  const [lightboxData, setLightboxData] = useState(null);
+  const [specs, setSpecs] = useState(null);
+  const [lightbox, setLightbox] = useState(null);
+  const [prefill, setPrefill] = useState({});
 
-  const t = translations[lang] || translations.uz;
+  const t = translations[lang];
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    writeStorage('site_theme', theme);
+    write('site_theme', theme);
   }, [theme]);
 
-  const handleSetLang = useCallback((next) => {
-    setLang(next);
-    writeStorage('site_lang', next);
-  }, []);
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title = t.meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description);
+    write('site_lang', lang);
+  }, [lang, t]);
 
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  }, []);
+  useEffect(() => {
+    write('idokon_cart', JSON.stringify(cart.map(({ id, title, price, image, qty }) => ({ id, title, price, image, qty }))));
+  }, [cart]);
 
   const openDemo = useCallback(() => setIsDemoOpen(true), []);
-  const openLightbox = useCallback((url, title) => setLightboxData({ url, title }), []);
   const openCart = useCallback(() => setIsCartOpen(true), []);
+  const openLightbox = useCallback((url, title) => setLightbox({ url, title }), []);
+  const toggleTheme = useCallback(() => setTheme((p) => (p === 'dark' ? 'light' : 'dark')), []);
 
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleAddToCart = useCallback((product) => {
-    setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
-        );
-      }
-      return [...prev, { ...product, qty: 1 }];
-    });
-  }, []);
-
-  const handleUpdateCartQty = useCallback((id, delta) => {
+  const addToCart = useCallback((product) => {
     setCart((prev) =>
-      prev
-        .map((item) => {
-          if (item.id !== id) return item;
-          const qty = item.qty + delta;
-          return qty > 0 ? { ...item, qty } : null;
-        })
-        .filter(Boolean)
+      prev.some((i) => i.id === product.id)
+        ? prev.map((i) => (i.id === product.id ? { ...i, qty: i.qty + 1 } : i))
+        : [...prev, { ...product, qty: 1 }]
     );
   }, []);
-
-  const handleRemoveFromCart = useCallback((id) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const updateQty = useCallback((id, d) => {
+    setCart((prev) => prev.map((i) => (i.id === id ? { ...i, qty: i.qty + d } : i)).filter((i) => i.qty > 0));
   }, []);
+  const removeItem = useCallback((id) => setCart((prev) => prev.filter((i) => i.id !== id)), []);
+  const clearCart = useCallback(() => setCart([]), []);
 
-  const handleSelectPlan = (plan) => {
-    toast.info(`${plan.name} tarifi tanlandi`, {
-      description: 'Bepul demo yoki konsultatsiya olishingiz mumkin.',
-    });
-    setIsDemoOpen(true);
+  const selectPlan = (id) => {
+    setPrefill({ plan: t.pricing[id].name });
+    scrollToSection('contact');
+  };
+  const requestKit = () => {
+    setPrefill({ message: t.equipment.kitMessage });
+    scrollToSection('contact');
   };
 
-  const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 
   return (
     <MotionConfig reducedMotion="user">
-      <div
-        className={`${theme === 'dark' ? 'dark' : ''} flex min-h-screen flex-col bg-[var(--bg)] font-sans text-[var(--fg)] transition-colors duration-300`}
-      >
-        <Toaster theme={theme} position="top-right" richColors closeButton />
+      <Toaster theme={theme} position="top-center" richColors closeButton />
+      <Navbar lang={lang} setLang={setLang} t={t} theme={theme} toggleTheme={toggleTheme} cartCount={cartCount} onOpenCart={openCart} onOpenDemo={openDemo} />
 
-        <Navbar
-          lang={lang}
-          setLang={handleSetLang}
-          t={t}
-          theme={theme}
-          toggleTheme={toggleTheme}
-          cartCount={cartCount}
-          onOpenCart={openCart}
-          onOpenDemo={openDemo}
-        />
+      <main id="main">
+        <Hero t={t} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
+        <Partners t={t} />
+        <HowItWorks t={t} />
+        <PosInteractiveShowcase t={t} onOpenLightbox={openLightbox} />
+        <SectorSolutions t={t} />
+        <CareSection t={t} lang={lang} onOpenLightbox={openLightbox} />
+        <HardwareMarketplace lang={lang} t={t} cart={cart} onAddToCart={addToCart} onOpenSpecsModal={setSpecs} onOpenCart={openCart} onRequestKit={requestKit} />
+        <PricingCalculator t={t} lang={lang} onSelectPlan={selectPlan} />
+        <FaqAccordion t={t} onScrollToContact={() => scrollToSection('contact')} />
+        <ContactConfigurator t={t} lang={lang} prefill={prefill} />
+      </main>
 
-        <main className="flex-1">
-          <Hero
-            t={t}
-            onOpenDemo={openDemo}
-            onScrollToTerminal={() => scrollToSection('terminal')}
-            onOpenLightbox={openLightbox}
-          />
+      <Footer t={t} lang={lang} setLang={setLang} />
+      <StickyBar t={t} />
 
-          <TechMarquee items={TECH_ITEMS} />
-          <PartnerMarquee t={t} />
-          <EditorialStatement t={t} />
-          <PosInteractiveShowcase t={t} onOpenLightbox={openLightbox} />
-          <ValueGrid t={t} />
-          <SectorSolutions t={t} onOpenDemo={openDemo} />
-          <HardwareMarketplace
-            lang={lang}
-            t={t}
-            cart={cart}
-            onAddToCart={handleAddToCart}
-            onOpenSpecsModal={setSelectedSpecsProduct}
-            onOpenCart={openCart}
-          />
-          <IntegrationMigration t={t} onOpenContact={() => scrollToSection('contact')} />
-          <PricingCalculator t={t} lang={lang} onSelectPlan={handleSelectPlan} />
-          <CourseAcademy lang={lang} t={t} onOpenLightbox={openLightbox} />
-          <FaqAccordion t={t} onScrollToContact={() => scrollToSection('contact')} />
-          <ContactConfigurator t={t} lang={lang} />
-        </main>
-
-        <Footer t={t} onOpenDemo={openDemo} />
-        <HugeBrandTextSection lang={lang} t={t} />
-
-        <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} t={t} lang={lang} />
-
-        <CartDrawer
-          isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
-          cart={cart}
-          onUpdateQty={handleUpdateCartQty}
-          onRemoveItem={handleRemoveFromCart}
-          onClearCart={() => setCart([])}
-          lang={lang}
-          t={t}
-        />
-
-        <HardwareSpecsModal
-          isOpen={!!selectedSpecsProduct}
-          onClose={() => setSelectedSpecsProduct(null)}
-          product={selectedSpecsProduct}
-          lang={lang}
-          t={t}
-          onAddToCart={handleAddToCart}
-          isInCart={selectedSpecsProduct ? cart.some((i) => i.id === selectedSpecsProduct.id) : false}
-        />
-
-        <LightboxModal
-          isOpen={!!lightboxData}
-          onClose={() => setLightboxData(null)}
-          image={lightboxData?.url}
-          title={lightboxData?.title}
-        />
-      </div>
+      <Suspense fallback={null}>
+        {isDemoOpen && <DemoModal isOpen onClose={() => setIsDemoOpen(false)} t={t} lang={lang} />}
+        {(isCartOpen || cart.length > 0) && (
+          <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} onUpdateQty={updateQty} onRemoveItem={removeItem} onClearCart={clearCart} lang={lang} t={t} />
+        )}
+        {specs && (
+          <HardwareSpecsModal isOpen onClose={() => setSpecs(null)} product={specs} lang={lang} t={t} onAddToCart={addToCart} isInCart={cart.some((i) => i.id === specs.id)} />
+        )}
+        {lightbox && <LightboxModal isOpen onClose={() => setLightbox(null)} image={lightbox.url} title={lightbox.title} closeLabel={t.lightbox.close} />}
+      </Suspense>
     </MotionConfig>
   );
 }

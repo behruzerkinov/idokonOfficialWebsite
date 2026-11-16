@@ -6,3 +6,8 @@ dist-ssr
 *.log
 .gemini
 scratch/
+.env
+.env.local
+.vercel
+test-results
+playwright-report
