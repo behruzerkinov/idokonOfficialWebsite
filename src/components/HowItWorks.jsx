@@ -4,9 +4,10 @@ import { Reveal } from './Reveal';
 
 export const HowItWorks = ({ t }) => (
   <section className="section">
-    <div className="container-page">
+    <div className="mx-auto max-w-[1240px] px-3">
+      <div className="stage">
       <SectionHead title={t.how.title} lead={t.how.lead} />
-      <ol className="grid gap-6 md:grid-cols-3">
+      <ol className="grid gap-4 md:grid-cols-3">
         {[1, 2, 3].map((n) => (
           <Reveal as="li" key={n} className="card p-7">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent-soft)] text-lg font-semibold text-[var(--accent)]" aria-hidden="true">{n}</span>
@@ -15,6 +16,7 @@ export const HowItWorks = ({ t }) => (
           </Reveal>
         ))}
       </ol>
+      </div>
     </div>
   </section>
 );

@@ -34,7 +34,8 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
 
   return (
     <section id="features" className="section scroll-mt-16">
-      <div className="container-page">
+      <div className="mx-auto max-w-[1240px] px-3">
+        <div className="stage">
         <SectionHead title={t.software.title} lead={t.software.lead} />
 
         <div role="tablist" aria-label={t.software.tablist} onKeyDown={onKey} className="hide-scrollbar segmented mx-auto mb-10 flex max-w-full overflow-x-auto md:w-fit">
@@ -75,6 +76,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
               <Maximize2 size={16} strokeWidth={1.75} aria-hidden="true" />{t.software.zoom}
             </span>
           </button>
+        </div>
         </div>
       </div>
     </section>

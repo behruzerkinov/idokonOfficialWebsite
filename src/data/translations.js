@@ -31,7 +31,8 @@ export const translations = {
       "fact3": "Ma'lumotlarni ko'chirib beramiz",
       "imageAlt": "IDO'KON kassa dasturi ekrani",
       "ratingLabel": "Mijozlar bahosi",
-      "storesLabel": "faol savdo nuqtasi"
+      "storesLabel": "faol savdo nuqtasi",
+      "caption": "Kassa dasturi: bitta ekran, bir necha tugma."
     },
     "partners": {
       "title": "O'zbekistondagi to'lov va fiskal tizimlar bilan ishlaydi"
@@ -292,11 +293,17 @@ export const translations = {
       "contacts": "Bog'lanish",
       "menu": "Bo‘limlar",
       "location": "Toshkent, O'zbekiston",
-      "rights": "Barcha huquqlar himoyalangan."
+      "rights": "Barcha huquqlar himoyalangan.",
+      "built": "Shrift: tizim · Freymvork: React · Toshkentda yaratilgan"
     },
     "sticky": {
       "call": "Qo'ng'iroq",
       "telegram": "Telegram"
+    },
+    "closing": {
+      "w1": "Ko'rdingizmi?",
+      "w2": "Hammasi shunchalik oddiy.",
+      "w3": "Endi do'koningiz navbatda."
     }
   },
   "ru": {
@@ -331,7 +338,8 @@ export const translations = {
       "fact3": "Переносим ваши данные",
       "imageAlt": "Экран кассовой программы IDO'KON",
       "ratingLabel": "Оценка клиентов",
-      "storesLabel": "активных точек"
+      "storesLabel": "активных точек",
+      "caption": "Кассовая программа: один экран, несколько кнопок."
     },
     "partners": {
       "title": "Работает с платёжными и фискальными системами Узбекистана"
@@ -592,11 +600,17 @@ export const translations = {
       "contacts": "Контакты",
       "menu": "Разделы",
       "location": "Ташкент, Узбекистан",
-      "rights": "Все права защищены."
+      "rights": "Все права защищены.",
+      "built": "Шрифт: системный · Фреймворк: React · Сделано в Ташкенте"
     },
     "sticky": {
       "call": "Позвонить",
       "telegram": "Telegram"
+    },
+    "closing": {
+      "w1": "Видите?",
+      "w2": "Всё так просто.",
+      "w3": "Теперь очередь вашего магазина."
     }
   },
   "en": {
@@ -631,7 +645,8 @@ export const translations = {
       "fact3": "We migrate your data",
       "imageAlt": "IDO'KON POS software screen",
       "ratingLabel": "Customer rating",
-      "storesLabel": "active stores"
+      "storesLabel": "active stores",
+      "caption": "The till program: one screen, a few buttons."
     },
     "partners": {
       "title": "Works with payment and fiscal systems in Uzbekistan"
@@ -892,11 +907,17 @@ export const translations = {
       "contacts": "Contact",
       "menu": "Sections",
       "location": "Tashkent, Uzbekistan",
-      "rights": "All rights reserved."
+      "rights": "All rights reserved.",
+      "built": "Font: system · Framework: React · Made in Tashkent"
     },
     "sticky": {
       "call": "Call",
       "telegram": "Telegram"
+    },
+    "closing": {
+      "w1": "See?",
+      "w2": "It really is that simple.",
+      "w3": "Now it is your shop’s turn."
     }
   }
 };

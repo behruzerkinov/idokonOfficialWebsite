@@ -32,6 +32,9 @@ export const Footer = ({ t, lang, setLang }) => (
         <div className="mt-4"><LangSwitch lang={lang} setLang={setLang} label={t.nav.language} /></div>
       </div>
     </div>
-    <p className="container-page mt-10 text-sm" style={{ color: 'var(--muted)' }}>© {new Date().getFullYear()} IDO'KON. {t.footer.rights}</p>
+    <div className="container-page mt-10 flex flex-col gap-1 text-sm sm:flex-row sm:justify-between" style={{ color: 'var(--muted)' }}>
+      <p>© {new Date().getFullYear()} IDO'KON. {t.footer.rights}</p>
+      <p>{t.footer.built}</p>
+    </div>
   </footer>
 );

@@ -15,6 +15,7 @@ import { FaqAccordion } from './components/FaqAccordion';
 import { ContactConfigurator } from './components/ContactConfigurator';
 import { Footer } from './components/Footer';
 import { StickyBar } from './components/StickyBar';
+import { Statement } from './components/Statement';
 
 const DemoModal = lazy(() => import('./components/DemoModal').then((m) => ({ default: m.DemoModal })));
 const CartDrawer = lazy(() => import('./components/CartDrawer').then((m) => ({ default: m.CartDrawer })));
@@ -105,6 +106,7 @@ export function App() {
         <PricingCalculator t={t} lang={lang} onSelectPlan={selectPlan} />
         <FaqAccordion t={t} onScrollToContact={() => scrollToSection('contact')} />
         <ContactConfigurator t={t} lang={lang} prefill={prefill} />
+        <Statement t={t} onOpenDemo={openDemo} />
       </main>
 
       <Footer t={t} lang={lang} setLang={setLang} />
