@@ -2,13 +2,15 @@ import React from 'react';
 import { Send, Monitor, GraduationCap, DatabaseBackup, Star, ArrowRight } from 'lucide-react';
 import { SITE } from '../data/site';
 import { Reveal } from './Reveal';
+import { HeroBackdrop } from './HeroBackdrop';
 
 const FACTS = [['fact1', Monitor], ['fact2', GraduationCap], ['fact3', DatabaseBackup]];
 
 export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
   const { rating, activeStores } = SITE.claims;
   return (
-    <section id="home" className="px-3 pb-6 pt-36 md:pt-44">
+    <section id="home" className="relative isolate px-3 pb-6 pt-36 md:pt-44">
+      <HeroBackdrop />
       <Reveal className="container-page text-center">
         <img src="/favicon.svg" alt="" width="72" height="72" className="mx-auto h-[72px] w-[72px] rounded-[20px] shadow-[0_12px_30px_-12px_rgba(0,0,0,0.4)]" />
         <h1 className="h1 mx-auto mt-8 max-w-[14ch]">{t.hero.title}</h1>

@@ -1,3 +1,4 @@
+import { SITE } from '../data/site';
 import React, { useEffect, useState } from 'react';
 import { Drawer } from 'vaul';
 import { ArrowRight, Menu, Moon, ShoppingBag, Sun, X } from 'lucide-react';
@@ -53,7 +54,7 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
       <div className="pointer-events-auto mx-auto w-full max-w-[620px] space-y-1.5">
         <div className="flex h-12 items-center justify-between rounded-2xl bg-black px-3 pl-4 text-white shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)] dark:bg-[#1c1c1e]">
           <a href="#home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} aria-label="IDO'KON" className="flex items-center">
-            <img src="/idokon_logo.webp" alt="IDO'KON" width="98" height="30" className="h-6 w-auto" />
+            <img src={SITE.brand.logo} alt="IDO'KON" width="98" height="30" className="h-6 w-auto" />
           </a>
 
           <nav aria-label="Main" className="hidden items-center md:flex">

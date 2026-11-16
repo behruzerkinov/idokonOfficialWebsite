@@ -9,7 +9,7 @@ export const Footer = ({ t, lang, setLang }) => (
   <footer className="border-t py-12" style={{ borderColor: 'var(--line)' }}>
     <div className="container-page grid gap-8 md:grid-cols-3">
       <div>
-        <img src="/idokon_logo.webp" alt="IDO'KON" width="120" height="37" loading="lazy" className="h-7 w-auto" />
+        <img src={SITE.brand.logo} alt="IDO'KON" width="120" height="37" loading="lazy" className="h-7 w-auto" />
         <p className="mt-3 max-w-xs text-sm" style={{ color: 'var(--muted)' }}>{t.footer.about}</p>
       </div>
       <nav aria-label={t.footer.menu}>
