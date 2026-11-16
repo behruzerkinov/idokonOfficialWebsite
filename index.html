@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="uz" class="dark scroll-smooth">
+<html lang="uz" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>IDO'KON — O‘zbekistondagi zamonaviy POS va do‘kon avtomatlashtirish tizimi</title>
-    <meta name="description" content="Zamonaviy POS, ombor nazorati, real vaqt hisobotlari va to‘lov integratsiyalari — do‘koningiz uchun yagona, sodda platformada." />
+    <title>IDO'KON — do'kon uchun oddiy kassa dasturi</title>
+    <meta name="description" content="Do'koningizni boshqarish endi oson. Biz o'rnatamiz, ma'lumotlaringizni ko'chiramiz va kassirlaringizni o'rgatamiz." />
+    <link rel="canonical" href="https://idokon.uz/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="IDO'KON" />
+    <meta property="og:title" content="IDO'KON — do'kon uchun oddiy kassa dasturi" />
+    <meta property="og:description" content="Do'koningizni boshqarish endi oson. Biz o'rnatamiz, ma'lumotlaringizni ko'chiramiz va kassirlaringizni o'rgatamiz." />
+    <meta property="og:url" content="https://idokon.uz/" />
+    <meta property="og:image" content="https://idokon.uz/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://idokon.uz/og.png" />
     <script>
-      (function() {
-        try {
-          const t = localStorage.getItem('site_theme');
-          if (t === 'light') {
-            document.documentElement.classList.remove('dark');
-          } else {
-            document.documentElement.classList.add('dark');
-          }
-        } catch (_) {}
-      })();
+      try { if (localStorage.getItem('site_theme') === 'dark') document.documentElement.classList.add('dark'); } catch (_) {}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap&subset=latin,cyrillic" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "IDOKON", "operatingSystem": "Windows, Web", "applicationCategory": "BusinessApplication", "offers": [{"@type": "Offer", "name": "Start", "price": "100000", "priceCurrency": "UZS"}, {"@type": "Offer", "name": "Standard", "price": "150000", "priceCurrency": "UZS"}, {"@type": "Offer", "name": "Premium", "price": "250000", "priceCurrency": "UZS"}]}</script>
   </head>
-  <body class="bg-zinc-50 dark:bg-[#090a0f] text-zinc-900 dark:text-zinc-100 antialiased selection:bg-emerald-500 selection:text-white transition-colors duration-200">
+  <body class="antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
