@@ -1,5 +1,7 @@
 # IDO'KON brand assets: Higgsfield brief
 
+> Status: the site now uses one Higgsfield doodle (`SITE.brand.heroImage`, Notion-style line art). The grid (section 2) and loop (section 3) below are no longer wired in. Use this file only as a style guide for new images.
+
 Higgsfield is not connected to the coding session, so generate these in Higgsfield yourself,
 drop the files into `public/brand/`, then set the paths in `SITE.brand` (`src/data/site.js`).
 Anything left `null` falls back to the built-in version, so nothing breaks while assets are missing.

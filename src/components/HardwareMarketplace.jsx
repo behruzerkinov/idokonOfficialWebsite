@@ -37,7 +37,7 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
             const inCart = cart.some((i) => i.id === p.id);
             const title = p.title[lang] || p.title.uz;
             return (
-              <li key={p.id} className="card flex w-[80vw] shrink-0 snap-start flex-col overflow-hidden sm:w-[300px]">
+              <li key={p.id} className="card spot flex w-[80vw] shrink-0 snap-start flex-col overflow-hidden sm:w-[300px]">
                 <button type="button" onClick={() => onOpenSpecsModal(p)} className="block text-left" aria-label={`${title}: ${t.equipment.details}`}>
                   <div className="flex h-56 items-center justify-center border-b bg-white" style={{ borderColor: 'var(--line)' }}>
                     <img src={p.image} alt={title} width="300" height="224" loading="lazy" decoding="async" className="h-full w-full object-contain p-3" />

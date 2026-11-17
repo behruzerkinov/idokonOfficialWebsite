@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { formatPrice } from '../data/site';
 
 // Sample prices for an illustrative receipt. Labelled "sample" on the paper so nobody reads them as real.
@@ -38,8 +38,8 @@ export const ReceiptTape = ({ t, lang, className = '' }) => {
 
 /** A line that prints when it scrolls into view. Reduced motion (MotionConfig) shows it without the slide. */
 export const PrintLine = ({ i = 0, className = '', children }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: -6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }}
     transition={{ duration: 0.42, ease: [0.23, 1, 0.32, 1], delay: i * 0.2 }} className={className}
-  >{children}</motion.div>
+  >{children}</m.div>
 );

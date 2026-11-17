@@ -16,12 +16,13 @@ export const Statement = ({ t, onOpenDemo }) => {
   return (
     <section className="section">
       <div ref={ref} className={`container-page text-center ${seen ? 'words-in' : ''}`}>
-        <p className="h1 mx-auto max-w-[18ch]" aria-label={words.join(' ')}>
+        <p className="h1 mx-auto max-w-[18ch]">
+          <span className="sr-only">{words.join(' ')}</span>
           {words.map((w, i) => (
             <span key={i} aria-hidden="true" className="word" style={{ '--i': i }}>{w}&nbsp;</span>
           ))}
         </p>
-        <button type="button" onClick={onOpenDemo} className="mt-10 inline-flex h-12 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-transform duration-150 active:scale-[0.97] dark:bg-white dark:text-black">
+        <button type="button" onClick={onOpenDemo} className="btn-dark mt-10 !px-7">
           {t.hero.ctaPrimary}
         </button>
       </div>

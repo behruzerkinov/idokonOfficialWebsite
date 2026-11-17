@@ -1,11 +1,11 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 
 export const EASE_OUT = [0.22, 1, 0.36, 1];
 
 /** Fade + 12px rise, 400ms, once per element. */
 export const Reveal = ({ children, className = '', as = 'div' }) => {
-  const Tag = motion[as];
+  const Tag = m[as];
   return (
     <Tag
       initial={{ opacity: 0, y: 12 }}

@@ -107,3 +107,28 @@ for (const width of [360, 375, 768, 1024, 1440]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
   });
 }
+
+test('preloader never blocks clicks and shows once per tab', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/');
+  const loader = page.locator('.preloader');
+  await expect(loader).toHaveCSS('pointer-events', 'none');
+  await expect(loader).toHaveCount(0, { timeout: 3000 });
+  await page.reload();
+  await expect(loader).toHaveCount(0);
+});
+
+test('partner marquee: second copy hidden from assistive tech', async ({ page }) => {
+  await page.goto('/');
+  const items = page.locator('.marquee > li');
+  await items.first().waitFor();
+  const n = await items.count();
+  expect(n).toBe(42);
+  for (let i = 7; i < n; i++) await expect(items.nth(i)).toHaveAttribute('aria-hidden', 'true');
+});
+
+test('deep link to a section lands on it even though sections load late', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/#pricing');
+  await expect.poll(() => page.evaluate(() => document.getElementById('pricing')?.getBoundingClientRect().top ?? 9999), { timeout: 8000 }).toBeLessThan(200);
+});

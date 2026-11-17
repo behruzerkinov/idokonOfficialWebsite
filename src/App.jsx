@@ -1,22 +1,14 @@
 import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { Toaster } from 'sonner';
-import { MotionConfig } from 'motion/react';
+import { LazyMotion, MotionConfig } from 'motion/react';
 import { translations } from './data/translations';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Partners } from './components/Partners';
-import { HowItWorks } from './components/HowItWorks';
-import { PosInteractiveShowcase } from './components/PosInteractiveShowcase';
-import { SectorSolutions } from './components/SectorSolutions';
-import { CareSection } from './components/CareSection';
-import { HardwareMarketplace } from './components/HardwareMarketplace';
-import { PricingCalculator } from './components/PricingCalculator';
-import { FaqAccordion } from './components/FaqAccordion';
-import { ContactConfigurator } from './components/ContactConfigurator';
 import { Footer } from './components/Footer';
 import { StickyBar } from './components/StickyBar';
-import { Statement } from './components/Statement';
+import { Preloader } from './components/Preloader';
 
+const BelowFold = lazy(() => import('./components/BelowFold'));
 const DemoModal = lazy(() => import('./components/DemoModal').then((m) => ({ default: m.DemoModal })));
 const CartDrawer = lazy(() => import('./components/CartDrawer').then((m) => ({ default: m.CartDrawer })));
 const HardwareSpecsModal = lazy(() => import('./components/HardwareSpecsModal').then((m) => ({ default: m.HardwareSpecsModal })));
@@ -57,6 +49,19 @@ export function App() {
     write('site_lang', lang);
   }, [lang, t]);
 
+  // Pointer-tracked glow for .spot cards: one listener for the whole page
+  useEffect(() => {
+    const move = (e) => {
+      const el = e.target.closest?.('.spot');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', e.clientX - r.left + 'px');
+      el.style.setProperty('--my', e.clientY - r.top + 'px');
+    };
+    document.addEventListener('pointermove', move, { passive: true });
+    return () => document.removeEventListener('pointermove', move);
+  }, []);
+
   useEffect(() => {
     write('idokon_cart', JSON.stringify(cart.map(({ id, title, price, image, qty }) => ({ id, title, price, image, qty }))));
   }, [cart]);
@@ -91,22 +96,17 @@ export function App() {
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 
   return (
+    <LazyMotion features={() => import('./motionFeatures').then((m) => m.default)}>
     <MotionConfig reducedMotion="user">
+      <Preloader />
       <Toaster theme={theme} position="top-center" richColors closeButton />
       <Navbar lang={lang} setLang={setLang} t={t} theme={theme} toggleTheme={toggleTheme} cartCount={cartCount} onOpenCart={openCart} onOpenDemo={openDemo} />
 
       <main id="main">
         <Hero t={t} lang={lang} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
-        <Partners t={t} />
-        <HowItWorks t={t} />
-        <PosInteractiveShowcase t={t} onOpenLightbox={openLightbox} />
-        <SectorSolutions t={t} />
-        <CareSection t={t} lang={lang} onOpenLightbox={openLightbox} />
-        <HardwareMarketplace lang={lang} t={t} cart={cart} onAddToCart={addToCart} onOpenSpecsModal={setSpecs} onOpenCart={openCart} onRequestKit={requestKit} />
-        <PricingCalculator t={t} lang={lang} onSelectPlan={selectPlan} />
-        <FaqAccordion t={t} onScrollToContact={() => scrollToSection('contact')} />
-        <ContactConfigurator t={t} lang={lang} prefill={prefill} />
-        <Statement t={t} onOpenDemo={openDemo} />
+        <Suspense fallback={<div className="min-h-[150vh]" />}>
+          <BelowFold t={t} lang={lang} cart={cart} onAddToCart={addToCart} onOpenSpecsModal={setSpecs} onOpenCart={openCart} onRequestKit={requestKit} onSelectPlan={selectPlan} onOpenLightbox={openLightbox} onOpenDemo={openDemo} prefill={prefill} />
+        </Suspense>
       </main>
 
       <Footer t={t} lang={lang} setLang={setLang} />
@@ -123,6 +123,7 @@ export function App() {
         {lightbox && <LightboxModal isOpen onClose={() => setLightbox(null)} image={lightbox.url} title={lightbox.title} closeLabel={t.lightbox.close} />}
       </Suspense>
     </MotionConfig>
+    </LazyMotion>
   );
 }
 

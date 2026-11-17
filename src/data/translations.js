@@ -51,7 +51,6 @@ export const translations = {
     "software": {
       "title": "Har bir kun uchun kerakli narsa",
       "lead": "To'rt asosiy ish — savdo, ombor, hisobot va kassirlar.",
-      "tablist": "Dastur bo‘limlari",
       "zoom": "To'liq hajmda ko'rish",
       "tabs": {
         "sales": "Savdo",
@@ -360,7 +359,6 @@ export const translations = {
     "software": {
       "title": "Всё, что нужно каждый день",
       "lead": "Четыре главные задачи — продажи, склад, отчёты и кассиры.",
-      "tablist": "Разделы программы",
       "zoom": "Открыть крупно",
       "tabs": {
         "sales": "Продажи",
@@ -669,7 +667,6 @@ export const translations = {
     "software": {
       "title": "Everything you need every day",
       "lead": "Four main jobs: sales, stock, reports and cashiers.",
-      "tablist": "Program sections",
       "zoom": "View full size",
       "tabs": {
         "sales": "Sales",

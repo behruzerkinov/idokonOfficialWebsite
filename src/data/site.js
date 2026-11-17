@@ -10,12 +10,10 @@ export const SITE = {
   leadsEnabled: false,
   // Owner fills e.g. { uz: 'Har kuni 09:00 – 20:00', ru: '...', en: '...' }. Hidden while null.
   supportHours: null,
-  // Brand assets. Drop files into public/brand/ and set the path here (see docs/higgsfield-brief.md).
-  // Anything left null falls back to the built-in version, so the site never breaks.
+  // Brand assets (see docs/higgsfield-brief.md).
   brand: {
     logo: '/idokon_logo.webp',
-    gridImage: null, // e.g. '/brand/grid.webp' (transparent background works best)
-    heroVideo: null, // e.g. { src: '/brand/hero-loop.mp4', poster: '/brand/hero-loop.webp' }
+    heroImage: '/brand/hero-shop.webp', // Higgsfield doodle, 757x558
   },
   plans: [
     { id: 'start', monthly: 100000, '6m': 500000, '12m': 1000000 },

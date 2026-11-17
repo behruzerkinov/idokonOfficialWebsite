@@ -6,17 +6,21 @@ const PARTNERS = [
   ['E-imzo', '/logos/e-imzo.webp'], ['ARCA', '/logos/arca.svg'],
 ];
 
+const Item = ({ name, src, label, dup }) => (
+  <li className="flex shrink-0 items-center gap-2" aria-hidden={dup || undefined}>
+    {src ? <img src={src} alt={name} height="28" loading="lazy" decoding="async" className="h-7 w-auto max-w-[120px] object-contain" /> : <span className="text-xl font-semibold tracking-tight">{name}</span>}
+    {label && <span className="text-lg font-semibold tracking-tight">{name}</span>}
+  </li>
+);
+
+/** Slow marquee of the systems we work with. Six copies so screens up to about 2400px never run dry; copies 2 to 6 are hidden from screen readers and from reduced-motion users. */
 export const Partners = ({ t }) => (
-  <section aria-label={t.partners.title} className="border-y py-8" style={{ borderColor: 'var(--line)' }}>
-    <div className="container-page">
-      <p className="mb-5 text-center text-sm" style={{ color: 'var(--muted)' }}>{t.partners.title}</p>
-      <ul className="hide-scrollbar flex items-center gap-8 overflow-x-auto md:flex-wrap md:justify-center md:gap-x-12">
-        {PARTNERS.map(([name, src, label]) => (
-          <li key={name} className="flex shrink-0 items-center gap-2">
-            {src ? <img src={src} alt={name} height="28" loading="lazy" decoding="async" className="h-7 w-auto max-w-[120px] object-contain" /> : <span className="text-xl font-semibold tracking-tight">{name}</span>}
-            {label && <span className="text-lg font-semibold tracking-tight">{name}</span>}
-          </li>
-        ))}
+  <section aria-label={t.partners.title} className="py-12">
+    <p className="mb-6 text-center text-sm" style={{ color: 'var(--muted)' }}>{t.partners.title}</p>
+    <div className="marquee-wrap">
+      <ul className="marquee items-center">
+        {PARTNERS.map(([n, s, l]) => <Item key={n} name={n} src={s} label={l} />)}
+        {[1, 2, 3, 4, 5].flatMap((k) => PARTNERS.map(([n, s, l]) => <Item key={n + k} name={n} src={s} label={l} dup />))}
       </ul>
     </div>
   </section>

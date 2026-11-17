@@ -34,7 +34,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => (
               </div>
               <button
                 type="button" onClick={() => onOpenLightbox(x.src, s.title)} aria-label={t.software.zoom}
-                className="stage group relative block !p-3 md:!p-6"
+                className="stage spot group relative block !p-3 md:!p-6"
               >
                 <img src={x.src} alt={s.title} width={x.w} height={x.h} loading="lazy" decoding="async" className="h-auto w-full rounded-xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)]" />
                 <span className="absolute bottom-5 right-5 flex items-center gap-1.5 rounded-lg bg-black/70 px-2.5 py-1.5 text-xs text-white md:bottom-9 md:right-9">

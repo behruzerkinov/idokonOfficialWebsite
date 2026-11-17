@@ -10,7 +10,7 @@ const SHOTS = [
 ];
 
 const Block = ({ icon: Icon, title, children }) => (
-  <div className="card p-7">
+  <div className="card spot p-7">
     <Icon size={20} strokeWidth={1.75} className="text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
     <h3 className="mt-3 text-lg font-semibold">{title}</h3>
     {children}
