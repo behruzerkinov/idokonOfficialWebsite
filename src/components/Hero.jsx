@@ -18,10 +18,10 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
 
           {/* Mercury-style action row: the phone number sits where the email field would be */}
           <div className="mx-auto mt-10 flex w-full max-w-md items-center gap-2 rounded-full bg-white/10 p-1.5 pl-5 ring-1 ring-white/15 backdrop-blur-md">
-            <a href={`tel:${SITE.phones[0]}`} className="flex min-h-[44px] flex-1 items-center gap-2 text-left text-sm text-white/85">
+            <a href={`tel:${SITE.phones[0]}`} className="flex min-h-[44px] flex-1 items-center gap-2 whitespace-nowrap text-left text-[13px] text-white/85 sm:text-sm">
               <Phone size={18} strokeWidth={1.75} aria-hidden="true" />{formatPhone(SITE.phones[0])}
             </a>
-            <button type="button" onClick={onOpenDemo} className="inline-flex h-11 items-center gap-2 rounded-full bg-white px-5 text-sm font-medium text-black transition-transform duration-150 active:scale-[0.97]">
+            <button type="button" onClick={onOpenDemo} className="inline-flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white px-4 text-sm font-medium text-black transition-transform duration-150 active:scale-[0.97]">
               {t.hero.ctaPrimary}<ArrowRight size={18} strokeWidth={1.75} aria-hidden="true" />
             </button>
           </div>
