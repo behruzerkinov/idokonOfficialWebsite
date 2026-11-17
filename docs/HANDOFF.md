@@ -7,15 +7,11 @@ Marketing site for shop owners in Uzbekistan. It must prove: easy to use, we sta
 data migration from 1C/Excel, support, free course), clear prices, honest claims. Languages: uz (default), ru, en.
 
 ## What is built (all merged to main)
-- Rebuilt page structure: floating pill nav, centered hero, How it works, feature tabs, sectors, "We stay with you"
-  (care) section, hardware carousel + cart, pricing with period switch, FAQ, contact, closing statement, footer,
-  mobile sticky call/Telegram bar.
-- One facts file: `src/data/site.js` (phones, Telegram, plans, claims, brand assets, flags).
-  Marketing claims render only when `verified: true`. All are `false`, so no unproven numbers show.
-- Copy lives in `src/data/translations.js` (3 languages, same keys). Check with `bun run check:i18n`.
-- Visual style: modeled on glossar.app (calm, Apple-like, soft rounded "stage" panels, system font) plus
-  Emil Kowalski motion rules (strong ease-out, press scale 0.97, hover only on pointer devices).
-  Emil Kowalski skills are installed globally in `~/.claude/skills`.
+- Page follows the owner's live reference (https://idokom-uz.netlify.app): hero with product window, partners strip, 4 feature cards, dark software section with 4 screen tabs, sectors, hardware carousel + cart, integrations, care (migration, training, support), how it starts, pricing with 1/6/12 month switch, course, FAQ, contact, closing line, dark footer. Mobile sticky call/Telegram bar.
+- One facts file: `src/data/site.js` (phones, Telegram, Instagram, plans, claims, brand assets, flags).
+  Claims (rating 4.9, 215 reviews, 10 min setup, 24/7) are marked verified because they are on the owner's live site. Set `verified: false` to hide one.
+- Copy lives in `src/data/translations.js` (3 languages, same keys, 241 keys). Check with `bun run check:i18n`.
+- Visual style: the reference palette (deep teal ink #132c2e, mint hero wash, green accent), Inter variable (self-hosted via fontsource), light by default with a dark mode. Motion follows Emil Kowalski rules. Kept from the first Gemini build: spot glow on cards, live ping dot, first-visit preloader, nav text scramble.
 - Offline mode: `SITE.leadsEnabled = false`. Forms are hidden; visitors see call and Telegram buttons.
 - Lead API is ready but off: `api/lead.js` (Vercel function, posts to a Telegram group), with tests.
   Turn on: set `leadsEnabled: true`, add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` on Vercel.
@@ -24,7 +20,7 @@ data migration from 1C/Excel, support, free course), clear prices, honest claims
 - Look: Notion-style (warm neutrals, flat top bar). Reused from the first Gemini build: spot glow, partner marquee, preloader, nav text scramble, live dot. Lenis was skipped on purpose.
 
 ## Commands
-- `bun run build`, `bun run check:i18n`, `bun run test` (8 API tests), `bun run test:e2e` (13 browser tests, 1 skipped while leads are off)
+- `bun run build`, `bun run check:i18n`, `bun run test` (8 API tests), `bun run test:e2e` (17 browser tests, 1 skipped while leads are off)
 
 ## Open items
 1. Done: hero doodle (Higgsfield, Nano Banana 2, 0.25 credits). Optional later: a hero loop or more doodles for the care and closing sections. The free plan blocks the GPT image models; Nano Banana 2 works.

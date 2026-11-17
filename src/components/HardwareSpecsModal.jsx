@@ -21,15 +21,15 @@ export const HardwareSpecsModal = ({ isOpen, onClose, product, lang, t, onAddToC
         </div>
       </div>
       {product.desc && <p className="mb-4" style={{ color: 'var(--muted)' }}>{pick(product.desc)}</p>}
-      <h4 className="mb-2 text-sm font-semibold">{t.equipment.parameters}</h4>
-      <dl className="mb-6 divide-y overflow-hidden rounded-xl border text-sm" style={{ borderColor: 'var(--line)' }}>
+      {product.specs.length > 0 && <h4 className="mb-2 text-sm font-semibold">{t.equipment.parameters}</h4>}
+      {product.specs.length > 0 && <dl className="mb-6 divide-y overflow-hidden rounded-xl border text-sm" style={{ borderColor: 'var(--line)' }}>
         {product.specs.map((s, i) => (
           <div key={i} className="flex justify-between gap-4 p-3" style={{ borderColor: 'var(--line)' }}>
             <dt style={{ color: 'var(--muted)' }}>{pick(s.key)}</dt>
             <dd className="text-right font-medium">{pick(s.val)}</dd>
           </div>
         ))}
-      </dl>
+      </dl>}
       <button type="button" className="btn-primary w-full" onClick={() => { if (!isInCart) onAddToCart(product); onClose(); }}>
         {isInCart ? <Check size={20} strokeWidth={1.75} /> : <ShoppingCart size={20} strokeWidth={1.75} />}
         {isInCart ? t.equipment.inCart : t.equipment.addToCart}

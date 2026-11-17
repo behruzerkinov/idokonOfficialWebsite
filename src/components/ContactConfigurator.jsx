@@ -1,30 +1,43 @@
 import React from 'react';
-import { Phone, Send } from 'lucide-react';
 import { SITE, formatPhone } from '../data/site';
-import { SectionHead } from './SectionHead';
+import { Reveal } from './Reveal';
 import { LeadForm } from './LeadForm';
 
-export const ContactConfigurator = ({ t, lang, prefill }) => (
-  <section id="contact" className="section scroll-mt-16">
-    <div className="mx-auto max-w-[1240px] px-3"><div className="stage">
-      <SectionHead title={t.contact.title} lead={t.contact.lead} />
-      <div className={`mx-auto grid gap-8 ${SITE.leadsEnabled ? 'max-w-4xl md:grid-cols-[2fr_3fr]' : 'max-w-md'}`}>
-        {SITE.leadsEnabled && <div className="space-y-2">
-          <h3 className="font-semibold">{t.contact.callUs}</h3>
-          {SITE.phones.map((p) => (
-            <a key={p} href={`tel:${p}`} className="flex min-h-[44px] items-center gap-2 text-lg font-medium text-emerald-700 hover:underline dark:text-emerald-400">
-              <Phone size={20} strokeWidth={1.75} aria-hidden="true" />{formatPhone(p)}
-            </a>
-          ))}
-          <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center gap-2 text-lg font-medium text-emerald-700 hover:underline dark:text-emerald-400">
-            <Send size={20} strokeWidth={1.75} aria-hidden="true" />{t.contact.telegram}
-          </a>
-        </div>}
-        <div className="card p-6">
-          <h3 className="mb-4 text-lg font-semibold">{t.contact.formTitle}</h3>
-          <LeadForm t={t} lang={lang} type="contact" store plan message defaults={prefill} />
-        </div>
-      </div>
-    </div></div>
-  </section>
+const Row = ({ code, href, children, external }) => (
+  <a href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="flex min-h-[44px] items-center gap-3 font-bold">
+    <span className="flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold" style={{ background: 'var(--accent-bright)', color: '#052e22' }}>{code}</span>
+    {children}
+  </a>
 );
+
+/** Deep panel with contacts on the left, form (or call buttons while offline) on the right. */
+export const ContactConfigurator = ({ t, lang, prefill }) => {
+  const c = t.contact;
+  const handle = (u) => '@' + u.replace(/\/$/, '').split('/').pop();
+  return (
+    <section id="contact" className="section scroll-mt-16">
+      <div className="container-page">
+        <Reveal>
+          <div className="grid overflow-hidden rounded-3xl lg:grid-cols-[1fr_1fr]" style={{ boxShadow: 'var(--ring), var(--shadow-card)' }}>
+            <div className="flex flex-col justify-between gap-10 p-8 md:p-12" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
+              <div>
+                <span className="eyebrow" style={{ color: 'var(--accent-bright)' }}>{c.eyebrow}</span>
+                <h2 className="h2 mt-5">{c.title}</h2>
+                <p className="mt-5 max-w-[44ch]" style={{ color: 'var(--on-deep-muted)' }}>{c.lead}</p>
+              </div>
+              <div className="space-y-1">
+                {SITE.phones.map((p) => <Row key={p} code="TL" href={`tel:${p}`}>{formatPhone(p)}</Row>)}
+                <Row code="TG" href={SITE.telegram} external>{handle(SITE.telegram)}</Row>
+                <Row code="IG" href={SITE.instagram} external>{handle(SITE.instagram)}</Row>
+              </div>
+            </div>
+            <div className="p-8 md:p-12" style={{ background: 'var(--surface)' }}>
+              <h3 className="mb-5 text-lg font-bold">{c.formTitle}</h3>
+              <LeadForm t={t} lang={lang} type="contact" store plan message defaults={prefill} />
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+};

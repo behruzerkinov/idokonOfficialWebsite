@@ -1,37 +1,70 @@
-import { SITE } from '../data/site';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Drawer } from 'vaul';
-import { Menu, Moon, ShoppingBag, Sun, X } from 'lucide-react';
+import { ChevronDown, Menu, Moon, ShoppingBag, Sun, X } from 'lucide-react';
+import { SITE } from '../data/site';
 import { ScrambleText } from './ScrambleText';
 
 const LANGS = [
-  { code: 'uz', short: "O'Z" },
-  { code: 'ru', short: 'РУ' },
-  { code: 'en', short: 'EN' },
+  { code: 'uz', name: 'O‘zbekcha' },
+  { code: 'ru', name: 'Русский' },
+  { code: 'en', name: 'English' },
 ];
-const LINKS = ['features', 'equipment', 'pricing', 'support', 'contact'];
+const LINKS = ['home', 'features', 'equipment', 'integrations', 'pricing', 'course', 'contact'];
 
-export const LangSwitch = ({ lang, setLang, label }) => (
-  <div role="group" aria-label={label} className="segmented">
-    {LANGS.map((l) => (
-      <button key={l.code} type="button" onClick={() => setLang(l.code)} aria-pressed={lang === l.code} className="seg-btn min-w-[44px] !px-2">
-        {l.short}
+/** Language picker: one button, a small menu. Closes on pick, outside click and Escape. */
+export const LangMenu = ({ lang, setLang, label, up = false }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!open) return;
+    const off = (e) => { if (!ref.current?.contains(e.target)) setOpen(false); };
+    const key = (e) => e.key === 'Escape' && setOpen(false);
+    document.addEventListener('pointerdown', off);
+    document.addEventListener('keydown', key);
+    return () => { document.removeEventListener('pointerdown', off); document.removeEventListener('keydown', key); };
+  }, [open]);
+  const current = LANGS.find((l) => l.code === lang) || LANGS[0];
+  return (
+    <div ref={ref} className="relative">
+      <button type="button" aria-haspopup="true" aria-expanded={open} aria-label={label} onClick={() => setOpen((o) => !o)} className="btn-outline !min-h-[44px] !gap-2 !px-3.5">
+        <span className="ping" aria-hidden="true" />
+        <span>{current.name}</span>
+        <ChevronDown size={16} strokeWidth={2} aria-hidden="true" className={`transition-transform duration-150 ${open ? 'rotate-180' : ''}`} />
       </button>
-    ))}
-  </div>
-);
+      {open && (
+        <ul className={`card pop-in absolute right-0 z-10 w-40 overflow-hidden p-1 ${up ? 'bottom-full mb-2' : 'top-full mt-2'}`}>
+          {LANGS.map((l) => (
+            <li key={l.code}>
+              <button type="button" aria-pressed={lang === l.code} onClick={() => { setLang(l.code); setOpen(false); }} className="flex min-h-[40px] w-full items-center rounded-lg px-3 text-left text-sm font-medium aria-pressed:bg-[var(--accent-soft)] aria-pressed:text-[var(--accent)]">
+                {l.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpenCart, onOpenDemo }) => {
   const [open, setOpen] = useState(false);
-  const [stuck, setStuck] = useState(false);
+  const [active, setActive] = useState('home');
 
   useEffect(() => {
     if (open) document.body.dataset.drawerOpen = '1';
     return () => { delete document.body.dataset.drawerOpen; };
   }, [open]);
 
+  // Scroll spy: the last section whose top has passed the header is the current one
   useEffect(() => {
-    const on = () => setStuck(window.scrollY > 8);
+    const on = () => {
+      let cur = LINKS[0];
+      for (const id of LINKS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 140) cur = id;
+      }
+      setActive(cur);
+    };
     on();
     window.addEventListener('scroll', on, { passive: true });
     return () => window.removeEventListener('scroll', on);
@@ -39,7 +72,7 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
 
   const go = (id) => {
     setOpen(false);
-    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 50);
+    setTimeout(() => (id === 'home' ? window.scrollTo({ top: 0, behavior: 'smooth' }) : document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })), 50);
   };
 
   const ThemeBtn = (
@@ -49,37 +82,35 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
   );
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-[background-color,border-color] duration-200 ${stuck ? 'bg-[color-mix(in_srgb,var(--bg)_88%,transparent)]' : 'bg-[color-mix(in_srgb,var(--bg)_60%,transparent)]'}`} style={{ borderColor: stuck ? 'var(--line)' : 'transparent' }}>
+    <header className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md" style={{ borderColor: 'var(--line)', background: 'color-mix(in srgb, var(--bg) 94%, transparent)' }}>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded focus:bg-[var(--surface)] focus:px-3 focus:py-2">{t.skip}</a>
 
-      <div className="mx-auto flex h-14 max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6">
-        <a href="#home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} aria-label="IDO'KON" className="flex shrink-0 items-center">
-          <img src={SITE.brand.logo} alt="IDO'KON" width="98" height="30" className="h-7 w-auto" />
+      <div className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between gap-3 px-4 sm:px-6">
+        <a href="#home" onClick={(e) => { e.preventDefault(); go('home'); }} aria-label="IDO'KON" className="flex shrink-0 items-center">
+          <img src={SITE.brand.logo} alt="IDO'KON" width="98" height="30" className="h-9 w-auto" />
         </a>
 
-        <nav aria-label="Main" className="hidden items-center gap-0.5 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
           {LINKS.map((id) => (
-            <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); go(id); }} className="nav-link inline-flex h-9 items-center rounded-md px-3 text-sm" style={{ color: 'var(--muted)' }}>
+            <a key={id} href={`#${id}`} aria-current={active === id ? 'true' : undefined} onClick={(e) => { e.preventDefault(); go(id); }} className="nav-link inline-flex h-10 items-center rounded-lg px-3 text-sm font-medium" style={{ color: 'var(--muted)' }}>
               <ScrambleText text={t.nav[id]} />
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-1">
-          <div className="hidden lg:block"><LangSwitch lang={lang} setLang={setLang} label={t.nav.language} /></div>
-          <div className="hidden lg:block">{ThemeBtn}</div>
+        <div className="flex items-center gap-1.5">
+          <div className="hidden md:block"><LangMenu lang={lang} setLang={setLang} label={t.nav.language} /></div>
+          <div className="hidden md:block">{ThemeBtn}</div>
           {cartCount > 0 && (
             <button type="button" onClick={onOpenCart} className="icon-btn relative" aria-label={`${t.nav.cart}: ${cartCount}`}>
               <ShoppingBag size={20} strokeWidth={1.75} />
-              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-700 px-1 text-[10px] font-semibold text-white">{cartCount}</span>
+              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-bold text-white" style={{ background: 'var(--accent)' }}>{cartCount}</span>
             </button>
           )}
-          <button type="button" onClick={onOpenDemo} className="btn-dark ml-1 hidden !min-h-[36px] !px-3.5 sm:inline-flex">
-            <span className="ping" aria-hidden="true" />{t.nav.tryDemo}
-          </button>
+          <button type="button" onClick={onOpenDemo} className="btn-deep hidden !px-5 sm:inline-flex">{t.nav.tryDemo}</button>
           <Drawer.Root open={open} onOpenChange={setOpen} direction="right">
             <Drawer.Trigger asChild>
-              <button type="button" className="icon-btn lg:hidden" aria-label={t.menu.open}><Menu size={20} strokeWidth={1.75} /></button>
+              <button type="button" className="icon-btn xl:hidden" aria-label={t.menu.open}><Menu size={22} strokeWidth={1.75} /></button>
             </Drawer.Trigger>
             <Drawer.Portal>
               <Drawer.Overlay className="fixed inset-0 z-[90] bg-black/40" />
@@ -91,14 +122,14 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
                 </div>
                 <nav className="flex flex-col" aria-label="Mobile">
                   {LINKS.map((id) => (
-                    <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); go(id); }} className="flex min-h-[52px] items-center border-b text-lg font-medium tracking-tight" style={{ borderColor: 'var(--line)' }}>
+                    <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); go(id); }} className="flex min-h-[52px] items-center border-b text-lg font-semibold tracking-tight" style={{ borderColor: 'var(--line)' }}>
                       {t.nav[id]}
                     </a>
                   ))}
                 </nav>
-                <button type="button" onClick={() => { setOpen(false); onOpenDemo(); }} className="btn-dark mt-5 w-full">{t.nav.tryDemo}</button>
+                <button type="button" onClick={() => { setOpen(false); onOpenDemo(); }} className="btn-deep mt-5 w-full">{t.nav.tryDemo}</button>
                 <div className="mt-6 flex items-center justify-between gap-3">
-                  <LangSwitch lang={lang} setLang={setLang} label={t.nav.language} />
+                  <LangMenu lang={lang} setLang={setLang} label={t.nav.language} up />
                   {ThemeBtn}
                 </div>
               </Drawer.Content>

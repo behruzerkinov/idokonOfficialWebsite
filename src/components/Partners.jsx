@@ -1,26 +1,23 @@
 import React from 'react';
 
-const PARTNERS = [
-  ['Click', '/logos/click.svg'], ['Payme', '/logos/payme.svg'], ['Uzum', '/logos/uzum.svg'],
-  ['Soliq', null], ['Multikassa', '/logos/multikassa.webp', true],
-  ['E-imzo', '/logos/e-imzo.webp'], ['ARCA', '/logos/arca.svg'],
+const GROUPS = [
+  { key: 'g1', logos: [['Click', '/logos/click.svg'], ['Payme', '/logos/payme.svg'], ['Uzum', '/logos/uzum.svg']] },
+  { key: 'g2', logos: [['Arco', '/logos/arco.svg']] },
+  { key: 'g3', logos: [['Multikassa', '/logos/multikassa.webp']] },
+  { key: 'g4', logos: [['E-imzo', '/logos/e-imzo.webp']] },
 ];
 
-const Item = ({ name, src, label, dup }) => (
-  <li className="flex shrink-0 items-center gap-2" aria-hidden={dup || undefined}>
-    {src ? <img src={src} alt={name} height="28" loading="lazy" decoding="async" className="h-7 w-auto max-w-[120px] object-contain" /> : <span className="text-xl font-semibold tracking-tight">{name}</span>}
-    {label && <span className="text-lg font-semibold tracking-tight">{name}</span>}
-  </li>
-);
-
-/** Slow marquee of the systems we work with. Six copies so screens up to about 2400px never run dry; copies 2 to 6 are hidden from screen readers and from reduced-motion users. */
+/** Systems we work with: label on the left, four ruled cells on the right (as on the live site). */
 export const Partners = ({ t }) => (
-  <section aria-label={t.partners.title} className="py-12">
-    <p className="mb-6 text-center text-sm" style={{ color: 'var(--muted)' }}>{t.partners.title}</p>
-    <div className="marquee-wrap">
-      <ul className="marquee items-center">
-        {PARTNERS.map(([n, s, l]) => <Item key={n} name={n} src={s} label={l} />)}
-        {[1, 2, 3, 4, 5].flatMap((k) => PARTNERS.map(([n, s, l]) => <Item key={n + k} name={n} src={s} label={l} dup />))}
+  <section aria-label={t.partners.title} className="border-y" style={{ borderColor: 'var(--line)' }}>
+    <div className="container-page grid items-stretch lg:grid-cols-[minmax(220px,1fr)_3fr]">
+      <p className="flex items-center py-6 pr-6 text-sm font-semibold leading-snug" style={{ color: 'var(--fg)' }}>{t.partners.title}</p>
+      <ul className="grid grid-cols-2 border-t lg:grid-cols-4 lg:border-t-0" style={{ borderColor: 'var(--line)' }}>
+        {GROUPS.map((g, i) => (
+          <li key={g.key} className={`flex min-h-[84px] items-center justify-center gap-4 px-4 py-4 ${i % 2 ? 'border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} lg:border-l`} style={{ borderColor: 'var(--line)' }} aria-label={t.partners[g.key]}>
+            {g.logos.map(([name, src]) => <img key={name} src={src} alt={name} height="26" loading="lazy" decoding="async" className="h-6 w-auto max-w-[96px] object-contain dark:[filter:brightness(0)_invert(1)] dark:opacity-80" />)}
+          </li>
+        ))}
       </ul>
     </div>
   </section>

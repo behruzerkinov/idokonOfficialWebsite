@@ -1,40 +1,48 @@
 import React from 'react';
-import { Phone, Send } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { SITE, formatPhone } from '../data/site';
-import { LangSwitch } from './Navbar';
 
-const LINKS = ['features', 'equipment', 'pricing', 'support', 'contact'];
+const COLS = (t) => [
+  [t.footer.product, [[t.nav.features, '#features'], [t.footer.software, '#software'], [t.nav.equipment, '#equipment'], [t.nav.integrations, '#integrations']]],
+  [t.footer.resources, [[t.nav.pricing, '#pricing'], [t.nav.course, '#course'], [t.footer.faq, '#faq']]],
+];
 
-export const Footer = ({ t, lang, setLang }) => (
-  <footer className="border-t py-12" style={{ borderColor: 'var(--line)' }}>
-    <div className="container-page grid gap-8 md:grid-cols-3">
-      <div>
-        <img src={SITE.brand.logo} alt="IDO'KON" width="120" height="37" loading="lazy" className="h-7 w-auto" />
-        <p className="mt-3 max-w-xs text-sm" style={{ color: 'var(--muted)' }}>{t.footer.about}</p>
+export const Footer = ({ t, onOpenDemo }) => {
+  const link = 'inline-flex min-h-[36px] items-center text-sm hover:text-white';
+  const mute = { color: 'var(--on-deep-muted)' };
+  return (
+    <footer style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
+      <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <img src={SITE.brand.logo} alt="IDO'KON" width="140" height="43" loading="lazy" className="h-11 w-auto" />
+          <p className="mt-5 max-w-[34ch] text-sm" style={mute}>{t.footer.about}</p>
+        </div>
+        {COLS(t).map(([title, items], k) => (
+          <nav key={title} aria-label={title}>
+            <h2 className="mb-2 text-sm font-bold">{title}</h2>
+            <ul>
+              {items.map(([label, href]) => <li key={href}><a href={href} className={link} style={mute}>{label}</a></li>)}
+              {k === 1 && <li><button type="button" onClick={onOpenDemo} className={link} style={mute}>{t.nav.tryDemo}</button></li>}
+            </ul>
+          </nav>
+        ))}
+        <nav aria-label={t.footer.support}>
+          <h2 className="mb-2 text-sm font-bold">{t.footer.support}</h2>
+          <ul>
+            <li><a href={`tel:${SITE.phones[0]}`} className={link} style={mute}>{formatPhone(SITE.phones[0])}</a></li>
+            <li><a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className={link} style={mute}>Telegram</a></li>
+            <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className={link} style={mute}>Instagram</a></li>
+            <li><a href="#contact" className={link} style={mute}>{t.nav.contact}</a></li>
+          </ul>
+        </nav>
       </div>
-      <nav aria-label={t.footer.menu}>
-        <h2 className="mb-2 font-semibold">{t.footer.menu}</h2>
-        <ul>
-          {LINKS.map((id) => (
-            <li key={id}><a href={`#${id}`} className="inline-flex min-h-[40px] items-center text-sm hover:underline" style={{ color: 'var(--muted)' }}>{t.nav[id]}</a></li>
-          ))}
-        </ul>
-      </nav>
-      <div>
-        <h2 className="mb-2 font-semibold">{t.footer.contacts}</h2>
-        <ul className="space-y-1 text-sm">
-          {SITE.phones.map((p) => (
-            <li key={p}><a href={`tel:${p}`} className="inline-flex min-h-[40px] items-center gap-2 hover:underline"><Phone size={20} strokeWidth={1.75} aria-hidden="true" />{formatPhone(p)}</a></li>
-          ))}
-          <li><a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[40px] items-center gap-2 hover:underline"><Send size={20} strokeWidth={1.75} aria-hidden="true" />Telegram</a></li>
-          <li style={{ color: 'var(--muted)' }}>{t.footer.location}</li>
-        </ul>
-        <div className="mt-4"><LangSwitch lang={lang} setLang={setLang} label={t.nav.language} /></div>
+      <div className="container-page flex flex-col gap-2 border-t py-6 text-xs sm:flex-row sm:items-center sm:justify-between" style={{ borderColor: 'rgba(255,255,255,0.12)', ...mute }}>
+        <p>© {new Date().getFullYear()}. {t.footer.rights}</p>
+        <p className="flex gap-4 font-bold">
+          <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-white">Telegram <ArrowUpRight size={12} aria-hidden="true" /></a>
+          <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-white">Instagram <ArrowUpRight size={12} aria-hidden="true" /></a>
+        </p>
       </div>
-    </div>
-    <div className="container-page mt-10 flex flex-col gap-1 text-sm sm:flex-row sm:justify-between" style={{ color: 'var(--muted)' }}>
-      <p>© {new Date().getFullYear()} IDO'KON. {t.footer.rights}</p>
-      <p>{t.footer.built}</p>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};

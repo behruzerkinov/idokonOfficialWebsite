@@ -1,69 +1,38 @@
 import React from 'react';
-import { DatabaseBackup, GraduationCap, BookOpen, Headset, Phone, Send, ExternalLink } from 'lucide-react';
+import { DatabaseBackup, GraduationCap, Headset } from 'lucide-react';
 import { SITE, formatPhone } from '../data/site';
-import { SectionHead } from './SectionHead';
+import { Reveal } from './Reveal';
 
-const SHOTS = [
-  ['course_kirish', 'shot1'],
-  ['course_kassa_sotish', 'shot2'],
-  ['course_qurilmalar', 'shot3'],
-];
-
-const Block = ({ icon: Icon, title, children }) => (
-  <div className="card spot p-7">
-    <Icon size={20} strokeWidth={1.75} className="text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-    <h3 className="mt-3 text-lg font-semibold">{title}</h3>
-    {children}
-  </div>
-);
-
-export const CareSection = ({ t, lang, onOpenLightbox }) => {
+/** "We stay with you": migration, training, support. Course lives in its own section. */
+export const CareSection = ({ t, lang }) => {
   const c = t.care;
   const hours = SITE.supportHours?.[lang];
+  const Block = ({ icon: Icon, title, children }) => (
+    <Reveal>
+      <div className="card spot h-full p-7">
+        <span className="chip-num"><Icon size={18} strokeWidth={2} aria-hidden="true" /></span>
+        <h3 className="mt-6 text-lg font-bold tracking-tight">{title}</h3>
+        {children}
+      </div>
+    </Reveal>
+  );
   return (
-    <section id="support" className="section scroll-mt-16">
-      <div className="mx-auto max-w-[1240px] px-3"><div className="stage">
-        <SectionHead title={c.title} lead={c.lead} />
-        <div className="grid gap-5 md:grid-cols-2">
-          <Block icon={DatabaseBackup} title={c.migration.title}>
-            <p className="mt-2" style={{ color: 'var(--muted)' }}>{c.migration.desc}</p>
-          </Block>
-          <Block icon={GraduationCap} title={c.training.title}>
-            <p className="mt-2" style={{ color: 'var(--muted)' }}>{c.training.desc}</p>
-          </Block>
-
-          <Block icon={BookOpen} title={c.course.title}>
-            <p className="mt-2" style={{ color: 'var(--muted)' }}>{c.course.desc}</p>
-            <ul className="my-4 grid grid-cols-3 gap-2">
-              {SHOTS.map(([file, k]) => (
-                <li key={file}>
-                  <button type="button" onClick={() => onOpenLightbox(`/screenshots/${file}.webp`, c.course[k])} aria-label={c.course[k]} className="block w-full overflow-hidden rounded-lg border" style={{ borderColor: 'var(--line)' }}>
-                    <img src={`/screenshots/${file}.webp`} alt={c.course[k]} width="400" height="225" loading="lazy" decoding="async" className="aspect-video w-full object-cover object-top" />
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <a href={SITE.courseUrl} target="_blank" rel="noopener" className="btn-primary">
-              {c.course.cta}<ExternalLink size={20} strokeWidth={1.75} aria-hidden="true" />
-            </a>
-          </Block>
-
+    <section id="support" className="section section-alt scroll-mt-16">
+      <div className="container-page">
+        <Reveal className="max-w-2xl">
+          <h2 className="h2">{c.title}</h2>
+          <p className="lede mt-5">{c.lead}</p>
+        </Reveal>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <Block icon={DatabaseBackup} title={c.migration.title}><p className="mt-2 text-[15px]" style={{ color: 'var(--muted)' }}>{c.migration.desc}</p></Block>
+          <Block icon={GraduationCap} title={c.training.title}><p className="mt-2 text-[15px]" style={{ color: 'var(--muted)' }}>{c.training.desc}</p></Block>
           <Block icon={Headset} title={c.support.title}>
-            <p className="mt-2" style={{ color: 'var(--muted)' }}>{c.support.desc}</p>
-            {hours && <p className="mt-2 text-sm font-medium">{c.support.hours}: {hours}</p>}
-            <div className="mt-4 flex flex-col gap-2">
-              {SITE.phones.map((p) => (
-                <a key={p} href={`tel:${p}`} className="inline-flex min-h-[44px] items-center gap-2 font-medium text-emerald-700 hover:underline dark:text-emerald-400">
-                  <Phone size={20} strokeWidth={1.75} aria-hidden="true" />{formatPhone(p)}
-                </a>
-              ))}
-              <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 font-medium text-emerald-700 hover:underline dark:text-emerald-400">
-                <Send size={20} strokeWidth={1.75} aria-hidden="true" />Telegram
-              </a>
-            </div>
+            <p className="mt-2 text-[15px]" style={{ color: 'var(--muted)' }}>{c.support.desc}</p>
+            {hours && <p className="mt-2 text-sm font-semibold">{c.support.hours}: {hours}</p>}
+            <p className="mt-4 text-sm font-bold">{SITE.phones.map(formatPhone).join(' · ')}</p>
           </Block>
         </div>
-      </div></div>
+      </div>
     </section>
   );
 };

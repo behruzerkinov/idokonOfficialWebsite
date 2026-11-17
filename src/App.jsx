@@ -103,13 +103,13 @@ export function App() {
       <Navbar lang={lang} setLang={setLang} t={t} theme={theme} toggleTheme={toggleTheme} cartCount={cartCount} onOpenCart={openCart} onOpenDemo={openDemo} />
 
       <main id="main">
-        <Hero t={t} lang={lang} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
+        <Hero t={t} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
         <Suspense fallback={<div className="min-h-[150vh]" />}>
           <BelowFold t={t} lang={lang} cart={cart} onAddToCart={addToCart} onOpenSpecsModal={setSpecs} onOpenCart={openCart} onRequestKit={requestKit} onSelectPlan={selectPlan} onOpenLightbox={openLightbox} onOpenDemo={openDemo} prefill={prefill} />
         </Suspense>
       </main>
 
-      <Footer t={t} lang={lang} setLang={setLang} />
+      <Footer t={t} onOpenDemo={openDemo} />
       <StickyBar t={t} />
 
       <Suspense fallback={null}>

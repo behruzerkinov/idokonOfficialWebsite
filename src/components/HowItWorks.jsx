@@ -1,25 +1,23 @@
 import React from 'react';
-import { PrintLine } from './ReceiptTape';
+import { Reveal } from './Reveal';
 
-/** Three steps printed as lines on one tape. Heading sits left, the tape right. */
+/** Three numbered steps on one ruled row. */
 export const HowItWorks = ({ t }) => (
   <section className="section">
-    <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
-      <div>
+    <div className="container-page">
+      <Reveal className="max-w-2xl">
         <h2 className="h2">{t.how.title}</h2>
-        <p className="lede mt-4 max-w-[34ch]">{t.how.lead}</p>
-      </div>
-      <div className="receipt !max-w-none">
+        <p className="lede mt-5">{t.how.lead}</p>
+      </Reveal>
+      <ol className="mt-12 grid border-t md:grid-cols-3" style={{ borderColor: 'var(--line)' }}>
         {[1, 2, 3].map((n) => (
-          <PrintLine key={n} i={n - 1} className={n < 3 ? 'receipt-rule-b' : ''}>
-            <p className="receipt-row text-[13px] font-bold">
-              <span className="!whitespace-normal">{t.how[`s${n}_title`]}</span>
-              <span>0{n}</span>
-            </p>
-            <p className="receipt-muted mt-1">{t.how[`s${n}_desc`]}</p>
-          </PrintLine>
+          <Reveal as="li" key={n} className="border-b py-8 md:border-b-0 md:pr-8 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:pl-8" style={{ borderColor: 'var(--line)' }}>
+            <span className="chip-num">0{n}</span>
+            <h3 className="mt-6 text-lg font-bold tracking-tight">{t.how[`s${n}_title`]}</h3>
+            <p className="mt-2 text-[15px]" style={{ color: 'var(--muted)' }}>{t.how[`s${n}_desc`]}</p>
+          </Reveal>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 );

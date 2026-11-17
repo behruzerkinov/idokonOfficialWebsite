@@ -7,36 +7,46 @@ export const translations = {
       "close": "Yopish"
     },
     "meta": {
-      "title": "IDO'KON — do'kon uchun oddiy kassa dasturi",
-      "description": "Do'koningizni boshqarish endi oson. Biz o'rnatamiz, ma'lumotlaringizni ko'chiramiz va kassirlaringizni o'rgatamiz."
+      "title": "IDO‘KON — Do‘kon avtomatlashtirish va POS tizimi O‘zbekistonda",
+      "description": "Zamonaviy POS, ombor nazorati, real vaqt hisobotlari va to‘lov integratsiyalari — do‘koningiz uchun yagona, sodda platformada."
     },
     "nav": {
-      "features": "Imkoniyatlar",
+      "features": "Xususiyatlar",
       "equipment": "Qurilmalar",
       "pricing": "Tariflar",
-      "support": "Yordam",
       "contact": "Aloqa",
-      "tryDemo": "Demo so'rash",
+      "tryDemo": "Demo ishlatib ko‘rish",
       "cart": "Savat",
       "theme": "Mavzuni almashtirish",
-      "language": "Til"
+      "language": "Til",
+      "home": "Asosiy",
+      "integrations": "Integratsiyalar",
+      "course": "I-Do‘kon Kurs"
     },
     "hero": {
-      "title": "Butun do'kon, bitta chekda",
-      "subtitle": "Kassa, ombor va hisobotlar bitta oddiy dasturda. Biz o'rnatamiz, ma'lumotlaringizni ko'chiramiz va kassirlaringizni o'rgatamiz.",
-      "ctaPrimary": "Bepul demo",
-      "ctaSecondary": "Telegramda yozish",
-      "fact1": "Windows va Web",
-      "fact2": "Bepul o'rgatamiz",
-      "fact3": "Ma'lumotlarni ko'chirib beramiz",
-      "imageAlt": "IDO'KON kassa dasturi ekrani",
+      "subtitle": "Zamonaviy POS, ombor nazorati, real vaqt hisobotlari va to‘lov integratsiyalari — do‘koningiz uchun yagona, sodda platformada.",
+      "ctaPrimary": "Demo ishlatib ko‘rish",
+      "ctaSecondary": "Bog‘lanish",
+      "imageAlt": "IDO‘KON kassa dasturi oynasi: tovarlar ro‘yxati va savdo hisobi",
       "ratingLabel": "Mijozlar bahosi",
-      "storesLabel": "faol savdo nuqtasi",
-      "caption": "Kassa dasturi: bitta ekran, bir necha tugma.",
-      "receipt": { "stamp": "Namuna", "items": ["Non", "Sut, 1 l", "Choy"], "total": "Jami", "note": "Namuna chek, haqiqiy narxlar emas." }
+      "eyebrow": "SAVDO BOSHQARUVINING YANGI STANDARTI",
+      "titleStart": "Savdoni",
+      "titleHighlight": "aniq raqamlar",
+      "titleEnd": "bilan boshqaring",
+      "meta1": "Windows va Web",
+      "meta2": "10 daqiqada ishga tushadi",
+      "meta3": "24/7 qo‘llab-quvvatlash",
+      "liveStatus": "Tizim ishlamoqda",
+      "windowTitle": "IDO‘KON · ANALYTICS",
+      "ratingBasis": "{n} ta sharh asosida",
+      "zoom": "Kattalashtirish"
     },
     "partners": {
-      "title": "O'zbekistondagi to'lov va fiskal tizimlar bilan ishlaydi"
+      "title": "Do‘koningiz ishlatadigan tizimlar bilan mos",
+      "g1": "Click · Payme · Uzum",
+      "g2": "Arco",
+      "g3": "Multikassa",
+      "g4": "E-imzo SMS"
     },
     "how": {
       "title": "Qanday boshlanadi",
@@ -49,55 +59,42 @@ export const translations = {
       "s3_desc": "Birinchi kundan boshlab savollaringizga javob beramiz."
     },
     "software": {
-      "title": "Har bir kun uchun kerakli narsa",
-      "lead": "To'rt asosiy ish — savdo, ombor, hisobot va kassirlar.",
-      "zoom": "To'liq hajmda ko'rish",
+      "title": "Har bir qaror uchun aniq ko‘rinish",
+      "lead": "Savdo nuqtasidan boshqaruv paneligacha — jamoangizga kerakli ma’lumot har doim o‘z joyida.",
+      "zoom": "Kattalashtirish",
       "tabs": {
         "sales": "Savdo",
         "inventory": "Ombor",
         "analytics": "Analitika",
-        "cashiers": "Kassirlar"
+        "cashiers": "Kassirlar",
+        "order": "Buyurtma"
       },
-      "screens": {
-        "sales": {
-          "title": "Kun oxirida savdo qancha bo'lganini bir qarashda ko'rasiz",
-          "b1": "Kunlik va oylik savdo bitta ekranda",
-          "b2": "Qaysi kassir nima sotganini bilasiz",
-          "b3": "Hisobotni Excel'ga bir tugma bilan yuklaysiz"
-        },
-        "inventory": {
-          "title": "Tovar tugab qolmaydi, ortiqcha ham yig'ilmaydi",
-          "b1": "Har bir tovardan qancha qolganini ko'rasiz",
-          "b2": "Shtrix-kod bilan tovarni tez topasiz",
-          "b3": "Kam qolgan tovar haqida oldindan bilasiz"
-        },
-        "analytics": {
-          "title": "Qaysi tovar foyda keltirishini aniq bilasiz",
-          "b1": "Eng foydali va eng sust tovarlar ro'yxati",
-          "b2": "Daromad va marjani raqamlarda ko'rasiz",
-          "b3": "Qotib qolgan pulni tovar ko'rinishida topasiz"
-        },
-        "cashiers": {
-          "title": "Yangi kassir ham tez ishlay boshlaydi",
-          "b1": "Oddiy ekran: qidirish, skanerlash, to'lov",
-          "b2": "Naqd, karta va QR bilan to'lov qabul qilinadi",
-          "b3": "Smenani yopish va chekni qaytarish ham oson"
-        }
-      }
+      "eyebrow": "DASTURNING ASOSIY XUSUSIYATLARI",
+      "orderLabel": "TAVSIYA ETILGAN BUYURTMA",
+      "tablist": "Dastur ekranlari",
+      "p1_title": "Inventarizatsiyani boshqarish",
+      "p1_desc": "Zaxira va kirim–chiqimni avtomatik kuzatib, minimal qoldiqni eslatadi.",
+      "p2_title": "Sotish va to‘lov jarayoni",
+      "p2_desc": "Naqd, karta va QR to‘lovni bir bosishda qabul qilib, xatolikni kamaytiradi.",
+      "p3_title": "Hisobot va tahlil",
+      "p3_desc": "Aylanma va foydani real vaqtda ko‘rsatib, eksport va filial kesimini beradi.",
+      "p4_title": "Xavfsiz tezkor tranzaksiya",
+      "p4_desc": "EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija."
     },
     "sectors": {
-      "title": "Qaysi do'kon uchun",
-      "lead": "Kichik do'kondan kafegacha — format farqi yo'q.",
+      "title": "Har xil savdo formati. Bitta ishonchli tizim.",
+      "lead": "Dasturiy ta’minotimiz keng ko‘lamli biznes va sanoat sohalariga moslashtirilgan.",
       "s1": "Chakana do‘konlar",
-      "s1_desc": "Kundalik savdo va tovar qoldiqlari nazorati",
+      "s1_desc": "Kundalik savdo va qoldiq nazorati",
       "s2": "Supermarketlar",
-      "s2_desc": "Yuqori xaridorlar oqimi va ko‘p kassali rejim",
+      "s2_desc": "Yuqori oqim va ko‘p kassali savdo",
       "s3": "Mini-marketlar",
-      "s3_desc": "Sodda, chaqqon va tejamkor avtomatlashtirish",
+      "s3_desc": "Sodda, tez va tejamkor boshqaruv",
       "s4": "Onlayn savdo",
-      "s4_desc": "Buyurtma va ombor qoldiqlarini sinxronlash",
-      "s5": "Restoran & Kafelar",
-      "s5_desc": "Stollar bandligi va oshxona cheklari nazorati"
+      "s4_desc": "Buyurtma va qoldiqni uyg‘unlashtirish",
+      "s5": "Yana ko‘plab sohalar",
+      "s5_desc": "Biznesingizga mos integratsiya",
+      "eyebrow": "KIMLAR UCHUN"
     },
     "care": {
       "title": "Biz sizning yoningizda bo'lamiz",
@@ -110,14 +107,6 @@ export const translations = {
         "title": "Har bir yangi kassirni o'rgatamiz",
         "desc": "Kassir almashdimi? Bepul kurs havolasini yuboring yoki yordamga qo'ng'iroq qiling — yangi xodim tez o'rganadi."
       },
-      "course": {
-        "title": "Bepul onlayn kurs",
-        "desc": "Dasturni o'zingiz va xodimlaringiz uchun qadam-baqadam o'rganing.",
-        "cta": "Kursni ochish",
-        "shot1": "Kursga kirish",
-        "shot2": "Kassada sotish darsi",
-        "shot3": "Qurilmalarni ulash darsi"
-      },
       "support": {
         "title": "Tezkor yordam",
         "desc": "Savol yoki xatolik bo'lsa, odam bilan gaplashasiz.",
@@ -125,8 +114,8 @@ export const translations = {
       }
     },
     "equipment": {
-      "title": "Kassa uchun qurilmalar",
-      "lead": "Dastur bilan sinalgan qurilmalar. Savatga qo'shing, biz bog'lanamiz.",
+      "title": "Savdo uchun zarur qurilmalar to‘plami",
+      "lead": "Kassa sistemasini to‘liq ishga tushirish uchun kerakli barcha qurilmalarni bir joydan oling.",
       "kitTitle": "Tayyor to'plam",
       "kitDesc": "Qaysi qurilma kerakligini bilmasangiz, biz tanlab beramiz.",
       "setupTotal": "Kassa to'plamingiz",
@@ -135,31 +124,38 @@ export const translations = {
       "prev": "Oldingi qurilmalar",
       "next": "Keyingi qurilmalar",
       "details": "Batafsil ma'lumot",
-      "priceLabel": "Narxi",
-      "currency": "so‘m",
       "inCartBadge": "Savatda",
       "addBtn": "Qo'shish",
       "addedToCartToast": "savatga qo'shildi",
-      "technicalSpecs": "Texnik Xususiyatlar",
       "close": "Yopish",
       "officialPrice": "Rasmiy Narxi:",
       "parameters": "Parametrlar:",
       "inCart": "Savatda mavjud",
-      "addToCart": "Savatga qo‘shish"
+      "addToCart": "Savatga qo‘shish",
+      "eyebrow": "POS QURILMALARI",
+      "viewAll": "Barcha qurilmalarni ko‘rish",
+      "viewRow": "Qatorda ko‘rish",
+      "cat": {
+        "monoblock": "MONOBLOK TERMINAL",
+        "printers": "CHEK VA ETIKETKA PRINTERI",
+        "scanners": "SHTRIX SKANER",
+        "drawers": "KASSA QUTISI",
+        "scales": "TAROZI"
+      }
     },
     "pricing": {
-      "title": "Narx oddiy va ochiq",
-      "lead": "Do'koningiz o'lchamiga mos tarifni tanlang.",
+      "title": "Biznesingizga mos tarifni tanlang",
+      "lead": "Kichik do‘kondan katta savdo tarmog‘igacha — kerakli imkoniyatlar uchun aniq reja.",
       "periodLabel": "To'lov davri",
       "period1": "1 oy",
       "period6": "6 oy",
       "period12": "12 oy",
       "badge6": "1 oy bepul",
       "badge12": "2 oy bepul",
-      "perMonth": "oyiga",
+      "perMonth": "oy",
       "total": "Jami",
       "popular": "Ommabop",
-      "choose": "Tanlash",
+      "choose": "Tarifni tanlang",
       "start": {
         "name": "Start",
         "subtitle": "Kichik do‘konlar uchun",
@@ -175,12 +171,14 @@ export const translations = {
         "name": "Standard",
         "subtitle": "Standart do‘konlar uchun",
         "features": [
-          "Soliq tizimi bilan integratsiya (Arca Group, Multikassa)",
+          "Soliq tizimi bilan integratsiya (Arco, Multikassa)",
           "To‘lov tizimlari bilan integratsiyalar (Click, Payme, Uzum)",
           "Tavsiya etilgan tovarlar ro‘yxati",
           "Muzlatilgan mablag‘ ko‘rinishidagi tovarlar",
           "Aksiya va to‘plamlar yaratish",
-          "Valyuta bilan ishlash"
+          "Valyuta bilan ishlash",
+          "Xarajatlarni yuritish",
+          "Markirovka bilan ishlash"
         ]
       },
       "premium": {
@@ -192,55 +190,46 @@ export const translations = {
           "Analitika (ABC tahlil, OOS tahlil)",
           "Mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlar"
         ]
-      }
+      },
+      "eyebrow": "SHAFFOF NARXLASH"
     },
     "faq": {
-      "title": "Ko'p beriladigan savollar",
-      "lead": "Javobni topmadingizmi? Bizga yozing yoki qo'ng'iroq qiling.",
+      "title": "Ko‘p beriladigan savollarga javoblar",
+      "lead": "Kerakli javobni topmadingizmi? Jamoamiz sizga mos yechimni tanlashda yordam beradi.",
       "ask": "Savol berish",
       "items": [
         {
-          "q": "Internet o'chsa ishlaydimi?",
+          "q": "POS tizimi biznesimga qanday foyda keltiradi?",
+          "a": "POS tizimi savdo, ombor, hisobot va mijozlar bilan ishlashni yagona boshqaruv nuqtasida birlashtiradi. Bu xatolarni kamaytiradi, jarayonlarni tezlashtiradi va real raqamlar asosida qaror qabul qilishga yordam beradi."
+        },
+        {
+          "q": "POS tizimini onlayn do‘konim bilan integratsiya qila olamanmi?",
+          "a": "Ha. IDO‘KON mavjud kassa va to‘lov tizimlari bilan bog‘lanadi. Muayyan onlayn do‘kon yoki boshqa tizim bo‘yicha integratsiya imkoniyatini jamoamiz bilan muhokama qilishingiz mumkin."
+        },
+        {
+          "q": "POS tizimidan foydalanish uchun maxsus o‘qitish kerakmi?",
+          "a": "Interfeys yangi kassir ham tez o‘rganishi uchun sodda tuzilgan. Bundan tashqari, I-Do‘kon kursida modullar, amaliy misollar, video darslar va interaktiv topshiriqlar mavjud."
+        },
+        {
+          "q": "Dastur oflayn (internetsiz) ham ishlaydimi?",
           "a": "Ha, kassa qismi internetsiz ham to‘xtovsiz ishlaydi. Internet paydo bo‘lishi bilan barcha amalga oshirilgan cheklar va hisobotlar avtomatik tarzda serverga sinxronlanadi."
         },
         {
-          "q": "Ma'lumotlarim xavfsizmi?",
-          "a": "Ma'lumotlaringiz sizning hisobingizda saqlanadi va login hamda parol bilan ochiladi. Xavfsizlik bo'yicha savollaringizga mutaxassisimiz batafsil javob beradi."
+          "q": "POS tizimi qanday savdo tahlillarini taqdim etadi?",
+          "a": "Aylanma, foyda, top mahsulotlar, filiallar kesimi, ABC tahlil, OOS tahlil va mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlarni ko‘rish mumkin."
         },
         {
-          "q": "Yangi kassir qanday o'rganadi?",
-          "a": "Ekran oddiy, shuning uchun yangi kassir tez ko'nikadi. Bepul onlayn kursni yuboring yoki yordam xizmatiga qo'ng'iroq qiling — biz o'rgatamiz."
-        },
-        {
-          "q": "1C dan o'tsa bo'ladimi?",
-          "a": "Ha. 1C yoki Excel'dagi tovarlaringizni o'zimiz ko'chirib beramiz, siz qo'lda qayta kiritmaysiz."
-        },
-        {
-          "q": "Qanday qurilmalar kerak?",
-          "a": "Odatda kassa kompyuteri yoki monoblok, chek printeri va shtrix-kod skaneri kerak. Qaysi biri kerakligini bilmasangiz, biz tanlab beramiz."
-        },
-        {
-          "q": "To'lovni qanday qilaman?",
-          "a": "Tarifni 1, 6 yoki 12 oyga tanlaysiz. To'lov usulini menejerimiz siz bilan kelishadi."
+          "q": "Biznesim uchun to‘g‘ri POS tizimini qanday tanlayman?",
+          "a": "Biznes turi, hajmi, byudjeti, zarur integratsiyalar va kelajakdagi o‘sishni hisobga oling. Start, Standard va Premium tariflarini solishtiring yoki bepul maslahat uchun biz bilan bog‘laning."
         }
-      ]
+      ],
+      "eyebrow": "SAVOLINGIZ BORMI?"
     },
     "contact": {
-      "title": "Bog'laning — yordam beramiz",
-      "lead": "Qo'ng'iroq qiling yoki Telegramda yozing — savollaringizga javob beramiz.",
-      "callUs": "Qo'ng'iroq qiling",
-      "telegram": "Telegramda yozing",
-      "formTitle": "Biz bilan bog'laning",
-      "storeTypeOptions": [
-        "Oziq-ovqat / Supermarket",
-        "Kiyim-kechak va poyabzal",
-        "Elektronika va maishiy texnika",
-        "Kosmetika va parfyumeriya",
-        "Qurilish mollari",
-        "Dorixona",
-        "Kafe / Fast-food",
-        "Boshqa savdo turi"
-      ]
+      "title": "Do‘koningiz uchun to‘g‘ri konfiguratsiyani topamiz",
+      "lead": "Savollaringizni yozib qoldiring — jamoamiz ehtiyojingizni o‘rganib, mos tarif va qurilmalar bo‘yicha yordam beradi.",
+      "formTitle": "Biz bilan bog‘laning",
+      "eyebrow": "BIZ BILAN BOG‘LANISH"
     },
     "form": {
       "name": "Ismingiz",
@@ -280,22 +269,19 @@ export const translations = {
       "decrease": "Kamaytirish",
       "increase": "Ko'paytirish",
       "remove": "O'chirish",
-      "back": "Orqaga",
-      "continue": "Davom etish",
-      "successTitle": "Buyurtma qabul qilindi!",
-      "successDesc": "Buyurtmani tasdiqlash uchun siz bilan bog'lanamiz."
+      "back": "Orqaga"
     },
     "lightbox": {
-      "close": "Yopish",
-      "prev": "Oldingi"
+      "close": "Yopish"
     },
     "footer": {
-      "about": "Do'kon uchun oddiy kassa va ombor dasturi. O'rnatish, o'rgatish va yordam — biz bilan.",
-      "contacts": "Bog'lanish",
-      "menu": "Bo‘limlar",
-      "location": "Toshkent, O'zbekiston",
+      "about": "POS dasturimiz biznes jarayonlaringizni soddalashtirib, samaradorlikni oshiradigan yakuniy yechimdir. Oddiylik, ko‘p qirrali imkoniyatlar va ilg‘or texnologiyalar uyg‘unligiga e’tibor qaratganmiz.",
       "rights": "Barcha huquqlar himoyalangan.",
-      "built": "Shrift: tizim · Freymvork: React · Toshkentda yaratilgan"
+      "product": "Mahsulot",
+      "resources": "Resurslar",
+      "support": "Qo‘llab-quvvatlash",
+      "software": "Dastur",
+      "faq": "FAQ"
     },
     "sticky": {
       "call": "Qo'ng'iroq",
@@ -305,6 +291,50 @@ export const translations = {
       "w1": "Ko'rdingizmi?",
       "w2": "Hammasi shunchalik oddiy.",
       "w3": "Endi do'koningiz navbatda."
+    },
+    "features": {
+      "eyebrow": "I-DO‘KON BILAN BIZNESINGIZNI RIVOJLANTIRING",
+      "title": "Sodda interfeys. Kuchli boshqaruv.",
+      "lead": "Kassirga tezlik, rahbarga nazorat, mijozga esa silliq xarid tajribasi beradigan savdo nuqtasi tizimi.",
+      "f1_title": "Savdo tezligi ↑",
+      "f1_desc": "Bir bosishda to‘lov — kam xatolik va tez navbat. Kunning oxirida natijalar darhol ko‘rinadi.",
+      "f1_tag": "NAQD · KARTA · QR",
+      "f2_title": "Kassirlar uchun sodda",
+      "f2_desc": "Skaner bilan tez qidiruv, chegirma va bonuslar. Yangi kassir ham interfeysni tez o‘rganadi.",
+      "f2_tag": "QULAY INTERFEYS",
+      "f3_title": "Hisobot va nazorat",
+      "f3_desc": "Aylanma, foyda va top mahsulotlar onlayn. Filiallar kesimida ko‘rish va eksport bir tugmada.",
+      "f3_tag": "REAL VAQT",
+      "f4_title": "O‘rnatish va integratsiya",
+      "f4_desc": "Windows’da 10 daqiqada ishga tushadi. Printer, skaner, terminal, Tez QR va API bilan kengayadi.",
+      "f4_tag": "TAYYOR EKOTIZIM"
+    },
+    "integrations": {
+      "eyebrow": "TIZIMLAR BILAN INTEGRATSIYA",
+      "title": "Mavjud tizimdan uzilmasdan yangisiga o‘ting",
+      "lead": "IDO‘KON mavjud kassa tizimlari bilan oson bog‘lanadi. Ma’lumotlaringiz saqlanadi, jamoamiz esa o‘tish jarayonida yoningizda bo‘ladi.",
+      "c1_title": "Tez ulanish",
+      "c1_desc": "Mavjud tizimga 1–2 kun ichida ulanish",
+      "c2_title": "Ma’lumotlar xavfsizligi",
+      "c2_desc": "Barcha ma’lumotlar saqlanib qoladi",
+      "c3_title": "Texnik yordam",
+      "c3_desc": "Integratsiya jarayonida to‘liq qo‘llab-quvvatlash",
+      "supported": "QO‘LLAB-QUVVATLANADIGAN TIZIMLAR",
+      "mk": "Soliq idorasi bilan bog‘langan onlayn kassa tizimi",
+      "ar": "Keng tarqalgan kassa va hisobot tizimi",
+      "ei": "E-imzo orqali SMS xabarnoma yuborish tizimi",
+      "otherTitle": "Boshqa tizimlar",
+      "otherDesc": "Tizimingiz ro‘yxatda yo‘qmi? Integratsiya imkoniyatlarini biz bilan muhokama qiling."
+    },
+    "course": {
+      "eyebrow": "BILIM BAZASI",
+      "title": "I-Do‘kon Kursi",
+      "lead": "POS dasturini to‘liq va oson o‘rganing. Har bir modulda amaliy misollar, video darslar va interaktiv topshiriqlar mavjud.",
+      "highlight": "Kursni tugatgan har bir mijoz programmani mustaqil ishlata oladi va savollarga tez javob topadi.",
+      "cta": "Kursni boshlash",
+      "shot1": "Kurs: kirish",
+      "shot2": "Kurs: kassada sotish",
+      "shot3": "Kurs: qurilmalar"
     }
   },
   "ru": {
@@ -315,36 +345,46 @@ export const translations = {
       "close": "Закрыть"
     },
     "meta": {
-      "title": "IDO'KON — простая кассовая программа для магазина",
-      "description": "Управлять магазином стало проще. Мы установим программу, перенесём ваши данные и обучим кассиров."
+      "title": "IDO‘KON — автоматизация магазина и POS-система в Узбекистане",
+      "description": "Современный POS, складской учет, отчеты в реальном времени и платежные интеграции — на единой простой платформе для вашего магазина."
     },
     "nav": {
-      "features": "Возможности",
+      "features": "Функции",
       "equipment": "Оборудование",
       "pricing": "Тарифы",
-      "support": "Помощь",
       "contact": "Контакты",
-      "tryDemo": "Заказать демо",
+      "tryDemo": "Попробовать демо",
       "cart": "Корзина",
       "theme": "Сменить тему",
-      "language": "Язык"
+      "language": "Язык",
+      "home": "Главная",
+      "integrations": "Интеграции",
+      "course": "Курс I-Do‘kon"
     },
     "hero": {
-      "title": "Весь магазин на одном чеке",
-      "subtitle": "Касса, склад и отчёты в одной простой программе. Мы установим её, перенесём ваши данные и обучим кассиров.",
-      "ctaPrimary": "Бесплатное демо",
-      "ctaSecondary": "Написать в Telegram",
-      "fact1": "Windows и Web",
-      "fact2": "Обучаем бесплатно",
-      "fact3": "Переносим ваши данные",
-      "imageAlt": "Экран кассовой программы IDO'KON",
+      "subtitle": "Современный POS, складской учет, отчеты в реальном времени и платежные интеграции — на единой простой платформе для вашего магазина.",
+      "ctaPrimary": "Попробовать демо",
+      "ctaSecondary": "Связаться",
+      "imageAlt": "Окно кассовой программы IDO‘KON: список товаров и учет продаж",
       "ratingLabel": "Оценка клиентов",
-      "storesLabel": "активных точек",
-      "caption": "Кассовая программа: один экран, несколько кнопок.",
-      "receipt": { "stamp": "Пример", "items": ["Хлеб", "Молоко, 1 л", "Чай"], "total": "Итого", "note": "Пример чека, не реальные цены." }
+      "eyebrow": "НОВЫЙ СТАНДАРТ УПРАВЛЕНИЯ ТОРГОВЛЕЙ",
+      "titleStart": "Управляйте продажами",
+      "titleHighlight": "по точным цифрам",
+      "titleEnd": "",
+      "meta1": "Windows и Web",
+      "meta2": "Запуск за 10 минут",
+      "meta3": "Поддержка 24/7",
+      "liveStatus": "Система работает",
+      "windowTitle": "IDO‘KON · ANALYTICS",
+      "ratingBasis": "на основе {n} отзывов",
+      "zoom": "Увеличить"
     },
     "partners": {
-      "title": "Работает с платёжными и фискальными системами Узбекистана"
+      "title": "Совместимо с системами, которыми вы пользуетесь",
+      "g1": "Click · Payme · Uzum",
+      "g2": "Arco",
+      "g3": "Multikassa",
+      "g4": "E-imzo SMS"
     },
     "how": {
       "title": "Как это начинается",
@@ -357,55 +397,42 @@ export const translations = {
       "s3_desc": "Отвечаем на ваши вопросы с первого дня."
     },
     "software": {
-      "title": "Всё, что нужно каждый день",
-      "lead": "Четыре главные задачи — продажи, склад, отчёты и кассиры.",
-      "zoom": "Открыть крупно",
+      "title": "Четкая картина для каждого решения",
+      "lead": "От кассы до панели управления — нужные вашей команде данные всегда на своем месте.",
+      "zoom": "Увеличить",
       "tabs": {
         "sales": "Продажи",
         "inventory": "Склад",
         "analytics": "Аналитика",
-        "cashiers": "Кассиры"
+        "cashiers": "Кассиры",
+        "order": "Заказ"
       },
-      "screens": {
-        "sales": {
-          "title": "В конце дня сразу видно, сколько вы продали",
-          "b1": "Продажи за день и месяц на одном экране",
-          "b2": "Вы знаете, кто из кассиров что продал",
-          "b3": "Отчёт в Excel одной кнопкой"
-        },
-        "inventory": {
-          "title": "Товар не заканчивается и не залёживается",
-          "b1": "Видите остаток по каждому товару",
-          "b2": "Быстро находите товар по штрих-коду",
-          "b3": "Заранее знаете, что скоро закончится"
-        },
-        "analytics": {
-          "title": "Точно знаете, какой товар приносит прибыль",
-          "b1": "Список самых прибыльных и самых вялых товаров",
-          "b2": "Доход и маржа в цифрах",
-          "b3": "Находите деньги, замороженные в товаре"
-        },
-        "cashiers": {
-          "title": "Даже новый кассир быстро начинает работать",
-          "b1": "Простой экран: поиск, сканирование, оплата",
-          "b2": "Оплата наличными, картой и по QR",
-          "b3": "Закрыть смену и сделать возврат тоже просто"
-        }
-      }
+      "eyebrow": "ОСНОВНЫЕ ВОЗМОЖНОСТИ ПРОГРАММЫ",
+      "orderLabel": "РЕКОМЕНДУЕМЫЙ ЗАКАЗ",
+      "tablist": "Экраны программы",
+      "p1_title": "Управление запасами",
+      "p1_desc": "Автоматически отслеживает остатки и приход–расход, напоминает о минимальном остатке.",
+      "p2_title": "Продажи и оплата",
+      "p2_desc": "Принимает наличные, карты и QR в один клик, снижая количество ошибок.",
+      "p3_title": "Отчеты и аналитика",
+      "p3_desc": "Показывает оборот и прибыль в реальном времени, дает экспорт и разрез по филиалам.",
+      "p4_title": "Безопасные быстрые транзакции",
+      "p4_desc": "Защищенная оплата на основе EMV, быстрое подтверждение и надежный результат."
     },
     "sectors": {
-      "title": "Для какого магазина",
-      "lead": "От маленького магазина до кафе — формат не важен.",
+      "title": "Разные форматы торговли. Одна надежная система.",
+      "lead": "Наше программное обеспечение адаптировано для широкого круга бизнеса и отраслей.",
       "s1": "Розничные магазины",
-      "s1_desc": "Ежедневные продажи и остатки",
+      "s1_desc": "Ежедневные продажи и контроль остатков",
       "s2": "Супермаркеты",
       "s2_desc": "Высокий поток и несколько касс",
       "s3": "Мини-маркеты",
-      "s3_desc": "Простое и экономичное управление",
+      "s3_desc": "Простое, быстрое и экономичное управление",
       "s4": "Онлайн-торговля",
-      "s4_desc": "Синхронизация заказов и остатков",
-      "s5": "Кафе и рестораны",
-      "s5_desc": "Бронирование столов и учет чеков"
+      "s4_desc": "Согласование заказов и остатков",
+      "s5": "И многие другие сферы",
+      "s5_desc": "Интеграция под ваш бизнес",
+      "eyebrow": "ДЛЯ КОГО"
     },
     "care": {
       "title": "Мы остаёмся рядом с вами",
@@ -418,14 +445,6 @@ export const translations = {
         "title": "Обучаем каждого нового кассира",
         "desc": "Сменился кассир? Отправьте ссылку на бесплатный курс или позвоните в поддержку — новый сотрудник быстро научится."
       },
-      "course": {
-        "title": "Бесплатный онлайн-курс",
-        "desc": "Изучайте программу шаг за шагом — вы и ваши сотрудники.",
-        "cta": "Открыть курс",
-        "shot1": "Вход в курс",
-        "shot2": "Урок: продажа на кассе",
-        "shot3": "Урок: подключение устройств"
-      },
       "support": {
         "title": "Быстрая поддержка",
         "desc": "Если вопрос или ошибка — вы говорите с живым человеком.",
@@ -433,8 +452,8 @@ export const translations = {
       }
     },
     "equipment": {
-      "title": "Оборудование для кассы",
-      "lead": "Устройства, проверенные с программой. Добавьте в корзину — мы свяжемся.",
+      "title": "Комплект устройств для торговли",
+      "lead": "Получите все устройства для полного запуска кассовой системы в одном месте.",
       "kitTitle": "Готовый комплект",
       "kitDesc": "Не знаете, какое оборудование нужно — мы подберём.",
       "setupTotal": "Ваш набор для кассы",
@@ -443,31 +462,38 @@ export const translations = {
       "prev": "Предыдущие устройства",
       "next": "Следующие устройства",
       "details": "Подробнее",
-      "priceLabel": "Цена",
-      "currency": "сум",
       "inCartBadge": "В корзине",
       "addBtn": "Добавить",
       "addedToCartToast": "добавлено в корзину",
-      "technicalSpecs": "Технические характеристики",
       "close": "Закрыть",
       "officialPrice": "Официальная цена:",
       "parameters": "Параметры:",
       "inCart": "В корзине",
-      "addToCart": "В корзину"
+      "addToCart": "В корзину",
+      "eyebrow": "POS-ОБОРУДОВАНИЕ",
+      "viewAll": "Показать все устройства",
+      "viewRow": "Показать в ряд",
+      "cat": {
+        "monoblock": "МОНОБЛОК-ТЕРМИНАЛ",
+        "printers": "ПРИНТЕР ЧЕКОВ И ЭТИКЕТОК",
+        "scanners": "СКАНЕР ШТРИХКОДОВ",
+        "drawers": "ДЕНЕЖНЫЙ ЯЩИК",
+        "scales": "ВЕСЫ"
+      }
     },
     "pricing": {
-      "title": "Простая и честная цена",
-      "lead": "Выберите тариф под размер вашего магазина.",
+      "title": "Выберите тариф для вашего бизнеса",
+      "lead": "От небольшого магазина до крупной сети — понятный план с нужными возможностями.",
       "periodLabel": "Период оплаты",
       "period1": "1 месяц",
       "period6": "6 месяцев",
       "period12": "12 месяцев",
       "badge6": "1 месяц бесплатно",
       "badge12": "2 месяца бесплатно",
-      "perMonth": "в месяц",
+      "perMonth": "мес",
       "total": "Итого",
       "popular": "Популярный",
-      "choose": "Выбрать",
+      "choose": "Выбрать тариф",
       "start": {
         "name": "Start",
         "subtitle": "Для небольших магазинов",
@@ -483,12 +509,14 @@ export const translations = {
         "name": "Standard",
         "subtitle": "Для стандартных магазинов",
         "features": [
-          "Интеграция с налоговыми системами (Arca Group, Multikassa)",
-          "Платежные интеграции (Click, Payme, Uzum)",
+          "Интеграция с налоговой системой (Arco, Multikassa)",
+          "Интеграции с платежными системами (Click, Payme, Uzum)",
           "Список рекомендуемых товаров",
-          "Учет замороженных в товарах средств",
-          "Акции и наборы",
-          "Работа с валютой"
+          "Товары с замороженными средствами",
+          "Создание акций и наборов",
+          "Работа с валютой",
+          "Ведение расходов",
+          "Работа с маркировкой"
         ]
       },
       "premium": {
@@ -500,55 +528,46 @@ export const translations = {
           "Аналитика (ABC, OOS)",
           "Расширенные отчеты по движению товаров"
         ]
-      }
+      },
+      "eyebrow": "ПРОЗРАЧНЫЕ ЦЕНЫ"
     },
     "faq": {
-      "title": "Частые вопросы",
-      "lead": "Не нашли ответ? Напишите или позвоните нам.",
+      "title": "Ответы на частые вопросы",
+      "lead": "Не нашли нужный ответ? Наша команда поможет подобрать подходящее решение.",
       "ask": "Задать вопрос",
       "items": [
         {
-          "q": "Работает ли без интернета?",
+          "q": "Как POS-система поможет моему бизнесу?",
+          "a": "POS объединяет продажи, склад, отчеты и работу с клиентами. Это снижает ошибки, ускоряет процессы и помогает принимать решения по реальным данным."
+        },
+        {
+          "q": "Можно ли интегрировать POS с интернет-магазином?",
+          "a": "Да. IDO‘KON подключается к кассовым и платежным системам. Интеграцию с конкретным интернет-магазином можно обсудить с нашей командой."
+        },
+        {
+          "q": "Нужно ли специальное обучение?",
+          "a": "Интерфейс прост для новых кассиров. Курс I-Do‘kon также включает модули, практику, видео и интерактивные задания."
+        },
+        {
+          "q": "Работает ли касса без интернета?",
           "a": "Да, кассовый модуль полностью автономен. При восстановлении интернет-соединения все транзакции автоматически синхронизируются с сервером."
         },
         {
-          "q": "Мои данные в безопасности?",
-          "a": "Ваши данные хранятся в вашем аккаунте и открываются по логину и паролю. На вопросы о безопасности подробно ответит наш специалист."
+          "q": "Какую аналитику предоставляет POS?",
+          "a": "Доступны оборот, прибыль, топ-товары, данные по филиалам, ABC и OOS анализ, а также отчеты о движении товаров."
         },
         {
-          "q": "Как учится новый кассир?",
-          "a": "Экран простой, поэтому новый кассир быстро привыкает. Отправьте ему бесплатный онлайн-курс или позвоните в поддержку — мы обучим."
-        },
-        {
-          "q": "Можно ли перейти с 1С?",
-          "a": "Да. Товары из 1С или Excel мы переносим сами — вам не нужно вводить их заново."
-        },
-        {
-          "q": "Какое оборудование нужно?",
-          "a": "Обычно нужны кассовый компьютер или моноблок, принтер чеков и сканер штрих-кодов. Если не уверены — мы подберём."
-        },
-        {
-          "q": "Как оплатить?",
-          "a": "Вы выбираете тариф на 1, 6 или 12 месяцев. Способ оплаты согласует менеджер."
+          "q": "Как выбрать подходящий POS?",
+          "a": "Учтите тип и масштаб бизнеса, бюджет, интеграции и рост. Сравните Start, Standard и Premium или получите бесплатную консультацию."
         }
-      ]
+      ],
+      "eyebrow": "ЕСТЬ ВОПРОСЫ?"
     },
     "contact": {
-      "title": "Свяжитесь — мы поможем",
-      "lead": "Позвоните или напишите в Telegram — ответим на ваши вопросы.",
-      "callUs": "Позвоните",
-      "telegram": "Напишите в Telegram",
+      "title": "Подберем правильную конфигурацию для вашего магазина",
+      "lead": "Оставьте вопросы — команда изучит вашу потребность и поможет с тарифом и оборудованием.",
       "formTitle": "Свяжитесь с нами",
-      "storeTypeOptions": [
-        "Продукты питания / Супермаркет",
-        "Одежда и обувь",
-        "Электроника и гаджеты",
-        "Косметика и парфюмерия",
-        "Строительные материалы",
-        "Аптека",
-        "Кафе / Фастфуд",
-        "Другое направление"
-      ]
+      "eyebrow": "СВЯЖИТЕСЬ С НАМИ"
     },
     "form": {
       "name": "Ваше имя",
@@ -588,22 +607,19 @@ export const translations = {
       "decrease": "Уменьшить",
       "increase": "Увеличить",
       "remove": "Удалить",
-      "back": "Назад",
-      "continue": "Продолжить",
-      "successTitle": "Заказ принят!",
-      "successDesc": "Мы свяжемся с вами для подтверждения заказа."
+      "back": "Назад"
     },
     "lightbox": {
-      "close": "Закрыть",
-      "prev": "Назад"
+      "close": "Закрыть"
     },
     "footer": {
-      "about": "Простая касса и склад для магазина. Установка, обучение и помощь — с нами.",
-      "contacts": "Контакты",
-      "menu": "Разделы",
-      "location": "Ташкент, Узбекистан",
+      "about": "Наша POS-программа — итоговое решение, которое упрощает бизнес-процессы и повышает эффективность. Мы делаем ставку на простоту, широкие возможности и современные технологии.",
       "rights": "Все права защищены.",
-      "built": "Шрифт: системный · Фреймворк: React · Сделано в Ташкенте"
+      "product": "Продукт",
+      "resources": "Ресурсы",
+      "support": "Поддержка",
+      "software": "Программа",
+      "faq": "FAQ"
     },
     "sticky": {
       "call": "Позвонить",
@@ -613,6 +629,50 @@ export const translations = {
       "w1": "Видите?",
       "w2": "Всё так просто.",
       "w3": "Теперь очередь вашего магазина."
+    },
+    "features": {
+      "eyebrow": "РАЗВИВАЙТЕ БИЗНЕС С I-DO‘KON",
+      "title": "Простой интерфейс. Мощное управление.",
+      "lead": "Система, которая дает кассиру скорость, руководителю контроль, а покупателю — удобную покупку.",
+      "f1_title": "Скорость продаж ↑",
+      "f1_desc": "Оплата в один клик — меньше ошибок и короче очередь. Итоги дня видны сразу.",
+      "f1_tag": "НАЛИЧНЫЕ · КАРТА · QR",
+      "f2_title": "Просто для кассиров",
+      "f2_desc": "Быстрый поиск сканером, скидки и бонусы. Новый кассир быстро осваивает интерфейс.",
+      "f2_tag": "УДОБНЫЙ ИНТЕРФЕЙС",
+      "f3_title": "Отчеты и контроль",
+      "f3_desc": "Оборот, прибыль и топ-товары онлайн. Просмотр по филиалам и экспорт в один клик.",
+      "f3_tag": "РЕАЛЬНОЕ ВРЕМЯ",
+      "f4_title": "Установка и интеграция",
+      "f4_desc": "Запускается на Windows за 10 минут. Расширяется принтерами, сканерами, терминалами, Tez QR и API.",
+      "f4_tag": "ГОТОВАЯ ЭКОСИСТЕМА"
+    },
+    "integrations": {
+      "eyebrow": "ИНТЕГРАЦИЯ С СИСТЕМАМИ",
+      "title": "Перейдите на новую систему без остановки работы",
+      "lead": "IDO‘KON легко подключается к существующим кассовым системам. Ваши данные сохраняются, а наша команда рядом на время перехода.",
+      "c1_title": "Быстрое подключение",
+      "c1_desc": "Подключение к вашей системе за 1–2 дня",
+      "c2_title": "Безопасность данных",
+      "c2_desc": "Все данные сохраняются",
+      "c3_title": "Техническая поддержка",
+      "c3_desc": "Полная поддержка в процессе интеграции",
+      "supported": "ПОДДЕРЖИВАЕМЫЕ СИСТЕМЫ",
+      "mk": "Онлайн-касса, связанная с налоговой службой",
+      "ar": "Распространенная кассовая и отчетная система",
+      "ei": "Система SMS-уведомлений через E-imzo",
+      "otherTitle": "Другие системы",
+      "otherDesc": "Вашей системы нет в списке? Обсудите возможности интеграции с нами."
+    },
+    "course": {
+      "eyebrow": "БАЗА ЗНАНИЙ",
+      "title": "Курс I-Do‘kon",
+      "lead": "Освойте POS-программу полностью и легко. В каждом модуле есть практические примеры, видеоуроки и интерактивные задания.",
+      "highlight": "Каждый клиент, прошедший курс, сможет самостоятельно работать в программе и быстро находить ответы на вопросы.",
+      "cta": "Начать курс",
+      "shot1": "Курс: вход",
+      "shot2": "Курс: продажа на кассе",
+      "shot3": "Курс: устройства"
     }
   },
   "en": {
@@ -623,36 +683,46 @@ export const translations = {
       "close": "Close"
     },
     "meta": {
-      "title": "IDO'KON — simple POS software for your shop",
-      "description": "Running your shop is now easy. We install it, move your data and train your cashiers."
+      "title": "IDO‘KON — shop automation and POS system in Uzbekistan",
+      "description": "Modern POS, stock control, real-time reports and payment integrations — in one simple platform for your shop."
     },
     "nav": {
       "features": "Features",
-      "equipment": "Devices",
+      "equipment": "Hardware",
       "pricing": "Pricing",
-      "support": "Support",
       "contact": "Contact",
-      "tryDemo": "Request a demo",
+      "tryDemo": "Try the demo",
       "cart": "Cart",
       "theme": "Toggle theme",
-      "language": "Language"
+      "language": "Language",
+      "home": "Home",
+      "integrations": "Integrations",
+      "course": "I-Do‘kon Course"
     },
     "hero": {
-      "title": "Your whole shop, on one receipt",
-      "subtitle": "Checkout, stock and reports in one simple program. We install it, move your data and train your cashiers.",
-      "ctaPrimary": "Free demo",
-      "ctaSecondary": "Message us on Telegram",
-      "fact1": "Windows and Web",
-      "fact2": "Free training",
-      "fact3": "We migrate your data",
-      "imageAlt": "IDO'KON POS software screen",
+      "subtitle": "Modern POS, stock control, real-time reports and payment integrations — in one simple platform for your shop.",
+      "ctaPrimary": "Try the demo",
+      "ctaSecondary": "Get in touch",
+      "imageAlt": "IDO‘KON till software window: product list and sales record",
       "ratingLabel": "Customer rating",
-      "storesLabel": "active stores",
-      "caption": "The till program: one screen, a few buttons.",
-      "receipt": { "stamp": "Sample", "items": ["Bread", "Milk, 1 l", "Tea"], "total": "Total", "note": "Sample receipt, not real prices." }
+      "eyebrow": "THE NEW STANDARD IN RETAIL MANAGEMENT",
+      "titleStart": "Run your sales with",
+      "titleHighlight": "accurate numbers",
+      "titleEnd": "",
+      "meta1": "Windows & Web",
+      "meta2": "Live in 10 minutes",
+      "meta3": "24/7 support",
+      "liveStatus": "System online",
+      "windowTitle": "IDO‘KON · ANALYTICS",
+      "ratingBasis": "based on {n} reviews",
+      "zoom": "Enlarge"
     },
     "partners": {
-      "title": "Works with payment and fiscal systems in Uzbekistan"
+      "title": "Works with the systems your shop already uses",
+      "g1": "Click · Payme · Uzum",
+      "g2": "Arco",
+      "g3": "Multikassa",
+      "g4": "E-imzo SMS"
     },
     "how": {
       "title": "How it starts",
@@ -665,55 +735,42 @@ export const translations = {
       "s3_desc": "We answer your questions from day one."
     },
     "software": {
-      "title": "Everything you need every day",
-      "lead": "Four main jobs: sales, stock, reports and cashiers.",
-      "zoom": "View full size",
+      "title": "A clear view for every decision",
+      "lead": "From the checkout to the admin panel, the information your team needs is always in place.",
+      "zoom": "Enlarge",
       "tabs": {
         "sales": "Sales",
         "inventory": "Stock",
         "analytics": "Analytics",
-        "cashiers": "Cashiers"
+        "cashiers": "Cashiers",
+        "order": "Order"
       },
-      "screens": {
-        "sales": {
-          "title": "See at a glance how much you sold today",
-          "b1": "Daily and monthly sales on one screen",
-          "b2": "Know which cashier sold what",
-          "b3": "Export any report to Excel in one click"
-        },
-        "inventory": {
-          "title": "Never run out, never overstock",
-          "b1": "See what is left of every product",
-          "b2": "Find any product fast by barcode",
-          "b3": "Know early when stock runs low"
-        },
-        "analytics": {
-          "title": "Know which products actually make money",
-          "b1": "A list of your best and slowest products",
-          "b2": "Revenue and margin in plain numbers",
-          "b3": "Spot money stuck in unsold stock"
-        },
-        "cashiers": {
-          "title": "Even a new cashier gets going fast",
-          "b1": "Simple screen: search, scan, pay",
-          "b2": "Accepts cash, card and QR payments",
-          "b3": "Closing a shift and returns are easy too"
-        }
-      }
+      "eyebrow": "CORE FEATURES",
+      "orderLabel": "SUGGESTED ORDER",
+      "tablist": "Software screens",
+      "p1_title": "Inventory management",
+      "p1_desc": "Tracks stock and goods in and out, and reminds you of the minimum level.",
+      "p2_title": "Sales and payment",
+      "p2_desc": "Takes cash, card and QR payment in one tap, with fewer mistakes.",
+      "p3_title": "Reports and analysis",
+      "p3_desc": "Shows turnover and profit in real time, with export and branch view.",
+      "p4_title": "Safe, fast transactions",
+      "p4_desc": "EMV-based protected payment, quick confirmation and a reliable result."
     },
     "sectors": {
-      "title": "Which shops it is for",
-      "lead": "From a small shop to a cafe — any format works.",
-      "s1": "Retail stores",
+      "title": "Every kind of shop. One reliable system.",
+      "lead": "Our software is adapted to a wide range of businesses and trades.",
+      "s1": "Retail shops",
       "s1_desc": "Daily sales and stock control",
       "s2": "Supermarkets",
-      "s2_desc": "High traffic and multiple checkouts",
+      "s2_desc": "High traffic and several tills",
       "s3": "Mini-markets",
-      "s3_desc": "Simple and efficient management",
+      "s3_desc": "Simple, fast and low-cost management",
       "s4": "Online retail",
-      "s4_desc": "Synced orders and stock",
-      "s5": "Cafés & restaurants",
-      "s5_desc": "Table orders and kitchen checks"
+      "s4_desc": "Orders and stock kept in line",
+      "s5": "Many more trades",
+      "s5_desc": "Integration to fit your business",
+      "eyebrow": "WHO IT IS FOR"
     },
     "care": {
       "title": "We stay with you",
@@ -726,14 +783,6 @@ export const translations = {
         "title": "We train every new cashier",
         "desc": "New cashier? Send them the free course link or call support — they learn quickly."
       },
-      "course": {
-        "title": "Free online course",
-        "desc": "Learn the program step by step — you and your staff.",
-        "cta": "Open the course",
-        "shot1": "Course sign-in",
-        "shot2": "Lesson: selling at the till",
-        "shot3": "Lesson: connecting devices"
-      },
       "support": {
         "title": "Fast support",
         "desc": "If you have a question or a bug, you talk to a real person.",
@@ -741,8 +790,8 @@ export const translations = {
       }
     },
     "equipment": {
-      "title": "Devices for your till",
-      "lead": "Devices tested with the program. Add to cart and we will call you.",
+      "title": "The devices you need to sell",
+      "lead": "Get everything needed to run the till system in one place.",
       "kitTitle": "Ready-made kit",
       "kitDesc": "Not sure which devices you need? We will choose for you.",
       "setupTotal": "Your checkout setup",
@@ -751,31 +800,38 @@ export const translations = {
       "prev": "Previous devices",
       "next": "Next devices",
       "details": "Details",
-      "priceLabel": "Price",
-      "currency": "UZS",
       "inCartBadge": "In Cart",
       "addBtn": "Add",
       "addedToCartToast": "added to cart",
-      "technicalSpecs": "Technical Specifications",
       "close": "Close",
       "officialPrice": "Official Price:",
       "parameters": "Parameters:",
       "inCart": "In cart",
-      "addToCart": "Add to cart"
+      "addToCart": "Add to cart",
+      "eyebrow": "POS HARDWARE",
+      "viewAll": "See all devices",
+      "viewRow": "Show in a row",
+      "cat": {
+        "monoblock": "ALL-IN-ONE TERMINAL",
+        "printers": "RECEIPT AND LABEL PRINTER",
+        "scanners": "BARCODE SCANNER",
+        "drawers": "CASH DRAWER",
+        "scales": "SCALE"
+      }
     },
     "pricing": {
-      "title": "Simple, open pricing",
-      "lead": "Pick the plan that fits your shop.",
+      "title": "Choose the plan that fits your business",
+      "lead": "From a small shop to a large chain — a clear plan with the features you need.",
       "periodLabel": "Billing period",
       "period1": "1 month",
       "period6": "6 months",
       "period12": "12 months",
       "badge6": "1 month free",
       "badge12": "2 months free",
-      "perMonth": "per month",
+      "perMonth": "mo",
       "total": "Total",
       "popular": "Popular",
-      "choose": "Choose",
+      "choose": "Choose plan",
       "start": {
         "name": "Start",
         "subtitle": "For small stores",
@@ -791,12 +847,14 @@ export const translations = {
         "name": "Standard",
         "subtitle": "For standard stores",
         "features": [
-          "Tax system integration (Arca Group, Multikassa)",
-          "Payment integrations (Click, Payme, Uzum)",
-          "Recommended products list",
-          "Frozen-funds product tracking",
+          "Tax system integration (Arco, Multikassa)",
+          "Payment system integrations (Click, Payme, Uzum)",
+          "Suggested products list",
+          "Goods with frozen funds",
           "Create promotions and bundles",
-          "Multi-currency support"
+          "Work with foreign currency",
+          "Expense tracking",
+          "Product marking support"
         ]
       },
       "premium": {
@@ -808,55 +866,46 @@ export const translations = {
           "Analytics (ABC and OOS)",
           "Extended product movement reports"
         ]
-      }
+      },
+      "eyebrow": "CLEAR PRICING"
     },
     "faq": {
-      "title": "Frequently asked questions",
-      "lead": "Did not find your answer? Write or call us.",
+      "title": "Answers to common questions",
+      "lead": "Did not find the answer? Our team will help you choose the right setup.",
       "ask": "Ask a question",
       "items": [
         {
-          "q": "Does it work without internet?",
+          "q": "How can a POS system help my business?",
+          "a": "A POS brings sales, inventory, reporting and customer workflows together. It reduces errors, speeds up work and supports decisions with real data."
+        },
+        {
+          "q": "Can I integrate the POS with my online store?",
+          "a": "Yes. IDO‘KON connects to checkout and payment systems. Talk to our team about integration with a specific online store or platform."
+        },
+        {
+          "q": "Do I need special training?",
+          "a": "The interface is easy for new cashiers. The I-Do‘kon course also includes modules, practice, video lessons and interactive tasks."
+        },
+        {
+          "q": "Does the cash register work without internet?",
           "a": "Yes, the POS register module operates completely offline without downtime. Once internet connectivity is restored, all transactions securely synchronize with the cloud."
         },
         {
-          "q": "Is my data safe?",
-          "a": "Your data is stored in your own account and opens with a login and password. Our specialist will answer any security questions in detail."
+          "q": "What sales analytics are available?",
+          "a": "View turnover, profit, top products, branch breakdowns, ABC and OOS analysis, and extended product movement reports."
         },
         {
-          "q": "How does a new cashier learn?",
-          "a": "The screen is simple, so a new cashier gets used to it quickly. Send them the free online course or call support — we will train them."
-        },
-        {
-          "q": "Can I switch from 1C?",
-          "a": "Yes. We move your products from 1C or Excel for you, so you do not retype them."
-        },
-        {
-          "q": "What devices do I need?",
-          "a": "Usually a till computer or monoblock, a receipt printer and a barcode scanner. If you are not sure, we will choose for you."
-        },
-        {
-          "q": "How do I pay?",
-          "a": "You choose a plan for 1, 6 or 12 months. Our manager will agree the payment method with you."
+          "q": "How do I choose the right POS?",
+          "a": "Consider your business type, scale, budget, integrations and growth. Compare Start, Standard and Premium, or contact us for a free consultation."
         }
-      ]
+      ],
+      "eyebrow": "GOT A QUESTION?"
     },
     "contact": {
-      "title": "Get in touch — we will help",
-      "lead": "Call us or message us on Telegram — we will answer your questions.",
-      "callUs": "Call us",
-      "telegram": "Message on Telegram",
+      "title": "We will find the right setup for your shop",
+      "lead": "Leave your questions. Our team will look at your needs and help with a plan and devices.",
       "formTitle": "Contact us",
-      "storeTypeOptions": [
-        "Grocery / Supermarket",
-        "Apparel & Footwear",
-        "Electronics & Gadgets",
-        "Cosmetics & Pharmacy",
-        "Hardware & Construction",
-        "Pharmacy",
-        "Café / Quick Service Food",
-        "Other Retail Format"
-      ]
+      "eyebrow": "GET IN TOUCH"
     },
     "form": {
       "name": "Your name",
@@ -896,22 +945,19 @@ export const translations = {
       "decrease": "Decrease",
       "increase": "Increase",
       "remove": "Remove",
-      "back": "Back",
-      "continue": "Continue",
-      "successTitle": "Order received!",
-      "successDesc": "We will contact you to confirm the order."
+      "back": "Back"
     },
     "lightbox": {
-      "close": "Close",
-      "prev": "Previous"
+      "close": "Close"
     },
     "footer": {
-      "about": "Simple POS and stock software for shops. Setup, training and support — with us.",
-      "contacts": "Contact",
-      "menu": "Sections",
-      "location": "Tashkent, Uzbekistan",
+      "about": "Our POS software simplifies your business processes and raises efficiency. We focus on simplicity, rich features and modern technology working together.",
       "rights": "All rights reserved.",
-      "built": "Font: system · Framework: React · Made in Tashkent"
+      "product": "Product",
+      "resources": "Resources",
+      "support": "Support",
+      "software": "Software",
+      "faq": "FAQ"
     },
     "sticky": {
       "call": "Call",
@@ -921,6 +967,50 @@ export const translations = {
       "w1": "See?",
       "w2": "It really is that simple.",
       "w3": "Now it is your shop’s turn."
+    },
+    "features": {
+      "eyebrow": "GROW YOUR BUSINESS WITH I-DO‘KON",
+      "title": "Simple interface. Strong control.",
+      "lead": "A point-of-sale system that gives cashiers speed, managers control and customers a smooth checkout.",
+      "f1_title": "Faster sales ↑",
+      "f1_desc": "One-tap payment means fewer errors and shorter lines. Results are visible right at closing time.",
+      "f1_tag": "CASH · CARD · QR",
+      "f2_title": "Easy for cashiers",
+      "f2_desc": "Fast scanner search, discounts and bonuses. A new cashier learns the screen quickly.",
+      "f2_tag": "FRIENDLY INTERFACE",
+      "f3_title": "Reports and control",
+      "f3_desc": "Turnover, profit and top products online. Branch view and export in one click.",
+      "f3_tag": "REAL TIME",
+      "f4_title": "Setup and integration",
+      "f4_desc": "Starts on Windows in 10 minutes. Extends with printers, scanners, terminals, Tez QR and API.",
+      "f4_tag": "READY ECOSYSTEM"
+    },
+    "integrations": {
+      "eyebrow": "SYSTEM INTEGRATION",
+      "title": "Move to the new system without stopping work",
+      "lead": "IDO‘KON connects easily to existing till systems. Your data is kept, and our team stays with you through the switch.",
+      "c1_title": "Quick connection",
+      "c1_desc": "Connect to your current system in 1–2 days",
+      "c2_title": "Data safety",
+      "c2_desc": "All your data is kept",
+      "c3_title": "Technical support",
+      "c3_desc": "Full support during the integration",
+      "supported": "SUPPORTED SYSTEMS",
+      "mk": "Online till system linked to the tax office",
+      "ar": "A widely used till and reporting system",
+      "ei": "SMS notification system through E-imzo",
+      "otherTitle": "Other systems",
+      "otherDesc": "Is your system not listed? Talk to us about integration options."
+    },
+    "course": {
+      "eyebrow": "KNOWLEDGE BASE",
+      "title": "I-Do‘kon Course",
+      "lead": "Learn the POS software fully and easily. Each module has practical examples, video lessons and interactive tasks.",
+      "highlight": "Every client who finishes the course can use the program on their own and find answers quickly.",
+      "cta": "Start the course",
+      "shot1": "Course: sign in",
+      "shot2": "Course: selling at the till",
+      "shot3": "Course: devices"
     }
   }
 };

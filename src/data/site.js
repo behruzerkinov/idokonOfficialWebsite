@@ -2,6 +2,7 @@
 export const SITE = {
   phones: ['+998991130999', '+998953600999'],
   telegram: 'https://t.me/idokonuz',
+  instagram: 'https://www.instagram.com/idokon_uz/',
   courseUrl: 'https://idokon-course.vercel.app',
   domain: 'https://idokon.uz',
   currency: 'UZS',
@@ -21,16 +22,18 @@ export const SITE = {
     { id: 'premium', monthly: 250000, '6m': 1250000, '12m': 2500000 },
   ],
   // Marketing claims. Rendered ONLY when verified === true.
+  // Owner supplied these on the live site (idokom-uz.netlify.app) on 2026-11-17. Set false to hide any of them.
   claims: {
-    activeStores: { value: '900+', verified: false },
-    rating: { value: '4.9', verified: false },
-    setupMinutes: { value: 10, verified: false },
-    checkoutSec: { value: 0.8, verified: false },
-    callbackMin: { value: 10, verified: false },
+    rating: { value: '4.9', verified: true },
+    reviews: { value: 215, verified: true },
+    setupMinutes: { value: 10, verified: true },
+    support247: { verified: true },
   },
 };
 
 const CURRENCY_LABEL = { uz: "so'm", ru: 'сум', en: 'UZS' };
+
+export const currencyLabel = (lang = 'uz') => CURRENCY_LABEL[lang] || CURRENCY_LABEL.uz;
 
 export const formatPrice = (n, lang = 'uz') =>
   `${new Intl.NumberFormat('uz-UZ').format(n)} ${CURRENCY_LABEL[lang] || CURRENCY_LABEL.uz}`;

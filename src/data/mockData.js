@@ -99,12 +99,12 @@ export const hardwareProducts = [
   {
     "id": "monoblock-2",
     "title": {
-      "uz": "POS monoblok Dual Display",
+      "uz": "POS monoblok",
       "ru": "POS-моноблок Dual Display",
       "en": "POS Dual Display Monoblock"
     },
     "category": "monoblock",
-    "price": 4902000,
+    "price": 4802000,
     "rating": 5,
     "reviewsCount": 44,
     "warranty": {
@@ -201,7 +201,7 @@ export const hardwareProducts = [
   {
     "id": "printer-1",
     "title": {
-      "uz": "Xprinter 365B (Etiketka & Chek)",
+      "uz": "Xprinter 365B",
       "ru": "Xprinter 365B (Этикетки и чеки)",
       "en": "Xprinter 365B Thermal Barcode"
     },
@@ -298,7 +298,7 @@ export const hardwareProducts = [
   {
     "id": "printer-2",
     "title": {
-      "uz": "Xprinter Check Q-80",
+      "uz": "Xprinter Check Q‑80",
       "ru": "Xprinter Check Q-80",
       "en": "Xprinter Check Q-80 Receipt"
     },
@@ -387,7 +387,7 @@ export const hardwareProducts = [
       }
     ],
     "desc": {
-      "uz": "80 mm chek printeri, USB va LAN ulanishlari, avtomatik kesish pichog'i bilan.",
+      "uz": "80 mm chek printeri, USB va LAN ulanishlari bilan.",
       "ru": "Чековый принтер 80 мм с подключением USB и LAN, автообрезчик.",
       "en": "80 mm receipt printer with USB and LAN connectivity and auto-cutter."
     }
@@ -395,12 +395,12 @@ export const hardwareProducts = [
   {
     "id": "scanner-1",
     "title": {
-      "uz": "WINSON A780 2D Shtrix Skaner",
+      "uz": "WINSON A780",
       "ru": "WINSON A780 2D Сканер",
       "en": "WINSON A780 2D Barcode Scanner"
     },
     "category": "scanners",
-    "price": 520000,
+    "price": 751500,
     "rating": 4.9,
     "reviewsCount": 89,
     "warranty": {
@@ -472,7 +472,7 @@ export const hardwareProducts = [
       }
     ],
     "desc": {
-      "uz": "USB, QR kod, shtrix kod va Asl Belgisi markirovkasini darhol o‘qiydi. Sifat kafolati 1 yil.",
+      "uz": "USB, QR kod, shtrix kod va markirovkani o‘qish. Sifat kafolati 1 yil.",
       "ru": "USB, QR-коды, штрихкоды и маркировка «Asl Belgisi». Гарантия 1 год.",
       "en": "USB, QR code, standard 1D barcodes, and digital product markings. One-year warranty."
     }
@@ -480,12 +480,12 @@ export const hardwareProducts = [
   {
     "id": "box-1",
     "title": {
-      "uz": "Pul qo‘yish uchun metall quti (RJ-11)",
+      "uz": "Pul qo‘yish uchun quti",
       "ru": "Денежный ящик металлический (RJ-11)",
       "en": "Heavy-Duty Metal Cash Drawer"
     },
     "category": "drawers",
-    "price": 490000,
+    "price": 751500,
     "rating": 4.7,
     "reviewsCount": 35,
     "warranty": {
@@ -557,7 +557,7 @@ export const hardwareProducts = [
       }
     ],
     "desc": {
-      "uz": "Elektromexanik qulf, RJ‑11, 5 ta banknot va 5 ta tanga bo‘limi, mustahkam metall korpus.",
+      "uz": "Elektromexanik qulf, RJ‑11, 5 ta banknot va 5 ta tanga bo‘limi, metall korpus.",
       "ru": "Электромеханический замок, RJ‑11, 5 отделений для купюр и 5 для монет, металл.",
       "en": "Electromechanical lock, RJ‑11, five bill and five coin compartments, solid metal."
     }
@@ -565,12 +565,12 @@ export const hardwareProducts = [
   {
     "id": "scale-1",
     "title": {
-      "uz": "Rongta 1510 Shtrix kodli tarozi",
+      "uz": "Rongta 1510",
       "ru": "Rongta 1510 Весы с печатью этикеток",
       "en": "Rongta 1510 Barcode Label Scale"
     },
     "category": "scales",
-    "price": 3250000,
+    "price": 5886750,
     "rating": 4.8,
     "reviewsCount": 29,
     "warranty": {
@@ -642,7 +642,7 @@ export const hardwareProducts = [
       }
     ],
     "desc": {
-      "uz": "Shtrix kodli 15 kg tarozi. Tezkor etiketka chiqarish va kompyuterga ulanish. Sifat kafolati 6 oy.",
+      "uz": "Shtrix kodli 15 kg tarozi. Sifat kafolati 6 oy.",
       "ru": "Весы со штрихкодом до 15 кг, печать этикеток, подключение к ПК. Гарантия 6 месяцев.",
       "en": "15 kg barcode scale with built-in label printer and network sync. Six-month warranty."
     }
@@ -650,12 +650,12 @@ export const hardwareProducts = [
   {
     "id": "scale-2",
     "title": {
-      "uz": "Shtrix kodli savdo tarozisi (77 tugmali)",
+      "uz": "Shtrix kodli savdo tarozisi",
       "ru": "Торговые весы со штрихкодом (77 клавиш)",
       "en": "Retail Barcode Scale (77 Hotkeys)"
     },
     "category": "scales",
-    "price": 3850000,
+    "price": 7142250,
     "rating": 4.9,
     "reviewsCount": 41,
     "warranty": {
@@ -727,9 +727,33 @@ export const hardwareProducts = [
       }
     ],
     "desc": {
-      "uz": "Xitoy texnologiyasi, 30 kg gacha, 4000 tagacha PLU, avtonom akkumulyator. Kafolat 6 oy.",
+      "uz": "Rossiyada ishlab chiqarilgan, 77 tugma, 40 g–15 kg, 58 mm qog‘oz. Kafolat 1 yil.",
       "ru": "Китай, до 30 кг, до 4000 PLU, автономный аккумулятор. Гарантия 6 месяцев.",
       "en": "Made in China, up to 30 kg and 4,000 PLUs with internal battery. Six-month warranty."
+    }
+  },
+  {
+    "id": "scale-3",
+    "title": {
+      "uz": "TMA tarozi",
+      "ru": "Весы TMA",
+      "en": "TMA scale"
+    },
+    "category": "scales",
+    "price": 4383750,
+    "rating": 4.9,
+    "reviewsCount": 0,
+    "warranty": {
+      "uz": "6 oy kafolat",
+      "ru": "6 месяцев гарантии",
+      "en": "6-month warranty"
+    },
+    "image": "https://idokon.uz/assets/img/Oborodvniya/scale3.png",
+    "specs": [],
+    "desc": {
+      "uz": "Xitoy, 30 kg gacha, 4000 tagacha PLU. Kafolat 6 oy.",
+      "ru": "Китай, до 30 кг, до 4000 PLU. Гарантия 6 месяцев.",
+      "en": "Made in China, up to 30 kg, up to 4000 PLU. 6-month warranty."
     }
   }
 ];

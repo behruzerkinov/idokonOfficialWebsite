@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import { Partners } from './Partners';
-import { HowItWorks } from './HowItWorks';
+import { ValueGrid } from './ValueGrid';
 import { PosInteractiveShowcase } from './PosInteractiveShowcase';
 import { SectorSolutions } from './SectorSolutions';
-import { CareSection } from './CareSection';
 import { HardwareMarketplace } from './HardwareMarketplace';
+import { IntegrationMigration } from './IntegrationMigration';
+import { CareSection } from './CareSection';
+import { HowItWorks } from './HowItWorks';
 import { PricingCalculator } from './PricingCalculator';
+import { CourseAcademy } from './CourseAcademy';
 import { FaqAccordion } from './FaqAccordion';
 import { ContactConfigurator } from './ContactConfigurator';
 import { Statement } from './Statement';
 
-const scrollToContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
 /** Everything under the hero, one chunk: keeps the first load small so the hero paints sooner. */
 export default function BelowFold({ t, lang, cart, prefill, onAddToCart, onOpenSpecsModal, onOpenCart, onRequestKit, onSelectPlan, onOpenLightbox, onOpenDemo }) {
@@ -23,13 +26,16 @@ export default function BelowFold({ t, lang, cart, prefill, onAddToCart, onOpenS
   return (
     <>
       <Partners t={t} />
-      <HowItWorks t={t} />
+      <ValueGrid t={t} />
       <PosInteractiveShowcase t={t} onOpenLightbox={onOpenLightbox} />
       <SectorSolutions t={t} />
-      <CareSection t={t} lang={lang} onOpenLightbox={onOpenLightbox} />
       <HardwareMarketplace lang={lang} t={t} cart={cart} onAddToCart={onAddToCart} onOpenSpecsModal={onOpenSpecsModal} onOpenCart={onOpenCart} onRequestKit={onRequestKit} />
+      <IntegrationMigration t={t} onOpenContact={() => scrollTo('contact')} />
+      <CareSection t={t} lang={lang} />
+      <HowItWorks t={t} />
       <PricingCalculator t={t} lang={lang} onSelectPlan={onSelectPlan} />
-      <FaqAccordion t={t} onScrollToContact={scrollToContact} />
+      <CourseAcademy t={t} onOpenLightbox={onOpenLightbox} />
+      <FaqAccordion t={t} onScrollToContact={() => scrollTo('contact')} />
       <ContactConfigurator t={t} lang={lang} prefill={prefill} />
       <Statement t={t} onOpenDemo={onOpenDemo} />
     </>
