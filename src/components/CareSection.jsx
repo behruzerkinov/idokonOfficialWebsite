@@ -9,7 +9,7 @@ export const CareSection = ({ t, lang }) => {
   const hours = SITE.supportHours?.[lang];
   const Block = ({ icon: Icon, title, children }) => (
     <Reveal>
-      <div className="card spot h-full p-7">
+      <div className="card spot tilt h-full p-7">
         <span className="chip-num"><Icon size={18} strokeWidth={2} aria-hidden="true" /></span>
         <h3 className="mt-6 text-lg font-bold tracking-tight">{title}</h3>
         {children}

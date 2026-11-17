@@ -44,7 +44,7 @@ export const LangMenu = ({ lang, setLang, label, up = false }) => {
   );
 };
 
-export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpenCart, onOpenDemo }) => {
+export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, cartCount, onOpenCart, onOpenDemo }) => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');
 
@@ -74,16 +74,16 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
   };
 
   const ThemeBtn = (
-    <button type="button" onClick={toggleTheme} className="icon-btn" aria-label={t.nav.theme}>
-      {theme === 'dark' ? <Sun size={20} strokeWidth={1.75} /> : <Moon size={20} strokeWidth={1.75} />}
+    <button type="button" onClick={(e) => toggleTheme(e)} className="icon-btn" aria-label={t.nav.theme}>
+      {isDark ? <Sun size={20} strokeWidth={1.75} /> : <Moon size={20} strokeWidth={1.75} />}
     </button>
   );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md" style={{ borderColor: 'var(--line)', background: 'color-mix(in srgb, var(--bg) 94%, transparent)' }}>
+    <header className="site-header">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded focus:bg-[var(--surface)] focus:px-3 focus:py-2">{t.skip}</a>
 
-      <div className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between gap-3 px-4 sm:px-6">
+      <div className="flex h-[62px] items-center justify-between gap-3 px-3 sm:px-5">
         <a href="#home" onClick={(e) => { e.preventDefault(); go('home'); }} aria-label="IDO'KON" className="flex shrink-0 items-center">
           <img src={SITE.brand.logo} alt="IDO'KON" width="98" height="30" className="h-9 w-auto" />
         </a>
@@ -111,7 +111,7 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
               <button type="button" className="icon-btn xl:hidden" aria-label={t.menu.open}><Menu size={22} strokeWidth={1.75} /></button>
             </Drawer.Trigger>
             <Drawer.Portal>
-              <Drawer.Overlay className="fixed inset-0 z-[90] bg-black/40" />
+              <Drawer.Overlay className="fixed inset-0 z-[90] bg-black/40 backdrop-blur-sm" />
               <Drawer.Content className="fixed bottom-0 right-0 top-0 z-[95] flex w-[85vw] max-w-sm flex-col bg-[var(--bg)] p-5 text-[var(--fg)] shadow-lg outline-none">
                 <Drawer.Title className="sr-only">{t.menu.open}</Drawer.Title>
                 <Drawer.Description className="sr-only">{t.menu.open}</Drawer.Description>
@@ -135,6 +135,7 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
           </Drawer.Root>
         </div>
       </div>
+      <span className="scroll-progress" aria-hidden="true" />
     </header>
   );
 };

@@ -21,7 +21,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
             <ol className="mt-8 space-y-5">
               {[1, 2, 3].map((n) => (
                 <li key={n} className="flex gap-4">
-                  <span className="chip-num shrink-0" style={{ background: 'var(--accent-bright)', color: '#052e22' }}>0{n}</span>
+                  <span className="chip-num shrink-0" style={{ background: 'var(--accent-bright)', color: 'var(--bright-ink)' }}>0{n}</span>
                   <div>
                     <h3 className="font-bold">{i[`c${n}_title`]}</h3>
                     <p className="text-sm" style={{ color: 'var(--on-deep-muted)' }}>{i[`c${n}_desc`]}</p>

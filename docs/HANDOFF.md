@@ -9,8 +9,8 @@ data migration from 1C/Excel, support, free course), clear prices, honest claims
 ## What is built (all merged to main)
 - Page follows the owner's live reference (https://idokom-uz.netlify.app): hero with product window, partners strip, 4 feature cards, dark software section with 4 screen tabs, sectors, hardware carousel + cart, integrations, care (migration, training, support), how it starts, pricing with 1/6/12 month switch, course, FAQ, contact, closing line, dark footer. Mobile sticky call/Telegram bar.
 - One facts file: `src/data/site.js` (phones, Telegram, Instagram, plans, claims, brand assets, flags).
-  Claims (rating 4.9, 215 reviews, 10 min setup, 24/7) are marked verified because they are on the owner's live site. Set `verified: false` to hide one.
-- Copy lives in `src/data/translations.js` (3 languages, same keys, 241 keys). Check with `bun run check:i18n`.
+  Claims (rating 4.9, 215 reviews, 10 min setup) are marked verified because they are on the owner's live site. Set `verified: false` to hide one.
+- Copy lives in `src/data/translations.js` (3 languages, same keys, 237 keys). Check with `bun run check:i18n`.
 - Visual style: the reference palette (deep teal ink #132c2e, mint hero wash, green accent), Inter variable (self-hosted via fontsource), light by default with a dark mode. Motion follows Emil Kowalski rules. Kept from the first Gemini build: spot glow on cards, live ping dot, first-visit preloader, nav text scramble.
 - Offline mode: `SITE.leadsEnabled = false`. Forms are hidden; visitors see call and Telegram buttons.
 - Lead API is ready but off: `api/lead.js` (Vercel function, posts to a Telegram group), with tests.

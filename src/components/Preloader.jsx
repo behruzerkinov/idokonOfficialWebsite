@@ -37,7 +37,7 @@ export const Preloader = () => {
       <div className="w-56 text-center">
         <img src={SITE.brand.logo} alt="" width="140" height="43" className="mx-auto h-10 w-auto" />
         <div className="mt-6 h-[3px] overflow-hidden rounded-full" style={{ background: 'var(--line)' }}>
-          <div className="h-full bg-emerald-500" style={{ width: `${n}%` }} />
+          <div className="h-full" style={{ width: `${n}%`, background: 'var(--accent)' }} />
         </div>
         <p className="mt-3 font-mono text-xs tabular-nums" style={{ color: 'var(--muted)' }}>{n}%</p>
       </div>

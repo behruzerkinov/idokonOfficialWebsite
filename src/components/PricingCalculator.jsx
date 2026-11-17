@@ -40,7 +40,7 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
             return (
               <Reveal key={plan.id}>
                 <div className="card relative flex h-full flex-col p-8" style={on ? { background: 'var(--deep)', color: 'var(--on-deep)', boxShadow: 'var(--shadow-pop)' } : undefined}>
-                  {on && <span className="absolute right-6 top-6 rounded-sm px-3 py-1 text-[11px] font-bold tracking-wider" style={{ background: 'var(--accent-bright)', color: '#052e22' }}>{t.pricing.popular.toUpperCase()}</span>}
+                  {on && <span className="absolute right-6 top-6 rounded-sm px-3 py-1 text-[11px] font-bold tracking-wider" style={{ background: 'var(--accent-bright)', color: 'var(--bright-ink)' }}>{t.pricing.popular.toUpperCase()}</span>}
                   <h3 className="text-2xl font-bold tracking-tight">{info.name}</h3>
                   <p className="mt-1 text-sm" style={{ color: muted }}>{info.subtitle}</p>
                   <p className="mt-8 flex flex-wrap items-baseline gap-x-2 tabular-nums">
@@ -55,7 +55,7 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
                       </li>
                     ))}
                   </ul>
-                  <button type="button" onClick={() => onSelectPlan(plan.id)} className={on ? 'btn w-full' : 'btn-outline w-full'} style={on ? { background: 'var(--accent-bright)', color: '#052e22' } : undefined}>
+                  <button type="button" onClick={() => onSelectPlan(plan.id)} className={on ? 'btn w-full' : 'btn-outline w-full'} style={on ? { background: 'var(--accent-bright)', color: 'var(--bright-ink)' } : undefined}>
                     {t.pricing.choose}
                   </button>
                 </div>

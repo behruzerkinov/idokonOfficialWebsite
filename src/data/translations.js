@@ -35,7 +35,7 @@ export const translations = {
       "titleEnd": "bilan boshqaring",
       "meta1": "Windows va Web",
       "meta2": "10 daqiqada ishga tushadi",
-      "meta3": "24/7 qo‘llab-quvvatlash",
+      "meta3": "Telefon va Telegram orqali yordam",
       "liveStatus": "Tizim ishlamoqda",
       "windowTitle": "IDO‘KON · ANALYTICS",
       "ratingBasis": "{n} ta sharh asosida",
@@ -90,10 +90,6 @@ export const translations = {
       "s2_desc": "Yuqori oqim va ko‘p kassali savdo",
       "s3": "Mini-marketlar",
       "s3_desc": "Sodda, tez va tejamkor boshqaruv",
-      "s4": "Onlayn savdo",
-      "s4_desc": "Buyurtma va qoldiqni uyg‘unlashtirish",
-      "s5": "Yana ko‘plab sohalar",
-      "s5_desc": "Biznesingizga mos integratsiya",
       "eyebrow": "KIMLAR UCHUN"
     },
     "care": {
@@ -306,7 +302,7 @@ export const translations = {
       "f3_desc": "Aylanma, foyda va top mahsulotlar onlayn. Filiallar kesimida ko‘rish va eksport bir tugmada.",
       "f3_tag": "REAL VAQT",
       "f4_title": "O‘rnatish va integratsiya",
-      "f4_desc": "Windows’da 10 daqiqada ishga tushadi. Printer, skaner, terminal, Tez QR va API bilan kengayadi.",
+      "f4_desc": "Windows’da 10 daqiqada ishga tushadi. Printer, skaner, terminal va Tez QR bilan kengayadi.",
       "f4_tag": "TAYYOR EKOTIZIM"
     },
     "integrations": {
@@ -373,7 +369,7 @@ export const translations = {
       "titleEnd": "",
       "meta1": "Windows и Web",
       "meta2": "Запуск за 10 минут",
-      "meta3": "Поддержка 24/7",
+      "meta3": "Поддержка по телефону и в Telegram",
       "liveStatus": "Система работает",
       "windowTitle": "IDO‘KON · ANALYTICS",
       "ratingBasis": "на основе {n} отзывов",
@@ -428,10 +424,6 @@ export const translations = {
       "s2_desc": "Высокий поток и несколько касс",
       "s3": "Мини-маркеты",
       "s3_desc": "Простое, быстрое и экономичное управление",
-      "s4": "Онлайн-торговля",
-      "s4_desc": "Согласование заказов и остатков",
-      "s5": "И многие другие сферы",
-      "s5_desc": "Интеграция под ваш бизнес",
       "eyebrow": "ДЛЯ КОГО"
     },
     "care": {
@@ -644,7 +636,7 @@ export const translations = {
       "f3_desc": "Оборот, прибыль и топ-товары онлайн. Просмотр по филиалам и экспорт в один клик.",
       "f3_tag": "РЕАЛЬНОЕ ВРЕМЯ",
       "f4_title": "Установка и интеграция",
-      "f4_desc": "Запускается на Windows за 10 минут. Расширяется принтерами, сканерами, терминалами, Tez QR и API.",
+      "f4_desc": "Запускается на Windows за 10 минут. Расширяется принтерами, сканерами, терминалами и Tez QR.",
       "f4_tag": "ГОТОВАЯ ЭКОСИСТЕМА"
     },
     "integrations": {
@@ -711,7 +703,7 @@ export const translations = {
       "titleEnd": "",
       "meta1": "Windows & Web",
       "meta2": "Live in 10 minutes",
-      "meta3": "24/7 support",
+      "meta3": "Phone and Telegram support",
       "liveStatus": "System online",
       "windowTitle": "IDO‘KON · ANALYTICS",
       "ratingBasis": "based on {n} reviews",
@@ -766,10 +758,6 @@ export const translations = {
       "s2_desc": "High traffic and several tills",
       "s3": "Mini-markets",
       "s3_desc": "Simple, fast and low-cost management",
-      "s4": "Online retail",
-      "s4_desc": "Orders and stock kept in line",
-      "s5": "Many more trades",
-      "s5_desc": "Integration to fit your business",
       "eyebrow": "WHO IT IS FOR"
     },
     "care": {
@@ -982,7 +970,7 @@ export const translations = {
       "f3_desc": "Turnover, profit and top products online. Branch view and export in one click.",
       "f3_tag": "REAL TIME",
       "f4_title": "Setup and integration",
-      "f4_desc": "Starts on Windows in 10 minutes. Extends with printers, scanners, terminals, Tez QR and API.",
+      "f4_desc": "Starts on Windows in 10 minutes. Extends with printers, scanners, terminals and Tez QR.",
       "f4_tag": "READY ECOSYSTEM"
     },
     "integrations": {

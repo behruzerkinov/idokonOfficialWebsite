@@ -5,7 +5,7 @@ import { LeadForm } from './LeadForm';
 
 const Row = ({ code, href, children, external }) => (
   <a href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="flex min-h-[44px] items-center gap-3 font-bold">
-    <span className="flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold" style={{ background: 'var(--accent-bright)', color: '#052e22' }}>{code}</span>
+    <span className="flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold" style={{ background: 'var(--accent-bright)', color: 'var(--bright-ink)' }}>{code}</span>
     {children}
   </a>
 );

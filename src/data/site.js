@@ -27,7 +27,7 @@ export const SITE = {
     rating: { value: '4.9', verified: true },
     reviews: { value: 215, verified: true },
     setupMinutes: { value: 10, verified: true },
-    support247: { verified: true },
+    support: { verified: true },
   },
 };
 

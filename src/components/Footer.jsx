@@ -11,7 +11,7 @@ export const Footer = ({ t, onOpenDemo }) => {
   const link = 'inline-flex min-h-[36px] items-center text-sm hover:text-white';
   const mute = { color: 'var(--on-deep-muted)' };
   return (
-    <footer style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
+    <footer className="deep-panel mb-3 mt-3" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
       <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <img src={SITE.brand.logo} alt="IDO'KON" width="140" height="43" loading="lazy" className="h-11 w-auto" />

@@ -32,14 +32,14 @@ export const Modal = ({ isOpen, onClose, title, closeLabel, children, maxWidth =
 
   if (!isOpen) return null;
   return (
-    <div className="fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm" onClick={onClose}>
+    <div className="fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/40 p-4 backdrop-blur-md" onClick={onClose}>
       <div
         ref={ref}
         role="dialog"
         aria-modal="true"
         aria-label={title}
         onClick={(e) => e.stopPropagation()}
-        className={`pop-in relative max-h-[90vh] w-full ${maxWidth} overflow-y-auto rounded-2xl bg-white p-6 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100`}
+        className={`pop-in relative max-h-[90vh] w-full ${maxWidth} overflow-y-auto rounded-3xl bg-[var(--surface)] p-6 text-[var(--fg)]`}
         style={{ boxShadow: 'var(--ring), var(--shadow-pop)' }}
       >
         <button type="button" onClick={onClose} aria-label={closeLabel} className="icon-btn absolute right-3 top-3">

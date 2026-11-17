@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { dragScroll } from '../lib/interactions';
 import { ArrowUpRight, ChevronLeft, ChevronRight, ShoppingCart, Check } from 'lucide-react';
 import { toast } from 'sonner';
 import { hardwareProducts } from '../data/mockData';
@@ -11,6 +12,7 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
   const e = t.equipment;
   const scroller = useRef(null);
   const [all, setAll] = useState(false);
+  useEffect(() => (all ? undefined : dragScroll(scroller.current)), [all]);
   const by = (dir) => scroller.current?.scrollBy({ left: dir * 340, behavior: 'smooth' });
 
   const add = (product) => {
@@ -39,12 +41,12 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
           )}
         </Reveal>
 
-        <ul ref={scroller} className={all ? 'mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3' : 'hide-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8'}>
+        <ul ref={scroller} data-dragscroll={all ? undefined : ''} className={all ? 'mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3' : 'hide-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8'}>
           {hardwareProducts.map((p) => {
             const inCart = cart.some((i) => i.id === p.id);
             const title = p.title[lang] || p.title.uz;
             return (
-              <li key={p.id} className={`card spot flex flex-col overflow-hidden ${all ? '' : 'w-[80vw] shrink-0 snap-start sm:w-[300px]'}`}>
+              <li key={p.id} className={`card spot tilt flex flex-col overflow-hidden ${all ? '' : 'w-[80vw] shrink-0 snap-start sm:w-[300px]'}`}>
                 <button type="button" onClick={() => onOpenSpecsModal(p)} className="block text-left" aria-label={`${title}: ${e.details}`}>
                   <div className="flex h-56 items-center justify-center bg-white">
                     <img src={p.image} alt={title} width="300" height="224" loading="lazy" decoding="async" className="h-full w-full object-contain p-4" />

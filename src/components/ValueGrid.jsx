@@ -17,14 +17,14 @@ export const ValueGrid = ({ t }) => {
           {[1, 2, 3, 4].map((n) => {
             const on = active === n;
             return (
-              <Reveal key={n}>
+              <Reveal key={n} delay={(n - 1) * 0.08}>
                 <article
                   tabIndex={0} onMouseEnter={() => setActive(n)} onFocus={() => setActive(n)} onClick={() => setActive(n)}
-                  className="card flex h-full min-h-[260px] flex-col justify-between p-8 outline-none transition-colors duration-300"
+                  className="card spot tilt flex h-full min-h-[260px] flex-col justify-between p-8 outline-none"
                   style={on ? { background: 'var(--deep)', color: 'var(--on-deep)', boxShadow: 'var(--shadow-pop)' } : undefined}
                 >
                   <div>
-                    <span className="chip-num" style={on ? { background: 'var(--accent-bright)', color: '#052e22' } : undefined}>0{n}</span>
+                    <span className="chip-num" style={on ? { background: 'var(--accent-bright)', color: 'var(--bright-ink)' } : undefined}>0{n}</span>
                     <h3 className="mt-10 text-2xl font-bold tracking-tight md:text-3xl">{f[`f${n}_title`]}</h3>
                     <p className="mt-3 max-w-[44ch] text-[15px]" style={{ color: on ? 'var(--on-deep-muted)' : 'var(--muted)' }}>{f[`f${n}_desc`]}</p>
                   </div>

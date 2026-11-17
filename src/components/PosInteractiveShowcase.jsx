@@ -34,13 +34,13 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   };
 
   return (
-    <section id="software" className="section scroll-mt-16" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
+    <section id="software" className="section deep-panel scroll-mt-16" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
       <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <Reveal className="order-2 lg:order-1">
-          <div className="spot overflow-hidden rounded-2xl p-1.5" style={{ background: 'var(--deep-2)', boxShadow: '0 0 0 1px rgba(255,255,255,0.08), var(--shadow-pop)' }}>
+          <div className="spot tilt overflow-hidden rounded-3xl p-1.5" style={{ background: 'var(--deep-2)', boxShadow: '0 0 0 1px rgba(255,255,255,0.08), var(--shadow-pop)' }}>
             <p className="px-3 py-2.5 text-[11px] font-bold tracking-[0.12em]" style={{ color: 'var(--on-deep-muted)' }}>{s.orderLabel}</p>
             <div role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} onTouchStart={(e) => (touchX.current = e.touches[0].clientX)} onTouchEnd={onTouchEnd}>
-              <button type="button" onClick={() => onOpenLightbox(tab.src, s.tabs[tab.id])} aria-label={s.zoom} className="group relative block w-full overflow-hidden rounded-xl bg-white">
+              <button type="button" onClick={() => onOpenLightbox(tab.src, s.tabs[tab.id])} aria-label={s.zoom} className="group relative block w-full overflow-hidden rounded-2xl bg-white">
                 <img src={tab.src} alt={s.tabs[tab.id]} width={tab.w} height={tab.h} loading="lazy" decoding="async" className="h-auto w-full" />
                 <span className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-lg bg-black/70 px-2.5 py-1.5 text-xs text-white">
                   <Maximize2 size={14} strokeWidth={1.75} aria-hidden="true" />{s.zoom}
@@ -53,8 +53,8 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
               <button
                 key={x.id} ref={(el) => (refs.current[n] = el)} role="tab" id={`tab-${x.id}`} type="button"
                 aria-selected={i === n} aria-controls={`panel-${x.id}`} tabIndex={i === n ? 0 : -1} onClick={() => select(n)}
-                className="min-h-[48px] rounded-xl px-2 text-sm font-semibold transition-colors duration-150"
-                style={i === n ? { background: 'var(--accent-bright)', color: '#052e22' } : { background: 'rgba(255,255,255,0.06)', color: 'var(--on-deep)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.1)' }}
+                className="min-h-[48px] rounded-2xl px-2 text-sm font-semibold transition-[background-color,transform] duration-200 active:scale-95"
+                style={i === n ? { background: 'var(--accent-bright)', color: 'var(--bright-ink)' } : { background: 'rgba(255,255,255,0.06)', color: 'var(--on-deep)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.1)' }}
               >
                 {s.tabs[x.id]}
               </button>
