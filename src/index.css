@@ -57,7 +57,7 @@
   .container-page { @apply mx-auto w-full max-w-[1160px] px-5 sm:px-8; }
   .section { @apply relative py-16 md:py-28; }
 
-  .h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 600; line-height: 1.05; letter-spacing: -0.04em; }
+  .h1 { font-size: clamp(2.75rem, 7vw, 5rem); font-weight: 600; line-height: 1.02; letter-spacing: -0.045em; }
   .h2 { font-size: clamp(1.875rem, 3.6vw, 2.75rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.035em; }
   .lede { @apply text-base sm:text-lg; color: var(--muted); }
 
@@ -165,3 +165,18 @@ body[data-drawer-open] .sticky-bar { display: none; }
   mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
 }
 .grid-glow { background: radial-gradient(40% 35% at 50% 18%, var(--accent-soft), transparent 70%); }
+
+/* Hero atmosphere: soft blurred colour fields on near-black, like a defocused photo. Replaced by SITE.brand assets when set. */
+.hero-mesh {
+  background:
+    radial-gradient(55% 60% at 18% 20%, rgba(16, 185, 129, 0.55), transparent 70%),
+    radial-gradient(50% 55% at 85% 12%, rgba(56, 189, 248, 0.28), transparent 70%),
+    radial-gradient(60% 50% at 60% 95%, rgba(5, 150, 105, 0.45), transparent 70%),
+    radial-gradient(45% 45% at 40% 60%, rgba(250, 204, 21, 0.10), transparent 70%);
+  filter: blur(24px) saturate(1.1);
+  transform: scale(1.1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-mesh { animation: mesh-drift 18s ease-in-out infinite alternate; }
+}
+@keyframes mesh-drift { to { transform: scale(1.18) translate3d(-2%, 2%, 0); } }
