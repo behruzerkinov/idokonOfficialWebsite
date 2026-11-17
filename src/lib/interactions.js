@@ -1,83 +1,100 @@
 import { useEffect } from 'react';
 
-// One delegated interaction layer for the whole page (no per-component listeners):
-//  .spot   pointer-tracked glow         .tilt     3D tilt toward the pointer
-//  .btn    magnetic pull + press ripple  progress  --p on <html> + data-scrolled
-// Magnetic, tilt and ripple switch off when motion is "calm"/"off" or the OS asks for reduced motion.
+// One delegated, frame-batched interaction layer (no per-component listeners, no scroll listener):
+//  .spot glow  .tilt 3D tilt  .btn-primary/.btn-deep magnetic pull  .btn ripple  + the background grid.
+// Pointer events only store coordinates; all reads and writes happen once per frame in tick().
+// Scroll progress is pure CSS (animation-timeline: scroll()), so it costs no JS at all.
 
 const root = document.documentElement;
+const grid = document.querySelector('.bg-grid');
 const still = () => root.dataset.motion !== 'full' || matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lerp = (a, b, k) => a + (b - a) * k;
+const OVERSCAN = 96; // .bg-grid pseudo-elements extend 96px past the viewport on every side
 
 export function initInteractions() {
-  let tiltEl = null;
-  let magEl = null;
+  // Chromium can refract the backdrop through an SVG filter; others keep the plain blur
+  if (CSS.supports('backdrop-filter', 'url(#liquid)') && navigator.userAgent.includes('Chrom')) root.dataset.liquid = '';
+
+  const p = { x: 0, y: 0, el: null, inside: false };
+  const g = { x: 0, y: 0, tx: 0, ty: 0, i: 0 }; // eased grid state
+  let raf = 0, tilt = null, mag = null;
 
   const release = (el) => el && ['--rx', '--ry', '--tx', '--ty'].forEach((k) => el.style.removeProperty(k));
 
-  const move = (e) => {
-    if (e.pointerType !== 'mouse') return;
-    const spot = e.target.closest?.('.spot');
+  const tick = () => {
+    raf = 0;
+    const calm = still();
+
+    // Grid: lit spot follows the pointer with easing, whole grid drifts a few px against it
+    const tx = calm ? 0 : (0.5 - p.x / innerWidth) * 14;
+    const ty = calm ? 0 : (0.5 - p.y / innerHeight) * 14;
+    g.x = lerp(g.x, p.x, 0.14); g.y = lerp(g.y, p.y, 0.14);
+    g.tx = lerp(g.tx, tx, 0.1); g.ty = lerp(g.ty, ty, 0.1);
+    g.i = lerp(g.i, p.inside && !calm ? 1 : 0, 0.1);
+    if (grid) {
+      const s = grid.style;
+      s.setProperty('--gx', `${g.x + OVERSCAN - g.tx}px`);
+      s.setProperty('--gy', `${g.y + OVERSCAN - g.ty}px`);
+      s.setProperty('--tx', `${g.tx}px`);
+      s.setProperty('--ty', `${g.ty}px`);
+      s.setProperty('--gi', g.i.toFixed(3));
+    }
+
+    const el = p.el;
+    const spot = el?.closest?.('.spot');
     if (spot) {
       const r = spot.getBoundingClientRect();
-      spot.style.setProperty('--mx', e.clientX - r.left + 'px');
-      spot.style.setProperty('--my', e.clientY - r.top + 'px');
+      spot.style.setProperty('--mx', p.x - r.left + 'px');
+      spot.style.setProperty('--my', p.y - r.top + 'px');
     }
-    if (still()) return;
+    const t = !calm && el?.closest?.('.tilt');
+    if (tilt && tilt !== t) release(tilt);
+    if ((tilt = t || null)) {
+      const r = t.getBoundingClientRect();
+      t.style.setProperty('--ry', ((p.x - r.left) / r.width - 0.5) * 7 + 'deg');
+      t.style.setProperty('--rx', (0.5 - (p.y - r.top) / r.height) * 7 + 'deg');
+    }
+    const m = !calm && el?.closest?.('.btn-primary, .btn-deep');
+    if (mag && mag !== m) release(mag);
+    if ((mag = m || null)) {
+      const r = m.getBoundingClientRect();
+      m.style.setProperty('--tx', ((p.x - r.left) / r.width - 0.5) * 8 + 'px');
+      m.style.setProperty('--ty', ((p.y - r.top) / r.height - 0.5) * 6 + 'px');
+    }
 
-    const tilt = e.target.closest?.('.tilt');
-    if (tiltEl && tiltEl !== tilt) release(tiltEl);
-    tiltEl = tilt;
-    if (tilt) {
-      const r = tilt.getBoundingClientRect();
-      tilt.style.setProperty('--ry', ((e.clientX - r.left) / r.width - 0.5) * 7 + 'deg');
-      tilt.style.setProperty('--rx', (0.5 - (e.clientY - r.top) / r.height) * 7 + 'deg');
-    }
-
-    const mag = e.target.closest?.('.btn-primary, .btn-deep');
-    if (magEl && magEl !== mag) release(magEl);
-    magEl = mag;
-    if (mag) {
-      const r = mag.getBoundingClientRect();
-      mag.style.setProperty('--tx', ((e.clientX - r.left) / r.width - 0.5) * 8 + 'px');
-      mag.style.setProperty('--ty', ((e.clientY - r.top) / r.height - 0.5) * 6 + 'px');
-    }
+    // keep easing until the grid has settled
+    if (Math.abs(g.x - p.x) > 0.3 || Math.abs(g.y - p.y) > 0.3 || Math.abs(g.i - (p.inside && !calm ? 1 : 0)) > 0.01) schedule();
   };
+  const schedule = () => { raf ||= requestAnimationFrame(tick); };
 
-  const leave = () => { release(tiltEl); release(magEl); tiltEl = magEl = null; };
+  const move = (e) => {
+    if (e.pointerType !== 'mouse') return;
+    if (!p.inside) { g.x = p.x = e.clientX; g.y = p.y = e.clientY; } // first entry: no fly-in from the corner
+    p.x = e.clientX; p.y = e.clientY; p.el = e.target; p.inside = true;
+    schedule();
+  };
+  const leave = () => { p.inside = false; p.el = null; schedule(); };
 
   const down = (e) => {
     const btn = e.target.closest?.('.btn');
-    if (!btn || still() || btn.disabled) return;
+    if (!btn || btn.disabled || still()) return;
     const r = btn.getBoundingClientRect();
     const d = Math.max(r.width, r.height) * 2;
     const dot = document.createElement('span');
     dot.className = 'ripple';
     dot.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
-    btn.appendChild(dot);
+    btn.append(dot);
     dot.addEventListener('animationend', () => dot.remove(), { once: true });
   };
 
-  let raf = 0;
-  const scroll = () => {
-    if (raf) return;
-    raf = requestAnimationFrame(() => {
-      raf = 0;
-      const max = root.scrollHeight - innerHeight;
-      root.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
-      root.dataset.scrolled = scrollY > 8 ? 'true' : 'false';
-    });
-  };
-
-  document.addEventListener('pointermove', move, { passive: true });
-  document.addEventListener('pointerdown', down, { passive: true });
-  document.documentElement.addEventListener('pointerleave', leave);
-  addEventListener('scroll', scroll, { passive: true });
-  scroll();
+  const opts = { passive: true };
+  addEventListener('pointermove', move, opts);
+  addEventListener('pointerdown', down, opts);
+  root.addEventListener('pointerleave', leave);
   return () => {
-    document.removeEventListener('pointermove', move);
-    document.removeEventListener('pointerdown', down);
-    document.documentElement.removeEventListener('pointerleave', leave);
-    removeEventListener('scroll', scroll);
+    removeEventListener('pointermove', move);
+    removeEventListener('pointerdown', down);
+    root.removeEventListener('pointerleave', leave);
     cancelAnimationFrame(raf);
   };
 }
@@ -117,17 +134,12 @@ export function dragScroll(el) {
   // A drag must not count as a click on the card under the pointer
   const onClick = (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } };
 
-  el.addEventListener('pointerdown', onDown);
-  el.addEventListener('pointermove', onMove);
-  el.addEventListener('pointerup', onUp);
-  el.addEventListener('pointercancel', onUp);
+  const on = [['pointerdown', onDown], ['pointermove', onMove], ['pointerup', onUp], ['pointercancel', onUp]];
+  on.forEach(([k, f]) => el.addEventListener(k, f));
   el.addEventListener('click', onClick, true);
   return () => {
     cancelAnimationFrame(raf);
-    el.removeEventListener('pointerdown', onDown);
-    el.removeEventListener('pointermove', onMove);
-    el.removeEventListener('pointerup', onUp);
-    el.removeEventListener('pointercancel', onUp);
+    on.forEach(([k, f]) => el.removeEventListener(k, f));
     el.removeEventListener('click', onClick, true);
   };
 }

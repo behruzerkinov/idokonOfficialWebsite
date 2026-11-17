@@ -16,7 +16,7 @@ export const CourseAcademy = ({ t, onOpenLightbox }) => {
     <section id="course" className="section scroll-mt-16">
       <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <Reveal>
-          <div className="spot grid grid-cols-2 gap-2 rounded-3xl p-3" style={{ background: 'var(--alt)', boxShadow: 'inset 0 0 0 1px var(--line), var(--shadow-card)' }}>
+          <div className="spot grid grid-cols-2 gap-2 rounded-3xl p-3" style={{ background: 'var(--alt)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
             {SHOTS.map(([file, k, big]) => (
               <button key={file} type="button" onClick={() => onOpenLightbox(`/screenshots/${file}.webp`, c[k])} aria-label={c[k]} className={`overflow-hidden rounded-xl bg-white ${big ? 'col-span-2' : ''}`} style={{ boxShadow: 'var(--ring)' }}>
                 <img src={`/screenshots/${file}.webp`} alt={c[k]} width="800" height="450" loading="lazy" decoding="async" className="h-auto w-full object-cover" />

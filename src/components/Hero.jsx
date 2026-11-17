@@ -15,7 +15,7 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
   const { rating, reviews, setupMinutes, support } = SITE.claims;
   const meta = [h.meta1, setupMinutes.verified && h.meta2, support.verified && h.meta3].filter(Boolean);
   return (
-    <section id="home" className="hero-wash relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36">
+    <section id="home" className="relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36">
       <div className="container-page grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         <Reveal>
           <span className="eyebrow">{h.eyebrow}</span>
@@ -47,7 +47,7 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
           </div>
           </m.div>
           <m.div style={{ y: chip }} className="absolute -top-3 left-3 sm:left-0">
-            <div className="float inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-bold" style={{ background: 'var(--surface)', boxShadow: 'var(--ring), var(--shadow-lift)' }}>
+            <div className="float inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-bold" style={{ background: 'var(--surface)', boxShadow: 'var(--ring)' }}>
               <span className="ping" aria-hidden="true" />{h.liveStatus}
             </div>
           </m.div>

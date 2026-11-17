@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Phone, Send } from 'lucide-react';
+import { Instagram } from './icons';
 import { SITE, formatPhone } from '../data/site';
 
 const COLS = (t) => [
@@ -8,7 +9,7 @@ const COLS = (t) => [
 ];
 
 export const Footer = ({ t, onOpenDemo }) => {
-  const link = 'inline-flex min-h-[36px] items-center text-sm hover:text-white';
+  const link = 'inline-flex min-h-[36px] items-center gap-2 text-sm hover:text-white';
   const mute = { color: 'var(--on-deep-muted)' };
   return (
     <footer className="deep-panel mb-3 mt-3" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
@@ -29,9 +30,9 @@ export const Footer = ({ t, onOpenDemo }) => {
         <nav aria-label={t.footer.support}>
           <h2 className="mb-2 text-sm font-bold">{t.footer.support}</h2>
           <ul>
-            <li><a href={`tel:${SITE.phones[0]}`} className={link} style={mute}>{formatPhone(SITE.phones[0])}</a></li>
-            <li><a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className={link} style={mute}>Telegram</a></li>
-            <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className={link} style={mute}>Instagram</a></li>
+            <li><a href={`tel:${SITE.phones[0]}`} className={link} style={mute}><Phone size={15} aria-hidden="true" />{formatPhone(SITE.phones[0])}</a></li>
+            <li><a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className={link} style={mute}><Send size={15} aria-hidden="true" />Telegram</a></li>
+            <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className={link} style={mute}><Instagram size={15} aria-hidden="true" />Instagram</a></li>
             <li><a href="#contact" className={link} style={mute}>{t.nav.contact}</a></li>
           </ul>
         </nav>

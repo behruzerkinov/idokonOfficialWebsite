@@ -1,11 +1,13 @@
 import React from 'react';
+import { Phone, Send } from 'lucide-react';
+import { Instagram } from './icons';
 import { SITE, formatPhone } from '../data/site';
 import { Reveal } from './Reveal';
 import { LeadForm } from './LeadForm';
 
-const Row = ({ code, href, children, external }) => (
+const Row = ({ icon: Icon, href, children, external }) => (
   <a href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="flex min-h-[44px] items-center gap-3 font-bold">
-    <span className="flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold" style={{ background: 'var(--accent-bright)', color: 'var(--bright-ink)' }}>{code}</span>
+    <span className="flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: 'var(--accent-bright)', color: 'var(--bright-ink)' }}><Icon size={18} strokeWidth={2} aria-hidden="true" /></span>
     {children}
   </a>
 );
@@ -18,7 +20,7 @@ export const ContactConfigurator = ({ t, lang, prefill }) => {
     <section id="contact" className="section scroll-mt-16">
       <div className="container-page">
         <Reveal>
-          <div className="grid overflow-hidden rounded-3xl lg:grid-cols-[1fr_1fr]" style={{ boxShadow: 'var(--ring), var(--shadow-card)' }}>
+          <div className="grid overflow-hidden rounded-3xl lg:grid-cols-[1fr_1fr]" style={{ boxShadow: 'var(--ring)' }}>
             <div className="flex flex-col justify-between gap-10 p-8 md:p-12" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
               <div>
                 <span className="eyebrow" style={{ color: 'var(--accent-bright)' }}>{c.eyebrow}</span>
@@ -26,9 +28,9 @@ export const ContactConfigurator = ({ t, lang, prefill }) => {
                 <p className="mt-5 max-w-[44ch]" style={{ color: 'var(--on-deep-muted)' }}>{c.lead}</p>
               </div>
               <div className="space-y-1">
-                {SITE.phones.map((p) => <Row key={p} code="TL" href={`tel:${p}`}>{formatPhone(p)}</Row>)}
-                <Row code="TG" href={SITE.telegram} external>{handle(SITE.telegram)}</Row>
-                <Row code="IG" href={SITE.instagram} external>{handle(SITE.instagram)}</Row>
+                {SITE.phones.map((p) => <Row key={p} icon={Phone} href={`tel:${p}`}>{formatPhone(p)}</Row>)}
+                <Row icon={Send} href={SITE.telegram} external>{handle(SITE.telegram)}</Row>
+                <Row icon={Instagram} href={SITE.instagram} external>{handle(SITE.instagram)}</Row>
               </div>
             </div>
             <div className="p-8 md:p-12" style={{ background: 'var(--surface)' }}>

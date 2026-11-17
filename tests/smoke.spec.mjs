@@ -136,7 +136,9 @@ test('feature cards: hover moves the highlighted card', async ({ page }) => {
   const cards = page.locator('#features article');
   await cards.first().waitFor();
   await cards.nth(3).hover();
-  await expect(cards.nth(3)).toHaveCSS('background-color', 'rgb(23, 48, 44)');
+  // the hovered card takes the deep colour, whichever theme is active
+  const bg = (i) => cards.nth(i).evaluate((el) => getComputedStyle(el).backgroundColor);
+  await expect.poll(async () => (await bg(3)) !== (await bg(0))).toBe(true);
 });
 
 test('deep link to a section lands on it even though sections load late', async ({ page }) => {

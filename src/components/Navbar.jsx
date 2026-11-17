@@ -8,6 +8,12 @@ const LANGS = [
   { code: 'ru', name: 'Русский' },
   { code: 'en', name: 'English' },
 ];
+// Displacement map for the glass lens: neutral grey in the middle, red/blue ramps at the edges bend the backdrop inward.
+const edge = (id, a, b, v) => `<linearGradient id="${id}" ${v ? 'y2="1"' : ''}><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+const LENS = 'data:image/svg+xml,' + encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><defs>${edge('l', '#ff8080', '#808080')}${edge('r', '#808080', '#008080')}${edge('t', '#8080ff', '#808080', 1)}${edge('b', '#808080', '#808000', 1)}</defs>` +
+  '<rect width="100" height="100" fill="#808080"/><rect width="7" height="100" fill="url(#l)"/><rect x="93" width="7" height="100" fill="url(#r)"/><rect width="100" height="32" fill="url(#t)" opacity=".7"/><rect y="68" width="100" height="32" fill="url(#b)" opacity=".7"/></svg>'
+);
 const LINKS = ['home', 'features', 'equipment', 'integrations', 'pricing', 'course', 'contact'];
 
 /** Language picker: one button, a small menu. Closes on pick, outside click and Escape. */
@@ -25,7 +31,7 @@ export const LangMenu = ({ lang, setLang, label, up = false }) => {
   const current = LANGS.find((l) => l.code === lang) || LANGS[0];
   return (
     <div ref={ref} className="relative">
-      <button type="button" aria-haspopup="true" aria-expanded={open} aria-label={label} onClick={() => setOpen((o) => !o)} className="btn-outline !min-h-[44px] !gap-2 !px-3.5">
+      <button type="button" aria-haspopup="true" aria-expanded={open} aria-label={label} onClick={() => setOpen((o) => !o)} className="btn-outline nav-ctl !gap-2 !px-3.5">
         <span>{current.name}</span>
         <ChevronDown size={16} strokeWidth={2} aria-hidden="true" className={`transition-transform duration-150 ${open ? 'rotate-180' : ''}`} />
       </button>
@@ -74,13 +80,19 @@ export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, cartCount, onOpe
   };
 
   const ThemeBtn = (
-    <button type="button" onClick={(e) => toggleTheme(e)} className="icon-btn" aria-label={t.nav.theme}>
+    <button type="button" onClick={(e) => toggleTheme(e)} className="icon-btn nav-ctl" aria-label={t.nav.theme}>
       {isDark ? <Sun size={20} strokeWidth={1.75} /> : <Moon size={20} strokeWidth={1.75} />}
     </button>
   );
 
   return (
     <header className="site-header">
+      <svg aria-hidden="true" width="0" height="0" className="absolute">
+        <filter id="liquid" primitiveUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+          <feImage href={LENS} x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map" />
+          <feDisplacementMap in="SourceGraphic" in2="map" scale="0.12" xChannelSelector="R" yChannelSelector="B" />
+        </filter>
+      </svg>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded focus:bg-[var(--surface)] focus:px-3 focus:py-2">{t.skip}</a>
 
       <div className="flex h-[62px] items-center justify-between gap-3 px-3 sm:px-5">
@@ -100,15 +112,15 @@ export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, cartCount, onOpe
           <div className="hidden md:block"><LangMenu lang={lang} setLang={setLang} label={t.nav.language} /></div>
           <div className="hidden md:block">{ThemeBtn}</div>
           {cartCount > 0 && (
-            <button type="button" onClick={onOpenCart} className="icon-btn relative" aria-label={`${t.nav.cart}: ${cartCount}`}>
+            <button type="button" onClick={onOpenCart} className="icon-btn nav-ctl relative" aria-label={`${t.nav.cart}: ${cartCount}`}>
               <ShoppingBag size={20} strokeWidth={1.75} />
               <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-bold text-white" style={{ background: 'var(--accent)' }}>{cartCount}</span>
             </button>
           )}
-          <button type="button" onClick={onOpenDemo} className="btn-deep hidden !px-5 sm:inline-flex">{t.nav.tryDemo}</button>
+          <button type="button" onClick={onOpenDemo} className="btn-deep nav-ctl hidden !px-5 sm:inline-flex">{t.nav.tryDemo}</button>
           <Drawer.Root open={open} onOpenChange={setOpen} direction="right">
             <Drawer.Trigger asChild>
-              <button type="button" className="icon-btn xl:hidden" aria-label={t.menu.open}><Menu size={22} strokeWidth={1.75} /></button>
+              <button type="button" className="icon-btn nav-ctl xl:hidden" aria-label={t.menu.open}><Menu size={22} strokeWidth={1.75} /></button>
             </Drawer.Trigger>
             <Drawer.Portal>
               <Drawer.Overlay className="fixed inset-0 z-[90] bg-black/40 backdrop-blur-sm" />

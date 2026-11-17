@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens. The colour variables below are only the first-paint default (Cloud);
-   src/theme/themes.js overwrites them on <html> at boot, so any preset restyles everything. */
+/* Tokens. Colours here are only the first-paint default; src/theme/themes.js overwrites them on <html> at boot. */
 @layer base {
   :root {
     --bg: #f7f6f2;
@@ -19,17 +18,14 @@
     --accent: #2f8f6b;
     --accent-ink: #ffffff;
     --sh: 27, 34, 32;
-    --glow-a: #9be3c4;
-    --glow-b: #f6dcb4;
 
-    /* derived, never set by presets */
     --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
     --accent-bright: color-mix(in srgb, var(--accent) 58%, white);
     --bright-ink: #10201a;
+    --line-strong: color-mix(in srgb, var(--fg) 22%, transparent);
+    --grid: color-mix(in srgb, var(--fg) 8%, transparent);
     --ring: 0 0 0 1px var(--line);
-    --shadow-card: 0 1px 2px rgba(var(--sh), 0.04), 0 6px 18px -8px rgba(var(--sh), 0.1);
-    --shadow-lift: 0 2px 4px rgba(var(--sh), 0.05), 0 18px 36px -14px rgba(var(--sh), 0.2);
-    --shadow-pop: 0 4px 10px rgba(var(--sh), 0.08), 0 30px 60px -22px rgba(var(--sh), 0.32);
+    --shadow-pop: 0 18px 40px -26px rgba(var(--sh), 0.4);
 
     --r: 16px;
     --dens: 1;
@@ -37,166 +33,142 @@
     --spring: cubic-bezier(0.34, 1.45, 0.64, 1);
   }
 
-  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; scroll-padding-top: 88px; }
-
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: clip;
-    isolation: isolate;
-  }
-
-  /* Macro: slow ambient aurora behind the whole page */
-  body::before {
-    content: ''; position: fixed; inset: -20vmax; z-index: -1; pointer-events: none;
-    background:
-      radial-gradient(38vmax 38vmax at 12% 8%, color-mix(in srgb, var(--glow-a) 38%, transparent), transparent 70%),
-      radial-gradient(34vmax 34vmax at 88% 18%, color-mix(in srgb, var(--glow-b) 34%, transparent), transparent 70%),
-      radial-gradient(40vmax 40vmax at 50% 105%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%);
-    animation: drift 28s ease-in-out infinite alternate;
-  }
-  @keyframes drift { to { transform: translate3d(2.5vmax, 1.5vmax, 0) scale(1.06); } }
-
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--fg); line-height: 1.6; overflow-x: clip; }
   @media (max-width: 767px) { body { padding-bottom: 84px; } }
 
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
   ::selection { background: var(--accent); color: var(--accent-ink); }
-
   button, [role='button'], [role='tab'], summary, select { cursor: pointer; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: calc(var(--r) * 0.5); }
+}
+
+/* Background: big minimal grid. A second, accent-coloured copy is revealed under the pointer
+   (interactions.js lerps --gx/--gy/--gi and a small parallax --tx/--ty on this one element). */
+.bg-grid { position: fixed; inset: 0; z-index: -1; pointer-events: none; contain: strict; overflow: hidden; }
+.bg-grid::before, .bg-grid::after {
+  content: ''; position: absolute; inset: -96px;
+  --g: var(--grid);
+  background: linear-gradient(var(--g) 1px, transparent 1px) 0 0 / 96px 96px, linear-gradient(90deg, var(--g) 1px, transparent 1px) 0 0 / 96px 96px;
+  translate: var(--tx, 0px) var(--ty, 0px);
+}
+.bg-grid::before { mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, #000 20%, transparent 90%); }
+.bg-grid::after {
+  --g: color-mix(in srgb, var(--accent) 55%, transparent);
+  opacity: var(--gi, 0);
+  mask-image: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 50%), #000, transparent);
 }
 
 @layer components {
   .container-page { @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8; }
   .section { @apply relative; padding-block: calc(clamp(4.5rem, 8vw, 7rem) * var(--dens)); }
-  .section-alt { background: linear-gradient(180deg, color-mix(in srgb, var(--alt) 92%, transparent), color-mix(in srgb, var(--alt) 55%, transparent)); }
+  .section-alt { background: color-mix(in srgb, var(--alt) 72%, transparent); }
 
-  .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold;
-    letter-spacing: 0.04em; color: var(--accent); background: var(--accent-soft);
-  }
+  .eyebrow { @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold; letter-spacing: 0.04em; color: var(--accent); background: var(--accent-soft); }
   .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 99px; background: currentColor; }
-  .eyebrow-center::before { display: block; }
-
   .display { font-size: clamp(2.6rem, 6.2vw, 5.2rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.045em; }
   .h2 { font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.035em; }
   .lede { @apply text-base sm:text-lg; color: var(--muted); }
-  .grad-text { background: linear-gradient(110deg, var(--accent), color-mix(in srgb, var(--accent) 45%, var(--glow-b))); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .grad-text { background: linear-gradient(110deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--fg))); background-clip: text; color: transparent; }
 
-  /* Surfaces */
+  /* Surfaces: hairline borders, no drop shadows. Hover darkens the border and lifts 2px. */
   .card {
     @apply bg-[var(--surface)];
     border-radius: calc(var(--r) * 1.6);
-    box-shadow: var(--ring), var(--shadow-card);
-    transition: box-shadow 280ms var(--ease-out), translate 280ms var(--ease-out), background-color 280ms var(--ease-out), transform 200ms var(--ease-out);
+    box-shadow: var(--ring);
+    transition: box-shadow 240ms var(--ease-out), translate 240ms var(--ease-out), transform 200ms var(--ease-out);
   }
-  html[data-glass='on'] .card:not(.card-solid) { background: color-mix(in srgb, var(--surface) 74%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); }
-  @media (hover: hover) and (pointer: fine) {
-    .card:hover { translate: 0 -3px; box-shadow: var(--ring), var(--shadow-lift); }
-  }
+  @media (hover: hover) and (pointer: fine) { .card:hover { translate: 0 -2px; box-shadow: 0 0 0 1px var(--line-strong); } }
   .card:active { transform: scale(0.992); }
-  .card[tabindex]:focus-visible { outline-offset: 4px; }
-
-  .tilt { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 240ms var(--ease-out), box-shadow 280ms var(--ease-out), translate 280ms var(--ease-out); will-change: transform; }
+  .tilt { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), translate 240ms var(--ease-out); }
 
   .field {
     @apply min-h-[48px] w-full px-4 py-2.5 text-base placeholder:text-[var(--muted)];
-    border-radius: calc(var(--r) * 0.9);
-    background: color-mix(in srgb, var(--surface) 80%, var(--alt)); color: var(--fg);
+    border-radius: calc(var(--r) * 0.9); background: var(--surface); color: var(--fg);
     box-shadow: inset 0 0 0 1px var(--line);
-    transition: box-shadow 200ms var(--ease-out), background-color 200ms var(--ease-out);
+    transition: box-shadow 200ms var(--ease-out);
   }
-  .field:hover { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 22%, transparent); }
-  .field:focus { @apply outline-none; background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--accent), 0 0 0 4px var(--accent-soft); }
+  .field:hover { box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .field:focus { @apply outline-none; box-shadow: inset 0 0 0 1.5px var(--accent), 0 0 0 4px var(--accent-soft); }
 
-  /* Buttons: press scales via --s, magnetic pull via --tx/--ty (set by interactions.js), ripple span on pointerdown */
+  /* Buttons: press scale via --s, magnetic pull via --tx/--ty, ripple span on pointerdown */
   .btn {
     @apply relative inline-flex min-h-[48px] cursor-pointer select-none items-center justify-center gap-2 overflow-hidden px-6 py-2.5 text-sm font-semibold disabled:cursor-wait disabled:opacity-60;
     border-radius: calc(var(--r) * 1.6);
     transform: translate(var(--tx, 0), var(--ty, 0)) scale(var(--s, 1));
-    transition: transform 260ms var(--ease-out), background-color 200ms ease, box-shadow 260ms var(--ease-out), color 200ms ease, filter 200ms ease;
+    transition: transform 260ms var(--ease-out), background-color 200ms, box-shadow 200ms, color 200ms;
   }
   .btn:active { --s: 0.95; transition-duration: 90ms; }
-  .btn-primary {
-    @apply btn;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 86%, white), var(--accent));
-    color: var(--accent-ink);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 6px 16px -6px color-mix(in srgb, var(--accent) 70%, transparent);
-  }
-  .btn-deep { @apply btn; background: var(--fg); color: var(--bg); box-shadow: 0 6px 16px -8px rgba(var(--sh), 0.5); }
-  .btn-outline { @apply btn; background: var(--surface); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line), 0 1px 2px rgba(var(--sh), 0.05); }
+  .btn-primary { @apply btn; background: var(--accent); color: var(--accent-ink); }
+  .btn-deep { @apply btn; background: var(--fg); color: var(--bg); }
+  .btn-outline { @apply btn; background: var(--surface); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); }
   .btn-secondary { @apply btn-outline; }
   .btn-ghost { @apply btn; color: var(--muted); }
   @media (hover: hover) {
-    .btn-primary:hover { filter: brightness(1.06); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 12px 26px -8px color-mix(in srgb, var(--accent) 80%, transparent); }
+    .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--fg)); }
     .btn-deep:hover { background: var(--accent); color: var(--accent-ink); }
-    .btn-outline:hover { background: color-mix(in srgb, var(--surface) 60%, var(--alt)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 20%, transparent), 0 4px 10px -4px rgba(var(--sh), 0.14); }
+    .btn-outline:hover { box-shadow: inset 0 0 0 1px var(--line-strong); background: color-mix(in srgb, var(--surface) 70%, var(--alt)); }
     .btn-ghost:hover { color: var(--fg); }
     .icon-btn:hover { background: color-mix(in srgb, var(--fg) 7%, transparent); }
+    .btn:hover svg:last-child:not(:first-child) { transform: translateX(3px); }
+    .icon-btn:hover svg { transform: rotate(-6deg) scale(1.08); }
   }
   .btn svg { transition: transform 260ms var(--ease-out); }
-  @media (hover: hover) { .btn:hover svg:last-child:not(:first-child) { transform: translateX(3px); } }
-  .ripple { position: absolute; border-radius: 99px; pointer-events: none; background: currentColor; opacity: 0.22; transform: scale(0); animation: ripple 620ms var(--ease-out) forwards; }
-  @keyframes ripple { to { transform: scale(1); opacity: 0; } }
+  .ripple { position: absolute; border-radius: 99px; pointer-events: none; background: currentColor; opacity: 0.2; scale: 0; animation: ripple 620ms var(--ease-out) forwards; }
+  @keyframes ripple { to { scale: 1; opacity: 0; } }
 
-  .icon-btn {
-    @apply inline-flex h-11 w-11 cursor-pointer items-center justify-center;
-    border-radius: calc(var(--r) * 1.1);
-    transition: transform 200ms var(--spring), background-color 200ms ease;
-  }
+  .icon-btn { @apply inline-flex h-11 w-11 cursor-pointer items-center justify-center; border-radius: calc(var(--r) * 1.1); transition: transform 200ms var(--spring), background-color 200ms; }
   .icon-btn:active { transform: scale(0.88); }
-  @media (hover: hover) { .icon-btn:hover svg { transform: rotate(-6deg) scale(1.08); } }
   .icon-btn svg { transition: transform 240ms var(--spring); }
 
-  /* Segmented control (billing period, studio) */
   .segmented { @apply inline-flex gap-1 p-1; border-radius: calc(var(--r) * 1.3); background: color-mix(in srgb, var(--fg) 6%, transparent); }
-  .seg-btn {
-    @apply min-h-[40px] shrink-0 px-4 text-sm font-semibold;
-    border-radius: calc(var(--r) * 0.95); color: var(--muted);
-    transition: background-color 240ms var(--ease-out), color 240ms var(--ease-out), box-shadow 240ms var(--ease-out), transform 160ms var(--ease-out);
-  }
+  .seg-btn { @apply min-h-[40px] shrink-0 px-4 text-sm font-semibold; border-radius: calc(var(--r) * 0.95); color: var(--muted); transition: background-color 240ms var(--ease-out), color 240ms, box-shadow 240ms, transform 160ms var(--ease-out); }
   .seg-btn:active { transform: scale(0.96); }
-  .seg-btn[aria-selected='true'], .seg-btn[aria-pressed='true'] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgba(var(--sh), 0.1), 0 4px 10px -4px rgba(var(--sh), 0.16); }
+  .seg-btn[aria-selected='true'], .seg-btn[aria-pressed='true'] { background: var(--surface); color: var(--fg); box-shadow: 0 0 0 1px var(--line); }
   @media (hover: hover) { .seg-btn:hover { color: var(--fg); } }
 
   .pill { @apply inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm; background: var(--accent-soft); color: var(--accent); }
-  .chip-num { @apply inline-flex h-9 w-9 items-center justify-center text-xs font-bold; border-radius: calc(var(--r) * 0.8); background: var(--accent-soft); color: var(--accent); transition: background-color 300ms var(--ease-out), color 300ms var(--ease-out), transform 300ms var(--spring); }
+  .chip-num { @apply inline-flex h-9 w-9 items-center justify-center text-xs font-bold; border-radius: calc(var(--r) * 0.8); background: var(--accent-soft); color: var(--accent); transition: background-color 300ms, color 300ms, transform 300ms var(--spring); }
   @media (hover: hover) { .card:hover .chip-num { transform: scale(1.1) rotate(-4deg); } }
 
   .pop-in { animation: pop-in 320ms var(--spring); }
   .fade-in { animation: fade-in 240ms var(--ease-out); }
 
-  /* Floating glass header */
+  /* Navbar: floating liquid glass. Chromium refracts the backdrop through an SVG displacement map (#liquid, see Navbar.jsx);
+     other browsers get plain frosted blur. Edges carry a specular highlight. */
   .site-header {
+    --hl: 0.55;
     position: fixed; z-index: 50; top: 10px; inset-inline: 10px; margin-inline: auto; max-width: 1240px;
     border-radius: calc(var(--r) * 1.7);
-    background: color-mix(in srgb, var(--bg) 78%, transparent);
-    box-shadow: var(--ring), 0 1px 2px rgba(var(--sh), 0.04);
-    -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
-    transition: box-shadow 300ms var(--ease-out), background-color 300ms var(--ease-out), top 300ms var(--ease-out);
+    background: color-mix(in srgb, var(--bg) 22%, transparent);
+    backdrop-filter: blur(10px) saturate(1.8) brightness(1.04);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 10%, transparent), inset 0 1px 0 rgba(255, 255, 255, var(--hl)), inset 0 -1px 0 rgba(255, 255, 255, calc(var(--hl) * 0.35)), inset 0 0 22px rgba(255, 255, 255, calc(var(--hl) * 0.12));
   }
-  html[data-scrolled='true'] .site-header { box-shadow: var(--ring), var(--shadow-lift); top: 6px; }
-  .scroll-progress { position: absolute; left: 18px; right: 18px; bottom: 0; height: 2px; border-radius: 2px; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); opacity: 0.9; }
-  .sticky-glass { background: color-mix(in srgb, var(--bg) 82%, transparent); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: 0 -1px 0 var(--line); }
+  .dark .site-header { --hl: 0.16; }
+  html[data-liquid] .site-header { backdrop-filter: url(#liquid) blur(3px) saturate(1.8) brightness(1.04); }
+  .site-header::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, rgba(255, 255, 255, calc(var(--hl) * 0.45)), transparent 38%); }
+  .scroll-progress { position: absolute; left: 18px; right: 18px; bottom: 0; height: 2px; border-radius: 2px; background: var(--accent); transform-origin: left; scale: 0 1; }
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress { animation: progress linear both; animation-timeline: scroll(root); }
+  }
+  @keyframes progress { to { scale: 1 1; } }
+  .nav-ctl { height: 44px; min-height: 44px; border-radius: calc(var(--r) * 1.4) !important; }
+  .icon-btn.nav-ctl { box-shadow: inset 0 0 0 1px var(--line); }
+  .sticky-glass { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(16px); box-shadow: 0 -1px 0 var(--line); }
 
-  /* Nav: soft pill follows hover; current section keeps a filled pill */
-  .nav-link { transition: color 200ms ease, background-color 240ms var(--ease-out), transform 160ms var(--ease-out); border-radius: calc(var(--r) * 0.9) !important; }
+  .nav-link { border-radius: calc(var(--r) * 0.9) !important; transition: color 200ms, background-color 240ms var(--ease-out), transform 160ms var(--ease-out); }
   .nav-link:active { transform: scale(0.95); }
   @media (hover: hover) { .nav-link:hover { color: var(--fg) !important; background: color-mix(in srgb, var(--fg) 6%, transparent); } }
   .nav-link[aria-current='true'] { color: var(--fg) !important; background: var(--accent-soft); }
 
-  /* Dark feature block floats as an inset panel with its own glow */
-  .deep-panel { position: relative; margin-inline: 10px; border-radius: calc(var(--r) * 2.2); overflow: hidden; isolation: isolate; }
-  .deep-panel::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(50% 60% at 85% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%); }
+  .deep-panel { position: relative; margin-inline: 10px; border-radius: calc(var(--r) * 2.2); overflow: hidden; }
   @media (min-width: 1280px) { .deep-panel { margin-inline: 24px; } }
 
   /* Theme Studio */
-  .studio-orb { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 99px; color: var(--accent-ink); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 80%, white), var(--accent)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), var(--shadow-pop); touch-action: none; cursor: grab; }
+  .studio-orb { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 99px; color: var(--accent-ink); background: var(--accent); touch-action: none; cursor: grab; }
   .studio-orb:active { cursor: grabbing; }
-  .studio-panel { width: min(340px, calc(100vw - 2rem)); max-height: min(78vh, 640px); display: flex; flex-direction: column; overflow: hidden; border-radius: calc(var(--r) * 1.8); background: color-mix(in srgb, var(--surface) 95%, transparent); -webkit-backdrop-filter: blur(22px) saturate(1.5); backdrop-filter: blur(22px) saturate(1.5); box-shadow: var(--ring), var(--shadow-pop); color: var(--fg); }
+  .studio-panel { width: min(340px, calc(100vw - 2rem)); max-height: min(78vh, 640px); display: flex; flex-direction: column; overflow: hidden; border-radius: calc(var(--r) * 1.8); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(20px); box-shadow: var(--ring), var(--shadow-pop); color: var(--fg); }
   .studio-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 10px 10px 16px; cursor: grab; touch-action: none; border-bottom: 1px solid var(--line); }
   .studio-head:active { cursor: grabbing; }
   .studio-body { overflow-y: auto; padding: 4px 16px 8px; overscroll-behavior: contain; }
@@ -208,95 +180,86 @@
   .studio-row output { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
   .studio-row .range { grid-column: 1 / -1; }
   .studio-preview { display: grid; gap: 8px; padding: 14px; }
-  .preset-tile { position: relative; display: grid; justify-items: center; gap: 6px; padding: 8px 4px 6px; border-radius: calc(var(--r) * 0.9); transition: transform 200ms var(--spring), background-color 200ms ease; }
+  .preset-tile { position: relative; display: grid; justify-items: center; gap: 6px; padding: 8px 4px 6px; border-radius: calc(var(--r) * 0.9); transition: transform 200ms var(--spring), background-color 200ms; }
   .preset-tile:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--fg) 5%, transparent); }
   .preset-tile:active { transform: scale(0.94); }
   .preset-ring { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 2px var(--accent); pointer-events: none; }
   .preset-swatch { position: relative; width: 100%; height: 38px; border-radius: calc(var(--r) * 0.6); border: 1px solid; overflow: hidden; }
-  .preset-swatch i { position: absolute; border-radius: 99px; }
+  .preset-swatch i { position: absolute; }
   .preset-swatch i:first-child { left: 8px; bottom: 7px; width: 24px; height: 14px; border-radius: 6px; }
-  .preset-swatch i:last-child { right: 8px; top: 7px; width: 14px; height: 14px; }
-  .dot { position: relative; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 99px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12); transition: transform 200ms var(--spring); }
+  .preset-swatch i:last-child { right: 8px; top: 7px; width: 14px; height: 14px; border-radius: 99px; }
+  .dot { position: relative; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 99px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12); transition: transform 200ms var(--spring); }
   .dot:hover { transform: scale(1.14); }
   .dot:active { transform: scale(0.9); }
   .dot-custom { background: conic-gradient(#f87171, #fbbf24, #4ade80, #22d3ee, #818cf8, #f472b6, #f87171); overflow: hidden; cursor: pointer; }
   .dot-custom input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
   .switch { position: relative; width: 44px; height: 26px; border-radius: 99px; background: color-mix(in srgb, var(--fg) 16%, transparent); transition: background-color 240ms var(--ease-out); }
-  .switch span { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 99px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); transition: transform 300ms var(--spring); }
+  .switch span { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 99px; background: #fff; transition: transform 300ms var(--spring), width 160ms; }
   .switch[aria-checked='true'] { background: var(--accent); }
   .switch[aria-checked='true'] span { transform: translateX(18px); }
   .switch:active span { width: 24px; }
-  .range { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 99px; background: color-mix(in srgb, var(--fg) 12%, transparent); outline-offset: 6px; }
-  .range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 99px; background: var(--accent); border: 3px solid var(--surface); box-shadow: 0 1px 4px rgba(var(--sh), 0.4); cursor: grab; transition: transform 160ms var(--spring); }
+  .range { appearance: none; height: 6px; border-radius: 99px; background: color-mix(in srgb, var(--fg) 12%, transparent); outline-offset: 6px; }
+  .range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 99px; background: var(--accent); border: 3px solid var(--surface); cursor: grab; transition: transform 160ms var(--spring); }
   .range::-webkit-slider-thumb:hover { transform: scale(1.15); }
   .range:active::-webkit-slider-thumb { transform: scale(1.25); cursor: grabbing; }
   .range::-moz-range-thumb { width: 14px; height: 14px; border-radius: 99px; background: var(--accent); border: 3px solid var(--surface); }
 }
 
-@keyframes pop-in { from { opacity: 0; transform: scale(0.94) translateY(10px); } }
+@keyframes pop-in { from { opacity: 0; scale: 0.94; translate: 0 10px; } }
 @keyframes fade-in { from { opacity: 0; } }
 
 .hide-scrollbar { scrollbar-width: none; }
-.hide-scrollbar::-webkit-scrollbar { display: none; }
 
-/* Drag-scrolling carousel: snap is paused while dragging so it follows the pointer 1:1 */
+/* Drag-scrolling carousel: snap pauses while dragging so it follows the pointer 1:1 */
 [data-dragscroll] { cursor: grab; }
 [data-dragging] { cursor: grabbing; scroll-snap-type: none !important; user-select: none; }
 [data-dragging] * { pointer-events: none; }
 
-body[data-modal-open] .sticky-bar,
-body[data-drawer-open] .sticky-bar { display: none; }
+body[data-modal-open] .sticky-bar, body[data-drawer-open] .sticky-bar { display: none; }
 
-/* Closing line: words rise in one by one */
-.word { display: inline-block; opacity: 0; transform: translateY(14px); filter: blur(6px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out), filter 600ms var(--ease-out); transition-delay: calc(var(--i) * 80ms); }
-.words-in .word { opacity: 1; transform: none; filter: none; }
+/* Below-the-fold sections skip rendering until near the viewport */
+.section { content-visibility: auto; contain-intrinsic-size: auto 720px; }
 
-/* Hero: soft light pool, no hairline */
-.hero-wash { background: radial-gradient(60% 70% at 78% 12%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 70%); }
+.word { display: inline-block; opacity: 0; translate: 0 14px; transition: opacity 600ms var(--ease-out), translate 600ms var(--ease-out); transition-delay: calc(var(--i) * 80ms); }
+.words-in .word { opacity: 1; translate: 0 0; }
 
-/* Spotlight: pointer-tracked glow on cards (one delegated listener sets --mx / --my) */
+/* Spotlight glow on cards (one delegated listener sets --mx / --my) */
 .spot { position: relative; isolation: isolate; }
 .spot::before {
   content: ''; position: absolute; inset: -1px; border-radius: inherit; z-index: -1; pointer-events: none; opacity: 0;
-  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%);
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
   transition: opacity 280ms var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) { .spot:hover::before { opacity: 1; } }
 
-/* Live dot */
 .ping { position: relative; display: inline-flex; width: 8px; height: 8px; border-radius: 999px; background: var(--accent); }
 .ping::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: inherit; animation: ping 1.9s var(--ease-out) infinite; }
-@keyframes ping { to { transform: scale(2.8); opacity: 0; } }
+@keyframes ping { to { scale: 2.8; opacity: 0; } }
 
-/* Floating hero chips bob gently */
 .float { animation: float 6s ease-in-out infinite alternate; }
-@keyframes float { to { transform: translateY(-7px); } }
+@keyframes float { to { translate: 0 -7px; } }
 
-/* Preloader */
-.preloader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: var(--bg); pointer-events: none; transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
-.preloader[data-out='true'] { opacity: 0; transform: scale(1.03); }
+.preloader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: var(--bg); pointer-events: none; transition: opacity 500ms var(--ease-out), scale 500ms var(--ease-out); }
+.preloader[data-out='true'] { opacity: 0; scale: 1.03; }
 
-/* Doodle: ink follows the theme */
 .doodle { mix-blend-mode: multiply; }
 .dark .doodle { filter: invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
 
 /* Theme change: colours cross-fade; palette changes grow as a circle from the click (View Transitions) */
-.theme-fade, .theme-fade *, .theme-fade *::before, .theme-fade *::after { transition: background-color 380ms ease, color 380ms ease, border-color 380ms ease, box-shadow 380ms ease, fill 380ms ease !important; }
+.theme-fade, .theme-fade *, .theme-fade *::before, .theme-fade *::after { transition: background-color 380ms, color 380ms, border-color 380ms, box-shadow 380ms, fill 380ms !important; }
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 ::view-transition-new(root) { animation: vt-reveal 720ms var(--ease-out); }
 @keyframes vt-reveal { from { clip-path: circle(0 at var(--vx, 50%) var(--vy, 50%)); } to { clip-path: circle(150vmax at var(--vx, 50%) var(--vy, 50%)); } }
 
-/* Calm: keep colour and layout transitions, drop continuous and decorative motion */
-html[data-motion='calm'] body::before, html[data-motion='calm'] .float, html[data-motion='calm'] .ping::after { animation: none; }
-
+/* Motion setting: calm drops decorative loops, off drops everything. OS reduced-motion behaves like off. */
+html[data-motion='calm'] .float, html[data-motion='calm'] .ping::after { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  body::before, .float, .ping::after, .pop-in, .fade-in, .ripple { animation: none; }
-  .btn:active, .icon-btn:active { transform: none; }
-  .word { opacity: 1; transform: none; filter: none; transition: none; }
+  .float, .ping::after, .pop-in, .fade-in, .ripple, .scroll-progress { animation: none; }
+  .word { opacity: 1; translate: none; transition: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
 html[data-motion='off'] { scroll-behavior: auto; }
-html[data-motion='off'] body::before, html[data-motion='off'] .float, html[data-motion='off'] .ping::after, html[data-motion='off'] .pop-in, html[data-motion='off'] .fade-in { animation: none; }
+html[data-motion='off'] .float, html[data-motion='off'] .ping::after, html[data-motion='off'] .pop-in, html[data-motion='off'] .fade-in { animation: none; }
 html[data-motion='off'] *, html[data-motion='off'] *::before, html[data-motion='off'] *::after { transition-duration: 1ms !important; }
-html[data-motion='off'] .word { opacity: 1; transform: none; filter: none; }
+html[data-motion='off'] .word { opacity: 1; translate: none; }
