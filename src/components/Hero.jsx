@@ -3,10 +3,11 @@ import { Send, Phone, Monitor, GraduationCap, DatabaseBackup, Star, ArrowRight }
 import { SITE, formatPhone } from '../data/site';
 import { Reveal } from './Reveal';
 import { HeroBackdrop } from './HeroBackdrop';
+import { ReceiptTape } from './ReceiptTape';
 
 const FACTS = [['fact1', Monitor], ['fact2', GraduationCap], ['fact3', DatabaseBackup]];
 
-export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
+export const Hero = ({ t, lang, onOpenDemo, onOpenLightbox }) => {
   const { rating, activeStores } = SITE.claims;
   return (
     <>
@@ -32,12 +33,16 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
       </section>
 
       <div className="relative z-10 mx-auto -mt-36 max-w-[1240px] px-3 md:-mt-52">
+        <div className="relative mx-auto max-w-5xl">
         <button
           type="button" onClick={() => onOpenLightbox('/screenshots/kassa.webp', t.hero.imageAlt)} aria-label={t.software.zoom}
-          className="mx-auto block w-full max-w-5xl overflow-hidden rounded-3xl bg-white p-2 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.55)] ring-1 ring-black/10"
+          className="block w-full overflow-hidden rounded-3xl bg-white p-2 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.55)] ring-1 ring-black/10"
         >
           <img src="/screenshots/kassa.webp" alt={t.hero.imageAlt} width="1359" height="716" fetchpriority="high" decoding="async" className="h-auto w-full rounded-2xl" />
         </button>
+        {/* Signature receipt: overlaps the screen on wide viewports, sits under it on phones */}
+        <ReceiptTape t={t} lang={lang} className="mx-auto mt-6 lg:absolute lg:right-2 xl:-right-10 lg:bottom-10 lg:mt-0 lg:rotate-[2.5deg]" />
+        </div>
         <p className="mx-auto mt-6 max-w-md text-center text-sm" style={{ color: 'var(--muted)' }}>{t.hero.caption}</p>
         {rating.verified && (
           <p className="mt-3 flex items-center justify-center gap-2 text-sm">

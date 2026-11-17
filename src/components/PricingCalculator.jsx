@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Check } from 'lucide-react';
 import { SITE, formatPrice } from '../data/site';
 import { SectionHead } from './SectionHead';
+import { PrintLine } from './ReceiptTape';
 
 const PERIODS = [
   { key: 'monthly', label: 'period1', months: 1 },
   { key: '6m', label: 'period6', months: 6, badge: 'badge6' },
   { key: '12m', label: 'period12', months: 12, badge: 'badge12' },
 ];
-const FREE_MONTHS = { monthly: 0, '6m': 1, '12m': 2 }; // 6m = 5 paid + 1 free, 12m = 10 paid + 2 free
 
+/** Each plan is printed as a receipt: name, price per month, total, what is included. */
 export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
   const [period, setPeriod] = useState('monthly');
   const p = PERIODS.find((x) => x.key === period);
@@ -31,33 +31,33 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
           ))}
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          {SITE.plans.map((plan) => {
+        <div className="grid gap-8 md:grid-cols-3 md:items-start">
+          {SITE.plans.map((plan, n) => {
             const info = t.pricing[plan.id];
             const total = plan[period];
             const perMonth = Math.round(total / p.months);
             return (
-              <div key={plan.id} className={`card relative flex flex-col p-7 ${plan.popular ? '!shadow-[0_0_0_2px_var(--accent),var(--shadow-pop)] md:-translate-y-2' : ''}`}>
-                {plan.popular && (
-                  <span className="absolute -top-3 left-6 rounded-full bg-emerald-600 px-3 py-0.5 text-xs font-medium text-white dark:bg-emerald-500 dark:text-zinc-950">{t.pricing.popular}</span>
-                )}
-                <h3 className="text-xl font-semibold">{info.name}</h3>
-                <p className="mt-1 text-sm" style={{ color: 'var(--muted)' }}>{info.subtitle}</p>
-                <p className="mt-6 text-3xl font-semibold tracking-tight tabular-nums">{formatPrice(perMonth, lang)}</p>
-                <p className="text-sm" style={{ color: 'var(--muted)' }}>
-                  {t.pricing.perMonth}{period !== 'monthly' && <> · {t.pricing.total}: {formatPrice(total, lang)}</>}
-                </p>
-                <ul className="mb-6 mt-5 flex-1 space-y-2.5 text-sm">
-                  {info.features.map((f) => (
-                    <li key={f} className="flex gap-2.5">
-                      <Check size={20} strokeWidth={1.75} className="mt-px shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />{f}
-                    </li>
-                  ))}
-                </ul>
-                <button type="button" onClick={() => onSelectPlan(plan.id)} className={plan.popular ? 'btn-primary w-full' : 'btn-secondary w-full'}>
-                  {t.pricing.choose}
-                </button>
-              </div>
+              <PrintLine key={plan.id} i={n} className="receipt-plan">
+                <div className="receipt !max-w-none flex flex-col">
+                  <div className="receipt-row text-[13px] font-bold">
+                    <span>{info.name}</span>
+                    {plan.popular && <span className="receipt-stamp">{t.pricing.popular}</span>}
+                  </div>
+                  <p className="receipt-muted mt-1">{info.subtitle}</p>
+                  <hr className="receipt-rule" />
+                  <p className="receipt-row"><span>{t.pricing.perMonth}</span><span className="font-bold">{formatPrice(perMonth, lang)}</span></p>
+                  {period !== 'monthly' && (
+                    <p className="receipt-row receipt-total mt-1"><span>{t.pricing.total}</span><span>{formatPrice(total, lang)}</span></p>
+                  )}
+                  <hr className="receipt-rule" />
+                  <ul className="mb-5 flex-1 space-y-1.5">
+                    {info.features.map((f) => <li key={f} className="flex gap-2"><span aria-hidden="true">+</span><span>{f}</span></li>)}
+                  </ul>
+                  <button type="button" onClick={() => onSelectPlan(plan.id)} className={plan.popular ? 'btn-primary w-full' : 'btn-secondary w-full'}>
+                    {t.pricing.choose}
+                  </button>
+                </div>
+              </PrintLine>
             );
           })}
         </div>

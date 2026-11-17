@@ -85,7 +85,7 @@ test('cart persists after reload', async ({ page }) => {
 test('pricing period switch changes price', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
-  const price = () => page.locator('#pricing .card').first().locator('p.text-3xl').innerText();
+  const price = () => page.locator('#pricing .receipt-plan').first().locator('p.receipt-row span.font-bold').innerText();
   const before = await price();
   await page.locator('#pricing').getByRole('button', { name: /^12 oy/ }).click();
   expect(await price()).not.toBe(before);

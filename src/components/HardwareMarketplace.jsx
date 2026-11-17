@@ -19,6 +19,9 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
     });
   };
 
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const sum = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
   return (
     <section id="equipment" className="section scroll-mt-16">
       <div className="container-page">
@@ -54,6 +57,13 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
             );
           })}
         </ul>
+
+        {count > 0 && (
+          <button type="button" onClick={onOpenCart} className="receipt !max-w-none receipt-row mt-6 w-full text-left text-[13px]">
+            <span className="font-bold">{t.equipment.setupTotal} · {count}</span>
+            <span className="font-bold">{formatPrice(sum, lang)}</span>
+          </button>
+        )}
 
         <div className="card mt-8 flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-3">

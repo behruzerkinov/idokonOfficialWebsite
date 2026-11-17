@@ -1,21 +1,24 @@
 import React from 'react';
-import { SectionHead } from './SectionHead';
-import { Reveal } from './Reveal';
+import { PrintLine } from './ReceiptTape';
 
+/** Three steps printed as lines on one tape. Heading sits left, the tape right. */
 export const HowItWorks = ({ t }) => (
   <section className="section">
-    <div className="mx-auto max-w-[1240px] px-3">
-      <div className="stage">
-      <SectionHead title={t.how.title} lead={t.how.lead} />
-      <ol className="grid gap-4 md:grid-cols-3">
+    <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+      <div>
+        <h2 className="h2">{t.how.title}</h2>
+        <p className="lede mt-4 max-w-[34ch]">{t.how.lead}</p>
+      </div>
+      <div className="receipt !max-w-none">
         {[1, 2, 3].map((n) => (
-          <Reveal as="li" key={n} className="card p-7">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent-soft)] text-lg font-semibold text-[var(--accent)]" aria-hidden="true">{n}</span>
-            <h3 className="mt-5 text-lg font-semibold tracking-tight">{t.how[`s${n}_title`]}</h3>
-            <p className="mt-2" style={{ color: 'var(--muted)' }}>{t.how[`s${n}_desc`]}</p>
-          </Reveal>
+          <PrintLine key={n} i={n - 1} className={n < 3 ? 'receipt-rule-b' : ''}>
+            <p className="receipt-row text-[13px] font-bold">
+              <span className="!whitespace-normal">{t.how[`s${n}_title`]}</span>
+              <span>0{n}</span>
+            </p>
+            <p className="receipt-muted mt-1">{t.how[`s${n}_desc`]}</p>
+          </PrintLine>
         ))}
-      </ol>
       </div>
     </div>
   </section>

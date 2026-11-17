@@ -96,7 +96,7 @@ export function App() {
       <Navbar lang={lang} setLang={setLang} t={t} theme={theme} toggleTheme={toggleTheme} cartCount={cartCount} onOpenCart={openCart} onOpenDemo={openDemo} />
 
       <main id="main">
-        <Hero t={t} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
+        <Hero t={t} lang={lang} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
         <Partners t={t} />
         <HowItWorks t={t} />
         <PosInteractiveShowcase t={t} onOpenLightbox={openLightbox} />

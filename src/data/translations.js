@@ -22,7 +22,7 @@ export const translations = {
       "language": "Til"
     },
     "hero": {
-      "title": "Do'koningizni boshqarish endi oson",
+      "title": "Butun do'kon, bitta chekda",
       "subtitle": "Kassa, ombor va hisobotlar bitta oddiy dasturda. Biz o'rnatamiz, ma'lumotlaringizni ko'chiramiz va kassirlaringizni o'rgatamiz.",
       "ctaPrimary": "Bepul demo",
       "ctaSecondary": "Telegramda yozish",
@@ -32,7 +32,8 @@ export const translations = {
       "imageAlt": "IDO'KON kassa dasturi ekrani",
       "ratingLabel": "Mijozlar bahosi",
       "storesLabel": "faol savdo nuqtasi",
-      "caption": "Kassa dasturi: bitta ekran, bir necha tugma."
+      "caption": "Kassa dasturi: bitta ekran, bir necha tugma.",
+      "receipt": { "stamp": "Namuna", "items": ["Non", "Sut, 1 l", "Choy"], "total": "Jami", "note": "Namuna chek, haqiqiy narxlar emas." }
     },
     "partners": {
       "title": "O'zbekistondagi to'lov va fiskal tizimlar bilan ishlaydi"
@@ -129,6 +130,7 @@ export const translations = {
       "lead": "Dastur bilan sinalgan qurilmalar. Savatga qo'shing, biz bog'lanamiz.",
       "kitTitle": "Tayyor to'plam",
       "kitDesc": "Qaysi qurilma kerakligini bilmasangiz, biz tanlab beramiz.",
+      "setupTotal": "Kassa to'plamingiz",
       "kitBtn": "Tanlab berishingizni so'rayman",
       "kitMessage": "Qurilmalar to'plamini tanlab bering.",
       "prev": "Oldingi qurilmalar",
@@ -329,7 +331,7 @@ export const translations = {
       "language": "Язык"
     },
     "hero": {
-      "title": "Управлять магазином стало просто",
+      "title": "Весь магазин на одном чеке",
       "subtitle": "Касса, склад и отчёты в одной простой программе. Мы установим её, перенесём ваши данные и обучим кассиров.",
       "ctaPrimary": "Бесплатное демо",
       "ctaSecondary": "Написать в Telegram",
@@ -339,7 +341,8 @@ export const translations = {
       "imageAlt": "Экран кассовой программы IDO'KON",
       "ratingLabel": "Оценка клиентов",
       "storesLabel": "активных точек",
-      "caption": "Кассовая программа: один экран, несколько кнопок."
+      "caption": "Кассовая программа: один экран, несколько кнопок.",
+      "receipt": { "stamp": "Пример", "items": ["Хлеб", "Молоко, 1 л", "Чай"], "total": "Итого", "note": "Пример чека, не реальные цены." }
     },
     "partners": {
       "title": "Работает с платёжными и фискальными системами Узбекистана"
@@ -436,6 +439,7 @@ export const translations = {
       "lead": "Устройства, проверенные с программой. Добавьте в корзину — мы свяжемся.",
       "kitTitle": "Готовый комплект",
       "kitDesc": "Не знаете, какое оборудование нужно — мы подберём.",
+      "setupTotal": "Ваш набор для кассы",
       "kitBtn": "Подберите мне комплект",
       "kitMessage": "Подберите мне комплект оборудования.",
       "prev": "Предыдущие устройства",
@@ -636,7 +640,7 @@ export const translations = {
       "language": "Language"
     },
     "hero": {
-      "title": "Running your shop is now easy",
+      "title": "Your whole shop, on one receipt",
       "subtitle": "Checkout, stock and reports in one simple program. We install it, move your data and train your cashiers.",
       "ctaPrimary": "Free demo",
       "ctaSecondary": "Message us on Telegram",
@@ -646,7 +650,8 @@ export const translations = {
       "imageAlt": "IDO'KON POS software screen",
       "ratingLabel": "Customer rating",
       "storesLabel": "active stores",
-      "caption": "The till program: one screen, a few buttons."
+      "caption": "The till program: one screen, a few buttons.",
+      "receipt": { "stamp": "Sample", "items": ["Bread", "Milk, 1 l", "Tea"], "total": "Total", "note": "Sample receipt, not real prices." }
     },
     "partners": {
       "title": "Works with payment and fiscal systems in Uzbekistan"
@@ -743,6 +748,7 @@ export const translations = {
       "lead": "Devices tested with the program. Add to cart and we will call you.",
       "kitTitle": "Ready-made kit",
       "kitDesc": "Not sure which devices you need? We will choose for you.",
+      "setupTotal": "Your checkout setup",
       "kitBtn": "Choose a kit for me",
       "kitMessage": "Please choose a device kit for me.",
       "prev": "Previous devices",
