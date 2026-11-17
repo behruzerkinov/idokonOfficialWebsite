@@ -128,7 +128,7 @@ export const LeadForm = ({
       />
 
       {state === 'failed' && (
-        <div role="alert" className="rounded-[10px] border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200">
+        <div role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200">
           <p className="font-medium">{f.failTitle}</p>
           <p className="mt-1">{f.failDesc}</p>
           <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-medium">

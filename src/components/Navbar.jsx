@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Drawer } from 'vaul';
 import { ChevronDown, Menu, Moon, ShoppingBag, Sun, X } from 'lucide-react';
 import { SITE } from '../data/site';
-import { ScrambleText } from './ScrambleText';
 
 const LANGS = [
   { code: 'uz', name: 'O‘zbekcha' },
@@ -27,7 +26,6 @@ export const LangMenu = ({ lang, setLang, label, up = false }) => {
   return (
     <div ref={ref} className="relative">
       <button type="button" aria-haspopup="true" aria-expanded={open} aria-label={label} onClick={() => setOpen((o) => !o)} className="btn-outline !min-h-[44px] !gap-2 !px-3.5">
-        <span className="ping" aria-hidden="true" />
         <span>{current.name}</span>
         <ChevronDown size={16} strokeWidth={2} aria-hidden="true" className={`transition-transform duration-150 ${open ? 'rotate-180' : ''}`} />
       </button>
@@ -93,7 +91,7 @@ export const Navbar = ({ lang, setLang, t, theme, toggleTheme, cartCount, onOpen
         <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
           {LINKS.map((id) => (
             <a key={id} href={`#${id}`} aria-current={active === id ? 'true' : undefined} onClick={(e) => { e.preventDefault(); go(id); }} className="nav-link inline-flex h-10 items-center rounded-lg px-3 text-sm font-medium" style={{ color: 'var(--muted)' }}>
-              <ScrambleText text={t.nav[id]} />
+              {t.nav[id]}
             </a>
           ))}
         </nav>

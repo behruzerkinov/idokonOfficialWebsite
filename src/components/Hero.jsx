@@ -30,8 +30,6 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
         </Reveal>
 
         <Reveal className="relative mx-auto w-full max-w-[620px] pb-10 pr-0 sm:pr-8">
-          {/* offset panel behind the window, as on the live site */}
-          <div aria-hidden="true" className="absolute inset-y-8 left-8 right-0 rounded-[28px]" style={{ background: 'var(--deep)' }} />
           <div className="spot relative rounded-2xl p-1.5" style={{ background: 'var(--surface)', boxShadow: 'var(--ring), var(--shadow-pop)' }}>
             <div className="flex items-center gap-3 px-3 py-2.5">
               <span className="flex gap-1.5" aria-hidden="true">{WINDOW_DOTS.map((c) => <i key={c} className="h-2.5 w-2.5 rounded-full" style={{ background: c }} />)}</span>
