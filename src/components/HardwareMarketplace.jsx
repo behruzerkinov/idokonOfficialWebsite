@@ -1,31 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Check, ChevronLeft, ChevronRight, Plus, X } from 'lucide-react';
 import { dragScroll } from '../lib/interactions';
-import { ArrowUpRight, ChevronLeft, ChevronRight, ShoppingCart, Check } from 'lucide-react';
-import { toast } from 'sonner';
 import { hardwareProducts } from '../data/mockData';
-import { formatPrice, currencyLabel } from '../data/site';
+import { currencyLabel, formatNum, formatPrice } from '../data/site';
 import { Reveal } from './Reveal';
+import { NumberRoll } from './NumberRoll';
 
-const ARROW = 'icon-btn border bg-[var(--surface)]';
 
-export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsModal, onOpenCart, onRequestKit }) => {
+/** Device catalogue as an estimator: select devices, the total rolls to the new sum. No cart, no checkout. */
+export const HardwareMarketplace = ({ lang, t, picked, onTogglePick, onClearPicked, onOpenSpecs, onContact }) => {
   const e = t.equipment;
   const scroller = useRef(null);
   const [all, setAll] = useState(false);
   useEffect(() => (all ? undefined : dragScroll(scroller.current)), [all]);
   const by = (dir) => scroller.current?.scrollBy({ left: dir * 340, behavior: 'smooth' });
 
-  const add = (product) => {
-    onAddToCart(product);
-    const title = product.title[lang] || product.title.uz;
-    toast.success(`${title} ${e.addedToCartToast}`, { action: { label: t.nav.cart, onClick: onOpenCart } });
-  };
-
-  const count = cart.reduce((s, i) => s + i.qty, 0);
-  const sum = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const chosen = hardwareProducts.filter((p) => picked.has(p.id));
+  const sum = chosen.reduce((s, p) => s + p.price, 0);
+  const name = (p) => p.title[lang] || p.title.uz;
+  const askKit = () => onContact({ message: chosen.length ? e.kitMessageList.replace('{list}', chosen.map(name).join(', ')).replace('{sum}', formatPrice(sum, lang)) : e.kitMessage });
 
   return (
-    <section id="equipment" className="section section-alt scroll-mt-16">
+    <section id="equipment" className="section section-alt">
       <div className="container-page">
         <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
@@ -34,20 +30,20 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
             <p className="lede mt-5 max-w-[52ch]">{e.lead}</p>
           </div>
           {!all && (
-            <div className="flex gap-2" style={{ borderColor: 'var(--line)' }}>
-              <button type="button" className={ARROW} style={{ borderColor: 'var(--line)' }} onClick={() => by(-1)} aria-label={e.prev}><ChevronLeft size={20} strokeWidth={1.75} /></button>
-              <button type="button" className={ARROW} style={{ borderColor: 'var(--line)' }} onClick={() => by(1)} aria-label={e.next}><ChevronRight size={20} strokeWidth={1.75} /></button>
+            <div className="flex gap-2">
+              <button type="button" className="icon-btn" style={{ boxShadow: 'inset 0 0 0 1px var(--line-strong)' }} onClick={() => by(-1)} aria-label={e.prev}><ChevronLeft size={20} strokeWidth={1.75} /></button>
+              <button type="button" className="icon-btn" style={{ boxShadow: 'inset 0 0 0 1px var(--line-strong)' }} onClick={() => by(1)} aria-label={e.next}><ChevronRight size={20} strokeWidth={1.75} /></button>
             </div>
           )}
         </Reveal>
 
         <ul ref={scroller} data-dragscroll={all ? undefined : ''} className={all ? 'mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3' : 'hide-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8'}>
           {hardwareProducts.map((p) => {
-            const inCart = cart.some((i) => i.id === p.id);
-            const title = p.title[lang] || p.title.uz;
+            const on = picked.has(p.id);
+            const title = name(p);
             return (
-              <li key={p.id} className={`card spot tilt flex flex-col overflow-hidden ${all ? '' : 'w-[80vw] shrink-0 snap-start sm:w-[300px]'}`}>
-                <button type="button" onClick={() => onOpenSpecsModal(p)} className="block text-left" aria-label={`${title}: ${e.details}`}>
+              <li key={p.id} className={`card flex flex-col overflow-hidden ${all ? '' : 'w-[80vw] shrink-0 snap-start sm:w-[300px]'}`} style={on ? { boxShadow: '0 0 0 2px var(--accent)' } : undefined}>
+                <button type="button" onClick={() => onOpenSpecs(p)} className="block text-left" aria-label={`${title}: ${e.details}`}>
                   <div className="flex h-56 items-center justify-center bg-white">
                     <img src={p.image} alt={title} width="300" height="224" loading="lazy" decoding="async" className="h-full w-full object-contain p-4" />
                   </div>
@@ -58,12 +54,12 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
                   </div>
                 </button>
                 <div className="mt-auto flex items-end justify-between gap-3 p-5 pt-2">
-                  <p className="font-bold tabular-nums leading-tight">{new Intl.NumberFormat('uz-UZ').format(p.price)}<span className="block text-xs font-medium" style={{ color: 'var(--muted)' }}>{formatPrice(0, lang).replace(/^0\s/, '')}</span></p>
+                  <p className="font-bold tabular-nums leading-tight">{formatNum(p.price)}<span className="block text-xs font-medium" style={{ color: 'var(--muted)' }}>{currencyLabel(lang)}</span></p>
                   <div className="flex gap-2">
-                    <button type="button" onClick={() => add(p)} aria-label={inCart ? e.inCartBadge : e.addBtn} className={inCart ? 'btn-outline !min-h-[44px] !px-3' : 'btn-primary !min-h-[44px] !px-3'}>
-                      {inCart ? <Check size={18} strokeWidth={2} /> : <ShoppingCart size={18} strokeWidth={2} />}
+                    <button type="button" onClick={() => onOpenSpecs(p)} aria-label={`${title}: ${e.details}`} className="btn-outline !min-h-[40px] !px-3"><ArrowUpRight size={18} strokeWidth={2} /></button>
+                    <button type="button" onClick={() => onTogglePick(p.id)} aria-pressed={on} className={`${on ? 'btn-primary' : 'btn-outline'} !min-h-[40px] !px-3.5`}>
+                      {on ? <Check size={17} strokeWidth={2.25} aria-hidden="true" /> : <Plus size={17} strokeWidth={2.25} aria-hidden="true" />}{on ? e.picked : e.pick}
                     </button>
-                    <button type="button" onClick={() => onOpenSpecsModal(p)} aria-label={`${title}: ${e.details}`} className="btn-deep !min-h-[44px] !px-3"><ArrowUpRight size={18} strokeWidth={2} /></button>
                   </div>
                 </div>
               </li>
@@ -71,23 +67,29 @@ export const HardwareMarketplace = ({ lang, t, cart, onAddToCart, onOpenSpecsMod
           })}
         </ul>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 flex justify-center">
           <button type="button" onClick={() => setAll((a) => !a)} className="btn-outline" aria-pressed={all}>{all ? e.viewRow : e.viewAll}</button>
         </div>
 
-        {count > 0 && (
-          <button type="button" onClick={onOpenCart} className="card mt-6 flex w-full items-center justify-between gap-4 p-5 text-left font-bold">
-            <span>{e.setupTotal} · {count}</span>
-            <span className="tabular-nums">{formatPrice(sum, lang)}</span>
-          </button>
-        )}
-
-        <div className="card mt-8 flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="font-bold">{e.kitTitle}</h3>
-            <p style={{ color: 'var(--muted)' }}>{e.kitDesc}</p>
+        {/* Running total. Sticks to the bottom of the viewport while the section is on screen. */}
+        <div className="sticky bottom-[88px] z-10 mt-8 md:bottom-6">
+          <div className="flex flex-col gap-4 rounded-2xl p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5" style={{ background: 'var(--deep)', color: 'var(--on-deep)', boxShadow: '0 0 0 1px var(--on-deep-line), var(--shadow-pop)' }} aria-live="polite">
+            <div className="min-w-0">
+              <p className="text-sm" style={{ color: 'var(--on-deep-muted)' }}>{chosen.length ? `${e.estimate} · ${chosen.length} ${e.items}` : e.estimateNone}</p>
+              <p className="mt-1 flex items-baseline gap-2">
+                <NumberRoll value={sum} className="text-3xl font-bold leading-none tracking-tight" />
+                <span className="text-sm font-medium" style={{ color: 'var(--on-deep-muted)' }}>{currencyLabel(lang)}</span>
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-2">
+              {chosen.length > 0 && (
+                <button type="button" onClick={onClearPicked} className="btn !min-h-[44px] !px-4" style={{ color: 'var(--on-deep)', boxShadow: 'inset 0 0 0 1px var(--on-deep-line)' }}>
+                  <X size={16} strokeWidth={2} aria-hidden="true" />{e.clear}
+                </button>
+              )}
+              <button type="button" onClick={askKit} className="btn !min-h-[44px] flex-1 whitespace-normal text-center sm:flex-none" style={{ background: 'var(--accent-bright)', color: 'var(--bright-ink)' }}>{e.kitBtn}</button>
+            </div>
           </div>
-          <button type="button" onClick={onRequestKit} className="btn-deep shrink-0">{e.kitBtn}</button>
         </div>
       </div>
     </section>

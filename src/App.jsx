@@ -1,116 +1,62 @@
-import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
-import { Toaster } from 'sonner';
-import { LazyMotion, MotionConfig } from 'motion/react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { translations } from './data/translations';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { StickyBar } from './components/StickyBar';
-import { Preloader } from './components/Preloader';
-import { useTheme } from './theme/ThemeProvider';
-import { useInteractions } from './lib/interactions';
+import { useDark } from './lib/theme';
+import { useSpotlight } from './lib/interactions';
+import { scrollToId } from './lib/scroll';
 
 const BelowFold = lazy(() => import('./components/BelowFold'));
-const DemoModal = lazy(() => import('./components/DemoModal').then((m) => ({ default: m.DemoModal })));
-const CartDrawer = lazy(() => import('./components/CartDrawer').then((m) => ({ default: m.CartDrawer })));
-const HardwareSpecsModal = lazy(() => import('./components/HardwareSpecsModal').then((m) => ({ default: m.HardwareSpecsModal })));
-const ThemeStudio = lazy(() => import('./theme/ThemeStudio'));
-const LightboxModal = lazy(() => import('./components/LightboxModal').then((m) => ({ default: m.LightboxModal })));
+const DemoModal = lazy(() => import('./components/DemoModal'));
+const HardwareSpecsModal = lazy(() => import('./components/HardwareSpecsModal'));
+const LightboxModal = lazy(() => import('./components/LightboxModal'));
 
-const read = (key, fallback) => {
-  try { return localStorage.getItem(key) || fallback; } catch { return fallback; }
+const readLang = () => {
+  try { const l = localStorage.getItem('site_lang'); return translations[l] ? l : 'uz'; } catch { return 'uz'; }
 };
-const write = (key, value) => {
-  try { localStorage.setItem(key, value); } catch { /* storage unavailable */ }
-};
-const readCart = () => {
-  try { return JSON.parse(localStorage.getItem('idokon_cart')) || []; } catch { return []; }
-};
-const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
-export function App() {
-  const [lang, setLang] = useState(() => (translations[read('site_lang', 'uz')] ? read('site_lang', 'uz') : 'uz'));
-  const { isDark, settings, toggleDark } = useTheme();
-  useInteractions();
-  const [cart, setCart] = useState(readCart);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+export default function App() {
+  const [lang, setLang] = useState(readLang);
+  const [isDark, toggleTheme] = useDark();
   const [isDemoOpen, setIsDemoOpen] = useState(false);
   const [specs, setSpecs] = useState(null);
   const [lightbox, setLightbox] = useState(null);
   const [prefill, setPrefill] = useState({});
-
+  const [picked, setPicked] = useState(() => new Set());
+  useSpotlight();
   const t = translations[lang];
 
   useEffect(() => {
     document.documentElement.lang = lang;
     document.title = t.meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description);
-    write('site_lang', lang);
+    try { localStorage.setItem('site_lang', lang); } catch { /* storage unavailable */ }
   }, [lang, t]);
 
-  useEffect(() => {
-    write('idokon_cart', JSON.stringify(cart.map(({ id, title, price, image, qty }) => ({ id, title, price, image, qty }))));
-  }, [cart]);
-
   const openDemo = useCallback(() => setIsDemoOpen(true), []);
-  const openCart = useCallback(() => setIsCartOpen(true), []);
   const openLightbox = useCallback((url, title) => setLightbox({ url, title }), []);
-
-  const addToCart = useCallback((product) => {
-    setCart((prev) =>
-      prev.some((i) => i.id === product.id)
-        ? prev.map((i) => (i.id === product.id ? { ...i, qty: i.qty + 1 } : i))
-        : [...prev, { ...product, qty: 1 }]
-    );
-  }, []);
-  const updateQty = useCallback((id, d) => {
-    setCart((prev) => prev.map((i) => (i.id === id ? { ...i, qty: i.qty + d } : i)).filter((i) => i.qty > 0));
-  }, []);
-  const removeItem = useCallback((id) => setCart((prev) => prev.filter((i) => i.id !== id)), []);
-  const clearCart = useCallback(() => setCart([]), []);
-
-  const selectPlan = (id) => {
-    setPrefill({ plan: t.pricing[id].name });
-    scrollToSection('contact');
-  };
-  const requestKit = () => {
-    setPrefill({ message: t.equipment.kitMessage });
-    scrollToSection('contact');
-  };
-
-  const cartCount = cart.reduce((s, i) => s + i.qty, 0);
+  const togglePick = useCallback((id) => setPicked((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; }), []);
+  const clearPicked = useCallback(() => setPicked(new Set()), []);
+  const contactWith = useCallback((p) => { setPrefill(p); scrollToId('contact'); }, []);
 
   return (
-    <LazyMotion features={() => import('./motionFeatures').then((m) => m.default)}>
-    <MotionConfig reducedMotion={settings.motion === 'off' ? 'always' : 'user'}>
-      <Preloader />
-      <Toaster theme={isDark ? 'dark' : 'light'} position="top-center" richColors closeButton />
-      <Navbar lang={lang} setLang={setLang} t={t} isDark={isDark} toggleTheme={toggleDark} cartCount={cartCount} onOpenCart={openCart} onOpenDemo={openDemo} />
-
+    <>
+      <Navbar lang={lang} setLang={setLang} t={t} isDark={isDark} toggleTheme={toggleTheme} onOpenDemo={openDemo} />
       <main id="main">
         <Hero t={t} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
         <Suspense fallback={<div className="min-h-[150vh]" />}>
-          <BelowFold t={t} lang={lang} cart={cart} onAddToCart={addToCart} onOpenSpecsModal={setSpecs} onOpenCart={openCart} onRequestKit={requestKit} onSelectPlan={selectPlan} onOpenLightbox={openLightbox} onOpenDemo={openDemo} prefill={prefill} />
+          <BelowFold t={t} lang={lang} picked={picked} onTogglePick={togglePick} onClearPicked={clearPicked} onOpenSpecs={setSpecs} onContact={contactWith} onOpenLightbox={openLightbox} onOpenDemo={openDemo} prefill={prefill} />
         </Suspense>
       </main>
-
       <Footer t={t} onOpenDemo={openDemo} />
       <StickyBar t={t} />
-
       <Suspense fallback={null}>
-        <ThemeStudio />
-        {isDemoOpen && <DemoModal isOpen onClose={() => setIsDemoOpen(false)} t={t} lang={lang} />}
-        {(isCartOpen || cart.length > 0) && (
-          <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} onUpdateQty={updateQty} onRemoveItem={removeItem} onClearCart={clearCart} lang={lang} t={t} />
-        )}
-        {specs && (
-          <HardwareSpecsModal isOpen onClose={() => setSpecs(null)} product={specs} lang={lang} t={t} onAddToCart={addToCart} isInCart={cart.some((i) => i.id === specs.id)} />
-        )}
-        {lightbox && <LightboxModal isOpen onClose={() => setLightbox(null)} image={lightbox.url} title={lightbox.title} closeLabel={t.lightbox.close} />}
+        {isDemoOpen && <DemoModal onClose={() => setIsDemoOpen(false)} t={t} lang={lang} />}
+        {specs && <HardwareSpecsModal onClose={() => setSpecs(null)} product={specs} lang={lang} t={t} picked={picked.has(specs.id)} onTogglePick={togglePick} />}
+        {lightbox && <LightboxModal onClose={() => setLightbox(null)} image={lightbox.url} title={lightbox.title} closeLabel={t.lightbox.close} />}
       </Suspense>
-    </MotionConfig>
-    </LazyMotion>
+    </>
   );
 }
-
-export default App;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Reveal } from './Reveal';
 
 /** Four numbered cards. The active one is deep teal; it follows hover, focus and tap. */
@@ -6,7 +6,7 @@ export const ValueGrid = ({ t }) => {
   const f = t.features;
   const [active, setActive] = useState(1);
   return (
-    <section id="features" className="section section-alt scroll-mt-16">
+    <section id="features" className="section section-alt">
       <div className="container-page">
         <Reveal className="max-w-3xl">
           <span className="eyebrow">{f.eyebrow}</span>
@@ -20,7 +20,7 @@ export const ValueGrid = ({ t }) => {
               <Reveal key={n} delay={(n - 1) * 0.08}>
                 <article
                   tabIndex={0} onMouseEnter={() => setActive(n)} onFocus={() => setActive(n)} onClick={() => setActive(n)}
-                  className="card spot tilt flex h-full min-h-[260px] flex-col justify-between p-8 outline-none"
+                  className="card spot flex h-full min-h-[260px] flex-col justify-between p-8 outline-none"
                   style={on ? { background: 'var(--deep)', color: 'var(--on-deep)', boxShadow: 'var(--shadow-pop)' } : undefined}
                 >
                   <div>

@@ -1,11 +1,11 @@
-# IDO'KON website redesign: instructions
+# iDokon website redesign: instructions
 
 Audience: any coding agent or developer continuing this work in `idokonOfficialWebsite`.
 Read `CLAUDE_PROJECT_OVERVIEW.md` and `docs/HANDOFF.md` first. Where they disagree with this file about the repo's current state, trust the code.
 
 ## 1. Premise
 
-Every shop owner ends the day counting the till. IDO'KON is the day already counted.
+Every shop owner ends the day counting the till. iDokon is the day already counted.
 Every section serves that idea: sell, stock, profit, done. A section that does not serve it does not belong.
 
 Signature element: a sample till receipt that prints line by line (`src/components/ReceiptTape.jsx`). Spend the boldness budget there. Keep everything else quiet.

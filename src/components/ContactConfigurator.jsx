@@ -1,4 +1,3 @@
-import React from 'react';
 import { Phone, Send } from 'lucide-react';
 import { Instagram } from './icons';
 import { SITE, formatPhone } from '../data/site';
@@ -17,7 +16,7 @@ export const ContactConfigurator = ({ t, lang, prefill }) => {
   const c = t.contact;
   const handle = (u) => '@' + u.replace(/\/$/, '').split('/').pop();
   return (
-    <section id="contact" className="section scroll-mt-16">
+    <section id="contact" className="section">
       <div className="container-page">
         <Reveal>
           <div className="grid overflow-hidden rounded-3xl lg:grid-cols-[1fr_1fr]" style={{ boxShadow: 'var(--ring)' }}>

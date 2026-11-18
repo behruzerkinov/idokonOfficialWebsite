@@ -1,17 +1,16 @@
-import React, { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { CheckCircle2, Phone, Send } from 'lucide-react';
-import { toast } from 'sonner';
 import { SITE, formatPhone } from '../data/site';
 import { submitLead, maskPhone, isValidPhone } from '../lib/submitLead';
 
 const LABEL = 'mb-1.5 block text-sm font-medium';
 
 /**
- * One form for demo, contact and hardware orders. Posts to /api/lead and only
+ * One form for demo and contact requests. Posts to /api/lead and only
  * shows success when the server confirms delivery.
  */
 export const LeadForm = ({
-  t, lang, type, items, store = false, plan = false, message = false,
+  t, lang, type, store = false, plan = false, message = false,
   defaults = {}, doneLabel, onDone, onSuccess,
 }) => {
   const uid = useId();
@@ -20,7 +19,7 @@ export const LeadForm = ({
   const [err, setErr] = useState({});
   const [state, setState] = useState('idle'); // idle | sending | done | failed
 
-  // Prefill from outside (plan chosen in pricing, kit request in equipment).
+  // Prefill from outside (plan chosen in pricing, device list from equipment).
   useEffect(() => {
     setV((p) => ({ ...p, ...Object.fromEntries(Object.entries(defaults).filter(([, x]) => x != null)) }));
   }, [defaults.plan, defaults.message, defaults.storeType]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -39,15 +38,12 @@ export const LeadForm = ({
     const ok = await submitLead({
       type, lang, name: v.name.trim(), phone: v.phone.replace(/\s+/g, ''),
       storeType: v.storeType, plan: v.plan, message: v.message, website: v.website,
-      items: items?.map(({ id, title, qty, price }) => ({ id, name: title?.[lang] || title?.uz || id, qty, price })),
     });
     if (ok) {
       setState('done');
-      toast.success(f.successTitle);
       onSuccess?.();
     } else {
       setState('failed'); // form data stays
-      toast.error(f.failTitle);
     }
   };
 

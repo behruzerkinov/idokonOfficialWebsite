@@ -1,4 +1,3 @@
-import React from 'react';
 import { DatabaseBackup, GraduationCap, Headset } from 'lucide-react';
 import { SITE, formatPhone } from '../data/site';
 import { Reveal } from './Reveal';
@@ -9,7 +8,7 @@ export const CareSection = ({ t, lang }) => {
   const hours = SITE.supportHours?.[lang];
   const Block = ({ icon: Icon, title, children }) => (
     <Reveal>
-      <div className="card spot tilt h-full p-7">
+      <div className="card spot h-full p-7">
         <span className="chip-num"><Icon size={18} strokeWidth={2} aria-hidden="true" /></span>
         <h3 className="mt-6 text-lg font-bold tracking-tight">{title}</h3>
         {children}
@@ -17,7 +16,7 @@ export const CareSection = ({ t, lang }) => {
     </Reveal>
   );
   return (
-    <section id="support" className="section section-alt scroll-mt-16">
+    <section id="support" className="section section-alt">
       <div className="container-page">
         <Reveal className="max-w-2xl">
           <h2 className="h2">{c.title}</h2>

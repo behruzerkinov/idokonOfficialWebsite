@@ -1,17 +1,17 @@
-import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { LOGOS, LogoTile } from './Partners';
 
-const SYSTEMS = [
-  { code: 'MK', name: 'Multikassa', desc: 'mk' },
-  { code: 'AR', name: 'Arco', desc: 'ar' },
-  { code: 'EI', name: 'E-imzo SMS', desc: 'ei' },
+const GROUPS = [
+  ['payments', [['click', 'click'], ['payme', 'payme'], ['uzum', 'uzum']]],
+  ['fiscal', [['multikassa', 'mk'], ['arco', 'ar']]],
 ];
 
-/** Left: deep card with three promises. Right: supported systems. */
+/** Left: deep card with three promises. Right: every supported company as its own card, grouped by kind. */
 export const IntegrationMigration = ({ t, onOpenContact }) => {
   const i = t.integrations;
   return (
-    <section id="integrations" className="section scroll-mt-16">
+    <section id="integrations" className="section">
       <div className="container-page grid gap-5 lg:grid-cols-2">
         <Reveal>
           <div className="flex h-full flex-col rounded-3xl p-8 md:p-10" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
@@ -32,24 +32,29 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
           </div>
         </Reveal>
 
-        <Reveal>
-          <div className="card h-full p-8 md:p-10">
-            <span className="eyebrow">{i.supported}</span>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-3">
-              {SYSTEMS.map((s) => (
-                <li key={s.code} className="spot rounded-2xl p-4" style={{ background: 'var(--alt)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
-                  <span className="chip-num" style={{ background: 'var(--surface)' }}>{s.code}</span>
-                  <h3 className="mt-5 font-bold">{s.name}</h3>
-                  <p className="mt-1 text-xs" style={{ color: 'var(--muted)' }}>{i[s.desc]}</p>
-                </li>
-              ))}
-            </ul>
-            <ul className="mt-3 grid grid-cols-3 overflow-hidden rounded-2xl text-center text-sm font-bold" style={{ boxShadow: 'inset 0 0 0 1px var(--line)' }}>
-              {['Click', 'Payme', 'Uzum'].map((n, k) => <li key={n} className={`py-4 ${k ? 'border-l' : ''}`} style={{ borderColor: 'var(--line)' }}>{n}</li>)}
-            </ul>
-            <button type="button" onClick={onOpenContact} className="mt-3 block w-full rounded-2xl p-5 text-left" style={{ background: 'var(--accent-soft)' }}>
-              <span className="block font-bold" style={{ color: 'var(--accent)' }}>{i.otherTitle}</span>
-              <span className="mt-1 block text-sm" style={{ color: 'var(--muted)' }}>{i.otherDesc}</span>
+        <Reveal delay={1}>
+          <div className="card h-full p-6 md:p-8">
+            <p className="eyebrow">{i.supported}</p>
+            {GROUPS.map(([g, items]) => (
+              <div key={g} className="mt-6">
+                <h3 className="text-xs font-semibold tracking-[0.08em]" style={{ color: 'var(--muted)' }}>{i[g]}</h3>
+                <ul className={`mt-3 grid gap-3 ${items.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
+                  {items.map(([logo, desc]) => (
+                    <li key={logo} className="spot rounded-2xl p-4" style={{ background: 'var(--surface-2)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
+                      <LogoTile id={logo} />
+                      <h4 className="mt-4 font-bold">{LOGOS[logo][0]}</h4>
+                      <p className="mt-0.5 text-sm leading-snug" style={{ color: 'var(--muted)' }}>{i[desc]}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <button type="button" onClick={onOpenContact} className="group mt-6 flex w-full items-center justify-between gap-4 rounded-2xl p-5 text-left" style={{ background: 'var(--accent-soft)' }}>
+              <span>
+                <span className="block font-bold" style={{ color: 'var(--accent)' }}>{i.otherTitle}</span>
+                <span className="mt-1 block text-sm" style={{ color: 'var(--muted)' }}>{i.otherDesc}</span>
+              </span>
+              <ArrowRight size={18} className="shrink-0 transition-transform group-hover:translate-x-0.5" style={{ color: 'var(--accent)' }} aria-hidden="true" />
             </button>
           </div>
         </Reveal>

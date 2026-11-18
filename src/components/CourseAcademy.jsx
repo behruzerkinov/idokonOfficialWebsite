@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { SITE } from '../data/site';
 import { Reveal } from './Reveal';
@@ -13,13 +12,13 @@ const SHOTS = [
 export const CourseAcademy = ({ t, onOpenLightbox }) => {
   const c = t.course;
   return (
-    <section id="course" className="section scroll-mt-16">
+    <section id="course" className="section">
       <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <Reveal>
           <div className="spot grid grid-cols-2 gap-2 rounded-3xl p-3" style={{ background: 'var(--alt)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
             {SHOTS.map(([file, k, big]) => (
               <button key={file} type="button" onClick={() => onOpenLightbox(`/screenshots/${file}.webp`, c[k])} aria-label={c[k]} className={`overflow-hidden rounded-xl bg-white ${big ? 'col-span-2' : ''}`} style={{ boxShadow: 'var(--ring)' }}>
-                <img src={`/screenshots/${file}.webp`} alt={c[k]} width="800" height="450" loading="lazy" decoding="async" className="h-auto w-full object-cover" />
+                <img src={`/screenshots/${file}.webp`} alt={c[k]} width="1400" height="875" loading="lazy" decoding="async" className="h-auto w-full object-cover" />
               </button>
             ))}
           </div>

@@ -1,18 +1,21 @@
-import React from 'react';
-import { Plus } from 'lucide-react';
+import { Phone, Plus } from 'lucide-react';
+import { SITE, formatPhone } from '../data/site';
 import { Reveal } from './Reveal';
 
-/** Left: heading and ask button. Right: ruled list of questions, the first one open. */
-export const FaqAccordion = ({ t, onScrollToContact }) => (
-  <section id="faq" className="section section-alt scroll-mt-16">
+/** Left: heading and a call-centre button. Right: ruled list of questions, the first one open. */
+export const FaqAccordion = ({ t }) => (
+  <section id="faq" className="section section-alt">
     <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
       <Reveal>
         <span className="eyebrow">{t.faq.eyebrow}</span>
         <h2 className="h2 mt-5">{t.faq.title}</h2>
         <p className="lede mt-5 max-w-[40ch]">{t.faq.lead}</p>
-        <button type="button" onClick={onScrollToContact} className="btn-deep mt-8">{t.faq.ask}</button>
+        <a href={`tel:${SITE.phones[0]}`} className="btn-primary mt-8 !min-h-[48px] whitespace-normal !px-6">
+          <Phone size={18} strokeWidth={2} aria-hidden="true" />{t.faq.ask}
+          <span className="hidden font-medium opacity-80 sm:inline">· {formatPhone(SITE.phones[0])}</span>
+        </a>
       </Reveal>
-      <Reveal>
+      <Reveal delay={1}>
         <div className="border-t" style={{ borderColor: 'var(--line)' }}>
           {t.faq.items.map((it, n) => (
             <details key={it.q} name="faq" open={n === 0} className="group border-b" style={{ borderColor: 'var(--line)' }}>

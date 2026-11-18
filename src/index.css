@@ -2,233 +2,203 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tokens. Colours here are only the first-paint default; src/theme/themes.js overwrites them on <html> at boot. */
+/* Arial with Inter's metrics: text keeps the same line breaks before and after Inter loads (no CLS). */
+@font-face {
+  font-family: 'Inter Fallback'; src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 107.06%; ascent-override: 90.49%; descent-override: 22.56%; line-gap-override: 0%;
+}
+
+/* One token set for both themes via light-dark(). <html class="dark"> flips color-scheme (set before paint in index.html). */
 @layer base {
   :root {
-    --bg: #f7f6f2;
-    --alt: #efede6;
-    --surface: #ffffff;
-    --fg: #1b2220;
-    --muted: #68716c;
-    --line: rgba(27, 34, 32, 0.09);
-    --deep: #17302c;
-    --deep-2: #1f3d38;
-    --on-deep: #f1f6f3;
-    --on-deep-muted: #a3b8b0;
-    --accent: #2f8f6b;
-    --accent-ink: #ffffff;
-    --sh: 27, 34, 32;
-
-    --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
-    --accent-bright: color-mix(in srgb, var(--accent) 58%, white);
-    --bright-ink: #10201a;
-    --line-strong: color-mix(in srgb, var(--fg) 22%, transparent);
-    --grid: color-mix(in srgb, var(--fg) 8%, transparent);
+    color-scheme: light;
+    --bg: light-dark(#fafaf9, #0a0c0b);
+    --alt: light-dark(#f3f4f1, #0f1211);
+    --surface: light-dark(#ffffff, #141816);
+    --surface-2: light-dark(#f6f7f4, #1a1f1c);
+    --fg: light-dark(#0e1412, #eef2f0);
+    --muted: light-dark(#56605a, #a0aca5);
+    --line: light-dark(rgb(14 20 18 / 0.09), rgb(238 242 240 / 0.09));
+    --line-strong: light-dark(rgb(14 20 18 / 0.18), rgb(238 242 240 / 0.2));
+    --accent: light-dark(#1b8a5a, #4ed69a);
+    --accent-ink: light-dark(#ffffff, #04210f);
+    --accent-soft: color-mix(in oklab, var(--accent) 13%, transparent);
+    --deep: light-dark(#0f201a, #111a16);
+    --deep-2: light-dark(#173027, #18241f);
+    --on-deep: #eef5f1;
+    --on-deep-muted: #a9bbb2;
+    --on-deep-line: rgb(255 255 255 / 0.1);
+    --accent-bright: #5fe0a8;
+    --bright-ink: #04210f;
+    --grid: color-mix(in oklab, var(--fg) 7%, transparent);
     --ring: 0 0 0 1px var(--line);
-    --shadow-pop: 0 18px 40px -26px rgba(var(--sh), 0.4);
-
-    --r: 16px;
-    --dens: 1;
+    --shadow-pop: 0 1px 2px rgb(0 0 0 / 0.04), 0 24px 48px -28px light-dark(rgb(14 20 18 / 0.35), rgb(0 0 0 / 0.7));
+    --r: 8px;
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    --spring: cubic-bezier(0.34, 1.45, 0.64, 1);
+    --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
   }
+  :root.dark { color-scheme: dark; }
 
-  html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-font-smoothing: antialiased; }
-  body { background: var(--bg); color: var(--fg); line-height: 1.6; overflow-x: clip; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { background: var(--bg); color: var(--fg); line-height: 1.6; overflow-x: clip; font-feature-settings: 'cv11', 'ss01'; }
   @media (max-width: 767px) { body { padding-bottom: 84px; } }
 
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
   ::selection { background: var(--accent); color: var(--accent-ink); }
-  button, [role='button'], [role='tab'], summary, select { cursor: pointer; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: calc(var(--r) * 0.5); }
+  button, [role='tab'], summary, select { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--r); }
+  dialog { color: var(--fg); }
 }
 
-/* Background: big minimal grid. A second, accent-coloured copy is revealed under the pointer
-   (interactions.js lerps --gx/--gy/--gi and a small parallax --tx/--ty on this one element). */
-.bg-grid { position: fixed; inset: 0; z-index: -1; pointer-events: none; contain: strict; overflow: hidden; }
-.bg-grid::before, .bg-grid::after {
-  content: ''; position: absolute; inset: -96px;
-  --g: var(--grid);
-  background: linear-gradient(var(--g) 1px, transparent 1px) 0 0 / 96px 96px, linear-gradient(90deg, var(--g) 1px, transparent 1px) 0 0 / 96px 96px;
-  translate: var(--tx, 0px) var(--ty, 0px);
-}
-.bg-grid::before { mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, #000 20%, transparent 90%); }
-.bg-grid::after {
-  --g: color-mix(in srgb, var(--accent) 55%, transparent);
-  opacity: var(--gi, 0);
-  mask-image: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 50%), #000, transparent);
+/* Static grid behind everything, faded towards the bottom. One layer, painted once. */
+.bg-grid {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; contain: strict;
+  background: linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 96px 96px, linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 96px 96px;
+  mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 20%, transparent 85%);
 }
 
 @layer components {
   .container-page { @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8; }
-  .section { @apply relative; padding-block: calc(clamp(4.5rem, 8vw, 7rem) * var(--dens)); }
-  .section-alt { background: color-mix(in srgb, var(--alt) 72%, transparent); }
+  .section { position: relative; padding-block: clamp(5rem, 10vw, 8.5rem); }
+  .section-alt { background: color-mix(in oklab, var(--alt) 75%, transparent); }
 
-  .eyebrow { @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold; letter-spacing: 0.04em; color: var(--accent); background: var(--accent-soft); }
+  .eyebrow { @apply inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold; letter-spacing: 0.04em; color: var(--accent); background: var(--accent-soft); }
   .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 99px; background: currentColor; }
   .display { font-size: clamp(2.6rem, 6.2vw, 5.2rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.045em; }
   .h2 { font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.035em; }
   .lede { @apply text-base sm:text-lg; color: var(--muted); }
-  .grad-text { background: linear-gradient(110deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--fg))); background-clip: text; color: transparent; }
+  .grad-text { background: linear-gradient(110deg, var(--accent), color-mix(in oklab, var(--accent) 55%, var(--fg))); background-clip: text; color: transparent; }
 
-  /* Surfaces: hairline borders, no drop shadows. Hover darkens the border and lifts 2px. */
   .card {
-    @apply bg-[var(--surface)];
-    border-radius: calc(var(--r) * 1.6);
-    box-shadow: var(--ring);
-    transition: box-shadow 240ms var(--ease-out), translate 240ms var(--ease-out), transform 200ms var(--ease-out);
+    background: var(--surface); border-radius: calc(var(--r) * 1.6); box-shadow: var(--ring);
+    transition: box-shadow 220ms var(--ease-out), translate 220ms var(--ease-out);
   }
   @media (hover: hover) and (pointer: fine) { .card:hover { translate: 0 -2px; box-shadow: 0 0 0 1px var(--line-strong); } }
-  .card:active { transform: scale(0.992); }
-  .tilt { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), translate 240ms var(--ease-out); }
 
   .field {
     @apply min-h-[48px] w-full px-4 py-2.5 text-base placeholder:text-[var(--muted)];
-    border-radius: calc(var(--r) * 0.9); background: var(--surface); color: var(--fg);
-    box-shadow: inset 0 0 0 1px var(--line);
-    transition: box-shadow 200ms var(--ease-out);
+    border-radius: var(--r); background: var(--surface); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line);
+    transition: box-shadow 180ms var(--ease-out);
   }
   .field:hover { box-shadow: inset 0 0 0 1px var(--line-strong); }
   .field:focus { @apply outline-none; box-shadow: inset 0 0 0 1.5px var(--accent), 0 0 0 4px var(--accent-soft); }
 
-  /* Buttons: press scale via --s, magnetic pull via --tx/--ty, ripple span on pointerdown */
   .btn {
-    @apply relative inline-flex min-h-[48px] cursor-pointer select-none items-center justify-center gap-2 overflow-hidden px-6 py-2.5 text-sm font-semibold disabled:cursor-wait disabled:opacity-60;
-    border-radius: calc(var(--r) * 1.6);
-    transform: translate(var(--tx, 0), var(--ty, 0)) scale(var(--s, 1));
-    transition: transform 260ms var(--ease-out), background-color 200ms, box-shadow 200ms, color 200ms;
+    @apply relative inline-flex min-h-[44px] select-none items-center whitespace-nowrap justify-center gap-2 px-5 py-2 text-sm font-semibold disabled:cursor-wait disabled:opacity-60;
+    border-radius: calc(var(--r) * 1.2);
+    transition: transform 160ms var(--ease-out), background-color 160ms, box-shadow 160ms, color 160ms;
   }
-  .btn:active { --s: 0.95; transition-duration: 90ms; }
-  .btn-primary { @apply btn; background: var(--accent); color: var(--accent-ink); }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { @apply btn; background: var(--accent); color: var(--accent-ink); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(0 0 0 / 0.12); }
   .btn-deep { @apply btn; background: var(--fg); color: var(--bg); }
-  .btn-outline { @apply btn; background: var(--surface); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); }
+  .btn-outline { @apply btn; background: var(--surface); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line-strong); }
   .btn-secondary { @apply btn-outline; }
-  .btn-ghost { @apply btn; color: var(--muted); }
   @media (hover: hover) {
-    .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--fg)); }
-    .btn-deep:hover { background: var(--accent); color: var(--accent-ink); }
-    .btn-outline:hover { box-shadow: inset 0 0 0 1px var(--line-strong); background: color-mix(in srgb, var(--surface) 70%, var(--alt)); }
-    .btn-ghost:hover { color: var(--fg); }
-    .icon-btn:hover { background: color-mix(in srgb, var(--fg) 7%, transparent); }
-    .btn:hover svg:last-child:not(:first-child) { transform: translateX(3px); }
-    .icon-btn:hover svg { transform: rotate(-6deg) scale(1.08); }
+    .btn-primary:hover { background: color-mix(in oklab, var(--accent) 88%, var(--fg)); }
+    .btn-deep:hover { background: color-mix(in oklab, var(--fg) 86%, var(--bg)); }
+    .btn-outline:hover { background: var(--surface-2); }
+    .icon-btn:hover { background: color-mix(in oklab, var(--fg) 7%, transparent); color: var(--fg); }
+    .btn:hover svg:last-child:not(:first-child) { transform: translateX(2px); }
   }
-  .btn svg { transition: transform 260ms var(--ease-out); }
-  .ripple { position: absolute; border-radius: 99px; pointer-events: none; background: currentColor; opacity: 0.2; scale: 0; animation: ripple 620ms var(--ease-out) forwards; }
-  @keyframes ripple { to { scale: 1; opacity: 0; } }
+  .btn svg { transition: transform 200ms var(--ease-out); }
 
-  .icon-btn { @apply inline-flex h-11 w-11 cursor-pointer items-center justify-center; border-radius: calc(var(--r) * 1.1); transition: transform 200ms var(--spring), background-color 200ms; }
-  .icon-btn:active { transform: scale(0.88); }
-  .icon-btn svg { transition: transform 240ms var(--spring); }
+  .icon-btn { @apply inline-flex h-10 w-10 items-center justify-center; color: var(--muted); border-radius: var(--r); transition: transform 160ms var(--ease-out), background-color 160ms, color 160ms; }
+  .icon-btn:active { transform: scale(0.92); }
 
-  .segmented { @apply inline-flex gap-1 p-1; border-radius: calc(var(--r) * 1.3); background: color-mix(in srgb, var(--fg) 6%, transparent); }
-  .seg-btn { @apply min-h-[40px] shrink-0 px-4 text-sm font-semibold; border-radius: calc(var(--r) * 0.95); color: var(--muted); transition: background-color 240ms var(--ease-out), color 240ms, box-shadow 240ms, transform 160ms var(--ease-out); }
-  .seg-btn:active { transform: scale(0.96); }
-  .seg-btn[aria-selected='true'], .seg-btn[aria-pressed='true'] { background: var(--surface); color: var(--fg); box-shadow: 0 0 0 1px var(--line); }
+  .segmented { @apply inline-flex gap-1 p-1; border-radius: calc(var(--r) * 1.4); background: color-mix(in oklab, var(--fg) 6%, transparent); }
+  .seg-btn { @apply min-h-[40px] shrink-0 px-4 text-sm font-semibold; border-radius: var(--r); color: var(--muted); transition: background-color 200ms var(--ease-out), color 200ms, box-shadow 200ms; }
+  .seg-btn[aria-pressed='true'] { background: var(--surface); color: var(--fg); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgb(0 0 0 / 0.06); }
   @media (hover: hover) { .seg-btn:hover { color: var(--fg); } }
 
-  .pill { @apply inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm; background: var(--accent-soft); color: var(--accent); }
-  .chip-num { @apply inline-flex h-9 w-9 items-center justify-center text-xs font-bold; border-radius: calc(var(--r) * 0.8); background: var(--accent-soft); color: var(--accent); transition: background-color 300ms, color 300ms, transform 300ms var(--spring); }
-  @media (hover: hover) { .card:hover .chip-num { transform: scale(1.1) rotate(-4deg); } }
+  .chip-num { @apply inline-flex h-9 w-9 items-center justify-center text-xs font-bold; border-radius: var(--r); background: var(--accent-soft); color: var(--accent); }
 
-  .pop-in { animation: pop-in 320ms var(--spring); }
-  .fade-in { animation: fade-in 240ms var(--ease-out); }
-
-  /* Navbar: floating liquid glass. Chromium refracts the backdrop through an SVG displacement map (#liquid, see Navbar.jsx);
-     other browsers get plain frosted blur. Edges carry a specular highlight. */
-  .site-header {
-    --hl: 0.55;
-    position: fixed; z-index: 50; top: 10px; inset-inline: 10px; margin-inline: auto; max-width: 1240px;
-    border-radius: calc(var(--r) * 1.7);
-    background: color-mix(in srgb, var(--bg) 22%, transparent);
-    backdrop-filter: blur(10px) saturate(1.8) brightness(1.04);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 10%, transparent), inset 0 1px 0 rgba(255, 255, 255, var(--hl)), inset 0 -1px 0 rgba(255, 255, 255, calc(var(--hl) * 0.35)), inset 0 0 22px rgba(255, 255, 255, calc(var(--hl) * 0.12));
-  }
-  .dark .site-header { --hl: 0.16; }
-  html[data-liquid] .site-header { backdrop-filter: url(#liquid) blur(3px) saturate(1.8) brightness(1.04); }
-  .site-header::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, rgba(255, 255, 255, calc(var(--hl) * 0.45)), transparent 38%); }
-  .scroll-progress { position: absolute; left: 18px; right: 18px; bottom: 0; height: 2px; border-radius: 2px; background: var(--accent); transform-origin: left; scale: 0 1; }
-  @supports (animation-timeline: scroll()) {
-    .scroll-progress { animation: progress linear both; animation-timeline: scroll(root); }
-  }
-  @keyframes progress { to { scale: 1 1; } }
-  .nav-ctl { height: 44px; min-height: 44px; border-radius: calc(var(--r) * 1.4) !important; }
-  .icon-btn.nav-ctl { box-shadow: inset 0 0 0 1px var(--line); }
-  .sticky-glass { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(16px); box-shadow: 0 -1px 0 var(--line); }
-
-  .nav-link { border-radius: calc(var(--r) * 0.9) !important; transition: color 200ms, background-color 240ms var(--ease-out), transform 160ms var(--ease-out); }
-  .nav-link:active { transform: scale(0.95); }
-  @media (hover: hover) { .nav-link:hover { color: var(--fg) !important; background: color-mix(in srgb, var(--fg) 6%, transparent); } }
-  .nav-link[aria-current='true'] { color: var(--fg) !important; background: var(--accent-soft); }
-
-  .deep-panel { position: relative; margin-inline: 10px; border-radius: calc(var(--r) * 2.2); overflow: hidden; }
+  .deep-panel { position: relative; margin-inline: 10px; border-radius: calc(var(--r) * 2.4); overflow: hidden; }
   @media (min-width: 1280px) { .deep-panel { margin-inline: 24px; } }
-
-  /* Theme Studio */
-  .studio-orb { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 99px; color: var(--accent-ink); background: var(--accent); touch-action: none; cursor: grab; }
-  .studio-orb:active { cursor: grabbing; }
-  .studio-panel { width: min(340px, calc(100vw - 2rem)); max-height: min(78vh, 640px); display: flex; flex-direction: column; overflow: hidden; border-radius: calc(var(--r) * 1.8); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(20px); box-shadow: var(--ring), var(--shadow-pop); color: var(--fg); }
-  .studio-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 10px 10px 16px; cursor: grab; touch-action: none; border-bottom: 1px solid var(--line); }
-  .studio-head:active { cursor: grabbing; }
-  .studio-body { overflow-y: auto; padding: 4px 16px 8px; overscroll-behavior: contain; }
-  .studio-foot { display: flex; gap: 8px; padding: 10px 16px 14px; border-top: 1px solid var(--line); }
-  .studio-section { padding-block: 12px; }
-  .studio-section + .studio-section { border-top: 1px solid var(--line); }
-  .studio-section > h3 { margin-bottom: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .studio-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 13px; font-weight: 600; }
-  .studio-row output { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
-  .studio-row .range { grid-column: 1 / -1; }
-  .studio-preview { display: grid; gap: 8px; padding: 14px; }
-  .preset-tile { position: relative; display: grid; justify-items: center; gap: 6px; padding: 8px 4px 6px; border-radius: calc(var(--r) * 0.9); transition: transform 200ms var(--spring), background-color 200ms; }
-  .preset-tile:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--fg) 5%, transparent); }
-  .preset-tile:active { transform: scale(0.94); }
-  .preset-ring { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 2px var(--accent); pointer-events: none; }
-  .preset-swatch { position: relative; width: 100%; height: 38px; border-radius: calc(var(--r) * 0.6); border: 1px solid; overflow: hidden; }
-  .preset-swatch i { position: absolute; }
-  .preset-swatch i:first-child { left: 8px; bottom: 7px; width: 24px; height: 14px; border-radius: 6px; }
-  .preset-swatch i:last-child { right: 8px; top: 7px; width: 14px; height: 14px; border-radius: 99px; }
-  .dot { position: relative; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 99px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12); transition: transform 200ms var(--spring); }
-  .dot:hover { transform: scale(1.14); }
-  .dot:active { transform: scale(0.9); }
-  .dot-custom { background: conic-gradient(#f87171, #fbbf24, #4ade80, #22d3ee, #818cf8, #f472b6, #f87171); overflow: hidden; cursor: pointer; }
-  .dot-custom input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-  .switch { position: relative; width: 44px; height: 26px; border-radius: 99px; background: color-mix(in srgb, var(--fg) 16%, transparent); transition: background-color 240ms var(--ease-out); }
-  .switch span { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 99px; background: #fff; transition: transform 300ms var(--spring), width 160ms; }
-  .switch[aria-checked='true'] { background: var(--accent); }
-  .switch[aria-checked='true'] span { transform: translateX(18px); }
-  .switch:active span { width: 24px; }
-  .range { appearance: none; height: 6px; border-radius: 99px; background: color-mix(in srgb, var(--fg) 12%, transparent); outline-offset: 6px; }
-  .range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 99px; background: var(--accent); border: 3px solid var(--surface); cursor: grab; transition: transform 160ms var(--spring); }
-  .range::-webkit-slider-thumb:hover { transform: scale(1.15); }
-  .range:active::-webkit-slider-thumb { transform: scale(1.25); cursor: grabbing; }
-  .range::-moz-range-thumb { width: 14px; height: 14px; border-radius: 99px; background: var(--accent); border: 3px solid var(--surface); }
 }
 
-@keyframes pop-in { from { opacity: 0; scale: 0.94; translate: 0 10px; } }
-@keyframes fade-in { from { opacity: 0; } }
+/* ---------- Navbar ----------
+   Full-width bar. Transparent over the hero, then a solid translucent surface with a hairline once the page scrolls.
+   The scrolled state is a scroll-driven animation: no scroll listener. Browsers without it get the solid bar. */
+.site-header { position: fixed; inset: 0 0 auto; z-index: 50; }
+.site-header::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  backdrop-filter: saturate(1.6) blur(14px); -webkit-backdrop-filter: saturate(1.6) blur(14px);
+  box-shadow: 0 1px 0 var(--line);
+}
+@supports (animation-timeline: scroll()) {
+  .site-header::before { animation: bar-in linear both; animation-timeline: scroll(root); animation-range: 0 72px; }
+  @keyframes bar-in { from { opacity: 0; } to { opacity: 1; } }
+}
+.nav-track { position: relative; display: flex; gap: 2px; padding: 3px; border-radius: 99px; }
+.nav-link { position: relative; z-index: 1; display: inline-flex; align-items: center; height: 34px; padding-inline: 14px; border-radius: 99px; font-size: 14px; font-weight: 500; color: var(--muted); transition: color 160ms; white-space: nowrap; }
+.nav-link[aria-current='true'], .nav-link:hover { color: var(--fg); }
+.nav-ind {
+  position: absolute; top: 3px; left: 0; height: 34px; border-radius: 99px; pointer-events: none;
+  width: var(--w, 0); translate: var(--x, 0) 0; opacity: var(--o, 0);
+  background: color-mix(in oklab, var(--fg) 7%, transparent); box-shadow: inset 0 0 0 1px var(--line);
+  transition: translate 380ms var(--ease-out), width 380ms var(--ease-out), opacity 200ms;
+}
+.scroll-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--accent); transform-origin: left; scale: 0 1; }
+@supports (animation-timeline: scroll()) {
+  .scroll-progress { animation: progress linear both; animation-timeline: scroll(root); }
+  @keyframes progress { to { scale: 1 1; } }
+}
+
+/* ---------- Native dialogs: mobile sheet + modal. Enter/exit with @starting-style, top layer handles focus + Esc. ---------- */
+dialog.sheet, dialog.modal { padding: 0; border: 0; background: var(--surface); max-height: none; transition: opacity 260ms var(--ease-out), translate 320ms var(--ease-out), scale 260ms var(--ease-out), display 320ms allow-discrete, overlay 320ms allow-discrete; }
+dialog.sheet::backdrop, dialog.modal::backdrop { background: rgb(0 0 0 / 0.45); backdrop-filter: blur(4px); transition: opacity 260ms, display 320ms allow-discrete, overlay 320ms allow-discrete; }
+dialog.sheet { margin: 0 0 0 auto; max-width: none; height: 100dvh; width: min(86vw, 380px); }
+dialog.sheet:not([open]) { translate: 100% 0; }
+dialog.modal { margin: auto; width: calc(100% - 2rem); border-radius: calc(var(--r) * 2.2); box-shadow: var(--ring), var(--shadow-pop); max-height: 90dvh; overflow-y: auto; }
+dialog.modal:not([open]) { opacity: 0; scale: 0.96; }
+dialog:not([open])::backdrop { opacity: 0; }
+@starting-style {
+  dialog.sheet[open] { translate: 100% 0; }
+  dialog.modal[open] { opacity: 0; scale: 0.96; }
+  dialog[open]::backdrop { opacity: 0; }
+}
+body:has(dialog[open]) { overflow: hidden; }
+body:has(dialog[open]) .sticky-bar { display: none; }
+
+/* ---------- Scroll-driven reveal (replaces the JS animation library). Unsupported browsers just show content. ---------- */
+@supports (animation-timeline: view()) {
+  .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry calc(var(--d, 0) * 8%) entry calc(55% + var(--d, 0) * 8%); }
+  @keyframes reveal { from { opacity: 0; translate: 0 24px; } }
+  .drift { animation: drift linear both; animation-timeline: scroll(root); animation-range: 0 700px; }
+  .drift-fast { --dy: -80px; }
+  @keyframes drift { to { translate: 0 var(--dy, -36px); } }
+}
+
+/* ---------- Rolling digits (NumberRoll): each digit is a 0–9 column that slides to its value. ---------- */
+.roll { display: inline-flex; font-variant-numeric: tabular-nums; }
+.roll-col { display: inline-block; height: 1lh; overflow: hidden; mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent); transition: opacity 300ms var(--ease-out), translate 300ms var(--ease-out); }
+.roll-col > span { display: flex; flex-direction: column; translate: 0 calc(var(--v) * -1lh); transition: translate 700ms cubic-bezier(0.32, 1.25, 0.5, 1); }
+.roll-col > span > i { font-style: normal; height: 1lh; }
+@starting-style { .roll-col { opacity: 0; translate: 0 -0.4lh; } }
+
+/* ---------- Mobile action bar: slides in after the hero (scroll-driven), so the first screen is calm. ---------- */
+.sticky-bar { background: color-mix(in oklab, var(--bg) 86%, transparent); backdrop-filter: blur(16px); box-shadow: 0 -1px 0 var(--line); }
+@supports (animation-timeline: scroll()) {
+  .sticky-bar { animation: bar-up linear both; animation-timeline: scroll(root); animation-range: 380px 500px; }
+  @keyframes bar-up { from { translate: 0 110%; } }
+}
 
 .hide-scrollbar { scrollbar-width: none; }
-
-/* Drag-scrolling carousel: snap pauses while dragging so it follows the pointer 1:1 */
 [data-dragscroll] { cursor: grab; }
 [data-dragging] { cursor: grabbing; scroll-snap-type: none !important; user-select: none; }
 [data-dragging] * { pointer-events: none; }
 
-body[data-modal-open] .sticky-bar, body[data-drawer-open] .sticky-bar { display: none; }
-
-/* Below-the-fold sections skip rendering until near the viewport */
-.section { content-visibility: auto; contain-intrinsic-size: auto 720px; }
-
-.word { display: inline-block; opacity: 0; translate: 0 14px; transition: opacity 600ms var(--ease-out), translate 600ms var(--ease-out); transition-delay: calc(var(--i) * 80ms); }
+.word { display: inline-block; opacity: 0; translate: 0 14px; transition: opacity 600ms var(--ease-out), translate 600ms var(--ease-out); transition-delay: calc(var(--i) * 70ms); }
 .words-in .word { opacity: 1; translate: 0 0; }
 
-/* Spotlight glow on cards (one delegated listener sets --mx / --my) */
+/* Spotlight glow on cards (one delegated pointer listener sets --mx / --my on the hovered .spot) */
 .spot { position: relative; isolation: isolate; }
 .spot::before {
-  content: ''; position: absolute; inset: -1px; border-radius: inherit; z-index: -1; pointer-events: none; opacity: 0;
-  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
-  transition: opacity 280ms var(--ease-out);
+  content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none; opacity: 0;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--accent) 12%, transparent), transparent 70%);
+  transition: opacity 240ms var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) { .spot:hover::before { opacity: 1; } }
 
@@ -236,30 +206,21 @@ body[data-modal-open] .sticky-bar, body[data-drawer-open] .sticky-bar { display:
 .ping::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: inherit; animation: ping 1.9s var(--ease-out) infinite; }
 @keyframes ping { to { scale: 2.8; opacity: 0; } }
 
-.float { animation: float 6s ease-in-out infinite alternate; }
-@keyframes float { to { translate: 0 -7px; } }
-
-.preloader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: var(--bg); pointer-events: none; transition: opacity 500ms var(--ease-out), scale 500ms var(--ease-out); }
-.preloader[data-out='true'] { opacity: 0; scale: 1.03; }
+.pop-in { animation: pop-in 220ms var(--ease-out); }
+@keyframes pop-in { from { opacity: 0; scale: 0.96; translate: 0 -4px; } }
 
 .doodle { mix-blend-mode: multiply; }
 .dark .doodle { filter: invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
 
-/* Theme change: colours cross-fade; palette changes grow as a circle from the click (View Transitions) */
-.theme-fade, .theme-fade *, .theme-fade *::before, .theme-fade *::after { transition: background-color 380ms, color 380ms, border-color 380ms, box-shadow 380ms, fill 380ms !important; }
+/* Theme switch: the new theme grows as a circle from the toggle (View Transitions) */
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-::view-transition-new(root) { animation: vt-reveal 720ms var(--ease-out); }
+::view-transition-new(root) { animation: vt-reveal 560ms var(--ease-out); }
 @keyframes vt-reveal { from { clip-path: circle(0 at var(--vx, 50%) var(--vy, 50%)); } to { clip-path: circle(150vmax at var(--vx, 50%) var(--vy, 50%)); } }
 
-/* Motion setting: calm drops decorative loops, off drops everything. OS reduced-motion behaves like off. */
-html[data-motion='calm'] .float, html[data-motion='calm'] .ping::after { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .float, .ping::after, .pop-in, .fade-in, .ripple, .scroll-progress { animation: none; }
+  .reveal, .drift, .ping::after, .pop-in { animation: none !important; }
+  .roll-col > span, .nav-ind, dialog, dialog::backdrop { transition: none !important; }
   .word { opacity: 1; translate: none; transition: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
-html[data-motion='off'] { scroll-behavior: auto; }
-html[data-motion='off'] .float, html[data-motion='off'] .ping::after, html[data-motion='off'] .pop-in, html[data-motion='off'] .fade-in { animation: none; }
-html[data-motion='off'] *, html[data-motion='off'] *::before, html[data-motion='off'] *::after { transition-duration: 1ms !important; }
-html[data-motion='off'] .word { opacity: 1; translate: none; }

@@ -1,14 +1,13 @@
 export const translations = {
   "uz": {
-    "langName": "O‘zbekcha",
     "skip": "Asosiy mazmunga o‘tish",
     "menu": {
       "open": "Menyu",
       "close": "Yopish"
     },
     "meta": {
-      "title": "IDO‘KON — Do‘kon avtomatlashtirish va POS tizimi O‘zbekistonda",
-      "description": "Zamonaviy POS, ombor nazorati, real vaqt hisobotlari va to‘lov integratsiyalari — do‘koningiz uchun yagona, sodda platformada."
+      "title": "iDokon — do‘kon avtomatlashtirish va POS tizimi | O‘zbekiston",
+      "description": "iDokon: kassa dasturi, ombor nazorati, ABC tahlil va Click, Payme, Uzum, Arco, Multikassa integratsiyalari — do‘koningiz uchun yagona, sodda platforma."
     },
     "nav": {
       "features": "Xususiyatlar",
@@ -16,19 +15,16 @@ export const translations = {
       "pricing": "Tariflar",
       "contact": "Aloqa",
       "tryDemo": "Demo ishlatib ko‘rish",
-      "cart": "Savat",
       "theme": "Mavzuni almashtirish",
       "language": "Til",
-      "home": "Asosiy",
       "integrations": "Integratsiyalar",
-      "course": "I-Do‘kon Kurs"
+      "course": "iDokon Kurs"
     },
     "hero": {
       "subtitle": "Zamonaviy POS, ombor nazorati, real vaqt hisobotlari va to‘lov integratsiyalari — do‘koningiz uchun yagona, sodda platformada.",
       "ctaPrimary": "Demo ishlatib ko‘rish",
       "ctaSecondary": "Bog‘lanish",
-      "imageAlt": "IDO‘KON kassa dasturi oynasi: tovarlar ro‘yxati va savdo hisobi",
-      "ratingLabel": "Mijozlar bahosi",
+      "imageAlt": "iDokon kassa dasturi oynasi: tovarlar ro‘yxati va savdo hisobi",
       "eyebrow": "SAVDO BOSHQARUVINING YANGI STANDARTI",
       "titleStart": "Savdoni",
       "titleHighlight": "aniq raqamlar",
@@ -37,16 +33,14 @@ export const translations = {
       "meta2": "10 daqiqada ishga tushadi",
       "meta3": "Telefon va Telegram orqali yordam",
       "liveStatus": "Tizim ishlamoqda",
-      "windowTitle": "IDO‘KON · ANALYTICS",
-      "ratingBasis": "{n} ta sharh asosida",
-      "zoom": "Kattalashtirish"
+      "windowTitle": "iDokon · Kassalar",
+      "zoom": "Kattalashtirish",
+      "quote": "Hisobli do‘st ayrilmas.",
+      "quoteBy": "O‘zbek xalq maqoli",
+      "quoteNote": "Har bir so‘mi hisoblangan do‘kon mijozini ham, foydasini ham yo‘qotmaydi."
     },
     "partners": {
-      "title": "Do‘koningiz ishlatadigan tizimlar bilan mos",
-      "g1": "Click · Payme · Uzum",
-      "g2": "Arco",
-      "g3": "Multikassa",
-      "g4": "E-imzo SMS"
+      "title": "Do‘koningiz ishlatadigan tizimlar bilan mos"
     },
     "how": {
       "title": "Qanday boshlanadi",
@@ -63,14 +57,12 @@ export const translations = {
       "lead": "Savdo nuqtasidan boshqaruv paneligacha — jamoangizga kerakli ma’lumot har doim o‘z joyida.",
       "zoom": "Kattalashtirish",
       "tabs": {
-        "sales": "Savdo",
-        "inventory": "Ombor",
-        "analytics": "Analitika",
-        "cashiers": "Kassirlar",
-        "order": "Buyurtma"
+        "pos": "Kassa",
+        "sales": "Savdo hisoboti",
+        "stock": "Qoldiqlar",
+        "abc": "ABC tahlil"
       },
       "eyebrow": "DASTURNING ASOSIY XUSUSIYATLARI",
-      "orderLabel": "TAVSIYA ETILGAN BUYURTMA",
       "tablist": "Dastur ekranlari",
       "p1_title": "Inventarizatsiyani boshqarish",
       "p1_desc": "Zaxira va kirim–chiqimni avtomatik kuzatib, minimal qoldiqni eslatadi.",
@@ -79,7 +71,13 @@ export const translations = {
       "p3_title": "Hisobot va tahlil",
       "p3_desc": "Aylanma va foydani real vaqtda ko‘rsatib, eksport va filial kesimini beradi.",
       "p4_title": "Xavfsiz tezkor tranzaksiya",
-      "p4_desc": "EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija."
+      "p4_desc": "EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija.",
+      "screens": {
+        "pos": "KASSA · SOTUV OYNASI",
+        "sales": "SAVDO HISOBOTI",
+        "stock": "QOLDIQLAR HISOBOTI",
+        "abc": "ABC TAHLIL"
+      }
     },
     "sectors": {
       "title": "Har xil savdo formati. Bitta ishonchli tizim.",
@@ -112,22 +110,14 @@ export const translations = {
     "equipment": {
       "title": "Savdo uchun zarur qurilmalar to‘plami",
       "lead": "Kassa sistemasini to‘liq ishga tushirish uchun kerakli barcha qurilmalarni bir joydan oling.",
-      "kitTitle": "Tayyor to'plam",
-      "kitDesc": "Qaysi qurilma kerakligini bilmasangiz, biz tanlab beramiz.",
-      "setupTotal": "Kassa to'plamingiz",
       "kitBtn": "Tanlab berishingizni so'rayman",
       "kitMessage": "Qurilmalar to'plamini tanlab bering.",
       "prev": "Oldingi qurilmalar",
       "next": "Keyingi qurilmalar",
       "details": "Batafsil ma'lumot",
-      "inCartBadge": "Savatda",
-      "addBtn": "Qo'shish",
-      "addedToCartToast": "savatga qo'shildi",
       "close": "Yopish",
       "officialPrice": "Rasmiy Narxi:",
       "parameters": "Parametrlar:",
-      "inCart": "Savatda mavjud",
-      "addToCart": "Savatga qo‘shish",
       "eyebrow": "POS QURILMALARI",
       "viewAll": "Barcha qurilmalarni ko‘rish",
       "viewRow": "Qatorda ko‘rish",
@@ -137,7 +127,14 @@ export const translations = {
         "scanners": "SHTRIX SKANER",
         "drawers": "KASSA QUTISI",
         "scales": "TAROZI"
-      }
+      },
+      "pick": "Tanlash",
+      "picked": "Tanlandi",
+      "estimate": "Tanlangan qurilmalar",
+      "estimateNone": "Qurilmalarni tanlang — umumiy summa shu yerda ko‘rinadi",
+      "clear": "Tozalash",
+      "items": "ta qurilma",
+      "kitMessageList": "Tanlangan qurilmalar: {list}. Jami: {sum}."
     },
     "pricing": {
       "title": "Biznesingizga mos tarifni tanlang",
@@ -157,42 +154,50 @@ export const translations = {
         "subtitle": "Kichik do‘konlar uchun",
         "features": [
           "Cheksiz mahsulot qo‘shish",
-          "Excel orqali tovarlarni bir zumda yuklash",
+          "Soliq bazasidan mahsulotni avtomatik tanlash",
+          "Excel orqali tovarlarni yuklash",
+          "Sales Doctor orqali nakladnoylarni avtomatik qo‘shish",
           "Qulay inventarizatsiya va ombor nazorati",
           "Ta’minotchilar va mijozlar bilan hisob-kitob",
-          "Tushunarli va to‘liq hisobotlar"
+          "Shtrix-kodlarni yaratish va chop etish",
+          "Tushunarli va to‘liq hisobotlar",
+          "Mobil kassa orqali savdo (Android)",
+          "Soliq tizimi bilan integratsiya (Arco, Multikassa)",
+          "To‘lov tizimlari bilan integratsiya (Click, Payme, Uzum)"
         ]
       },
       "standard": {
-        "name": "Standard",
-        "subtitle": "Standart do‘konlar uchun",
+        "name": "Standart",
+        "subtitle": "O‘sib borayotgan do‘konlar uchun",
         "features": [
-          "Soliq tizimi bilan integratsiya (Arco, Multikassa)",
-          "To‘lov tizimlari bilan integratsiyalar (Click, Payme, Uzum)",
           "Tavsiya etilgan tovarlar ro‘yxati",
           "Muzlatilgan mablag‘ ko‘rinishidagi tovarlar",
           "Aksiya va to‘plamlar yaratish",
           "Valyuta bilan ishlash",
-          "Xarajatlarni yuritish",
+          "Xarajatlarni hisobga olish",
           "Markirovka bilan ishlash"
         ]
       },
       "premium": {
         "name": "Premium",
-        "subtitle": "Katta hajmdagi do‘konlar uchun",
+        "subtitle": "Katta do‘konlar va savdo tarmoqlari uchun",
         "features": [
-          "Standard tarifidagi barcha imkoniyatlar",
-          "Mijozlar uchun bonus (Loyalty)",
+          "Mijozlar uchun bonus tizimi (loyallik)",
           "Analitika (ABC tahlil, OOS tahlil)",
-          "Mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlar"
+          "Mahsulotlar harakati",
+          "Mijozlarga Telegram-bot orqali xabarnoma",
+          "Seyf: barcha pul mablag‘lari bitta joyda"
         ]
       },
-      "eyebrow": "SHAFFOF NARXLASH"
+      "eyebrow": "SHAFFOF NARXLASH",
+      "isNew": "Yangi",
+      "plus": "{p} tarifidagi barcha imkoniyatlar, va:",
+      "plus2": "{a} va {b} tariflaridagi barcha imkoniyatlar, va:"
     },
     "faq": {
       "title": "Ko‘p beriladigan savollarga javoblar",
-      "lead": "Kerakli javobni topmadingizmi? Jamoamiz sizga mos yechimni tanlashda yordam beradi.",
-      "ask": "Savol berish",
+      "lead": "Javobini topmagan savolingiz bo‘lsa, call-markazimizga qo‘ng‘iroq qiling — mutaxassisimiz to‘liq tushuntirib beradi.",
+      "ask": "Call-markazga qo‘ng‘iroq",
       "items": [
         {
           "q": "POS tizimi biznesimga qanday foyda keltiradi?",
@@ -200,11 +205,11 @@ export const translations = {
         },
         {
           "q": "POS tizimini onlayn do‘konim bilan integratsiya qila olamanmi?",
-          "a": "Ha. IDO‘KON mavjud kassa va to‘lov tizimlari bilan bog‘lanadi. Muayyan onlayn do‘kon yoki boshqa tizim bo‘yicha integratsiya imkoniyatini jamoamiz bilan muhokama qilishingiz mumkin."
+          "a": "Ha. iDokon mavjud kassa va to‘lov tizimlari bilan bog‘lanadi. Muayyan onlayn do‘kon bilan integratsiya bo‘yicha call-markazimizdan batafsil ma’lumot oling."
         },
         {
           "q": "POS tizimidan foydalanish uchun maxsus o‘qitish kerakmi?",
-          "a": "Interfeys yangi kassir ham tez o‘rganishi uchun sodda tuzilgan. Bundan tashqari, I-Do‘kon kursida modullar, amaliy misollar, video darslar va interaktiv topshiriqlar mavjud."
+          "a": "Interfeys yangi kassir ham tez o‘rganishi uchun sodda tuzilgan. iDokon kursida modullar, amaliy misollar va video darslar bor. Qolgan savollar bo‘yicha call-markazimiz yordam beradi."
         },
         {
           "q": "Dastur oflayn (internetsiz) ham ishlaydimi?",
@@ -216,7 +221,7 @@ export const translations = {
         },
         {
           "q": "Biznesim uchun to‘g‘ri POS tizimini qanday tanlayman?",
-          "a": "Biznes turi, hajmi, byudjeti, zarur integratsiyalar va kelajakdagi o‘sishni hisobga oling. Start, Standard va Premium tariflarini solishtiring yoki bepul maslahat uchun biz bilan bog‘laning."
+          "a": "Biznes turi, hajmi, byudjeti va zarur imkoniyatlarni hisobga oling. Start, Standart va Premium tariflarini solishtiring yoki bepul maslahat uchun call-markazimizga qo‘ng‘iroq qiling."
         }
       ],
       "eyebrow": "SAVOLINGIZ BORMI?"
@@ -225,7 +230,17 @@ export const translations = {
       "title": "Do‘koningiz uchun to‘g‘ri konfiguratsiyani topamiz",
       "lead": "Savollaringizni yozib qoldiring — jamoamiz ehtiyojingizni o‘rganib, mos tarif va qurilmalar bo‘yicha yordam beradi.",
       "formTitle": "Biz bilan bog‘laning",
-      "eyebrow": "BIZ BILAN BOG‘LANISH"
+      "eyebrow": "BIZ BILAN BOG‘LANISH",
+      "storeTypeOptions": [
+        "Oziq-ovqat / Supermarket",
+        "Kiyim-kechak va poyabzal",
+        "Elektronika va maishiy texnika",
+        "Kosmetika va parfyumeriya",
+        "Qurilish mollari",
+        "Dorixona",
+        "Kafe / Fast-food",
+        "Boshqa savdo turi"
+      ]
     },
     "form": {
       "name": "Ismingiz",
@@ -254,19 +269,6 @@ export const translations = {
       "title": "Bepul demo so'rash",
       "subtitle": "Demo uchun qo'ng'iroq qiling yoki Telegramda yozing."
     },
-    "cartDrawer": {
-      "title": "Savat",
-      "empty": "Savat hozircha bo'sh",
-      "emptyDesc": "Qurilmalar ro'yxatidan kerakli narsani tanlang.",
-      "total": "Jami:",
-      "checkout": "Buyurtma berish",
-      "clear": "Savatni tozalash",
-      "items": "ta qurilma",
-      "decrease": "Kamaytirish",
-      "increase": "Ko'paytirish",
-      "remove": "O'chirish",
-      "back": "Orqaga"
-    },
     "lightbox": {
       "close": "Yopish"
     },
@@ -284,12 +286,11 @@ export const translations = {
       "telegram": "Telegram"
     },
     "closing": {
-      "w1": "Ko'rdingizmi?",
-      "w2": "Hammasi shunchalik oddiy.",
-      "w3": "Endi do'koningiz navbatda."
+      "w1": "Ko‘rdingizmi, hammasi shunchalik oson!",
+      "w2": "Endi siz ham do‘koningizda sinab ko‘ring!"
     },
     "features": {
-      "eyebrow": "I-DO‘KON BILAN BIZNESINGIZNI RIVOJLANTIRING",
+      "eyebrow": "iDokon BILAN BIZNESINGIZNI RIVOJLANTIRING",
       "title": "Sodda interfeys. Kuchli boshqaruv.",
       "lead": "Kassirga tezlik, rahbarga nazorat, mijozga esa silliq xarid tajribasi beradigan savdo nuqtasi tizimi.",
       "f1_title": "Savdo tezligi ↑",
@@ -308,7 +309,7 @@ export const translations = {
     "integrations": {
       "eyebrow": "TIZIMLAR BILAN INTEGRATSIYA",
       "title": "Mavjud tizimdan uzilmasdan yangisiga o‘ting",
-      "lead": "IDO‘KON mavjud kassa tizimlari bilan oson bog‘lanadi. Ma’lumotlaringiz saqlanadi, jamoamiz esa o‘tish jarayonida yoningizda bo‘ladi.",
+      "lead": "iDokon mavjud kassa tizimlari bilan oson bog‘lanadi. Ma’lumotlaringiz saqlanadi, jamoamiz esa o‘tish jarayonida yoningizda bo‘ladi.",
       "c1_title": "Tez ulanish",
       "c1_desc": "Mavjud tizimga 1–2 kun ichida ulanish",
       "c2_title": "Ma’lumotlar xavfsizligi",
@@ -318,14 +319,18 @@ export const translations = {
       "supported": "QO‘LLAB-QUVVATLANADIGAN TIZIMLAR",
       "mk": "Soliq idorasi bilan bog‘langan onlayn kassa tizimi",
       "ar": "Keng tarqalgan kassa va hisobot tizimi",
-      "ei": "E-imzo orqali SMS xabarnoma yuborish tizimi",
       "otherTitle": "Boshqa tizimlar",
-      "otherDesc": "Tizimingiz ro‘yxatda yo‘qmi? Integratsiya imkoniyatlarini biz bilan muhokama qiling."
+      "otherDesc": "Tizimingiz ro‘yxatda yo‘qmi? Integratsiya imkoniyatlarini biz bilan muhokama qiling.",
+      "payments": "TO‘LOV TIZIMLARI",
+      "fiscal": "ONLAYN KASSA VA SOLIQ",
+      "click": "Click orqali to‘lov qabul qilish",
+      "payme": "Payme orqali to‘lov qabul qilish",
+      "uzum": "Uzum orqali to‘lov qabul qilish"
     },
     "course": {
       "eyebrow": "BILIM BAZASI",
-      "title": "I-Do‘kon Kursi",
-      "lead": "POS dasturini to‘liq va oson o‘rganing. Har bir modulda amaliy misollar, video darslar va interaktiv topshiriqlar mavjud.",
+      "title": "iDokon Kursi",
+      "lead": "POS dasturini to‘liq va oson o‘rganing. Har bir modulda amaliy misollar va video darslar bor.",
       "highlight": "Kursni tugatgan har bir mijoz programmani mustaqil ishlata oladi va savollarga tez javob topadi.",
       "cta": "Kursni boshlash",
       "shot1": "Kurs: kirish",
@@ -334,15 +339,14 @@ export const translations = {
     }
   },
   "ru": {
-    "langName": "Русский",
     "skip": "Перейти к содержанию",
     "menu": {
       "open": "Меню",
       "close": "Закрыть"
     },
     "meta": {
-      "title": "IDO‘KON — автоматизация магазина и POS-система в Узбекистане",
-      "description": "Современный POS, складской учет, отчеты в реальном времени и платежные интеграции — на единой простой платформе для вашего магазина."
+      "title": "iDokon — автоматизация магазина и POS-система | Узбекистан",
+      "description": "iDokon: кассовая программа, складской учёт, ABC-анализ и интеграции с Click, Payme, Uzum, Arco, Multikassa — единая простая платформа для вашего магазина."
     },
     "nav": {
       "features": "Функции",
@@ -350,19 +354,16 @@ export const translations = {
       "pricing": "Тарифы",
       "contact": "Контакты",
       "tryDemo": "Попробовать демо",
-      "cart": "Корзина",
       "theme": "Сменить тему",
       "language": "Язык",
-      "home": "Главная",
       "integrations": "Интеграции",
-      "course": "Курс I-Do‘kon"
+      "course": "Курс iDokon"
     },
     "hero": {
       "subtitle": "Современный POS, складской учет, отчеты в реальном времени и платежные интеграции — на единой простой платформе для вашего магазина.",
       "ctaPrimary": "Попробовать демо",
       "ctaSecondary": "Связаться",
-      "imageAlt": "Окно кассовой программы IDO‘KON: список товаров и учет продаж",
-      "ratingLabel": "Оценка клиентов",
+      "imageAlt": "Окно кассовой программы iDokon: список товаров и учет продаж",
       "eyebrow": "НОВЫЙ СТАНДАРТ УПРАВЛЕНИЯ ТОРГОВЛЕЙ",
       "titleStart": "Управляйте продажами",
       "titleHighlight": "по точным цифрам",
@@ -371,16 +372,14 @@ export const translations = {
       "meta2": "Запуск за 10 минут",
       "meta3": "Поддержка по телефону и в Telegram",
       "liveStatus": "Система работает",
-      "windowTitle": "IDO‘KON · ANALYTICS",
-      "ratingBasis": "на основе {n} отзывов",
-      "zoom": "Увеличить"
+      "windowTitle": "iDokon · Кассы",
+      "zoom": "Увеличить",
+      "quote": "Счёт дружбы не портит.",
+      "quoteBy": "Народная мудрость",
+      "quoteNote": "Магазин, где посчитан каждый сум, не теряет ни клиентов, ни прибыль."
     },
     "partners": {
-      "title": "Совместимо с системами, которыми вы пользуетесь",
-      "g1": "Click · Payme · Uzum",
-      "g2": "Arco",
-      "g3": "Multikassa",
-      "g4": "E-imzo SMS"
+      "title": "Совместимо с системами, которыми вы пользуетесь"
     },
     "how": {
       "title": "Как это начинается",
@@ -397,14 +396,12 @@ export const translations = {
       "lead": "От кассы до панели управления — нужные вашей команде данные всегда на своем месте.",
       "zoom": "Увеличить",
       "tabs": {
-        "sales": "Продажи",
-        "inventory": "Склад",
-        "analytics": "Аналитика",
-        "cashiers": "Кассиры",
-        "order": "Заказ"
+        "pos": "Касса",
+        "sales": "Отчёт о продажах",
+        "stock": "Остатки",
+        "abc": "ABC-анализ"
       },
       "eyebrow": "ОСНОВНЫЕ ВОЗМОЖНОСТИ ПРОГРАММЫ",
-      "orderLabel": "РЕКОМЕНДУЕМЫЙ ЗАКАЗ",
       "tablist": "Экраны программы",
       "p1_title": "Управление запасами",
       "p1_desc": "Автоматически отслеживает остатки и приход–расход, напоминает о минимальном остатке.",
@@ -413,7 +410,13 @@ export const translations = {
       "p3_title": "Отчеты и аналитика",
       "p3_desc": "Показывает оборот и прибыль в реальном времени, дает экспорт и разрез по филиалам.",
       "p4_title": "Безопасные быстрые транзакции",
-      "p4_desc": "Защищенная оплата на основе EMV, быстрое подтверждение и надежный результат."
+      "p4_desc": "Защищенная оплата на основе EMV, быстрое подтверждение и надежный результат.",
+      "screens": {
+        "pos": "КАССА · ОКНО ПРОДАЖИ",
+        "sales": "ОТЧЁТ О ПРОДАЖАХ",
+        "stock": "ОТЧЁТ ПО ОСТАТКАМ",
+        "abc": "ABC-АНАЛИЗ"
+      }
     },
     "sectors": {
       "title": "Разные форматы торговли. Одна надежная система.",
@@ -446,22 +449,14 @@ export const translations = {
     "equipment": {
       "title": "Комплект устройств для торговли",
       "lead": "Получите все устройства для полного запуска кассовой системы в одном месте.",
-      "kitTitle": "Готовый комплект",
-      "kitDesc": "Не знаете, какое оборудование нужно — мы подберём.",
-      "setupTotal": "Ваш набор для кассы",
       "kitBtn": "Подберите мне комплект",
       "kitMessage": "Подберите мне комплект оборудования.",
       "prev": "Предыдущие устройства",
       "next": "Следующие устройства",
       "details": "Подробнее",
-      "inCartBadge": "В корзине",
-      "addBtn": "Добавить",
-      "addedToCartToast": "добавлено в корзину",
       "close": "Закрыть",
       "officialPrice": "Официальная цена:",
       "parameters": "Параметры:",
-      "inCart": "В корзине",
-      "addToCart": "В корзину",
       "eyebrow": "POS-ОБОРУДОВАНИЕ",
       "viewAll": "Показать все устройства",
       "viewRow": "Показать в ряд",
@@ -471,7 +466,14 @@ export const translations = {
         "scanners": "СКАНЕР ШТРИХКОДОВ",
         "drawers": "ДЕНЕЖНЫЙ ЯЩИК",
         "scales": "ВЕСЫ"
-      }
+      },
+      "pick": "Выбрать",
+      "picked": "Выбрано",
+      "estimate": "Выбранное оборудование",
+      "estimateNone": "Выберите устройства — общая сумма появится здесь",
+      "clear": "Очистить",
+      "items": "устр.",
+      "kitMessageList": "Выбранное оборудование: {list}. Итого: {sum}."
     },
     "pricing": {
       "title": "Выберите тариф для вашего бизнеса",
@@ -491,42 +493,50 @@ export const translations = {
         "subtitle": "Для небольших магазинов",
         "features": [
           "Неограниченное добавление товаров",
-          "Мгновенная загрузка товаров через Excel",
+          "Автоматический выбор из базы налоговой системы",
+          "Загрузка товаров через Excel",
+          "Автоматическое добавление накладных через Sales Doctor",
           "Удобная инвентаризация и контроль склада",
-          "Расчеты с поставщиками и клиентами",
-          "Понятные и полные отчеты"
+          "Учёт с поставщиками и клиентами",
+          "Генерация и печать штрихкодов",
+          "Понятные и полные отчёты",
+          "Продажа через мобильную кассу (Android)",
+          "Интеграция с налоговой системой (Arco, Multikassa)",
+          "Интеграция с платёжными системами (Click, Payme, Uzum)"
         ]
       },
       "standard": {
-        "name": "Standard",
-        "subtitle": "Для стандартных магазинов",
+        "name": "Standart",
+        "subtitle": "Для растущих магазинов",
         "features": [
-          "Интеграция с налоговой системой (Arco, Multikassa)",
-          "Интеграции с платежными системами (Click, Payme, Uzum)",
-          "Список рекомендуемых товаров",
-          "Товары с замороженными средствами",
-          "Создание акций и наборов",
+          "Список рекомендованных товаров",
+          "Товары в виде замороженных средств",
+          "Создание акций и комплектов",
           "Работа с валютой",
-          "Ведение расходов",
+          "Учёт расходов",
           "Работа с маркировкой"
         ]
       },
       "premium": {
         "name": "Premium",
-        "subtitle": "Для крупных магазинов",
+        "subtitle": "Для крупных магазинов и сетей",
         "features": [
-          "Все возможности Standard",
-          "Бонусная программа (Loyalty)",
-          "Аналитика (ABC, OOS)",
-          "Расширенные отчеты по движению товаров"
+          "Бонусы для клиентов (лояльность)",
+          "Аналитика (ABC-анализ, OOS-анализ)",
+          "Движение товаров",
+          "Уведомления клиентам через Telegram-бот",
+          "Сейф: все денежные средства в одном месте"
         ]
       },
-      "eyebrow": "ПРОЗРАЧНЫЕ ЦЕНЫ"
+      "eyebrow": "ПРОЗРАЧНЫЕ ЦЕНЫ",
+      "isNew": "Новое",
+      "plus": "Всё, что есть в тарифе {p}, а также:",
+      "plus2": "Всё, что есть в тарифах {a} и {b}, а также:"
     },
     "faq": {
       "title": "Ответы на частые вопросы",
-      "lead": "Не нашли нужный ответ? Наша команда поможет подобрать подходящее решение.",
-      "ask": "Задать вопрос",
+      "lead": "Не нашли ответ на свой вопрос? Позвоните в наш колл-центр — специалист всё подробно объяснит.",
+      "ask": "Позвонить в колл-центр",
       "items": [
         {
           "q": "Как POS-система поможет моему бизнесу?",
@@ -534,11 +544,11 @@ export const translations = {
         },
         {
           "q": "Можно ли интегрировать POS с интернет-магазином?",
-          "a": "Да. IDO‘KON подключается к кассовым и платежным системам. Интеграцию с конкретным интернет-магазином можно обсудить с нашей командой."
+          "a": "Да. iDokon подключается к кассовым и платёжным системам. Подробности об интеграции с конкретным интернет-магазином уточните в нашем колл-центре."
         },
         {
           "q": "Нужно ли специальное обучение?",
-          "a": "Интерфейс прост для новых кассиров. Курс I-Do‘kon также включает модули, практику, видео и интерактивные задания."
+          "a": "Интерфейс прост даже для нового кассира. В курсе iDokon есть модули, практические примеры и видеоуроки. С остальными вопросами поможет наш колл-центр."
         },
         {
           "q": "Работает ли касса без интернета?",
@@ -550,7 +560,7 @@ export const translations = {
         },
         {
           "q": "Как выбрать подходящий POS?",
-          "a": "Учтите тип и масштаб бизнеса, бюджет, интеграции и рост. Сравните Start, Standard и Premium или получите бесплатную консультацию."
+          "a": "Учтите тип и масштаб бизнеса, бюджет и нужные возможности. Сравните Start, Standart и Premium или позвоните в колл-центр за бесплатной консультацией."
         }
       ],
       "eyebrow": "ЕСТЬ ВОПРОСЫ?"
@@ -559,7 +569,17 @@ export const translations = {
       "title": "Подберем правильную конфигурацию для вашего магазина",
       "lead": "Оставьте вопросы — команда изучит вашу потребность и поможет с тарифом и оборудованием.",
       "formTitle": "Свяжитесь с нами",
-      "eyebrow": "СВЯЖИТЕСЬ С НАМИ"
+      "eyebrow": "СВЯЖИТЕСЬ С НАМИ",
+      "storeTypeOptions": [
+        "Продукты питания / Супермаркет",
+        "Одежда и обувь",
+        "Электроника и гаджеты",
+        "Косметика и парфюмерия",
+        "Строительные материалы",
+        "Аптека",
+        "Кафе / Фастфуд",
+        "Другое направление"
+      ]
     },
     "form": {
       "name": "Ваше имя",
@@ -588,19 +608,6 @@ export const translations = {
       "title": "Заказать бесплатное демо",
       "subtitle": "Для демо позвоните или напишите в Telegram."
     },
-    "cartDrawer": {
-      "title": "Корзина",
-      "empty": "Корзина пока пуста",
-      "emptyDesc": "Выберите нужное в списке оборудования.",
-      "total": "Итого:",
-      "checkout": "Оформить заказ",
-      "clear": "Очистить корзину",
-      "items": "устройств",
-      "decrease": "Уменьшить",
-      "increase": "Увеличить",
-      "remove": "Удалить",
-      "back": "Назад"
-    },
     "lightbox": {
       "close": "Закрыть"
     },
@@ -618,12 +625,11 @@ export const translations = {
       "telegram": "Telegram"
     },
     "closing": {
-      "w1": "Видите?",
-      "w2": "Всё так просто.",
-      "w3": "Теперь очередь вашего магазина."
+      "w1": "Видите, всё настолько просто!",
+      "w2": "Теперь попробуйте и в своём магазине!"
     },
     "features": {
-      "eyebrow": "РАЗВИВАЙТЕ БИЗНЕС С I-DO‘KON",
+      "eyebrow": "РАЗВИВАЙТЕ БИЗНЕС С iDokon",
       "title": "Простой интерфейс. Мощное управление.",
       "lead": "Система, которая дает кассиру скорость, руководителю контроль, а покупателю — удобную покупку.",
       "f1_title": "Скорость продаж ↑",
@@ -642,7 +648,7 @@ export const translations = {
     "integrations": {
       "eyebrow": "ИНТЕГРАЦИЯ С СИСТЕМАМИ",
       "title": "Перейдите на новую систему без остановки работы",
-      "lead": "IDO‘KON легко подключается к существующим кассовым системам. Ваши данные сохраняются, а наша команда рядом на время перехода.",
+      "lead": "iDokon легко подключается к существующим кассовым системам. Ваши данные сохраняются, а наша команда рядом на время перехода.",
       "c1_title": "Быстрое подключение",
       "c1_desc": "Подключение к вашей системе за 1–2 дня",
       "c2_title": "Безопасность данных",
@@ -652,14 +658,18 @@ export const translations = {
       "supported": "ПОДДЕРЖИВАЕМЫЕ СИСТЕМЫ",
       "mk": "Онлайн-касса, связанная с налоговой службой",
       "ar": "Распространенная кассовая и отчетная система",
-      "ei": "Система SMS-уведомлений через E-imzo",
       "otherTitle": "Другие системы",
-      "otherDesc": "Вашей системы нет в списке? Обсудите возможности интеграции с нами."
+      "otherDesc": "Вашей системы нет в списке? Обсудите возможности интеграции с нами.",
+      "payments": "ПЛАТЁЖНЫЕ СИСТЕМЫ",
+      "fiscal": "ОНЛАЙН-КАССА И НАЛОГОВАЯ",
+      "click": "Приём оплаты через Click",
+      "payme": "Приём оплаты через Payme",
+      "uzum": "Приём оплаты через Uzum"
     },
     "course": {
       "eyebrow": "БАЗА ЗНАНИЙ",
-      "title": "Курс I-Do‘kon",
-      "lead": "Освойте POS-программу полностью и легко. В каждом модуле есть практические примеры, видеоуроки и интерактивные задания.",
+      "title": "Курс iDokon",
+      "lead": "Освойте POS-программу полностью и легко. В каждом модуле есть практические примеры и видеоуроки.",
       "highlight": "Каждый клиент, прошедший курс, сможет самостоятельно работать в программе и быстро находить ответы на вопросы.",
       "cta": "Начать курс",
       "shot1": "Курс: вход",
@@ -668,15 +678,14 @@ export const translations = {
     }
   },
   "en": {
-    "langName": "English",
     "skip": "Skip to content",
     "menu": {
       "open": "Menu",
       "close": "Close"
     },
     "meta": {
-      "title": "IDO‘KON — shop automation and POS system in Uzbekistan",
-      "description": "Modern POS, stock control, real-time reports and payment integrations — in one simple platform for your shop."
+      "title": "iDokon — shop automation and POS system | Uzbekistan",
+      "description": "iDokon: till software, stock control, ABC analysis and Click, Payme, Uzum, Arco, Multikassa integrations — one simple platform for your shop."
     },
     "nav": {
       "features": "Features",
@@ -684,19 +693,16 @@ export const translations = {
       "pricing": "Pricing",
       "contact": "Contact",
       "tryDemo": "Try the demo",
-      "cart": "Cart",
       "theme": "Toggle theme",
       "language": "Language",
-      "home": "Home",
       "integrations": "Integrations",
-      "course": "I-Do‘kon Course"
+      "course": "iDokon Course"
     },
     "hero": {
       "subtitle": "Modern POS, stock control, real-time reports and payment integrations — in one simple platform for your shop.",
       "ctaPrimary": "Try the demo",
       "ctaSecondary": "Get in touch",
-      "imageAlt": "IDO‘KON till software window: product list and sales record",
-      "ratingLabel": "Customer rating",
+      "imageAlt": "iDokon till software window: product list and sales record",
       "eyebrow": "THE NEW STANDARD IN RETAIL MANAGEMENT",
       "titleStart": "Run your sales with",
       "titleHighlight": "accurate numbers",
@@ -705,16 +711,14 @@ export const translations = {
       "meta2": "Live in 10 minutes",
       "meta3": "Phone and Telegram support",
       "liveStatus": "System online",
-      "windowTitle": "IDO‘KON · ANALYTICS",
-      "ratingBasis": "based on {n} reviews",
-      "zoom": "Enlarge"
+      "windowTitle": "iDokon · Tills",
+      "zoom": "Enlarge",
+      "quote": "Clear accounts keep good friends.",
+      "quoteBy": "Uzbek proverb",
+      "quoteNote": "A shop that counts every som keeps both its customers and its profit."
     },
     "partners": {
-      "title": "Works with the systems your shop already uses",
-      "g1": "Click · Payme · Uzum",
-      "g2": "Arco",
-      "g3": "Multikassa",
-      "g4": "E-imzo SMS"
+      "title": "Works with the systems your shop already uses"
     },
     "how": {
       "title": "How it starts",
@@ -731,14 +735,12 @@ export const translations = {
       "lead": "From the checkout to the admin panel, the information your team needs is always in place.",
       "zoom": "Enlarge",
       "tabs": {
-        "sales": "Sales",
-        "inventory": "Stock",
-        "analytics": "Analytics",
-        "cashiers": "Cashiers",
-        "order": "Order"
+        "pos": "Till",
+        "sales": "Sales report",
+        "stock": "Stock",
+        "abc": "ABC analysis"
       },
       "eyebrow": "CORE FEATURES",
-      "orderLabel": "SUGGESTED ORDER",
       "tablist": "Software screens",
       "p1_title": "Inventory management",
       "p1_desc": "Tracks stock and goods in and out, and reminds you of the minimum level.",
@@ -747,7 +749,13 @@ export const translations = {
       "p3_title": "Reports and analysis",
       "p3_desc": "Shows turnover and profit in real time, with export and branch view.",
       "p4_title": "Safe, fast transactions",
-      "p4_desc": "EMV-based protected payment, quick confirmation and a reliable result."
+      "p4_desc": "EMV-based protected payment, quick confirmation and a reliable result.",
+      "screens": {
+        "pos": "TILL · SALE SCREEN",
+        "sales": "SALES REPORT",
+        "stock": "STOCK REPORT",
+        "abc": "ABC ANALYSIS"
+      }
     },
     "sectors": {
       "title": "Every kind of shop. One reliable system.",
@@ -780,22 +788,14 @@ export const translations = {
     "equipment": {
       "title": "The devices you need to sell",
       "lead": "Get everything needed to run the till system in one place.",
-      "kitTitle": "Ready-made kit",
-      "kitDesc": "Not sure which devices you need? We will choose for you.",
-      "setupTotal": "Your checkout setup",
       "kitBtn": "Choose a kit for me",
       "kitMessage": "Please choose a device kit for me.",
       "prev": "Previous devices",
       "next": "Next devices",
       "details": "Details",
-      "inCartBadge": "In Cart",
-      "addBtn": "Add",
-      "addedToCartToast": "added to cart",
       "close": "Close",
       "officialPrice": "Official Price:",
       "parameters": "Parameters:",
-      "inCart": "In cart",
-      "addToCart": "Add to cart",
       "eyebrow": "POS HARDWARE",
       "viewAll": "See all devices",
       "viewRow": "Show in a row",
@@ -805,7 +805,14 @@ export const translations = {
         "scanners": "BARCODE SCANNER",
         "drawers": "CASH DRAWER",
         "scales": "SCALE"
-      }
+      },
+      "pick": "Select",
+      "picked": "Selected",
+      "estimate": "Selected devices",
+      "estimateNone": "Select devices and the total appears here",
+      "clear": "Clear",
+      "items": "devices",
+      "kitMessageList": "Selected devices: {list}. Total: {sum}."
     },
     "pricing": {
       "title": "Choose the plan that fits your business",
@@ -818,49 +825,57 @@ export const translations = {
       "badge12": "2 months free",
       "perMonth": "mo",
       "total": "Total",
-      "popular": "Popular",
+      "popular": "Most popular",
       "choose": "Choose plan",
       "start": {
         "name": "Start",
-        "subtitle": "For small stores",
+        "subtitle": "For small shops",
         "features": [
-          "Add unlimited products",
-          "Instant bulk upload via Excel",
-          "Convenient inventory and warehouse control",
-          "Supplier and customer settlements",
-          "Clear and complete reports"
+          "Unlimited products",
+          "Automatic lookup in the tax product base",
+          "Product upload via Excel",
+          "Automatic invoices via Sales Doctor",
+          "Easy stocktaking and warehouse control",
+          "Supplier and customer accounts",
+          "Barcode generation and printing",
+          "Clear, complete reports",
+          "Selling through a mobile till (Android)",
+          "Tax system integration (Arco, Multikassa)",
+          "Payment integration (Click, Payme, Uzum)"
         ]
       },
       "standard": {
-        "name": "Standard",
-        "subtitle": "For standard stores",
+        "name": "Standart",
+        "subtitle": "For growing shops",
         "features": [
-          "Tax system integration (Arco, Multikassa)",
-          "Payment system integrations (Click, Payme, Uzum)",
           "Suggested products list",
-          "Goods with frozen funds",
-          "Create promotions and bundles",
-          "Work with foreign currency",
+          "Goods shown as frozen funds",
+          "Promotions and bundles",
+          "Foreign currency",
           "Expense tracking",
-          "Product marking support"
+          "Product marking"
         ]
       },
       "premium": {
         "name": "Premium",
-        "subtitle": "For large stores",
+        "subtitle": "For large shops and chains",
         "features": [
-          "All Standard plan features",
-          "Customer bonus program (Loyalty)",
-          "Analytics (ABC and OOS)",
-          "Extended product movement reports"
+          "Customer bonuses (loyalty)",
+          "Analytics (ABC and OOS analysis)",
+          "Product movement",
+          "Customer notifications via Telegram bot",
+          "Safe: all your cash in one place"
         ]
       },
-      "eyebrow": "CLEAR PRICING"
+      "eyebrow": "CLEAR PRICING",
+      "isNew": "New",
+      "plus": "Everything in {p}, plus:",
+      "plus2": "Everything in {a} and {b}, plus:"
     },
     "faq": {
       "title": "Answers to common questions",
-      "lead": "Did not find the answer? Our team will help you choose the right setup.",
-      "ask": "Ask a question",
+      "lead": "Question not answered here? Call our call centre and a specialist will explain everything in full.",
+      "ask": "Call the call centre",
       "items": [
         {
           "q": "How can a POS system help my business?",
@@ -868,11 +883,11 @@ export const translations = {
         },
         {
           "q": "Can I integrate the POS with my online store?",
-          "a": "Yes. IDO‘KON connects to checkout and payment systems. Talk to our team about integration with a specific online store or platform."
+          "a": "Yes. iDokon connects to till and payment systems. For integration with a specific online store, ask our call centre for details."
         },
         {
           "q": "Do I need special training?",
-          "a": "The interface is easy for new cashiers. The I-Do‘kon course also includes modules, practice, video lessons and interactive tasks."
+          "a": "The interface is simple enough for a new cashier. The iDokon course has modules, practical examples and video lessons. Our call centre helps with anything else."
         },
         {
           "q": "Does the cash register work without internet?",
@@ -884,7 +899,7 @@ export const translations = {
         },
         {
           "q": "How do I choose the right POS?",
-          "a": "Consider your business type, scale, budget, integrations and growth. Compare Start, Standard and Premium, or contact us for a free consultation."
+          "a": "Consider your business type, size, budget and the features you need. Compare Start, Standart and Premium, or call our call centre for free advice."
         }
       ],
       "eyebrow": "GOT A QUESTION?"
@@ -893,7 +908,17 @@ export const translations = {
       "title": "We will find the right setup for your shop",
       "lead": "Leave your questions. Our team will look at your needs and help with a plan and devices.",
       "formTitle": "Contact us",
-      "eyebrow": "GET IN TOUCH"
+      "eyebrow": "GET IN TOUCH",
+      "storeTypeOptions": [
+        "Grocery / Supermarket",
+        "Apparel & Footwear",
+        "Electronics & Gadgets",
+        "Cosmetics & Pharmacy",
+        "Hardware & Construction",
+        "Pharmacy",
+        "Café / Quick Service Food",
+        "Other Retail Format"
+      ]
     },
     "form": {
       "name": "Your name",
@@ -922,19 +947,6 @@ export const translations = {
       "title": "Request a free demo",
       "subtitle": "For a demo, call us or message us on Telegram."
     },
-    "cartDrawer": {
-      "title": "Cart",
-      "empty": "Your cart is empty",
-      "emptyDesc": "Pick what you need from the device list.",
-      "total": "Total:",
-      "checkout": "Place order",
-      "clear": "Clear cart",
-      "items": "devices",
-      "decrease": "Decrease",
-      "increase": "Increase",
-      "remove": "Remove",
-      "back": "Back"
-    },
     "lightbox": {
       "close": "Close"
     },
@@ -952,12 +964,11 @@ export const translations = {
       "telegram": "Telegram"
     },
     "closing": {
-      "w1": "See?",
-      "w2": "It really is that simple.",
-      "w3": "Now it is your shop’s turn."
+      "w1": "See? It really is that easy!",
+      "w2": "Now try it in your own shop!"
     },
     "features": {
-      "eyebrow": "GROW YOUR BUSINESS WITH I-DO‘KON",
+      "eyebrow": "GROW YOUR BUSINESS WITH iDokon",
       "title": "Simple interface. Strong control.",
       "lead": "A point-of-sale system that gives cashiers speed, managers control and customers a smooth checkout.",
       "f1_title": "Faster sales ↑",
@@ -976,7 +987,7 @@ export const translations = {
     "integrations": {
       "eyebrow": "SYSTEM INTEGRATION",
       "title": "Move to the new system without stopping work",
-      "lead": "IDO‘KON connects easily to existing till systems. Your data is kept, and our team stays with you through the switch.",
+      "lead": "iDokon connects easily to existing till systems. Your data is kept, and our team stays with you through the switch.",
       "c1_title": "Quick connection",
       "c1_desc": "Connect to your current system in 1–2 days",
       "c2_title": "Data safety",
@@ -986,14 +997,18 @@ export const translations = {
       "supported": "SUPPORTED SYSTEMS",
       "mk": "Online till system linked to the tax office",
       "ar": "A widely used till and reporting system",
-      "ei": "SMS notification system through E-imzo",
       "otherTitle": "Other systems",
-      "otherDesc": "Is your system not listed? Talk to us about integration options."
+      "otherDesc": "Is your system not listed? Talk to us about integration options.",
+      "payments": "PAYMENT SYSTEMS",
+      "fiscal": "ONLINE TILL AND TAX",
+      "click": "Accept payments with Click",
+      "payme": "Accept payments with Payme",
+      "uzum": "Accept payments with Uzum"
     },
     "course": {
       "eyebrow": "KNOWLEDGE BASE",
-      "title": "I-Do‘kon Course",
-      "lead": "Learn the POS software fully and easily. Each module has practical examples, video lessons and interactive tasks.",
+      "title": "iDokon Course",
+      "lead": "Learn the POS software fully and easily. Each module has practical examples and video lessons.",
       "highlight": "Every client who finishes the course can use the program on their own and find answers quickly.",
       "cta": "Start the course",
       "shot1": "Course: sign in",

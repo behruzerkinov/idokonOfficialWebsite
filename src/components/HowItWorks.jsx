@@ -1,4 +1,3 @@
-import React from 'react';
 import { Reveal } from './Reveal';
 
 /** Three numbered steps on one ruled row. */

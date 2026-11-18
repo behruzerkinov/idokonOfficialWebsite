@@ -1,28 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Drawer } from 'vaul';
-import { ChevronDown, Menu, Moon, ShoppingBag, Sun, X } from 'lucide-react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ArrowRight, Check, Globe, Menu, Moon, Sun, X } from 'lucide-react';
 import { SITE } from '../data/site';
+import { scrollToId } from '../lib/scroll';
 
 const LANGS = [
-  { code: 'uz', name: 'O‘zbekcha' },
-  { code: 'ru', name: 'Русский' },
-  { code: 'en', name: 'English' },
+  { code: 'uz', short: 'UZ', name: 'O‘zbekcha' },
+  { code: 'ru', short: 'RU', name: 'Русский' },
+  { code: 'en', short: 'EN', name: 'English' },
 ];
-// Displacement map for the glass lens: neutral grey in the middle, red/blue ramps at the edges bend the backdrop inward.
-const edge = (id, a, b, v) => `<linearGradient id="${id}" ${v ? 'y2="1"' : ''}><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
-const LENS = 'data:image/svg+xml,' + encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><defs>${edge('l', '#ff8080', '#808080')}${edge('r', '#808080', '#008080')}${edge('t', '#8080ff', '#808080', 1)}${edge('b', '#808080', '#808000', 1)}</defs>` +
-  '<rect width="100" height="100" fill="#808080"/><rect width="7" height="100" fill="url(#l)"/><rect x="93" width="7" height="100" fill="url(#r)"/><rect width="100" height="32" fill="url(#t)" opacity=".7"/><rect y="68" width="100" height="32" fill="url(#b)" opacity=".7"/></svg>'
-);
-const LINKS = ['home', 'features', 'equipment', 'integrations', 'pricing', 'course', 'contact'];
+const LINKS = ['features', 'equipment', 'integrations', 'pricing', 'course', 'contact'];
 
-/** Language picker: one button, a small menu. Closes on pick, outside click and Escape. */
-export const LangMenu = ({ lang, setLang, label, up = false }) => {
+
+/** Language picker: compact trigger, small menu. Closes on pick, outside click and Escape. */
+export const LangMenu = ({ lang, setLang, label, up = false, full = false }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
     if (!open) return;
-    const off = (e) => { if (!ref.current?.contains(e.target)) setOpen(false); };
+    const off = (e) => !ref.current?.contains(e.target) && setOpen(false);
     const key = (e) => e.key === 'Escape' && setOpen(false);
     document.addEventListener('pointerdown', off);
     document.addEventListener('keydown', key);
@@ -31,16 +26,15 @@ export const LangMenu = ({ lang, setLang, label, up = false }) => {
   const current = LANGS.find((l) => l.code === lang) || LANGS[0];
   return (
     <div ref={ref} className="relative">
-      <button type="button" aria-haspopup="true" aria-expanded={open} aria-label={label} onClick={() => setOpen((o) => !o)} className="btn-outline nav-ctl !gap-2 !px-3.5">
-        <span>{current.name}</span>
-        <ChevronDown size={16} strokeWidth={2} aria-hidden="true" className={`transition-transform duration-150 ${open ? 'rotate-180' : ''}`} />
+      <button type="button" aria-haspopup="true" aria-expanded={open} aria-label={label} onClick={() => setOpen((o) => !o)} className="icon-btn !w-auto gap-1.5 px-2.5 text-[13px] font-semibold">
+        <Globe size={16} strokeWidth={1.75} aria-hidden="true" />{full ? current.name : current.short}
       </button>
       {open && (
-        <ul className={`card pop-in absolute right-0 z-10 w-40 overflow-hidden p-1 ${up ? 'bottom-full mb-2' : 'top-full mt-2'}`}>
+        <ul className={`pop-in absolute z-10 w-44 rounded-xl p-1 ${up ? 'bottom-full left-0 mb-2' : 'right-0 top-full mt-2'}`} style={{ background: 'var(--surface)', boxShadow: 'var(--ring), var(--shadow-pop)' }}>
           {LANGS.map((l) => (
             <li key={l.code}>
-              <button type="button" aria-pressed={lang === l.code} onClick={() => { setLang(l.code); setOpen(false); }} className="flex min-h-[40px] w-full items-center rounded-lg px-3 text-left text-sm font-medium aria-pressed:bg-[var(--accent-soft)] aria-pressed:text-[var(--accent)]">
-                {l.name}
+              <button type="button" aria-pressed={lang === l.code} onClick={() => { setLang(l.code); setOpen(false); }} className="flex min-h-[38px] w-full items-center justify-between rounded-lg px-3 text-left text-sm font-medium hover:bg-[var(--surface-2)]">
+                {l.name}{lang === l.code && <Check size={15} strokeWidth={2.25} style={{ color: 'var(--accent)' }} aria-hidden="true" />}
               </button>
             </li>
           ))}
@@ -50,104 +44,102 @@ export const LangMenu = ({ lang, setLang, label, up = false }) => {
   );
 };
 
-export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, cartCount, onOpenCart, onOpenDemo }) => {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState('home');
-
+/** Scroll spy: the section crossing the upper-middle of the viewport is current. One observer, no scroll listener. */
+const useActive = () => {
+  const [active, setActive] = useState(null);
   useEffect(() => {
-    if (open) document.body.dataset.drawerOpen = '1';
-    return () => { delete document.body.dataset.drawerOpen; };
-  }, [open]);
-
-  // Scroll spy: the last section whose top has passed the header is the current one
-  useEffect(() => {
-    const on = () => {
-      let cur = LINKS[0];
-      for (const id of LINKS) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 140) cur = id;
-      }
-      setActive(cur);
-    };
-    on();
-    window.addEventListener('scroll', on, { passive: true });
-    return () => window.removeEventListener('scroll', on);
+    const seen = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => seen.set(e.target.id, e.isIntersecting));
+      setActive(LINKS.findLast((id) => seen.get(id)) ?? null);
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    // Sections below the hero are lazy; observe them as they appear
+    const watch = () => LINKS.forEach((id) => { const el = document.getElementById(id); if (el && !seen.has(id)) { seen.set(id, false); io.observe(el); } });
+    watch();
+    const mo = new MutationObserver(watch);
+    mo.observe(document.getElementById('main'), { childList: true });
+    return () => { io.disconnect(); mo.disconnect(); };
   }, []);
+  return active;
+};
 
-  const go = (id) => {
-    setOpen(false);
-    setTimeout(() => (id === 'home' ? window.scrollTo({ top: 0, behavior: 'smooth' }) : document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })), 50);
-  };
+export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, onOpenDemo }) => {
+  const active = useActive();
+  const track = useRef(null);
+  const sheet = useRef(null);
 
-  const ThemeBtn = (
-    <button type="button" onClick={(e) => toggleTheme(e)} className="icon-btn nav-ctl" aria-label={t.nav.theme}>
-      {isDark ? <Sun size={20} strokeWidth={1.75} /> : <Moon size={20} strokeWidth={1.75} />}
+  // Move the pill under the active link (measured, then animated by CSS). Re-measure when the
+  // links change size: language switch, web font arriving, window resize.
+  useLayoutEffect(() => {
+    const tr = track.current;
+    if (!tr) return;
+    const place = () => {
+      const el = tr.querySelector('[aria-current="true"]');
+      if (!el) return void tr.style.setProperty('--o', 0);
+      tr.style.setProperty('--x', `${el.offsetLeft}px`);
+      tr.style.setProperty('--w', `${el.offsetWidth}px`);
+      tr.style.setProperty('--o', 1);
+    };
+    place();
+    const ro = new ResizeObserver(place);
+    ro.observe(tr);
+    return () => ro.disconnect();
+  }, [active]);
+
+  const nav = (id) => (e) => { e.preventDefault(); sheet.current?.close(); scrollToId(id); };
+  const Theme = (
+    <button type="button" onClick={toggleTheme} className="icon-btn" aria-label={t.nav.theme}>
+      {isDark ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
     </button>
   );
 
   return (
     <header className="site-header">
-      <svg aria-hidden="true" width="0" height="0" className="absolute">
-        <filter id="liquid" primitiveUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-          <feImage href={LENS} x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map" />
-          <feDisplacementMap in="SourceGraphic" in2="map" scale="0.12" xChannelSelector="R" yChannelSelector="B" />
-        </filter>
-      </svg>
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded focus:bg-[var(--surface)] focus:px-3 focus:py-2">{t.skip}</a>
-
-      <div className="flex h-[62px] items-center justify-between gap-3 px-3 sm:px-5">
-        <a href="#home" onClick={(e) => { e.preventDefault(); go('home'); }} aria-label="IDO'KON" className="flex shrink-0 items-center">
-          <img src={SITE.brand.logo} alt="IDO'KON" width="98" height="30" className="h-9 w-auto" />
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded-lg focus:bg-[var(--surface)] focus:px-3 focus:py-2">{t.skip}</a>
+      <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6">
+        <a href="#home" onClick={nav("home")} aria-label="iDokon" className="flex shrink-0 items-center">
+          <img src={SITE.brand.logo} alt="iDokon" width="98" height="30" className="h-8 w-auto" />
         </a>
 
-        <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
-          {LINKS.map((id) => (
-            <a key={id} href={`#${id}`} aria-current={active === id ? 'true' : undefined} onClick={(e) => { e.preventDefault(); go(id); }} className="nav-link inline-flex h-10 items-center rounded-lg px-3 text-sm font-medium" style={{ color: 'var(--muted)' }}>
-              {t.nav[id]}
-            </a>
-          ))}
+        <nav aria-label="Main" className="mx-auto hidden lg:block">
+          <div ref={track} className="nav-track">
+            <span className="nav-ind" aria-hidden="true" />
+            {LINKS.map((id) => (
+              <a key={id} href={`#${id}`} aria-current={active === id ? 'true' : undefined} onClick={nav(id)} className="nav-link">{t.nav[id]}</a>
+            ))}
+          </div>
         </nav>
 
-        <div className="flex items-center gap-1.5">
-          <div className="hidden md:block"><LangMenu lang={lang} setLang={setLang} label={t.nav.language} /></div>
-          <div className="hidden md:block">{ThemeBtn}</div>
-          {cartCount > 0 && (
-            <button type="button" onClick={onOpenCart} className="icon-btn nav-ctl relative" aria-label={`${t.nav.cart}: ${cartCount}`}>
-              <ShoppingBag size={20} strokeWidth={1.75} />
-              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-bold text-white" style={{ background: 'var(--accent)' }}>{cartCount}</span>
-            </button>
-          )}
-          <button type="button" onClick={onOpenDemo} className="btn-deep nav-ctl hidden !px-5 sm:inline-flex">{t.nav.tryDemo}</button>
-          <Drawer.Root open={open} onOpenChange={setOpen} direction="right">
-            <Drawer.Trigger asChild>
-              <button type="button" className="icon-btn nav-ctl xl:hidden" aria-label={t.menu.open}><Menu size={22} strokeWidth={1.75} /></button>
-            </Drawer.Trigger>
-            <Drawer.Portal>
-              <Drawer.Overlay className="fixed inset-0 z-[90] bg-black/40 backdrop-blur-sm" />
-              <Drawer.Content className="fixed bottom-0 right-0 top-0 z-[95] flex w-[85vw] max-w-sm flex-col bg-[var(--bg)] p-5 text-[var(--fg)] shadow-lg outline-none">
-                <Drawer.Title className="sr-only">{t.menu.open}</Drawer.Title>
-                <Drawer.Description className="sr-only">{t.menu.open}</Drawer.Description>
-                <div className="mb-4 flex justify-end">
-                  <button type="button" onClick={() => setOpen(false)} className="icon-btn" aria-label={t.menu.close}><X size={20} strokeWidth={1.75} /></button>
-                </div>
-                <nav className="flex flex-col" aria-label="Mobile">
-                  {LINKS.map((id) => (
-                    <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); go(id); }} className="flex min-h-[52px] items-center border-b text-lg font-semibold tracking-tight" style={{ borderColor: 'var(--line)' }}>
-                      {t.nav[id]}
-                    </a>
-                  ))}
-                </nav>
-                <button type="button" onClick={() => { setOpen(false); onOpenDemo(); }} className="btn-deep mt-5 w-full">{t.nav.tryDemo}</button>
-                <div className="mt-6 flex items-center justify-between gap-3">
-                  <LangMenu lang={lang} setLang={setLang} label={t.nav.language} up />
-                  {ThemeBtn}
-                </div>
-              </Drawer.Content>
-            </Drawer.Portal>
-          </Drawer.Root>
+        <div className="flex shrink-0 items-center gap-1">
+          <div className="hidden items-center gap-1 md:flex">
+            <LangMenu lang={lang} setLang={setLang} label={t.nav.language} />
+            {Theme}
+            <span className="mx-1.5 h-5 w-px" style={{ background: 'var(--line-strong)' }} aria-hidden="true" />
+          </div>
+          <button type="button" onClick={onOpenDemo} className="btn-primary hidden !min-h-[36px] !px-4 sm:inline-flex">{t.nav.tryDemo}<ArrowRight size={16} strokeWidth={2} aria-hidden="true" /></button>
+          <button type="button" className="icon-btn lg:hidden" aria-label={t.menu.open} onClick={() => sheet.current?.showModal()}><Menu size={20} strokeWidth={1.75} /></button>
         </div>
       </div>
       <span className="scroll-progress" aria-hidden="true" />
+
+      <dialog ref={sheet} className="sheet" aria-label={t.menu.open} onClick={(e) => e.target === sheet.current && sheet.current.close()}>
+        <div className="flex h-full flex-col p-5">
+          <div className="mb-4 flex items-center justify-between">
+            <img src={SITE.brand.logo} alt="" width="98" height="30" className="h-7 w-auto" />
+            <button type="button" onClick={() => sheet.current?.close()} className="icon-btn" aria-label={t.menu.close}><X size={20} strokeWidth={1.75} /></button>
+          </div>
+          <nav className="flex flex-col" aria-label="Mobile">
+            {LINKS.map((id) => (
+              <a key={id} href={`#${id}`} onClick={nav(id)} className="flex min-h-[52px] items-center border-b text-lg font-semibold tracking-tight" style={{ borderColor: 'var(--line)' }}>{t.nav[id]}</a>
+            ))}
+          </nav>
+          <button type="button" onClick={() => { sheet.current?.close(); onOpenDemo(); }} className="btn-primary mt-6 w-full">{t.nav.tryDemo}</button>
+          <div className="mt-auto flex items-center justify-between gap-3 pt-6">
+            <LangMenu lang={lang} setLang={setLang} label={t.nav.language} up full />
+            {Theme}
+          </div>
+        </div>
+      </dialog>
     </header>
   );
 };

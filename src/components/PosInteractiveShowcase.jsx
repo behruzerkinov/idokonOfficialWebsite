@@ -1,15 +1,18 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Maximize2 } from 'lucide-react';
 import { Reveal } from './Reveal';
 
 const TABS = [
-  { id: 'order', src: '/screenshots/kassa.webp', w: 1359, h: 716 },
+  { id: 'pos', src: '/screenshots/showcase_kassirlar.webp', w: 1359, h: 716 },
   { id: 'sales', src: '/screenshots/showcase_savdo.webp', w: 1353, h: 756 },
-  { id: 'inventory', src: '/screenshots/showcase_ombor.webp', w: 1359, h: 757 },
-  { id: 'analytics', src: '/screenshots/showcase_analitika.webp', w: 1347, h: 749 },
+  { id: 'stock', src: '/screenshots/showcase_ombor.webp', w: 1359, h: 757 },
+  { id: 'abc', src: '/screenshots/showcase_analitika.webp', w: 1347, h: 749 },
 ];
 
-/** Dark section: a window with four screens on the left, four numbered points on the right. */
+/**
+ * Real admin screens with tabs. All four images stay mounted and decoded, stacked in one grid cell;
+ * switching only cross-fades opacity, so the new screen is on screen the instant a tab is pressed.
+ */
 export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   const s = t.software;
   const [i, setI] = useState(0);
@@ -34,27 +37,36 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   };
 
   return (
-    <section id="software" className="section deep-panel scroll-mt-16" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
+    <section id="software" className="section deep-panel" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
       <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <Reveal className="order-2 lg:order-1">
-          <div className="spot tilt overflow-hidden rounded-3xl p-1.5" style={{ background: 'var(--deep-2)', boxShadow: '0 0 0 1px rgba(255,255,255,0.08), var(--shadow-pop)' }}>
-            <p className="px-3 py-2.5 text-[11px] font-bold tracking-[0.12em]" style={{ color: 'var(--on-deep-muted)' }}>{s.orderLabel}</p>
+          <div className="overflow-hidden rounded-2xl p-1.5" style={{ background: 'var(--deep-2)', boxShadow: '0 0 0 1px var(--on-deep-line), var(--shadow-pop)' }}>
+            <p className="flex items-center gap-2 px-3 py-2.5 text-[11px] font-semibold tracking-[0.1em]" style={{ color: 'var(--on-deep-muted)' }} aria-live="polite">
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--accent-bright)' }} aria-hidden="true" />{s.screens[tab.id]}
+            </p>
             <div role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} onTouchStart={(e) => (touchX.current = e.touches[0].clientX)} onTouchEnd={onTouchEnd}>
-              <button type="button" onClick={() => onOpenLightbox(tab.src, s.tabs[tab.id])} aria-label={s.zoom} className="group relative block w-full overflow-hidden rounded-2xl bg-white">
-                <img src={tab.src} alt={s.tabs[tab.id]} width={tab.w} height={tab.h} loading="lazy" decoding="async" className="h-auto w-full" />
+              <button type="button" onClick={() => onOpenLightbox(tab.src, s.tabs[tab.id])} aria-label={`${s.tabs[tab.id]}: ${s.zoom}`} className="relative grid w-full overflow-hidden rounded-xl bg-white">
+                {TABS.map((x, n) => (
+                  <img
+                    key={x.id} src={x.src} alt={n === i ? s.tabs[x.id] : ''} aria-hidden={n !== i} data-active={n === i}
+                    width={x.w} height={x.h} decoding="async" loading="lazy"
+                    className="col-start-1 row-start-1 h-full w-full object-cover object-left-top transition-[opacity,scale] duration-500 ease-out"
+                    style={{ opacity: n === i ? 1 : 0, scale: n === i ? '1' : '1.015' }}
+                  />
+                ))}
                 <span className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-lg bg-black/70 px-2.5 py-1.5 text-xs text-white">
                   <Maximize2 size={14} strokeWidth={1.75} aria-hidden="true" />{s.zoom}
                 </span>
               </button>
             </div>
           </div>
-          <div role="tablist" aria-label={s.tablist} onKeyDown={onKey} className="mt-4 grid grid-cols-4 gap-2">
+          <div role="tablist" aria-label={s.tablist} onKeyDown={onKey} className="mt-3 grid grid-cols-2 gap-1 rounded-xl p-1 sm:grid-cols-4" style={{ background: 'rgb(255 255 255 / 0.06)', boxShadow: 'inset 0 0 0 1px var(--on-deep-line)' }}>
             {TABS.map((x, n) => (
               <button
                 key={x.id} ref={(el) => (refs.current[n] = el)} role="tab" id={`tab-${x.id}`} type="button"
                 aria-selected={i === n} aria-controls={`panel-${x.id}`} tabIndex={i === n ? 0 : -1} onClick={() => select(n)}
-                className="min-h-[48px] rounded-2xl px-2 text-sm font-semibold transition-[background-color,transform] duration-200 active:scale-95"
-                style={i === n ? { background: 'var(--accent-bright)', color: 'var(--bright-ink)' } : { background: 'rgba(255,255,255,0.06)', color: 'var(--on-deep)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.1)' }}
+                className="min-h-[44px] rounded-lg px-2 text-sm font-semibold transition-colors duration-200"
+                style={i === n ? { background: 'var(--accent-bright)', color: 'var(--bright-ink)' } : { color: 'var(--on-deep-muted)' }}
               >
                 {s.tabs[x.id]}
               </button>
@@ -68,13 +80,11 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
           <p className="mt-5 max-w-[48ch] text-base sm:text-lg" style={{ color: 'var(--on-deep-muted)' }}>{s.lead}</p>
           <ol className="mt-8">
             {[1, 2, 3, 4].map((n) => (
-              <li key={n} className="border-t py-5" style={{ borderColor: 'rgba(255,255,255,0.12)' }}>
-                <div className="flex gap-5">
-                  <span className="pt-0.5 text-xs font-bold" style={{ color: 'var(--accent-bright)' }}>0{n}</span>
-                  <div>
-                    <h3 className="font-bold">{s[`p${n}_title`]}</h3>
-                    <p className="mt-1 text-sm" style={{ color: 'var(--on-deep-muted)' }}>{s[`p${n}_desc`]}</p>
-                  </div>
+              <li key={n} className="flex gap-5 border-t py-5" style={{ borderColor: 'var(--on-deep-line)' }}>
+                <span className="pt-0.5 text-xs font-bold" style={{ color: 'var(--accent-bright)' }}>0{n}</span>
+                <div>
+                  <h3 className="font-bold">{s[`p${n}_title`]}</h3>
+                  <p className="mt-1 text-sm" style={{ color: 'var(--on-deep-muted)' }}>{s[`p${n}_desc`]}</p>
                 </div>
               </li>
             ))}

@@ -1,4 +1,3 @@
-import React from 'react';
 
 /** Instagram glyph in the same 24px / 2px-stroke style as lucide (lucide v1 ships no brand icons). */
 export const Instagram = ({ size = 20, strokeWidth = 2, ...rest }) => (

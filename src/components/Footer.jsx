@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowUpRight, Phone, Send } from 'lucide-react';
 import { Instagram } from './icons';
 import { SITE, formatPhone } from '../data/site';
@@ -15,7 +14,7 @@ export const Footer = ({ t, onOpenDemo }) => {
     <footer className="deep-panel mb-3 mt-3" style={{ background: 'var(--deep)', color: 'var(--on-deep)' }}>
       <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <img src={SITE.brand.logo} alt="IDO'KON" width="140" height="43" loading="lazy" className="h-11 w-auto" />
+          <img src={SITE.brand.logo} alt="iDokon" width="140" height="43" loading="lazy" className="h-11 w-auto" />
           <p className="mt-5 max-w-[34ch] text-sm" style={mute}>{t.footer.about}</p>
         </div>
         {COLS(t).map(([title, items], k) => (

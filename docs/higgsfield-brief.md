@@ -1,4 +1,4 @@
-# IDO'KON brand assets: Higgsfield brief
+# iDokon brand assets: Higgsfield brief
 
 > Status: the site now uses one Higgsfield doodle (`SITE.brand.heroImage`, Notion-style line art). The grid (section 2) and loop (section 3) below are no longer wired in. Use this file only as a style guide for new images.
 

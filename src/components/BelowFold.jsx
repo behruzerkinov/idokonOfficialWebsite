@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Partners } from './Partners';
 import { ValueGrid } from './ValueGrid';
 import { PosInteractiveShowcase } from './PosInteractiveShowcase';
@@ -13,13 +13,11 @@ import { FaqAccordion } from './FaqAccordion';
 import { ContactConfigurator } from './ContactConfigurator';
 import { Statement } from './Statement';
 
-const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-
-/** Everything under the hero, one chunk: keeps the first load small so the hero paints sooner. */
-export default function BelowFold({ t, lang, cart, prefill, onAddToCart, onOpenSpecsModal, onOpenCart, onRequestKit, onSelectPlan, onOpenLightbox, onOpenDemo }) {
+/** Everything under the hero, one lazy chunk: keeps the first load small so the hero paints sooner. */
+export default function BelowFold({ t, lang, picked, onTogglePick, onClearPicked, onOpenSpecs, onContact, onOpenLightbox, onOpenDemo, prefill }) {
   // Sections arrive after first paint, so honour a #hash deep link once they exist
   useEffect(() => {
-    const id = decodeURIComponent(window.location.hash.slice(1));
+    const id = decodeURIComponent(location.hash.slice(1));
     if (id) document.getElementById(id)?.scrollIntoView();
   }, []);
 
@@ -29,13 +27,13 @@ export default function BelowFold({ t, lang, cart, prefill, onAddToCart, onOpenS
       <ValueGrid t={t} />
       <PosInteractiveShowcase t={t} onOpenLightbox={onOpenLightbox} />
       <SectorSolutions t={t} />
-      <HardwareMarketplace lang={lang} t={t} cart={cart} onAddToCart={onAddToCart} onOpenSpecsModal={onOpenSpecsModal} onOpenCart={onOpenCart} onRequestKit={onRequestKit} />
-      <IntegrationMigration t={t} onOpenContact={() => scrollTo('contact')} />
+      <HardwareMarketplace lang={lang} t={t} picked={picked} onTogglePick={onTogglePick} onClearPicked={onClearPicked} onOpenSpecs={onOpenSpecs} onContact={onContact} />
+      <IntegrationMigration t={t} onOpenContact={() => onContact({})} />
       <CareSection t={t} lang={lang} />
       <HowItWorks t={t} />
-      <PricingCalculator t={t} lang={lang} onSelectPlan={onSelectPlan} />
+      <PricingCalculator t={t} lang={lang} onSelectPlan={(id) => onContact({ plan: t.pricing[id].name })} />
       <CourseAcademy t={t} onOpenLightbox={onOpenLightbox} />
-      <FaqAccordion t={t} onScrollToContact={() => scrollTo('contact')} />
+      <FaqAccordion t={t} />
       <ContactConfigurator t={t} lang={lang} prefill={prefill} />
       <Statement t={t} onOpenDemo={onOpenDemo} />
     </>
