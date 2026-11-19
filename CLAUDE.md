@@ -77,6 +77,17 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Full i18n: added complete translations for mobile app section across Uzbek, Russian, and English (28 keys per locale, 254 total keys shared).",
       "Responsive & Accessible: fully verified across 360px, 375px, 768px, 1024px, and 1440px viewports with zero horizontal scroll and WCAG AAA compliance."
     ]
+  },
+  {
+    "date": "2026-11-19",
+    "summary": "Refine mobile app section: remove top tovarlar from kassa, remove bluetooth scanner claims, enforce always-online cloud sync, elevate App Store / Google Play badge aesthetics, and add interactive screenshot transitions.",
+    "changes": [
+      "No top tovarlar in kassa: completely removed top selling products list from kassa screens and feature descriptions; replaced with realistic live recent receipt stream and instant checkout cart.",
+      "Camera scan only: removed all Bluetooth scanner references; mobile POS scans product barcodes directly via phone camera.",
+      "Always-online cloud sync: removed 100% offline claims and offline badges. Updated to always-online real-time cloud sync with live active connection telemetry badge.",
+      "Premier store badge aesthetics: redesigned App Store and Google Play badges to match official vendor branding in luxury obsidian style with authentic Apple & 4-color Google Play vector marks, refined typography, and removed awkward arrows & generative pseudo-QR.",
+      "Interactive screenshot transitions: added view toggle between POS Kassa (scanner & checkout) and Management Dashboard with smooth 3D perspective depth, rotational transitions, and ambient lighting."
+    ]
   }
 ]
 ```
