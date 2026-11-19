@@ -66,6 +66,17 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Brand Logos & Contrast: created adaptive vector BrandLogo component. Click text is now crisp white in dark mode and dark slate in light mode; Uzum has high-contrast bright violet in dark mode; Arca has crisp white/sky-blue lettering in dark mode without washed-out filters.",
       "Professional Layout: removed awkward nested badge-in-card containers and duplicate names ('click Click', etc.). Integration cards now feature clean top-aligned logos with generous spacing and elegant typography."
     ]
+  },
+  {
+    "date": "2026-11-19",
+    "summary": "Add dedicated iOS and Android mobile apps section with creative device mockups and App Store / Google Play CTAs.",
+    "changes": [
+      "MobileAppSection: created stunning, high-depth mobile app showcase featuring creative 3D tilted device shots (iPhone 16 Pro executive dashboard with dynamic island & revenue sparklines, and Android terminal with camera viewfinder scanner & instant checkout).",
+      "Floating micro-badges: added real-time receipt notification and 100% offline sync status badges floating seamlessly above mockups.",
+      "Store CTAs: designed authentic App Store and Google Play download badges with genuine vendor marks, micro-copy, and compatibility specifications.",
+      "Full i18n: added complete translations for mobile app section across Uzbek, Russian, and English (28 keys per locale, 254 total keys shared).",
+      "Responsive & Accessible: fully verified across 360px, 375px, 768px, 1024px, and 1440px viewports with zero horizontal scroll and WCAG AAA compliance."
+    ]
   }
 ]
 ```

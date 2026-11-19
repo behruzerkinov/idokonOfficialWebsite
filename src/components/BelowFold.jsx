@@ -5,6 +5,7 @@ import { PosInteractiveShowcase } from './PosInteractiveShowcase';
 import { SectorSolutions } from './SectorSolutions';
 import { HardwareMarketplace } from './HardwareMarketplace';
 import { IntegrationMigration } from './IntegrationMigration';
+import { MobileAppSection } from './MobileAppSection';
 import { CareSection } from './CareSection';
 import { HowItWorks } from './HowItWorks';
 import { PricingCalculator } from './PricingCalculator';
@@ -29,6 +30,7 @@ export default function BelowFold({ t, lang, picked, onTogglePick, onClearPicked
       <SectorSolutions t={t} />
       <HardwareMarketplace lang={lang} t={t} picked={picked} onTogglePick={onTogglePick} onClearPicked={onClearPicked} onOpenSpecs={onOpenSpecs} onContact={onContact} />
       <IntegrationMigration t={t} onOpenContact={() => onContact({})} />
+      <MobileAppSection t={t} />
       <CareSection t={t} lang={lang} />
       <HowItWorks t={t} />
       <PricingCalculator t={t} lang={lang} onSelectPlan={(id) => onContact({ plan: t.pricing[id].name })} />
