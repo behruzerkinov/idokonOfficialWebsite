@@ -57,6 +57,15 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Grid System & Custom Cursor: added dynamic cursor move animation in background grid with radial illumination and glowing accent grid lines under the pointer. Implemented custom fine-pointer cursor with precision dot and fluid trailing ring.",
       "FAQ Accordion: removed question 2 completely across all languages, updated question/answers to exact copy, and implemented butter-smooth Emil Kowalski accordion animation (CSS grid 0fr->1fr and content slide-fade)."
     ]
+  },
+  {
+    "date": "2026-11-19",
+    "summary": "Remove delayed cursor animation; fix brand logos contrast and professional card positioning.",
+    "changes": [
+      "Cursor: removed delayed trailing cursor animation and custom cursor overlay completely, restoring native zero-latency pointer.",
+      "Brand Logos & Contrast: created adaptive vector BrandLogo component. Click text is now crisp white in dark mode and dark slate in light mode; Uzum has high-contrast bright violet in dark mode; Arca has crisp white/sky-blue lettering in dark mode without washed-out filters.",
+      "Professional Layout: removed awkward nested badge-in-card containers and duplicate names ('click Click', etc.). Integration cards now feature clean top-aligned logos with generous spacing and elegant typography."
+    ]
   }
 ]
 ```

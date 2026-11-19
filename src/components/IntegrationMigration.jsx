@@ -1,13 +1,13 @@
 import { ArrowRight } from 'lucide-react';
 import { Reveal } from './Reveal';
-import { LOGOS, LogoTile } from './Partners';
+import { BrandLogo, LOGOS } from './BrandLogo';
 
 const GROUPS = [
   ['payments', [['click', 'click'], ['payme', 'payme'], ['uzum', 'uzum']]],
   ['fiscal', [['multikassa', 'mk'], ['arca', 'ar']]],
 ];
 
-/** Left: deep card with three promises. Right: every supported company as its own card, grouped by kind. */
+/** Left: deep card with three promises. Right: every supported company as its own professional card, grouped by kind. */
 export const IntegrationMigration = ({ t, onOpenContact }) => {
   const i = t.integrations;
   return (
@@ -40,11 +40,21 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
                 <h3 className="text-xs font-semibold tracking-[0.08em]" style={{ color: 'var(--muted)' }}>{i[g]}</h3>
                 <ul className={`mt-3 grid gap-3 ${items.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
                   {items.map(([logo, desc]) => (
-                    <li key={logo} className="spot rounded-2xl p-4 transition-all duration-200" style={{ background: 'var(--surface-2)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
-                      <div className="flex items-center gap-2.5">
-                        <LogoTile id={logo} showName namePlacement="next" />
+                    <li
+                      key={logo}
+                      data-brand={logo}
+                      className="spot group flex flex-col justify-between rounded-2xl p-5 transition-all duration-200 hover:border-[var(--line-strong)]"
+                      style={{ background: 'var(--surface-2)', boxShadow: 'inset 0 0 0 1px var(--line)' }}
+                    >
+                      <div>
+                        <div className="flex h-9 items-center">
+                          <BrandLogo id={logo} className="h-6 sm:h-7 w-auto max-w-[120px]" />
+                          <span className="sr-only">{LOGOS[logo][0]}</span>
+                        </div>
+                        <p className="mt-3.5 text-xs sm:text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+                          {i[desc]}
+                        </p>
                       </div>
-                      <p className="mt-3 text-sm leading-snug" style={{ color: 'var(--muted)' }}>{i[desc]}</p>
                     </li>
                   ))}
                 </ul>
