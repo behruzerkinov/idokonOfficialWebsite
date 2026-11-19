@@ -163,3 +163,35 @@ test('deep link to a section lands on it even though sections load late', async 
   await page.goto('/#pricing');
   await expect.poll(() => page.evaluate(() => document.getElementById('pricing')?.getBoundingClientRect().top ?? 9999), { timeout: 8000 }).toBeLessThan(200);
 });
+
+test('nav rapid tab switch from 1 to 5 does not glitch and reaches target', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const nav = page.locator('header nav[aria-label=Main]');
+  const link1 = nav.locator('a[href="#features"]');
+  const link5 = nav.locator('a[href="#course"]');
+  await link1.click();
+  await link5.click();
+  await expect(link5).toHaveAttribute('aria-current', 'true');
+  await expect.poll(() => page.evaluate(() => Math.abs(document.getElementById('course')?.getBoundingClientRect().top ?? 9999) < 200), { timeout: 8000 }).toBe(true);
+});
+
+test('brand badges have transparent background and display Arca', async ({ page }) => {
+  await page.goto('/');
+  const arcaBadge = page.locator('[data-brand="arca"]').first();
+  await arcaBadge.waitFor();
+  await expect(arcaBadge).toContainText('Arca');
+  await expect(page.locator('text=Arco')).toHaveCount(0);
+});
+
+test('faq accordion toggles with emil kowalski animation classes', async ({ page }) => {
+  await page.goto('/');
+  const qBtn = page.locator('#faq button[aria-expanded]').first();
+  await qBtn.waitFor();
+  await expect(qBtn).toHaveAttribute('aria-expanded', 'true');
+  const answer = page.locator('#faq .ek-accordion-content').first();
+  await expect(answer).toHaveAttribute('data-state', 'open');
+  await qBtn.click();
+  await expect(qBtn).toHaveAttribute('aria-expanded', 'false');
+  await expect(answer).toHaveAttribute('data-state', 'closed');
+});

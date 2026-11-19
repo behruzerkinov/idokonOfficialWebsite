@@ -1,21 +1,48 @@
 import { useEffect } from 'react';
 
-/** Spotlight glow: one delegated pointer listener, one style write per frame, only on the hovered .spot. */
+/** Spotlight glow and dynamic grid cursor animation:
+ * Tracks pointer coordinates on documentElement for real-time grid illumination,
+ * and writes local coordinates on hovered .spot components.
+ */
 export function useSpotlight() {
   useEffect(() => {
     if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    let raf = 0, x = 0, y = 0, el = null;
+    let raf = 0, x = -999, y = -999, el = null;
+    const root = document.documentElement;
+
     const tick = () => {
       raf = 0;
+      root.style.setProperty('--pointer-x', `${x}px`);
+      root.style.setProperty('--pointer-y', `${y}px`);
+      root.style.setProperty('--pointer-active', '1');
+
       const spot = el?.closest?.('.spot');
-      if (!spot) return;
-      const r = spot.getBoundingClientRect();
-      spot.style.setProperty('--mx', `${x - r.left}px`);
-      spot.style.setProperty('--my', `${y - r.top}px`);
+      if (spot) {
+        const r = spot.getBoundingClientRect();
+        spot.style.setProperty('--mx', `${x - r.left}px`);
+        spot.style.setProperty('--my', `${y - r.top}px`);
+      }
     };
-    const move = (e) => { x = e.clientX; y = e.clientY; el = e.target; raf ||= requestAnimationFrame(tick); };
+
+    const move = (e) => {
+      x = e.clientX;
+      y = e.clientY;
+      el = e.target;
+      raf ||= requestAnimationFrame(tick);
+    };
+
+    const leave = () => {
+      root.style.setProperty('--pointer-active', '0');
+    };
+
     addEventListener('pointermove', move, { passive: true });
-    return () => { removeEventListener('pointermove', move); cancelAnimationFrame(raf); };
+    document.addEventListener('mouseleave', leave);
+
+    return () => {
+      removeEventListener('pointermove', move);
+      document.removeEventListener('mouseleave', leave);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 }
 

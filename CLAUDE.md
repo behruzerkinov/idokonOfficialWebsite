@@ -9,7 +9,7 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
 - Things iDokon does **not** have, so never mention them: interactive course tasks, an E-imzo SMS notification system, a customer rating badge.
 - Plans: Start → Standart (= Start + its own list) → Premium (= Start + Standart + its own list). **Premium is the popular, highlighted plan.** The Telegram bot and the Seyf (all cash in one place, marked New) are Premium only.
 - Hardware is shown as a catalogue with a running total. No cart, no checkout, no "add to cart".
-- Payment and fiscal partners (Click, Payme, Uzum, Arco, Multikassa) each get their own cell or card, never merged.
+- Payment and fiscal partners (Click, Payme, Uzum, Arca, Multikassa) each get their own cell or card, never merged.
 - For questions the site cannot answer, send visitors to the call centre.
 - No Theme Studio and no palette editor: light/dark toggle only. Dark is the default.
 - Prefer current platform features over libraries or legacy patterns (CSS scroll-driven animations, `light-dark()`, native `<dialog>`, `@starting-style`, View Transitions). Less code for the same result.
@@ -45,6 +45,17 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Performance/SEO: correct intrinsic sizes for hero and course images, metric-matched fallback font, LCP image preload, Organization + SoftwareApplication JSON-LD, localized titles and descriptions. Throttled phone: LCP 1.2 s, CLS 0.00.",
       "Fixes: restored contact.storeTypeOptions (the contact form crashed when leads are enabled); FAQ and pricing controls no longer overflow at 360px in Russian.",
       "Tests: e2e updated for the new hardware estimator, pricing roll, Premium highlight, screen tabs, hero, brand spelling; Playwright can use installed Chrome via PW_CHANNEL."
+    ]
+  },
+  {
+    "date": "2026-11-19",
+    "summary": "Fix nav rapid switch animation glitch, add attached favicon, Emil Kowalski accordion, transparent brand badges with Arca, and dynamic cursor animations in grid system.",
+    "changes": [
+      "Navbar: fixed glitch when rapidly switching nav links (e.g. 1 to 5). Added active locking and aborted competing smooth scroll listeners so the indicator pill glides uninterrupted without stopping at intermediate sections.",
+      "Favicon: replaced Chrome tab icon with the user-provided D+ logo across public/favicon.png, apple-touch-icon.png, and favicon.ico.",
+      "Brand Badges: changed Arco to Arca everywhere. Removed white square background from brand badges, making them transparent with distinct border, hover glow, and displaying brand name individually next to the logo.",
+      "Grid System & Custom Cursor: added dynamic cursor move animation in background grid with radial illumination and glowing accent grid lines under the pointer. Implemented custom fine-pointer cursor with precision dot and fluid trailing ring.",
+      "FAQ Accordion: removed question 2 completely across all languages, updated question/answers to exact copy, and implemented butter-smooth Emil Kowalski accordion animation (CSS grid 0fr->1fr and content slide-fade)."
     ]
   }
 ]

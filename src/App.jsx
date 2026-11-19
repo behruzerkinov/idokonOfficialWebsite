@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { translations } from './data/translations';
 import { Navbar } from './components/Navbar';
+import { CustomCursor } from './components/CustomCursor';
 import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { StickyBar } from './components/StickyBar';
@@ -43,6 +44,7 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
       <Navbar lang={lang} setLang={setLang} t={t} isDark={isDark} toggleTheme={toggleTheme} onOpenDemo={openDemo} />
       <main id="main">
         <Hero t={t} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />

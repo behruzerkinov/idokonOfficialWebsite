@@ -7,7 +7,7 @@ export const translations = {
     },
     "meta": {
       "title": "iDokon — do‘kon avtomatlashtirish va POS tizimi | O‘zbekiston",
-      "description": "iDokon: kassa dasturi, ombor nazorati, ABC tahlil va Click, Payme, Uzum, Arco, Multikassa integratsiyalari — do‘koningiz uchun yagona, sodda platforma."
+      "description": "iDokon: kassa dasturi, ombor nazorati, ABC tahlil va Click, Payme, Uzum, Arca, Multikassa integratsiyalari — do‘koningiz uchun yagona, sodda platforma."
     },
     "nav": {
       "features": "Xususiyatlar",
@@ -162,7 +162,7 @@ export const translations = {
           "Shtrix-kodlarni yaratish va chop etish",
           "Tushunarli va to‘liq hisobotlar",
           "Mobil kassa orqali savdo (Android)",
-          "Soliq tizimi bilan integratsiya (Arco, Multikassa)",
+          "Soliq tizimi bilan integratsiya (Arca, Multikassa)",
           "To‘lov tizimlari bilan integratsiya (Click, Payme, Uzum)"
         ]
       },
@@ -201,27 +201,23 @@ export const translations = {
       "items": [
         {
           "q": "POS tizimi biznesimga qanday foyda keltiradi?",
-          "a": "POS tizimi savdo, ombor, hisobot va mijozlar bilan ishlashni yagona boshqaruv nuqtasida birlashtiradi. Bu xatolarni kamaytiradi, jarayonlarni tezlashtiradi va real raqamlar asosida qaror qabul qilishga yordam beradi."
-        },
-        {
-          "q": "POS tizimini onlayn do‘konim bilan integratsiya qila olamanmi?",
-          "a": "Ha. iDokon mavjud kassa va to‘lov tizimlari bilan bog‘lanadi. Muayyan onlayn do‘kon bilan integratsiya bo‘yicha call-markazimizdan batafsil ma’lumot oling."
+          "a": "Savdo jarayonini tezlashtiradi, ombordagi tovarlar qoldig‘ini aniq hisoblaydi va kassa xatolarini kamaytiradi. Qaysi mahsulot yaxshi sotilayotganini hamda kunlik sof foydangizni do‘konga bormasdan turib ham telefoningizdan kuzatishingiz mumkin."
         },
         {
           "q": "POS tizimidan foydalanish uchun maxsus o‘qitish kerakmi?",
-          "a": "Interfeys yangi kassir ham tez o‘rganishi uchun sodda tuzilgan. iDokon kursida modullar, amaliy misollar va video darslar bor. Qolgan savollar bo‘yicha call-markazimiz yordam beradi."
+          "a": "Yo‘q, dastur interfeysi juda sodda. Kassir va sotuvchilar 15–30 daqiqa ichida asosiy funksiyalarni bemalol o‘rganib, ishni boshlab ketishlari mumkin."
         },
         {
           "q": "Dastur oflayn (internetsiz) ham ishlaydimi?",
-          "a": "Ha, kassa qismi internetsiz ham to‘xtovsiz ishlaydi. Internet paydo bo‘lishi bilan barcha amalga oshirilgan cheklar va hisobotlar avtomatik tarzda serverga sinxronlanadi."
+          "a": "Ha, internet uzilib qolsa ham savdo to‘xtab qolmaydi. Barcha cheklar va ma’lumotlar qurilmada saqlanib turadi, internet qayta ulangan zahoti avtomatik tarzda bazaga yuklanadi."
         },
         {
           "q": "POS tizimi qanday savdo tahlillarini taqdim etadi?",
-          "a": "Aylanma, foyda, top mahsulotlar, filiallar kesimi, ABC tahlil, OOS tahlil va mahsulotlar harakati bo‘yicha kengaytirilgan hisobotlarni ko‘rish mumkin."
+          "a": "Kunlik, haftalik va oylik tushum, sof foyda, eng ko‘p va eng kam sotiladigan tovarlar, o‘rtacha chek summasi hamda har bir sotuvchining natijalari bo‘yicha tayyor hisobotlarni ko‘rsatadi."
         },
         {
           "q": "Biznesim uchun to‘g‘ri POS tizimini qanday tanlayman?",
-          "a": "Biznes turi, hajmi, byudjeti va zarur imkoniyatlarni hisobga oling. Start, Standart va Premium tariflarini solishtiring yoki bepul maslahat uchun call-markazimizga qo‘ng‘iroq qiling."
+          "a": "Do‘koningiz hajmi, tovarlar soni va kundalik ehtiyojlaringizdan kelib chiqib tanlang. Eng muhimi — dastur oflayn ishlay olishi, texnik yordam xizmati tezkor bo‘lishi hamda skaner va chek printeri kabi qurilmalar bilan muammosiz ulanishi kerak."
         }
       ],
       "eyebrow": "SAVOLINGIZ BORMI?"
@@ -346,7 +342,7 @@ export const translations = {
     },
     "meta": {
       "title": "iDokon — автоматизация магазина и POS-система | Узбекистан",
-      "description": "iDokon: кассовая программа, складской учёт, ABC-анализ и интеграции с Click, Payme, Uzum, Arco, Multikassa — единая простая платформа для вашего магазина."
+      "description": "iDokon: кассовая программа, складской учёт, ABC-анализ и интеграции с Click, Payme, Uzum, Arca, Multikassa — единая простая платформа для вашего магазина."
     },
     "nav": {
       "features": "Функции",
@@ -501,7 +497,7 @@ export const translations = {
           "Генерация и печать штрихкодов",
           "Понятные и полные отчёты",
           "Продажа через мобильную кассу (Android)",
-          "Интеграция с налоговой системой (Arco, Multikassa)",
+          "Интеграция с налоговой системой (Arca, Multikassa)",
           "Интеграция с платёжными системами (Click, Payme, Uzum)"
         ]
       },
@@ -540,27 +536,23 @@ export const translations = {
       "items": [
         {
           "q": "Как POS-система поможет моему бизнесу?",
-          "a": "POS объединяет продажи, склад, отчеты и работу с клиентами. Это снижает ошибки, ускоряет процессы и помогает принимать решения по реальным данным."
-        },
-        {
-          "q": "Можно ли интегрировать POS с интернет-магазином?",
-          "a": "Да. iDokon подключается к кассовым и платёжным системам. Подробности об интеграции с конкретным интернет-магазином уточните в нашем колл-центре."
+          "a": "Ускоряет процесс продаж, точно рассчитывает остатки товаров на складе и снижает ошибки на кассе. Вы можете следить за самыми продаваемыми товарами и ежедневной чистой прибылью прямо с телефона, не посещая магазин."
         },
         {
           "q": "Нужно ли специальное обучение?",
-          "a": "Интерфейс прост даже для нового кассира. В курсе iDokon есть модули, практические примеры и видеоуроки. С остальными вопросами поможет наш колл-центр."
+          "a": "Нет, интерфейс программы очень простой. Кассиры и продавцы могут легко освоить основные функции за 15–30 минут и сразу приступить к работе."
         },
         {
-          "q": "Работает ли касса без интернета?",
-          "a": "Да, кассовый модуль полностью автономен. При восстановлении интернет-соединения все транзакции автоматически синхронизируются с сервером."
+          "q": "Работает ли программа в офлайн-режиме (без интернета)?",
+          "a": "Да, даже при отключении интернета торговля не останавливается. Все чеки и данные сохраняются на устройстве, а при восстановлении связи автоматически загружаются в общую базу."
         },
         {
-          "q": "Какую аналитику предоставляет POS?",
-          "a": "Доступны оборот, прибыль, топ-товары, данные по филиалам, ABC и OOS анализ, а также отчеты о движении товаров."
+          "q": "Какую аналитику продаж предоставляет POS-система?",
+          "a": "Предоставляет готовые отчёты по ежедневной, еженедельной и ежемесячной выручке, чистой прибыли, самым ходовым и медленно продаваемым товарам, среднему чеку и результатам каждого продавца."
         },
         {
-          "q": "Как выбрать подходящий POS?",
-          "a": "Учтите тип и масштаб бизнеса, бюджет и нужные возможности. Сравните Start, Standart и Premium или позвоните в колл-центр за бесплатной консультацией."
+          "q": "Как выбрать подходящую POS-систему для своего бизнеса?",
+          "a": "Выбирайте исходя из масштаба магазина, количества товаров и повседневных потребностей. Главное — программа должна стабильно работать офлайн, служба поддержки должна быть оперативной, а подключение сканеров и принтеров чеков — бесперебойным."
         }
       ],
       "eyebrow": "ЕСТЬ ВОПРОСЫ?"
@@ -685,7 +677,7 @@ export const translations = {
     },
     "meta": {
       "title": "iDokon — shop automation and POS system | Uzbekistan",
-      "description": "iDokon: till software, stock control, ABC analysis and Click, Payme, Uzum, Arco, Multikassa integrations — one simple platform for your shop."
+      "description": "iDokon: till software, stock control, ABC analysis and Click, Payme, Uzum, Arca, Multikassa integrations — one simple platform for your shop."
     },
     "nav": {
       "features": "Features",
@@ -840,7 +832,7 @@ export const translations = {
           "Barcode generation and printing",
           "Clear, complete reports",
           "Selling through a mobile till (Android)",
-          "Tax system integration (Arco, Multikassa)",
+          "Tax system integration (Arca, Multikassa)",
           "Payment integration (Click, Payme, Uzum)"
         ]
       },
@@ -879,27 +871,23 @@ export const translations = {
       "items": [
         {
           "q": "How can a POS system help my business?",
-          "a": "A POS brings sales, inventory, reporting and customer workflows together. It reduces errors, speeds up work and supports decisions with real data."
-        },
-        {
-          "q": "Can I integrate the POS with my online store?",
-          "a": "Yes. iDokon connects to till and payment systems. For integration with a specific online store, ask our call centre for details."
+          "a": "It speeds up sales, accurately tracks inventory balances, and minimizes cash register errors. You can monitor top-selling products and your daily net profit straight from your phone without visiting the store."
         },
         {
           "q": "Do I need special training?",
-          "a": "The interface is simple enough for a new cashier. The iDokon course has modules, practical examples and video lessons. Our call centre helps with anything else."
+          "a": "No, the interface is intuitive and simple. Cashiers and shop assistants can comfortably learn the key features within 15–30 minutes and get straight to work."
         },
         {
-          "q": "Does the cash register work without internet?",
-          "a": "Yes, the POS register module operates completely offline without downtime. Once internet connectivity is restored, all transactions securely synchronize with the cloud."
+          "q": "Does the software work offline (without internet)?",
+          "a": "Yes, sales never stop even if the internet goes down. All receipts and transactions are safely stored on the device and automatically sync to the database the moment connection returns."
         },
         {
-          "q": "What sales analytics are available?",
-          "a": "View turnover, profit, top products, branch breakdowns, ABC and OOS analysis, and extended product movement reports."
+          "q": "What sales analytics does the POS system provide?",
+          "a": "It delivers ready-made reports on daily, weekly, and monthly revenue, net profit, top and slowest moving items, average basket size, and individual sales staff performance."
         },
         {
-          "q": "How do I choose the right POS?",
-          "a": "Consider your business type, size, budget and the features you need. Compare Start, Standart and Premium, or call our call centre for free advice."
+          "q": "How do I choose the right POS system for my business?",
+          "a": "Choose based on your store size, number of items, and daily business needs. Most importantly: reliable offline operation, fast responsive customer support, and seamless connection with barcode scanners and receipt printers."
         }
       ],
       "eyebrow": "GOT A QUESTION?"

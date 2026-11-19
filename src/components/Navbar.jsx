@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 import { ArrowRight, Check, Globe, Menu, Moon, Sun, X } from 'lucide-react';
 import { SITE } from '../data/site';
 import { scrollToId } from '../lib/scroll';
@@ -44,27 +44,65 @@ export const LangMenu = ({ lang, setLang, label, up = false, full = false }) => 
   );
 };
 
-/** Scroll spy: the section crossing the upper-middle of the viewport is current. One observer, no scroll listener. */
+/** Scroll spy: the section crossing the upper-middle of the viewport is current.
+ * When a nav link is clicked, lockActive locks to the target link immediately
+ * so the pill glides smoothly without pausing at intermediate sections.
+ */
 const useActive = () => {
   const [active, setActive] = useState(null);
+  const lockedRef = useRef(null);
+  const timerRef = useRef(null);
+
+  const lockActive = useCallback((id) => {
+    lockedRef.current = id;
+    setActive(id);
+    if (timerRef.current) clearTimeout(timerRef.current);
+
+    const unlock = () => {
+      lockedRef.current = null;
+      window.removeEventListener('scrollend', unlock);
+      window.removeEventListener('wheel', unlock);
+      window.removeEventListener('touchstart', unlock);
+    };
+
+    window.addEventListener('scrollend', unlock, { once: true });
+    window.addEventListener('wheel', unlock, { once: true, passive: true });
+    window.addEventListener('touchstart', unlock, { once: true, passive: true });
+    timerRef.current = setTimeout(unlock, 1200);
+  }, []);
+
   useEffect(() => {
     const seen = new Map();
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => seen.set(e.target.id, e.isIntersecting));
-      setActive(LINKS.findLast((id) => seen.get(id)) ?? null);
+      if (!lockedRef.current) {
+        setActive(LINKS.findLast((id) => seen.get(id)) ?? null);
+      }
     }, { rootMargin: '-35% 0px -60% 0px' });
     // Sections below the hero are lazy; observe them as they appear
-    const watch = () => LINKS.forEach((id) => { const el = document.getElementById(id); if (el && !seen.has(id)) { seen.set(id, false); io.observe(el); } });
+    const watch = () => LINKS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el && !seen.has(id)) {
+        seen.set(id, false);
+        io.observe(el);
+      }
+    });
     watch();
     const mo = new MutationObserver(watch);
-    mo.observe(document.getElementById('main'), { childList: true });
-    return () => { io.disconnect(); mo.disconnect(); };
+    const mainEl = document.getElementById('main');
+    if (mainEl) mo.observe(mainEl, { childList: true });
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, []);
-  return active;
+
+  return [active, lockActive];
 };
 
 export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, onOpenDemo }) => {
-  const active = useActive();
+  const [active, lockActive] = useActive();
   const track = useRef(null);
   const sheet = useRef(null);
 
@@ -86,7 +124,12 @@ export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, onOpenDemo }) =>
     return () => ro.disconnect();
   }, [active]);
 
-  const nav = (id) => (e) => { e.preventDefault(); sheet.current?.close(); scrollToId(id); };
+  const nav = (id) => (e) => {
+    e.preventDefault();
+    sheet.current?.close();
+    lockActive(id);
+    scrollToId(id);
+  };
   const Theme = (
     <button type="button" onClick={toggleTheme} className="icon-btn" aria-label={t.nav.theme}>
       {isDark ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}

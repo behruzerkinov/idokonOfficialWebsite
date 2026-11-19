@@ -4,7 +4,7 @@ import { LOGOS, LogoTile } from './Partners';
 
 const GROUPS = [
   ['payments', [['click', 'click'], ['payme', 'payme'], ['uzum', 'uzum']]],
-  ['fiscal', [['multikassa', 'mk'], ['arco', 'ar']]],
+  ['fiscal', [['multikassa', 'mk'], ['arca', 'ar']]],
 ];
 
 /** Left: deep card with three promises. Right: every supported company as its own card, grouped by kind. */
@@ -40,10 +40,11 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
                 <h3 className="text-xs font-semibold tracking-[0.08em]" style={{ color: 'var(--muted)' }}>{i[g]}</h3>
                 <ul className={`mt-3 grid gap-3 ${items.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
                   {items.map(([logo, desc]) => (
-                    <li key={logo} className="spot rounded-2xl p-4" style={{ background: 'var(--surface-2)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
-                      <LogoTile id={logo} />
-                      <h4 className="mt-4 font-bold">{LOGOS[logo][0]}</h4>
-                      <p className="mt-0.5 text-sm leading-snug" style={{ color: 'var(--muted)' }}>{i[desc]}</p>
+                    <li key={logo} className="spot rounded-2xl p-4 transition-all duration-200" style={{ background: 'var(--surface-2)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
+                      <div className="flex items-center gap-2.5">
+                        <LogoTile id={logo} showName namePlacement="next" />
+                      </div>
+                      <p className="mt-3 text-sm leading-snug" style={{ color: 'var(--muted)' }}>{i[desc]}</p>
                     </li>
                   ))}
                 </ul>
