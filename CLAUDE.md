@@ -27,6 +27,7 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
 - `src/components/BelowFold.jsx`: everything under the hero, one lazy chunk.
 - `src/lib/scroll.js`: in-page navigation (`scrollToId`); `src/lib/theme.js`: dark toggle.
 - `api/lead.js`: lead delivery to Telegram (off while `SITE.leadsEnabled` is false).
+- `PRODUCT.md` (product truth), `DESIGN.md` + `.impeccable/design.json` (the built visual system), `.impeccable/surfaces/src-app-jsx.md` (direction contract). Project skills in `.claude/skills/` (impeccable for design, ponytail for smallest-change coding).
 
 ## History
 
@@ -119,6 +120,18 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Components: 10px buttons and inputs, 16px cards, 20px dialogs; secondary buttons are a raised surface with a hairline; icons 16–20px at stroke 1.5 in the muted text colour; solid nav with a hairline (no glass).",
       "Copy: new keys mobileApp.platform / stepsLabel / steps.*, hero.phoneAlt in uz, ru, en; trailing periods dropped from headlines. The closing line keeps its exclamation marks because it is the owner's exact copy.",
       "Checks: build, i18n (228 keys), 8 API tests, 22 e2e (1 skipped offline, new gallery test); no page overflow and CLS 0 at 360/375 in uz/ru/en. Lighthouse mobile 97–98/100/100/100, desktop 100/100/100/100."
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "summary": "Impeccable redesign: the page is one Tashkent Metro line through a shop's day.",
+    "changes": [
+      "Installed impeccable (pbakaus/impeccable) and the ponytail skill (DietrichGebert/ponytail) as project skills; ran impeccable init (PRODUCT.md) and its new-work flow. The concept-seed roll assigned the Tashkent Metro direction (seed:f6ede43fb86de475); the owner said 'surprise me', so it was built without a decision page.",
+      "World: tunnel-ink ground (platform marble in light mode), one green rail from a terminus roundel in the hero to a terminus at Aloqa, a stop roundel at every section heading that fills once passed (scroll-driven), a sticky 'you are here' train at mid-viewport, line-map nav (horizontal on desktop, vertical in the phone menu), glazed cobalt tile halls with darker grout for the proverb and the closing line.",
+      "Type: Unbounded 500 (self-hosted latin/latin-ext/cyrillic) for headlines as station signage, Onest for reading, digits-only mono for money.",
+      "Layout fixes from the impeccable finish review: hero copy under the headline, sectors as a station board, hardware category under the product name, Care as ruled rows, no ghost-card border+shadow, tighter hero phone shadow.",
+      "Finish: impeccable finish reviewer returned fix, then ship on all 8 fixes; detector shows only false positives on the <Img> component plus the intended tile grout; DESIGN.md and .impeccable/design.json written by the impeccable documenter.",
+      "Checks: build, i18n (228 keys), 8 API tests, 22 e2e (1 skipped offline); no page overflow and CLS 0 at 360/375 in uz/ru/en. Lighthouse mobile 94-95/100/100/100, desktop 100/100/100/100."
     ]
   }
 ]

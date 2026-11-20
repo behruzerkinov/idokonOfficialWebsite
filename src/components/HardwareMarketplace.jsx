@@ -22,7 +22,7 @@ export const HardwareMarketplace = ({ lang, t, picked, onTogglePick, onClearPick
       <div className="wrap">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <header className="head">
-            <h2 className="t-h2">{e.title}</h2>
+            <h2 className="t-h2 stop">{e.title}</h2>
             <p className="t-lead">{e.lead}</p>
           </header>
           {!all && (
@@ -45,14 +45,14 @@ export const HardwareMarketplace = ({ lang, t, picked, onTogglePick, onClearPick
               const on = picked.has(p.id);
               const title = name(p);
               return (
-                <li key={p.id} className={`card flex flex-col ${all ? '' : 'w-[78vw] max-w-[300px] shrink-0 snap-start'}`} style={on ? { boxShadow: 'inset 0 0 0 1.5px var(--accent), var(--shadow)' } : undefined}>
+                <li key={p.id} className={`card flex flex-col ${all ? '' : 'w-[78vw] max-w-[300px] shrink-0 snap-start'}`} style={on ? { boxShadow: 'inset 0 0 0 2px var(--accent)' } : undefined}>
                   <button type="button" onClick={() => onOpenSpecs(p)} className="block text-left" title={e.details}>
                     <div className="m-2 overflow-hidden rounded-[10px] bg-white">
                       <Img name={p.image} kind="hardware" alt={title} sizes="(min-width: 1024px) 380px, 300px" />
                     </div>
                     <div className="px-4 pb-1 pt-3">
-                      <p className="t-small">{e.cat[p.category]}</p>
-                      <h3 className="mt-0.5 line-clamp-2 min-h-[2.7em] text-[17px] font-medium leading-snug">{title}</h3>
+                      <h3 className="line-clamp-2 min-h-[2.7em] text-[17px] font-medium leading-snug">{title}</h3>
+                      <p className="t-small mt-0.5">{e.cat[p.category]}</p>
                     </div>
                   </button>
                   <div className="mt-auto flex items-center justify-between gap-3 px-4 pb-4 pt-2">
@@ -68,7 +68,7 @@ export const HardwareMarketplace = ({ lang, t, picked, onTogglePick, onClearPick
 
           <button type="button" onClick={() => setAll((a) => !a)} className="link mt-6" aria-pressed={all}>{all ? e.viewRow : e.viewAll}<ChevronRight size={16} strokeWidth={1.75} /></button>
 
-          <div className="card z-10 mt-6 flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:sticky lg:bottom-6" style={{ boxShadow: 'inset 0 0 0 1px var(--line), var(--shadow-float)' }} aria-live="polite">
+          <div className="card z-10 mt-6 flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:sticky lg:bottom-6" style={{ boxShadow: 'var(--shadow-float)' }} aria-live="polite">
             <div className="min-w-0">
               <p className="t-small">{chosen.length ? `${e.estimate} · ${chosen.length} ${e.items}` : e.estimateNone}</p>
               <p className="mt-0.5 flex items-baseline gap-1.5">

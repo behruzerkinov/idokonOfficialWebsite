@@ -11,3 +11,4 @@ scratch/
 .vercel
 test-results
 playwright-report
+.claude/settings.local.json

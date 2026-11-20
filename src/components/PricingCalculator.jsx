@@ -23,7 +23,7 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
       <div className="wrap">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <header className="head">
-            <h2 className="t-h2">{pr.title}</h2>
+            <h2 className="t-h2 stop">{pr.title}</h2>
             <p className="t-lead">{pr.lead}</p>
           </header>
           <div className="flex flex-col items-start gap-2 lg:items-end">
@@ -45,7 +45,7 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
               <article
                 key={plan.id}
                 className="card relative flex flex-col p-6 sm:p-7"
-                style={on ? { boxShadow: 'inset 0 0 0 1.5px var(--accent), var(--shadow-float)' } : undefined}
+                style={on ? { boxShadow: 'inset 0 0 0 2px var(--accent)' } : undefined}
                 aria-label={on ? `${info.name} · ${pr.popular}` : info.name}
               >
                 <div className="flex items-baseline justify-between gap-3">

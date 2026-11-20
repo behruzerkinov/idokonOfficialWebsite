@@ -14,7 +14,7 @@ export const IntegrationMigration = ({ t, onOpenContact }) => {
       <div className="wrap grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <div>
           <header className="head">
-            <h2 className="t-h2">{i.title}</h2>
+            <h2 className="t-h2 stop">{i.title}</h2>
             <p className="t-lead">{i.lead}</p>
           </header>
           <dl className="mt-10 border-b" style={{ borderColor: 'var(--line)' }}>

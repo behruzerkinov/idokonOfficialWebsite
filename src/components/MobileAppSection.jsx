@@ -22,7 +22,7 @@ export const MobileAppSection = ({ t }) => {
       <div className="wrap">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <header className="head">
-            <h2 id="mobile-app-title" className="t-h2">{m.title}</h2>
+            <h2 id="mobile-app-title" className="t-h2 stop">{m.title}</h2>
             <p className="t-lead">{m.lead}</p>
             {stores.length > 0 && (
               <div className="mt-6 flex flex-wrap gap-3">

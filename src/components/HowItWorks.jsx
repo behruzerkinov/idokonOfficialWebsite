@@ -3,7 +3,7 @@ export const HowItWorks = ({ t }) => (
   <section className="section">
     <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
       <header className="head">
-        <h2 className="t-h2">{t.how.title}</h2>
+        <h2 className="t-h2 stop">{t.how.title}</h2>
         <p className="t-lead">{t.how.lead}</p>
       </header>
       <ol className="border-b" style={{ borderColor: 'var(--line)' }}>

@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 /*
-  iDokon. Direction: exact, honest, neighbourly. World: the shop counter, receipt paper and price tags.
-  Warm neutral ramp, the brand green as the one accent, money always in monospaced digits (the signature).
-  Contrast (WCAG): --fg-2 on --bg 7.0:1 dark / 7.3:1 light; --fg-3 on --bg 4.8:1 / 5.1:1;
-  --accent on --bg 7.6:1 / 4.9:1; --accent-ink on --accent 7.6:1 / 5.4:1.
+  iDokon as one Tashkent Metro line through a shop's day (direction contract: .impeccable/surfaces/src-app-jsx.md).
+  Tunnel ink (dark, default) or platform marble (light); the line in iDokon green; glazed cobalt tile halls for the
+  two quiet moments; station signage type (Unbounded) for headlines; money in till digits.
+  Contrast (WCAG): --fg-2 on --bg 7.9:1 dark / 7.6:1 light; --fg-3 on --bg-alt 5.6:1 / 4.9:1;
+  --accent on --bg 8.1:1 / 5.0:1; --on-cobalt-2 on --cobalt 6.3:1.
 */
+
+/* Unbounded (OFL), the station signage voice, weight 500 only */
+@font-face { font-family: 'Unbounded'; font-weight: 500; font-display: optional; src: url('/fonts/unbounded-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Unbounded'; font-weight: 500; font-display: optional; src: url('/fonts/unbounded-500-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Unbounded'; font-weight: 500; font-display: optional; src: url('/fonts/unbounded-500-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 
 /* Onest (OFL) for the interface; latin covers Uzbek o‘ g‘ (U+2018), latin-ext and cyrillic load only when used */
 @font-face { font-family: 'Onest'; font-weight: 400 600; font-display: optional; src: url('/fonts/onest-latin.woff2') format('woff2');
@@ -24,14 +33,17 @@
   :root {
     color-scheme: light;
     interpolate-size: allow-keywords;
-    --bg: light-dark(#f7f4ee, #161513);
-    --bg-alt: light-dark(#f0ebe2, #12110f);
-    --card: light-dark(#fdfbf7, #1c1a18);
-    --raised: light-dark(#ebe5da, #262421);
-    --fg: light-dark(#1f1b16, #efe9de);
-    --fg-2: light-dark(#5e554a, #aaa398);
-    --fg-3: light-dark(#6f665a, #8a847a);
-    --line: light-dark(rgb(31 27 22 / 0.1), rgb(239 233 222 / 0.09));
+    --bg: light-dark(#f3f1ec, #0e1114);
+    --bg-alt: light-dark(#ebe8e1, #12161a);
+    --card: light-dark(#fdfcf9, #181d21);
+    --raised: light-dark(#e3dfd6, #20272c);
+    --fg: light-dark(#15191c, #eef0ec);
+    --fg-2: light-dark(#4f575b, #a8b0b2);
+    --fg-3: light-dark(#5c6468, #8a9396);
+    --line: light-dark(rgb(21 25 28 / 0.11), rgb(238 240 236 / 0.09));
+    --cobalt: #1c3d8f;
+    --on-cobalt: #f2f5fb;
+    --on-cobalt-2: #c3cfeb;
     --accent: light-dark(#0b7a3e, #2fbf6b);
     --accent-hover: light-dark(#096834, #3fcc7a);
     --accent-ink: light-dark(#ffffff, #0b1a10);
@@ -40,6 +52,7 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --font: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     --font-num: 'Till Digits', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --font-sign: 'Unbounded', var(--font);
   }
   :root.dark { color-scheme: dark; }
 
@@ -52,6 +65,7 @@
   h1, h2, h3 { text-wrap: balance; font-weight: 500; }
   p { text-wrap: pretty; }
   ::selection { background: color-mix(in oklab, var(--accent) 28%, transparent); }
+  html { scrollbar-color: color-mix(in oklab, var(--fg-3) 60%, transparent) var(--bg); caret-color: var(--accent); accent-color: var(--accent); }
   button, summary, select, [role='tab'] { cursor: pointer; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
   dialog { color: var(--fg); }
@@ -64,9 +78,9 @@
   .section-alt { background: var(--bg-alt); }
   .rule { border-top: 1px solid var(--line); }
 
-  /* Type: size and colour carry hierarchy; weights 400 and 500 only. px at desktop: 64 / 44 / 22 / 19 / 16 / 14 */
-  .t-display { font-size: clamp(2.375rem, 1.5rem + 3.6vw, 4rem); font-weight: 500; line-height: 1.04; letter-spacing: -0.03em; }
-  .t-h2 { font-size: clamp(1.875rem, 1.4rem + 1.9vw, 2.75rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+  /* Type: size and colour carry hierarchy; weights 400 and 500 only. px at desktop: 56 / 38 / 22 / 19 / 16 / 14 (signage face for the first two) */
+  .t-display { font-family: var(--font-sign); font-size: clamp(1.875rem, 1.1rem + 3.2vw, 3.5rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em; }
+  .t-h2 { font-family: var(--font-sign); font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.375rem); font-weight: 500; line-height: 1.15; letter-spacing: -0.025em; }
   .t-h3 { font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem); font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; }
   .t-lead { font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem); line-height: 1.55; color: var(--fg-2); }
   .t-small { font-size: 14px; line-height: 1.5; color: var(--fg-3); }
@@ -78,7 +92,7 @@
   .head { @apply max-w-[640px]; }
   .head .t-lead { @apply mt-4; }
 
-  .card { background: var(--card); border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
+  .card { background: var(--card); border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line); }
 
   /* Buttons: 10px radius, 44 tall (36 in the nav). Primary = the brand green, secondary = raised surface + hairline */
   .btn {
@@ -125,21 +139,77 @@
    below 640px it switches to a compact design with a bigger phone. ---------- */
 .stage { position: relative; container-type: inline-size; aspect-ratio: 100 / 45; }
 .stage-desk { position: absolute; left: 5cqw; top: 0; width: 82cqw; }
-.stage-phone { position: absolute; left: 74cqw; top: 6cqw; width: 20cqw; filter: drop-shadow(0 18px 28px rgb(0 0 0 / 0.28)); }
+.stage-phone { position: absolute; left: 74cqw; top: 6cqw; width: 20cqw; filter: drop-shadow(0 10px 16px rgb(0 0 0 / 0.22)); }
 @media (max-width: 639px) {
   .stage { aspect-ratio: 100 / 66; }
   .stage-desk { left: 0; width: 88cqw; }
   .stage-phone { left: 66cqw; top: 6cqw; width: 31cqw; }
 }
 
+/* ---------- The line: one green rail from the terminus in the hero to the terminus at Aloqa (contact), a stop
+   roundel at every section heading, and a "you are here" train riding at mid-viewport (sticky inside the rail).
+   A stop fills once it has passed the train (scroll-driven, no listener). The rail's end is measured once in
+   App.jsx (--rail-end). Phones get a slimmer rail in the left gutter, the same grammar. ---------- */
+@property --stop { syntax: '<color>'; inherits: true; initial-value: transparent; }
+main#main { position: relative; --rail-x: 12px; --rail-w: 3px; --stop-d: 14px; --stop-ring: 3px; --term-d: 24px; }
+main#main .wrap { padding-left: 36px; }
+.rail { position: absolute; z-index: 2; pointer-events: none; top: calc(60px + clamp(3rem, 7vw, 6rem) + var(--term-d) / 2); bottom: var(--rail-end, 0px);
+  left: calc(max(0px, (100% - 1200px) / 2) + var(--rail-x)); width: var(--rail-w); margin-left: calc(var(--rail-w) / -2); border-radius: 2px; background: var(--accent); }
+.train { display: block; position: sticky; top: 50vh; width: 10px; height: 22px; margin-left: calc(var(--rail-w) / 2 - 5px); border-radius: 5px;
+  background: var(--fg); box-shadow: 0 0 0 2px var(--accent), 0 4px 10px rgb(0 0 0 / 0.3); }
+.stop { position: relative; --stop: var(--bg); }
+.stop::before { content: ''; position: absolute; z-index: 3; left: var(--stop-x, -24px); top: calc(0.58em - var(--stop-d) / 2); width: var(--stop-d); height: var(--stop-d);
+  margin-left: calc(var(--stop-d) / -2); border-radius: 50%; background: var(--stop); box-shadow: inset 0 0 0 var(--stop-ring) var(--accent), 0 0 0 4px var(--bg); }
+.section-alt .stop::before { box-shadow: inset 0 0 0 var(--stop-ring) var(--accent), 0 0 0 4px var(--bg-alt); }
+.card .stop::before { box-shadow: inset 0 0 0 var(--stop-ring) var(--accent), 0 0 0 4px var(--card); }
+/* Terminus: a real roundel, ring and inner disc, sized near the headline's cap height */
+.stop.terminus::before { width: var(--term-d); height: var(--term-d); margin-left: calc(var(--term-d) / -2); top: calc(0.55em - var(--term-d) / 2);
+  background: radial-gradient(circle, var(--accent) 0 30%, var(--bg) 31% 100%); box-shadow: inset 0 0 0 calc(var(--term-d) * 0.16) var(--accent), 0 0 0 5px var(--bg); }
+.card .stop.terminus::before { background: radial-gradient(circle, var(--accent) 0 30%, var(--card) 31% 100%); box-shadow: inset 0 0 0 calc(var(--term-d) * 0.16) var(--accent), 0 0 0 5px var(--card); }
+@media (min-width: 1024px) {
+  main#main { --rail-x: 42px; --rail-w: 4px; --stop-d: 20px; --stop-ring: 4px; --term-d: 64px; }
+  main#main .wrap { padding-left: 96px; }
+  .stop { --stop-x: -54px; }
+  .train { width: 14px; height: 30px; margin-left: -5px; border-radius: 7px; box-shadow: 0 0 0 3px var(--accent), 0 6px 14px rgb(0 0 0 / 0.35); }
+}
+#contact .stop.terminus { --term-d: 24px; }
+@media (min-width: 1024px) { #contact .stop.terminus { --term-d: 34px; } }
+@supports (animation-timeline: view()) {
+  .stop:not(.terminus) { animation: stop-pass steps(1, end) both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+  @keyframes stop-pass { from { --stop: var(--bg); } to { --stop: var(--accent); } }
+}
+
+/* ---------- Glazed cobalt tile halls: the proverb and the closing. 64px tiles with darker grout, and the hall's
+   padding is whole tiles so the content block starts and ends on a grout line. ---------- */
+.hall {
+  background-color: var(--cobalt); color: var(--on-cobalt);
+  background-image: linear-gradient(rgb(6 16 46 / 0.45) 2px, transparent 2px), linear-gradient(90deg, rgb(6 16 46 / 0.45) 2px, transparent 2px);
+  background-size: 64px 64px; background-position: center top;
+  padding-block: 64px; min-height: calc(64px * 5);
+}
+@media (min-width: 768px) { .hall { padding-block: 128px; min-height: calc(64px * 7); } }
+.hall .fg-2, .hall .t-lead, .hall .t-small { color: var(--on-cobalt-2); }
+
 /* Phone gallery */
 .phone-img { filter: drop-shadow(0 16px 24px rgb(0 0 0 / 0.22)); }
 
-/* ---------- Navigation: a quiet solid bar with a hairline ---------- */
+/* ---------- Navigation: a line map. Stops sit on one green line; the current stop fills. ---------- */
 .site-header { position: fixed; inset: 0 0 auto; z-index: 50; height: 60px; background: var(--bg); box-shadow: 0 1px 0 var(--line); }
-.nav-link { font-size: 14px; color: var(--fg-2); padding: 6px 10px; border-radius: 8px; transition: color 150ms var(--ease), background-color 150ms var(--ease); white-space: nowrap; }
+.line-map > li { position: relative; }
+.line-map > li::before { content: ''; position: absolute; top: 13px; left: 0; right: 0; height: 2px; background: var(--accent); }
+.line-map > li:first-child::before { left: 50%; }
+.line-map > li:last-child::before { right: 50%; }
+.nav-link { position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 9px 12px 4px; font-size: 13px; line-height: 1.2; color: var(--fg-2); white-space: nowrap; transition: color 150ms var(--ease); }
+.nav-link::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--accent); transition: background-color 150ms var(--ease), scale 150ms var(--ease); }
 .nav-link:hover { color: var(--fg); }
-.nav-link[aria-current='true'] { color: var(--fg); background: var(--raised); }
+.nav-link[aria-current='true'] { color: var(--fg); }
+.nav-link[aria-current='true']::before { background: var(--accent); scale: 1.3; }
+/* The phone menu is the same line, vertical */
+.menu-map { position: relative; }
+.menu-map::before { content: ''; position: absolute; left: 7px; top: 28px; bottom: 28px; width: 3px; border-radius: 2px; background: var(--accent); }
+.menu-map > a { position: relative; padding-left: 36px; }
+.menu-map > a::before { content: ''; position: absolute; left: 0; top: 50%; width: 17px; height: 17px; margin-top: -8.5px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 3px var(--accent); }
+.menu-map > a[aria-current='true']::before { background: var(--accent); }
 
 /* ---------- Native dialogs: full-screen menu + modal. Fade with @starting-style; the top layer handles focus and Esc. ---------- */
 dialog.menu, dialog.modal { padding: 0; border: 0; background: var(--bg); transition: opacity 200ms var(--ease), translate 200ms var(--ease), display 200ms allow-discrete, overlay 200ms allow-discrete; }

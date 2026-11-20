@@ -4,7 +4,7 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      // System UI font (SF Pro on Apple devices, Segoe UI on Windows): no web font to download, no swap.
+      // Onest (self-hosted, see index.css); Unbounded and the digits-only mono are set via CSS variables.
       fontFamily: { sans: ['var(--font)'] },
     },
   },

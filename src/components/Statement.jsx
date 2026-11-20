@@ -1,6 +1,6 @@
 /** Closing: the owner's two lines and the one action. Short, so centred. */
 export const Statement = ({ t, onOpenDemo }) => (
-  <section className="section section-alt">
+  <section className="section hall">
     <div className="wrap text-center">
       <h2 className="t-h2 mx-auto max-w-[24ch]">
         <span className="block">{t.closing.w1}</span>

@@ -1,6 +1,6 @@
 /** A proverb about honest accounts, which is what iDokon does. Two short lines, so it may be centred. */
 export const Proverb = ({ t }) => (
-  <section className="section">
+  <section className="section hall">
     <figure className="wrap max-w-[820px] text-center">
       <blockquote className="t-h2">“{t.hero.quote.replace(/\.$/, '')}”</blockquote>
       <figcaption className="mt-5">

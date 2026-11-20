@@ -112,7 +112,7 @@ export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, onOpenDemo }) =>
         </a>
 
         <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-0.5">
+          <ul className="line-map flex items-start">
             {LINKS.map((id) => (
               <li key={id}><a href={`#${id}`} aria-current={active === id ? 'true' : undefined} onClick={nav(id)} className="nav-link">{t.nav[id]}</a></li>
             ))}
@@ -135,9 +135,9 @@ export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, onOpenDemo }) =>
             <img src="/img/logo-196.webp" alt="" width="98" height="30" className="h-7 w-auto" />
             <button type="button" onClick={() => menu.current?.close()} className="icon-btn -mr-2" aria-label={t.menu.close}><X size={20} strokeWidth={1.5} /></button>
           </div>
-          <nav className="mt-4 flex flex-col" aria-label="Mobile">
+          <nav className="menu-map mt-6 flex flex-col" aria-label="Mobile">
             {LINKS.map((id) => (
-              <a key={id} href={`#${id}`} onClick={nav(id)} className="flex min-h-[52px] items-center border-b text-[22px] font-medium" style={{ borderColor: 'var(--line)' }}>{t.nav[id]}</a>
+              <a key={id} href={`#${id}`} onClick={nav(id)} aria-current={active === id ? 'true' : undefined} className="flex min-h-[56px] items-center text-[22px] font-medium" style={{ fontFamily: 'var(--font-sign)' }}>{t.nav[id]}</a>
             ))}
           </nav>
           <button type="button" onClick={() => { menu.current?.close(); onOpenDemo(); }} className="btn-primary mt-8 w-full">{t.nav.tryDemo}</button>

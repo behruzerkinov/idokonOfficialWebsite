@@ -17,9 +17,9 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
   return (
     <section id="home" className="pt-[calc(60px+clamp(3rem,7vw,6rem))]">
       <div className="wrap">
-        <div className="grid gap-x-12 gap-y-8 lg:grid-cols-[1.25fr_1fr] lg:items-end">
-          <h1 className="t-display max-w-[13ch]">{h.titleStart} {h.titleHighlight} {h.titleEnd}</h1>
-          <div className="lg:pb-2">
+        <div className="max-w-[760px]">
+          <h1 className="t-display stop terminus max-w-[14ch]">{h.titleStart} {h.titleHighlight} {h.titleEnd}</h1>
+          <div className="mt-6">
             <p className="t-lead max-w-[46ch]">{h.subtitle}</p>
             <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 text-[14px] fg-2">
               {meta.map((m) => (
