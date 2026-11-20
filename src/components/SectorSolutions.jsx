@@ -3,7 +3,7 @@ export const SectorSolutions = ({ t }) => (
   <section id="users" className="section section-alt">
     <div className="wrap">
       <header className="head">
-        <h2 className="t-h2 stop">{t.sectors.title}</h2>
+        <h2 className="t-h2">{t.sectors.title}</h2>
         <p className="t-lead">{t.sectors.lead}</p>
       </header>
       <ul className="mt-12 border-b" style={{ borderColor: 'var(--line)' }}>

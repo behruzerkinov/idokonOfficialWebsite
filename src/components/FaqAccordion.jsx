@@ -6,7 +6,7 @@ export const FaqAccordion = ({ t }) => (
   <section id="faq" className="section section-alt">
     <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
       <header className="head lg:sticky lg:top-24 lg:self-start">
-        <h2 className="t-h2 stop">{t.faq.title}</h2>
+        <h2 className="t-h2">{t.faq.title}</h2>
         <p className="t-lead">{t.faq.lead}</p>
         <a href={`tel:${SITE.phones[0]}`} className="btn-secondary mt-7 whitespace-normal">
           <Phone size={16} strokeWidth={1.5} aria-hidden="true" />{t.faq.ask} <span className="num fg-2 whitespace-nowrap">{formatPhone(SITE.phones[0])}</span>

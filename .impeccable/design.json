@@ -4,80 +4,323 @@
   "title": "Design System: iDokon",
   "extensions": {
     "colorMeta": {
-      "accent": { "role": "primary", "displayName": "Line Green", "canonical": "light-dark(#0b7a3e, #2fbf6b)", "tonalRamp": ["oklch(22% 0.05 150)", "oklch(32% 0.08 150)", "oklch(42% 0.11 150)", "oklch(51% 0.13 150)", "oklch(61% 0.15 150)", "oklch(70% 0.17 150)", "oklch(82% 0.11 150)", "oklch(94% 0.04 150)"] },
-      "accent-light": { "role": "primary", "displayName": "Line Green (light mode)", "canonical": "light-dark(#0b7a3e, #2fbf6b)" },
-      "accent-hover": { "role": "primary", "displayName": "Line Green, lit", "canonical": "light-dark(#096834, #3fcc7a)" },
-      "accent-hover-light": { "role": "primary", "displayName": "Line Green, lit (light mode)", "canonical": "light-dark(#096834, #3fcc7a)" },
-      "accent-ink": { "role": "primary", "displayName": "Ticket Ink", "canonical": "light-dark(#ffffff, #0b1a10)" },
-      "accent-ink-light": { "role": "primary", "displayName": "Ticket Ink (light mode)", "canonical": "light-dark(#ffffff, #0b1a10)" },
-      "cobalt": { "role": "secondary", "displayName": "Glazed Cobalt", "canonical": "#1c3d8f", "tonalRamp": ["oklch(16% 0.06 265)", "oklch(24% 0.09 265)", "oklch(31% 0.12 265)", "oklch(37% 0.14 265)", "oklch(50% 0.14 265)", "oklch(64% 0.11 265)", "oklch(84% 0.05 265)", "oklch(96% 0.015 265)"] },
-      "on-cobalt": { "role": "secondary", "displayName": "Hall White", "canonical": "#f2f5fb" },
-      "on-cobalt-2": { "role": "secondary", "displayName": "Hall Mist", "canonical": "#c3cfeb" },
-      "cobalt-grout": { "role": "secondary", "displayName": "Cobalt Grout", "canonical": "rgb(6 16 46 / 0.45)" },
-      "tunnel-ink": { "role": "neutral", "displayName": "Tunnel Ink", "canonical": "light-dark(#f3f1ec, #0e1114)", "tonalRamp": ["#0e1114", "#12161a", "#181d21", "#20272c", "#8a9396", "#a8b0b2", "#e3dfd6", "#f3f1ec"] },
-      "tunnel-ink-alt": { "role": "neutral", "displayName": "Tunnel Ink Alt", "canonical": "light-dark(#ebe8e1, #12161a)" },
-      "tunnel-card": { "role": "neutral", "displayName": "Card (dark)", "canonical": "light-dark(#fdfcf9, #181d21)" },
-      "tunnel-raised": { "role": "neutral", "displayName": "Raised (dark)", "canonical": "light-dark(#e3dfd6, #20272c)" },
-      "platform-marble": { "role": "neutral", "displayName": "Platform Marble", "canonical": "light-dark(#f3f1ec, #0e1114)" },
-      "platform-marble-alt": { "role": "neutral", "displayName": "Marble Alt", "canonical": "light-dark(#ebe8e1, #12161a)" },
-      "platform-card": { "role": "neutral", "displayName": "Card (light)", "canonical": "light-dark(#fdfcf9, #181d21)" },
-      "platform-raised": { "role": "neutral", "displayName": "Raised (light)", "canonical": "light-dark(#e3dfd6, #20272c)" },
-      "marble-white": { "role": "neutral", "displayName": "Marble White", "canonical": "light-dark(#15191c, #eef0ec)" },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "light-dark(#15191c, #eef0ec)" },
-      "fg-2": { "role": "neutral", "displayName": "Fog", "canonical": "light-dark(#4f575b, #a8b0b2)" },
-      "fg-2-light": { "role": "neutral", "displayName": "Fog (light mode)", "canonical": "light-dark(#4f575b, #a8b0b2)" },
-      "fg-3": { "role": "neutral", "displayName": "Ash", "canonical": "light-dark(#5c6468, #8a9396)" },
-      "fg-3-light": { "role": "neutral", "displayName": "Ash (light mode)", "canonical": "light-dark(#5c6468, #8a9396)" },
-      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "light-dark(rgb(21 25 28 / 0.11), rgb(238 240 236 / 0.09))" },
-      "hairline-light": { "role": "neutral", "displayName": "Hairline (light mode)", "canonical": "light-dark(rgb(21 25 28 / 0.11), rgb(238 240 236 / 0.09))" },
-      "screen-white": { "role": "neutral", "displayName": "Screen White", "canonical": "#ffffff" }
+      "accent": {
+        "role": "primary",
+        "displayName": "Line Green",
+        "canonical": "light-dark(#0b7a3e, #2fbf6b)",
+        "tonalRamp": [
+          "oklch(22% 0.05 150)",
+          "oklch(32% 0.08 150)",
+          "oklch(42% 0.11 150)",
+          "oklch(51% 0.13 150)",
+          "oklch(61% 0.15 150)",
+          "oklch(70% 0.17 150)",
+          "oklch(82% 0.11 150)",
+          "oklch(94% 0.04 150)"
+        ]
+      },
+      "accent-light": {
+        "role": "primary",
+        "displayName": "Line Green (light mode)",
+        "canonical": "light-dark(#0b7a3e, #2fbf6b)"
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Line Green, lit",
+        "canonical": "light-dark(#096834, #3fcc7a)"
+      },
+      "accent-hover-light": {
+        "role": "primary",
+        "displayName": "Line Green, lit (light mode)",
+        "canonical": "light-dark(#096834, #3fcc7a)"
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Ticket Ink",
+        "canonical": "light-dark(#ffffff, #0b1a10)"
+      },
+      "accent-ink-light": {
+        "role": "primary",
+        "displayName": "Ticket Ink (light mode)",
+        "canonical": "light-dark(#ffffff, #0b1a10)"
+      },
+      "cobalt": {
+        "role": "secondary",
+        "displayName": "Glazed Cobalt",
+        "canonical": "#1c3d8f",
+        "tonalRamp": [
+          "oklch(16% 0.06 265)",
+          "oklch(24% 0.09 265)",
+          "oklch(31% 0.12 265)",
+          "oklch(37% 0.14 265)",
+          "oklch(50% 0.14 265)",
+          "oklch(64% 0.11 265)",
+          "oklch(84% 0.05 265)",
+          "oklch(96% 0.015 265)"
+        ]
+      },
+      "on-cobalt": {
+        "role": "secondary",
+        "displayName": "Hall White",
+        "canonical": "#f2f5fb"
+      },
+      "on-cobalt-2": {
+        "role": "secondary",
+        "displayName": "Hall Mist",
+        "canonical": "#c3cfeb"
+      },
+      "cobalt-grout": {
+        "role": "secondary",
+        "displayName": "Cobalt Grout",
+        "canonical": "rgb(6 16 46 / 0.45)"
+      },
+      "tunnel-ink": {
+        "role": "neutral",
+        "displayName": "Tunnel Ink",
+        "canonical": "light-dark(#f3f1ec, #0e1114)",
+        "tonalRamp": [
+          "#0e1114",
+          "#12161a",
+          "#181d21",
+          "#20272c",
+          "#8a9396",
+          "#a8b0b2",
+          "#e3dfd6",
+          "#f3f1ec"
+        ]
+      },
+      "tunnel-ink-alt": {
+        "role": "neutral",
+        "displayName": "Tunnel Ink Alt",
+        "canonical": "light-dark(#ebe8e1, #12161a)"
+      },
+      "tunnel-card": {
+        "role": "neutral",
+        "displayName": "Card (dark)",
+        "canonical": "light-dark(#fdfcf9, #181d21)"
+      },
+      "tunnel-raised": {
+        "role": "neutral",
+        "displayName": "Raised (dark)",
+        "canonical": "light-dark(#e3dfd6, #20272c)"
+      },
+      "platform-marble": {
+        "role": "neutral",
+        "displayName": "Platform Marble",
+        "canonical": "light-dark(#f3f1ec, #0e1114)"
+      },
+      "platform-marble-alt": {
+        "role": "neutral",
+        "displayName": "Marble Alt",
+        "canonical": "light-dark(#ebe8e1, #12161a)"
+      },
+      "platform-card": {
+        "role": "neutral",
+        "displayName": "Card (light)",
+        "canonical": "light-dark(#fdfcf9, #181d21)"
+      },
+      "platform-raised": {
+        "role": "neutral",
+        "displayName": "Raised (light)",
+        "canonical": "light-dark(#e3dfd6, #20272c)"
+      },
+      "marble-white": {
+        "role": "neutral",
+        "displayName": "Marble White",
+        "canonical": "light-dark(#15191c, #eef0ec)"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "light-dark(#15191c, #eef0ec)"
+      },
+      "fg-2": {
+        "role": "neutral",
+        "displayName": "Fog",
+        "canonical": "light-dark(#4f575b, #a8b0b2)"
+      },
+      "fg-2-light": {
+        "role": "neutral",
+        "displayName": "Fog (light mode)",
+        "canonical": "light-dark(#4f575b, #a8b0b2)"
+      },
+      "fg-3": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "light-dark(#5c6468, #8a9396)"
+      },
+      "fg-3-light": {
+        "role": "neutral",
+        "displayName": "Ash (light mode)",
+        "canonical": "light-dark(#5c6468, #8a9396)"
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "light-dark(rgb(21 25 28 / 0.11), rgb(238 240 236 / 0.09))"
+      },
+      "hairline-light": {
+        "role": "neutral",
+        "displayName": "Hairline (light mode)",
+        "canonical": "light-dark(rgb(21 25 28 / 0.11), rgb(238 240 236 / 0.09))"
+      },
+      "screen-white": {
+        "role": "neutral",
+        "displayName": "Screen White",
+        "canonical": "#ffffff"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display (station signage)", "purpose": "The hero headline only; carries the terminus roundel." },
-      "headline": { "displayName": "Headline (stop name)", "purpose": "Every section heading, each a stop on the line; hall quotes and closing lines." },
-      "title": { "displayName": "Title", "purpose": "Plan names, feature rows, card titles." },
-      "lead": { "displayName": "Lead", "purpose": "The line under a headline, in Fog." },
-      "body": { "displayName": "Body", "purpose": "Reading text; inputs stay at 16px." },
-      "label": { "displayName": "Label", "purpose": "Small print, categories, currency labels, in Ash." },
-      "nav-stop": { "displayName": "Nav stop", "purpose": "Desktop line-map labels." },
-      "till": { "displayName": "Till digits", "purpose": "Every price and total, tabular, rolled digit by digit." }
+      "display": {
+        "displayName": "Display (station signage)",
+        "purpose": "The hero headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every section heading, the hero motto quote, and the closing lines in the hall."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Plan names, feature rows, card titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The line under a headline, in Fog."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text; inputs stay at 16px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Small print, categories, currency labels, in Ash."
+      },
+      "nav-stop": {
+        "displayName": "Nav stop",
+        "purpose": "Desktop line-map labels."
+      },
+      "till": {
+        "displayName": "Till digits",
+        "purpose": "Every price and total, tabular, rolled digit by digit."
+      }
     },
     "shadows": [
-      { "name": "hairline", "value": "inset 0 0 0 1px var(--line)", "purpose": "Every border: cards, fields, secondary buttons, segmented tracks, modals." },
-      { "name": "rest", "value": "light-dark(0 1px 2px rgb(31 27 22 / 0.05), 0 1px 2px rgb(0 0 0 / 0.3))", "purpose": "Minimal lift token." },
-      { "name": "float", "value": "light-dark(0 12px 32px -12px rgb(31 27 22 / 0.18), 0 16px 40px -16px rgb(0 0 0 / 0.6))", "purpose": "Placed objects: screenshots, the sticky hardware total, modals." },
-      { "name": "phone-drop", "value": "drop-shadow(0 10px 16px rgb(0 0 0 / 0.22))", "purpose": "Transparent device-framed phone images (filter, not box-shadow); 0 16px 24px in the gallery." },
-      { "name": "segment-selected", "value": "0 1px 2px rgb(0 0 0 / 0.12), inset 0 0 0 1px var(--line)", "purpose": "The pressed segment in a segmented control." },
-      { "name": "highlight-ring", "value": "inset 0 0 0 2px var(--accent)", "purpose": "State: Premium plan and picked hardware." },
-      { "name": "train", "value": "0 0 0 2px var(--accent), 0 4px 10px rgb(0 0 0 / 0.3)", "purpose": "The train on the rail; 3px ring and 0 6px 14px from 1024px." },
-      { "name": "focus", "value": "outline: 2px solid var(--accent); outline-offset: 2px", "purpose": "Every focus-visible element." },
-      { "name": "field-focus", "value": "inset 0 0 0 1px var(--accent), 0 0 0 3px color-mix(in oklab, var(--accent) 22%, transparent)", "purpose": "Focused input." }
+      {
+        "name": "hairline",
+        "value": "inset 0 0 0 1px var(--line)",
+        "purpose": "Every border: cards, fields, secondary buttons, segmented tracks, modals."
+      },
+      {
+        "name": "rest",
+        "value": "light-dark(0 1px 2px rgb(31 27 22 / 0.05), 0 1px 2px rgb(0 0 0 / 0.3))",
+        "purpose": "Minimal lift token."
+      },
+      {
+        "name": "float",
+        "value": "light-dark(0 12px 32px -12px rgb(31 27 22 / 0.18), 0 16px 40px -16px rgb(0 0 0 / 0.6))",
+        "purpose": "Placed objects: screenshots, the sticky hardware total, modals."
+      },
+      {
+        "name": "phone-drop",
+        "value": "drop-shadow(0 10px 16px rgb(0 0 0 / 0.22))",
+        "purpose": "Transparent device-framed phone images (filter, not box-shadow); 0 16px 24px in the gallery."
+      },
+      {
+        "name": "segment-selected",
+        "value": "0 1px 2px rgb(0 0 0 / 0.12), inset 0 0 0 1px var(--line)",
+        "purpose": "The pressed segment in a segmented control."
+      },
+      {
+        "name": "highlight-ring",
+        "value": "inset 0 0 0 2px var(--accent)",
+        "purpose": "State: Premium plan and picked hardware."
+      },
+      {
+        "name": "focus",
+        "value": "outline: 2px solid var(--accent); outline-offset: 2px",
+        "purpose": "Every focus-visible element."
+      },
+      {
+        "name": "field-focus",
+        "value": "inset 0 0 0 1px var(--accent), 0 0 0 3px color-mix(in oklab, var(--accent) 22%, transparent)",
+        "purpose": "Focused input."
+      }
     ],
     "motion": [
-      { "name": "ease", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "The only easing curve." },
-      { "name": "duration-control", "value": "150ms", "purpose": "Buttons, segments, links, nav stops, press scale 0.98." },
-      { "name": "duration-dialog", "value": "200ms", "purpose": "Dialog fade and 8px rise with @starting-style; FAQ icon rotation." },
-      { "name": "duration-disclosure", "value": "300ms", "purpose": "FAQ panel block-size via ::details-content." },
-      { "name": "duration-image", "value": "400ms", "purpose": "Lazy image fade-in after decode (never the LCP image)." },
-      { "name": "duration-roll", "value": "500ms", "purpose": "Number Roll digit columns." },
-      { "name": "stop-pass", "value": "animation-timeline: view(); animation-range: entry 0% cover 50%; steps(1, end)", "purpose": "A stop fills green once its heading passes mid-viewport." },
-      { "name": "bar-up", "value": "animation-timeline: scroll(root); animation-range: 380px 460px", "purpose": "Mobile call bar rises in after the hero." },
-      { "name": "reduced-motion", "value": "transition-duration and animation-duration 0.01ms", "purpose": "prefers-reduced-motion: reduce; smooth scroll off." }
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The only easing curve."
+      },
+      {
+        "name": "duration-control",
+        "value": "150ms",
+        "purpose": "Buttons, segments, links, nav stops, press scale 0.98."
+      },
+      {
+        "name": "duration-dialog",
+        "value": "200ms",
+        "purpose": "Dialog fade and 8px rise with @starting-style; FAQ icon rotation."
+      },
+      {
+        "name": "duration-disclosure",
+        "value": "300ms",
+        "purpose": "FAQ panel block-size via ::details-content."
+      },
+      {
+        "name": "duration-image",
+        "value": "400ms",
+        "purpose": "Lazy image fade-in after decode (never the LCP image)."
+      },
+      {
+        "name": "duration-roll",
+        "value": "500ms",
+        "purpose": "Number Roll digit columns."
+      },
+      {
+        "name": "bar-up",
+        "value": "animation-timeline: scroll(root); animation-range: 380px 460px",
+        "purpose": "Mobile call bar rises in after the hero."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition-duration and animation-duration 0.01ms",
+        "purpose": "prefers-reduced-motion: reduce; smooth scroll off."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" },
-      { "name": "container", "value": "1200px" }
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "1200px"
+      }
     ],
-    "line": {
-      "rail": { "phone": { "x": "12px", "width": "3px" }, "desktop": { "x": "42px", "width": "4px" } },
-      "stop": { "phone": { "diameter": "14px", "ring": "3px" }, "desktop": { "diameter": "20px", "ring": "4px" }, "knockout": "4px in the surrounding surface color" },
-      "terminus": { "hero": { "phone": "24px", "desktop": "64px" }, "contact": { "phone": "24px", "desktop": "34px" }, "fill": "radial-gradient(circle, var(--accent) 0 30%, surface 31% 100%)" },
-      "train": { "phone": "10px x 22px", "desktop": "14px x 30px", "position": "sticky; top: 50vh" },
-      "contentGutter": { "phone": "36px", "desktop": "96px" }
-    },
-    "hall": { "tile": "64px", "grout": "2px rgb(6 16 46 / 0.45)", "padding": { "phone": "64px", "md": "128px" }, "minHeight": { "phone": "5 tiles", "md": "7 tiles" }, "uses": ["Proverb", "Closing statement"] }
+    "hall": {
+      "tile": "64px",
+      "grout": "2px rgb(6 16 46 / 0.45)",
+      "padding": {
+        "phone": "64px",
+        "md": "128px"
+      },
+      "minHeight": {
+        "phone": "5 tiles",
+        "md": "7 tiles"
+      },
+      "uses": [
+        "Closing statement"
+      ]
+    }
   },
   "components": [
     {
@@ -129,45 +372,75 @@
       "css": ".ds-card { display: flex; flex-direction: column; gap: 16px; max-width: 340px; padding: 28px; border-radius: 16px; background: light-dark(#fdfcf9, #181d21); color: light-dark(#15191c, #eef0ec); box-shadow: inset 0 0 0 1px light-dark(rgb(21 25 28 / 0.11), rgb(238 240 236 / 0.09)); font-family: 'Onest', -apple-system, 'Segoe UI', sans-serif; } .ds-card-on { box-shadow: inset 0 0 0 2px light-dark(#0b7a3e, #2fbf6b); } .ds-card-top { display: flex; align-items: baseline; justify-content: space-between; } .ds-card h3 { margin: 0; font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; } .ds-pop { font-size: 13px; font-weight: 500; color: light-dark(#0b7a3e, #2fbf6b); } .ds-price { margin: 0; font-size: 14px; color: light-dark(#5c6468, #8a9396); } .ds-price span { font-family: 'Till Digits', ui-monospace, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; font-size: 36px; font-weight: 500; line-height: 1; color: light-dark(#15191c, #eef0ec); margin-right: 8px; } .ds-card-btn { min-height: 44px; border: 0; border-radius: 10px; background: light-dark(#0b7a3e, #2fbf6b); color: light-dark(#ffffff, #0b1a10); font: 500 15px/1 'Onest', sans-serif; cursor: pointer; transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-card-btn:hover { background: light-dark(#096834, #3fcc7a); } .ds-card-btn:focus-visible { outline: 2px solid light-dark(#0b7a3e, #2fbf6b); outline-offset: 2px; }"
     },
     {
-      "name": "Line with Stops and Train",
-      "kind": "custom",
-      "refersTo": "rail",
-      "description": "Signature: the green rail, a terminus roundel, passed and upcoming stops, and the you-are-here train.",
-      "html": "<div class=\"ds-line\"><div class=\"ds-rail\"><span class=\"ds-train\"></span></div><h2 class=\"ds-stop ds-terminus\">Xususiyatlar</h2><h2 class=\"ds-stop ds-passed\">Qurilmalar</h2><h2 class=\"ds-stop\">Tariflar</h2></div>",
-      "css": ".ds-line { position: relative; padding: 24px 0 24px 56px; background: light-dark(#f3f1ec, #0e1114); color: light-dark(#15191c, #eef0ec); } .ds-rail { position: absolute; left: 24px; top: 38px; bottom: 30px; width: 4px; margin-left: -2px; border-radius: 2px; background: light-dark(#0b7a3e, #2fbf6b); } .ds-train { position: absolute; top: 45%; left: -5px; width: 14px; height: 30px; border-radius: 7px; background: light-dark(#15191c, #eef0ec); box-shadow: 0 0 0 3px light-dark(#0b7a3e, #2fbf6b), 0 6px 14px rgb(0 0 0 / 0.35); } .ds-stop { position: relative; margin: 0 0 48px; font: 500 28px/1.15 'Unbounded', 'Onest', sans-serif; letter-spacing: -0.025em; } .ds-stop:last-child { margin-bottom: 0; } .ds-stop::before { content: ''; position: absolute; left: -32px; top: calc(0.58em - 10px); width: 20px; height: 20px; margin-left: -10px; border-radius: 50%; background: light-dark(#f3f1ec, #0e1114); box-shadow: inset 0 0 0 4px light-dark(#0b7a3e, #2fbf6b), 0 0 0 4px light-dark(#f3f1ec, #0e1114); z-index: 1; } .ds-passed::before { background: light-dark(#0b7a3e, #2fbf6b); } .ds-terminus::before { width: 34px; height: 34px; margin-left: -17px; top: calc(0.55em - 17px); background: radial-gradient(circle, light-dark(#0b7a3e, #2fbf6b) 0 30%, light-dark(#f3f1ec, #0e1114) 31% 100%); box-shadow: inset 0 0 0 5px light-dark(#0b7a3e, #2fbf6b), 0 0 0 5px light-dark(#f3f1ec, #0e1114); }"
-    },
-    {
       "name": "Cobalt Tile Hall",
       "kind": "custom",
       "refersTo": "hall",
-      "description": "Signature: full-bleed glazed cobalt with a 64px grout grid; whole-tile padding; centered quote.",
-      "html": "<section class=\"ds-hall\"><blockquote>“Hisobli do‘st ayrilmas”</blockquote><p>Har bir so‘mi hisoblangan do‘kon mijozini ham, foydasini ham yo‘qotmaydi.</p></section>",
+      "description": "The closing statement on glazed cobalt with darker grout; the only hall on the page.",
+      "html": "<section class=\"ds-hall\"><p>Ko‘rdingizmi, hammasi shunchalik oson!</p><p class=\"ds-hall-2\">Endi siz ham do‘koningizda sinab ko‘ring!</p></section>",
       "css": ".ds-hall { padding: 64px 24px; min-height: 192px; text-align: center; background-color: #1c3d8f; color: #f2f5fb; background-image: linear-gradient(rgb(6 16 46 / 0.45) 2px, transparent 2px), linear-gradient(90deg, rgb(6 16 46 / 0.45) 2px, transparent 2px); background-size: 64px 64px; background-position: center top; } .ds-hall blockquote { margin: 0; font: 500 32px/1.15 'Unbounded', 'Onest', sans-serif; letter-spacing: -0.025em; } .ds-hall p { margin: 20px auto 0; max-width: 520px; font: 400 18px/1.55 'Onest', sans-serif; color: #c3cfeb; }"
+    },
+    {
+      "name": "Hero Motto Badge",
+      "refersTo": "motto",
+      "description": "The proverb as a badge: in the hero's empty right side from 1280px, foot level with the actions; under the actions below that. Never over the screenshots.",
+      "html": "<figure class=\"ds-motto\"><blockquote>“Hisobli do‘st ayrilmas”</blockquote><p>Har bir so‘mi hisoblangan do‘kon mijozini ham, foydasini ham yo‘qotmaydi.</p><small>O‘zbek xalq maqoli</small></figure>",
+      "css": ".ds-motto { max-width: 340px; margin: 0; padding: 18px 20px 16px; border-radius: 14px; background: light-dark(#e3dfd6, #20272c); color: light-dark(#15191c, #eef0ec); box-shadow: light-dark(0 12px 32px -12px rgb(31 27 22 / 0.18), 0 16px 40px -16px rgb(0 0 0 / 0.6)); } .ds-motto blockquote { margin: 0; font: 500 19px/1.25 'Unbounded', 'Onest', sans-serif; letter-spacing: -0.02em; } .ds-motto p { margin: 8px 0 0; font: 400 14px/1.5 'Onest', sans-serif; color: light-dark(#4f575b, #a8b0b2); } .ds-motto small { display: block; margin-top: 8px; font: 500 12px/1.4 'Onest', sans-serif; color: light-dark(#0b7a3e, #2fbf6b); }"
     }
   ],
   "narrative": {
     "northStar": "The Night Line",
-    "overview": "The landing page is one Tashkent Metro line through a shop's day. A single green rail runs from a terminus roundel beside the hero headline to a second terminus at Aloqa (contact); every section heading is a stop on it, and a \"you are here\" train rides the rail at mid-viewport. The ground is tunnel ink at night (dark is the default), type is marble white, and the two quiet moments of the page, the proverb and the closing, are glazed cobalt tile halls that show their grout grid. Light mode is the same station by day: platform marble ground, dark ink type, a deeper green line.\n\nDensity is calm and editorial: generous section padding, one accent, hairlines instead of borders, flat surfaces. Proof is the product itself: real desktop till and report screenshots on white, real phone screenshots in their device frames, real hardware photos on white canvases. Headlines and stop names speak in station signage (Unbounded 500); everything you read is Onest; money is printed in till digits that roll to their value.\n\nThe build replaced an earlier warm-neutral look. It refuses the category's stacked hero plus rows of equal feature cards: sections are stops, not tiles.",
+    "overview": "The landing page borrows the Tashkent Metro at night. The navigation is a line map: the sections are stops on one green line and the current stop fills. The ground is tunnel ink (dark is the default) and type is marble white. The proverb \"Hisobli do'st ayrilmas\" rides in the hero as a badge, and the closing is a glazed cobalt tile hall with its grout grid. Light mode is the same station by day: platform marble ground, dark ink type, a deeper green line.\n\nDensity is calm and editorial: generous section padding, one accent, hairlines instead of borders, flat surfaces. Proof is the product itself: real desktop till and report screenshots on white, real phone screenshots in their device frames, real hardware photos on white canvases. Headlines and stop names speak in station signage (Unbounded 500); everything you read is Onest; money is printed in till digits that roll to their value.\n\nThe build replaced an earlier warm-neutral look. It refuses the category's stacked hero plus rows of equal feature cards: sections are ruled rows and boards, not tiles. (An earlier version of this build ran a green rail with stop roundels down the left of every section; the owner removed it, along with the proverb's tile hall, on 2026-11-20.)",
     "keyCharacteristics": [
-      "One green line, one accent: the rail, stop roundels, nav line map, primary buttons and selection states all use the same green.",
+      "One green line, one accent: the nav line map, primary buttons and selection states all use the same green.",
       "Tunnel ink ground by default, platform marble in light mode, every token switched with `light-dark()`.",
-      "Cobalt tile halls (64px tiles, 2px grout) for exactly two moments: the proverb and the closing statement.",
-      "Station signage type for headlines and stop names only; Onest for reading; till digits for every price and total.",
+      "One cobalt tile hall (64px tiles, 2px grout), for the closing statement only.",
+      "Station signage type for headlines, the motto and nav stop names only; Onest for reading; till digits for every price and total.",
       "Flat surfaces with inset hairlines; the only real shadows lift screenshots and floating totals off the page.",
-      "Motion is CSS-only and scroll-driven where possible: stops fill as they pass, the mobile call bar rises after the hero."
+      "Motion is CSS-only and scroll-driven where possible: the mobile call bar rises after the hero."
     ],
     "rules": [
-      { "name": "The One Line Rule", "body": "Green is the line. If an element is green, it is on the line, it is the action, or it marks the current or chosen thing. No second accent color exists.", "section": "colors" },
-      { "name": "The Two Halls Rule", "body": "Cobalt appears only as a full-bleed tile hall, and the page has two: the proverb and the closing. A third hall dilutes the pause.", "section": "colors" },
-      { "name": "The Switch-Once Rule", "body": "A theme color is declared once with `light-dark()` on `:root`; components never branch on the theme.", "section": "colors" },
-      { "name": "The Signage Rule", "body": "Unbounded is for headlines, stop names and the mobile line-map menu (22px). Never for body text, buttons or labels.", "section": "typography" },
-      { "name": "The Two Weights Rule", "body": "Weights are 400 and 500. Size and color carry hierarchy, not bold.", "section": "typography" },
-      { "name": "The Till Rule", "body": "A number that is money is set in Till Digits with tabular figures, and when it changes it rolls digit by digit rather than snapping.", "section": "typography" },
-      { "name": "The Whole Tile Rule", "body": "Inside a cobalt hall, spacing is counted in 64px tiles. Content never starts mid-tile.", "section": "layout" },
-      { "name": "The Flat Platform Rule", "body": "If it is part of the page, it is flat with a hairline. If it is a thing placed on the page (a screen, a phone, a total, a dialog), it may float.", "section": "elevation" }
+      {
+        "name": "The One Line Rule",
+        "body": "Green is the line. If an element is green, it is on the line, it is the action, or it marks the current or chosen thing. No second accent color exists.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Hall Rule",
+        "body": "Cobalt appears only as a full-bleed tile hall, and the page has one: the closing. A second hall dilutes the pause.",
+        "section": "colors"
+      },
+      {
+        "name": "The Switch-Once Rule",
+        "body": "A theme color is declared once with `light-dark()` on `:root`; components never branch on the theme.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signage Rule",
+        "body": "Unbounded is for headlines, the hero motto, nav stop names and the mobile line-map menu (22px). Never for body text, buttons or labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Weights Rule",
+        "body": "Weights are 400 and 500. Size and color carry hierarchy, not bold.",
+        "section": "typography"
+      },
+      {
+        "name": "The Till Rule",
+        "body": "A number that is money is set in Till Digits with tabular figures, and when it changes it rolls digit by digit rather than snapping.",
+        "section": "typography"
+      },
+      {
+        "name": "The Whole Tile Rule",
+        "body": "Inside a cobalt hall, spacing is counted in 64px tiles. Content never starts mid-tile.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Platform Rule",
+        "body": "If it is part of the page, it is flat with a hairline. If it is a thing placed on the page (a screen, a phone, a total, a dialog), it may float.",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "**Do** make every new section heading a stop (`t-h2 stop`) so the line keeps running through it, and keep the Aloqa terminus as the last stop.",
       "**Do** declare any new theme color once on `:root` with `light-dark()`, and check contrast in both modes against the values in the Colors section.",
       "**Do** set every price and total in Till Digits, and roll changing amounts with the Number Roll.",
       "**Do** put product screenshots and hardware photos on Screen White with a 12px radius, hairline and Float.",
@@ -177,11 +450,11 @@
     ],
     "donts": [
       "**Don't** introduce a second accent color; green is the line and the action.",
-      "**Don't** use cobalt outside the two tile halls, or add a third hall.",
+      "**Don't** use cobalt outside the closing tile hall, or add a second hall.",
       "**Don't** set body text, buttons or labels in Unbounded, or use weights above 500.",
       "**Don't** add drop shadows to page-level cards or sections; only placed objects (screens, phones, totals, dialogs) float.",
-      "**Don't** use circles for anything but the line's stops and roundels.",
-      "**Don't** add eyebrow or kicker labels above headings; the stop roundel already marks the section.",
+      "**Don't** use circles for anything but the nav line map's stops.",
+      "**Don't** add eyebrow or kicker labels above headings, or a rail down the side of the page; the heading carries the section.",
       "**Don't** build a CSS device frame around phone screenshots; the screenshots arrive framed.",
       "**Don't** add a theme editor or palette controls; the only theme control is the light/dark toggle, dark by default."
     ]

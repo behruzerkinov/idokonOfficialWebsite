@@ -23,7 +23,7 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
       <div className="wrap">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <header className="head">
-            <h2 className="t-h2 stop">{pr.title}</h2>
+            <h2 className="t-h2">{pr.title}</h2>
             <p className="t-lead">{pr.lead}</p>
           </header>
           <div className="flex flex-col items-start gap-2 lg:items-end">

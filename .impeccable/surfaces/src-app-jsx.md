@@ -13,7 +13,7 @@ Mode: Persuade. Audience: small shop owners in Uzbekistan, Uzbek first, mostly o
 
 THESIS: The page is one metro line through a shop's day. Every section is a stop on a single green line, and the visitor rides from the till to the tariff to a person on the phone. It refuses the category's stacked hero plus equal feature cards.
 
-OWN-WORLD: Tashkent Metro at night. Tunnel ink ground, marble-white type, the line in iDokon green, glazed cobalt tile halls for the two quiet moments. (Brass stop numbers were dropped at build: the craft floor bans decorative numbering.) Station signage type (Unbounded) for headlines and stop names, Onest for reading, till digits for money. Raise (from the declined azulejo hall): layouts recompose by whole tiles, and the cobalt halls admit their grout grid.
+OWN-WORLD: Tashkent Metro at night. Tunnel ink ground, marble-white type, the line in iDokon green (the nav line map), a glazed cobalt tile hall for the closing; the proverb rides in the hero as a badge (owner change 2026-11-20: the page rail and the proverb hall were removed). (Brass stop numbers were dropped at build: the craft floor bans decorative numbering.) Station signage type (Unbounded) for headlines and stop names, Onest for reading, till digits for money. Raise (from the declined azulejo hall): layouts recompose by whole tiles, and the cobalt halls admit their grout grid.
 
 STORY: The visitor sees the real till in the first stop, rides past hardware, integrations, the phone app and tariffs, and arrives at the terminal stop, Aloqa, with a call button.
 

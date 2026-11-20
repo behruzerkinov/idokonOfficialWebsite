@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Partners } from './Partners';
-import { Proverb } from './Proverb';
 import { ValueGrid } from './ValueGrid';
 import { PosInteractiveShowcase } from './PosInteractiveShowcase';
 import { SectorSolutions } from './SectorSolutions';
@@ -26,7 +25,6 @@ export default function BelowFold({ t, lang, picked, onTogglePick, onClearPicked
   return (
     <>
       <Partners t={t} />
-      <Proverb t={t} />
       <ValueGrid t={t} />
       <PosInteractiveShowcase t={t} onOpenLightbox={onOpenLightbox} />
       <SectorSolutions t={t} />

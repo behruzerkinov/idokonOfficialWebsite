@@ -10,7 +10,7 @@ export const CareSection = ({ t, lang }) => {
     <section id="support" className="section section-alt">
       <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <header className="head">
-          <h2 className="t-h2 stop">{c.title}</h2>
+          <h2 className="t-h2">{c.title}</h2>
           <p className="t-lead">{c.lead}</p>
         </header>
         <ul className="border-b" style={{ borderColor: 'var(--line)' }}>

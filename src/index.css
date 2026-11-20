@@ -146,40 +146,16 @@
   .stage-phone { left: 66cqw; top: 6cqw; width: 31cqw; }
 }
 
-/* ---------- The line: one green rail from the terminus in the hero to the terminus at Aloqa (contact), a stop
-   roundel at every section heading, and a "you are here" train riding at mid-viewport (sticky inside the rail).
-   A stop fills once it has passed the train (scroll-driven, no listener). The rail's end is measured once in
-   App.jsx (--rail-end). Phones get a slimmer rail in the left gutter, the same grammar. ---------- */
-@property --stop { syntax: '<color>'; inherits: true; initial-value: transparent; }
-main#main { position: relative; --rail-x: 12px; --rail-w: 3px; --stop-d: 14px; --stop-ring: 3px; --term-d: 24px; }
-main#main .wrap { padding-left: 36px; }
-.rail { position: absolute; z-index: 2; pointer-events: none; top: calc(60px + clamp(3rem, 7vw, 6rem) + var(--term-d) / 2); bottom: var(--rail-end, 0px);
-  left: calc(max(0px, (100% - 1200px) / 2) + var(--rail-x)); width: var(--rail-w); margin-left: calc(var(--rail-w) / -2); border-radius: 2px; background: var(--accent); }
-.train { display: block; position: sticky; top: 50vh; width: 10px; height: 22px; margin-left: calc(var(--rail-w) / 2 - 5px); border-radius: 5px;
-  background: var(--fg); box-shadow: 0 0 0 2px var(--accent), 0 4px 10px rgb(0 0 0 / 0.3); }
-.stop { position: relative; --stop: var(--bg); }
-.stop::before { content: ''; position: absolute; z-index: 3; left: var(--stop-x, -24px); top: calc(0.58em - var(--stop-d) / 2); width: var(--stop-d); height: var(--stop-d);
-  margin-left: calc(var(--stop-d) / -2); border-radius: 50%; background: var(--stop); box-shadow: inset 0 0 0 var(--stop-ring) var(--accent), 0 0 0 4px var(--bg); }
-.section-alt .stop::before { box-shadow: inset 0 0 0 var(--stop-ring) var(--accent), 0 0 0 4px var(--bg-alt); }
-.card .stop::before { box-shadow: inset 0 0 0 var(--stop-ring) var(--accent), 0 0 0 4px var(--card); }
-/* Terminus: a real roundel, ring and inner disc, sized near the headline's cap height */
-.stop.terminus::before { width: var(--term-d); height: var(--term-d); margin-left: calc(var(--term-d) / -2); top: calc(0.55em - var(--term-d) / 2);
-  background: radial-gradient(circle, var(--accent) 0 30%, var(--bg) 31% 100%); box-shadow: inset 0 0 0 calc(var(--term-d) * 0.16) var(--accent), 0 0 0 5px var(--bg); }
-.card .stop.terminus::before { background: radial-gradient(circle, var(--accent) 0 30%, var(--card) 31% 100%); box-shadow: inset 0 0 0 calc(var(--term-d) * 0.16) var(--accent), 0 0 0 5px var(--card); }
-@media (min-width: 1024px) {
-  main#main { --rail-x: 42px; --rail-w: 4px; --stop-d: 20px; --stop-ring: 4px; --term-d: 64px; }
-  main#main .wrap { padding-left: 96px; }
-  .stop { --stop-x: -54px; }
-  .train { width: 14px; height: 30px; margin-left: -5px; border-radius: 7px; box-shadow: 0 0 0 3px var(--accent), 0 6px 14px rgb(0 0 0 / 0.35); }
-}
-#contact .stop.terminus { --term-d: 24px; }
-@media (min-width: 1024px) { #contact .stop.terminus { --term-d: 34px; } }
-@supports (animation-timeline: view()) {
-  .stop:not(.terminus) { animation: stop-pass steps(1, end) both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
-  @keyframes stop-pass { from { --stop: var(--bg); } to { --stop: var(--accent); } }
+/* ---------- Hero motto badge: the proverb in the hero's empty right side on wide screens, its foot level with
+   the actions; in the flow under the actions on narrower screens. ---------- */
+.motto { position: relative; max-width: 360px; margin-top: 32px; padding: 18px 20px 16px; border-radius: 14px; background: var(--raised);
+  box-shadow: var(--shadow-float); }
+.motto-quote { font-family: var(--font-sign); font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem); line-height: 1.25; letter-spacing: -0.02em; }
+@media (min-width: 1280px) {
+  .motto { position: absolute; right: 0; bottom: 0; margin: 0; max-width: 340px; }
 }
 
-/* ---------- Glazed cobalt tile halls: the proverb and the closing. 64px tiles with darker grout, and the hall's
+/* ---------- Glazed cobalt tile hall: the closing. 64px tiles with darker grout, and the hall's
    padding is whole tiles so the content block starts and ends on a grout line. ---------- */
 .hall {
   background-color: var(--cobalt); color: var(--on-cobalt);

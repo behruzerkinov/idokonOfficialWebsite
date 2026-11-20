@@ -26,18 +26,6 @@ export default function App() {
   const [picked, setPicked] = useState(() => new Set());
   const t = translations[lang];
 
-  // The line ends at the Aloqa terminus: keep the rail's bottom at that roundel as content above it changes height
-  useEffect(() => {
-    const main = document.getElementById('main');
-    const place = () => {
-      const end = document.querySelector('#contact .terminus');
-      if (end) main.style.setProperty('--rail-end', `${main.getBoundingClientRect().bottom - end.getBoundingClientRect().top - 17}px`);
-    };
-    const ro = new ResizeObserver(place);
-    ro.observe(main);
-    return () => ro.disconnect();
-  }, []);
-
   useEffect(() => {
     document.documentElement.lang = lang;
     document.title = t.meta.title;
@@ -55,7 +43,6 @@ export default function App() {
     <>
       <Navbar lang={lang} setLang={setLang} t={t} isDark={isDark} toggleTheme={toggleTheme} onOpenDemo={openDemo} />
       <main id="main">
-        <div className="rail" aria-hidden="true"><span className="train" /></div>
         <Hero t={t} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
         <Suspense fallback={<div className="min-h-[200vh]" />}>
           <BelowFold t={t} lang={lang} picked={picked} onTogglePick={togglePick} onClearPicked={clearPicked} onOpenSpecs={setSpecs} onContact={contactWith} onOpenLightbox={openLightbox} onOpenDemo={openDemo} prefill={prefill} />

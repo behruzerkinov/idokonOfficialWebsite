@@ -41,7 +41,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
       <div className="wrap">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <header className="head">
-            <h2 className="t-h2 stop">{s.title}</h2>
+            <h2 className="t-h2">{s.title}</h2>
             <p className="t-lead">{s.lead}</p>
           </header>
           <div role="tablist" aria-label={s.tablist} onKeyDown={onKey} className="segmented no-scrollbar max-w-full self-start overflow-x-auto lg:self-auto">

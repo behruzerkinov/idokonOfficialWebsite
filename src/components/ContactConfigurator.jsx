@@ -19,7 +19,7 @@ export const ContactConfigurator = ({ t, lang, prefill }) => {
       <div className="wrap">
         <div className="card grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-12">
           <div>
-            <h2 className="t-h2 stop terminus [--stop-x:-48px] sm:[--stop-x:-64px] lg:[--stop-x:-102px]">{c.title}</h2>
+            <h2 className="t-h2">{c.title}</h2>
             <p className="t-lead mt-4">{c.lead}</p>
             <ul className="mt-8">
               {/* While the form is off, the phones and Telegram are already the buttons on the right */}

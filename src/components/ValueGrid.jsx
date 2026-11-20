@@ -5,7 +5,7 @@ export const ValueGrid = ({ t }) => {
     <section id="features" className="section section-alt">
       <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <header className="head lg:sticky lg:top-24 lg:self-start">
-          <h2 className="t-h2 stop">{f.title}</h2>
+          <h2 className="t-h2">{f.title}</h2>
           <p className="t-lead">{f.lead}</p>
         </header>
         <ol className="border-b" style={{ borderColor: 'var(--line)' }}>

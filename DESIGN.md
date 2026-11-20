@@ -87,8 +87,6 @@ rounded:
 spacing:
   gutter: "20px"
   gutter-sm: "32px"
-  rail-gutter: "36px"
-  rail-gutter-lg: "96px"
   tile: "64px"
   section: "clamp(4.5rem, 9vw, 7.5rem)"
   container: "1200px"
@@ -152,19 +150,19 @@ components:
 
 **Creative North Star: "The Night Line"**
 
-The landing page is one Tashkent Metro line through a shop's day. A single green rail runs from a terminus roundel beside the hero headline to a second terminus at Aloqa (contact); every section heading is a stop on it, and a "you are here" train rides the rail at mid-viewport. The ground is tunnel ink at night (dark is the default), type is marble white, and the two quiet moments of the page, the proverb and the closing, are glazed cobalt tile halls that show their grout grid. Light mode is the same station by day: platform marble ground, dark ink type, a deeper green line.
+The landing page borrows the Tashkent Metro at night. The navigation is a line map: the sections are stops on one green line and the current stop fills. The ground is tunnel ink (dark is the default) and type is marble white. The proverb "Hisobli do'st ayrilmas" rides in the hero as a badge, and the closing is a glazed cobalt tile hall with its grout grid. Light mode is the same station by day: platform marble ground, dark ink type, a deeper green line.
 
 Density is calm and editorial: generous section padding, one accent, hairlines instead of borders, flat surfaces. Proof is the product itself: real desktop till and report screenshots on white, real phone screenshots in their device frames, real hardware photos on white canvases. Headlines and stop names speak in station signage (Unbounded 500); everything you read is Onest; money is printed in till digits that roll to their value.
 
-The build replaced an earlier warm-neutral look. It refuses the category's stacked hero plus rows of equal feature cards: sections are stops, not tiles.
+The build replaced an earlier warm-neutral look. It refuses the category's stacked hero plus rows of equal feature cards: sections are ruled rows and boards, not tiles. (An earlier version of this build ran a green rail with stop roundels down the left of every section; the owner removed it, along with the proverb's tile hall, on 2026-11-20.)
 
 **Key Characteristics:**
-- One green line, one accent: the rail, stop roundels, nav line map, primary buttons and selection states all use the same green.
+- One green line, one accent: the nav line map, primary buttons and selection states all use the same green.
 - Tunnel ink ground by default, platform marble in light mode, every token switched with `light-dark()`.
-- Cobalt tile halls (64px tiles, 2px grout) for exactly two moments: the proverb and the closing statement.
-- Station signage type for headlines and stop names only; Onest for reading; till digits for every price and total.
+- One cobalt tile hall (64px tiles, 2px grout), for the closing statement only.
+- Station signage type for headlines, the motto and nav stop names only; Onest for reading; till digits for every price and total.
 - Flat surfaces with inset hairlines; the only real shadows lift screenshots and floating totals off the page.
-- Motion is CSS-only and scroll-driven where possible: stops fill as they pass, the mobile call bar rises after the hero.
+- Motion is CSS-only and scroll-driven where possible: the mobile call bar rises after the hero.
 
 ## Colors
 
@@ -173,7 +171,7 @@ A near-black tunnel with one signal green and one ceramic blue; everything else 
 All theme colors are defined once on `:root` with `light-dark(light, dark)`; `:root.dark` sets `color-scheme: dark`, and `index.html` applies the `dark` class before paint as the default. In the frontmatter, the unsuffixed key is the dark (default) value and the `-light` key is its light-mode partner. Cobalt and its text colors do not change between modes.
 
 ### Primary
-- **Line Green** (accent; dark `#2fbf6b`, light `#0b7a3e`): the metro line itself. The rail, every stop roundel ring and fill, the nav line map, primary buttons, the 2px outline on the highlighted Premium plan and on picked hardware, the "New" and "popular" markers, period badges, links, focus rings, caret, selection tint (28% mix). 8.1:1 on the dark ground, 5.0:1 on the light ground.
+- **Line Green** (accent; dark `#2fbf6b`, light `#0b7a3e`): the metro line itself. The nav line map and its stops, primary buttons, the 2px outline on the highlighted Premium plan and on picked hardware, the "New" and "popular" markers, period badges, links, focus rings, caret, selection tint (28% mix). 8.1:1 on the dark ground, 5.0:1 on the light ground.
 - **Line Green, lit** (accent-hover; dark `#3fcc7a`, light `#096834`): primary button hover only.
 - **Ticket Ink** (accent-ink; dark `#0b1a10`, light `#ffffff`): text on green buttons.
 
@@ -187,7 +185,7 @@ All theme colors are defined once on `:root` with `light-dark(light, dark)`; `:r
 - **Tunnel Ink Alt / Marble Alt** (bg-alt; `#12161a` / `#ebe8e1`): alternating sections (features, pricing).
 - **Card** (`#181d21` / `#fdfcf9`): cards, modals, the floating hardware total.
 - **Raised** (`#20272c` / `#e3dfd6`): secondary buttons, segmented-control track, icon-button hover.
-- **Marble White / Ink** (fg; `#eef0ec` / `#15191c`): headings and body text; also the train body.
+- **Marble White / Ink** (fg; `#eef0ec` / `#15191c`): headings and body text.
 - **Fog** (fg-2; `#a8b0b2` / `#4f575b`, 7.9:1 / 7.6:1): leads, descriptions, nav labels at rest.
 - **Ash** (fg-3; `#8a9396` / `#5c6468`, 5.6:1 / 4.9:1 on bg-alt): small print, currency labels, check icons.
 - **Hairline** (line; `rgb(238 240 236 / 0.09)` / `rgb(21 25 28 / 0.11)`): every border, rule and card edge, always drawn as an inset 1px shadow or a 1px top border.
@@ -196,7 +194,7 @@ All theme colors are defined once on `:root` with `light-dark(light, dark)`; `:r
 ### Named Rules
 **The One Line Rule.** Green is the line. If an element is green, it is on the line, it is the action, or it marks the current or chosen thing. No second accent color exists.
 
-**The Two Halls Rule.** Cobalt appears only as a full-bleed tile hall, and the page has two: the proverb and the closing. A third hall dilutes the pause.
+**The One Hall Rule.** Cobalt appears only as a full-bleed tile hall, and the page has one: the closing. A second hall dilutes the pause.
 
 **The Switch-Once Rule.** A theme color is declared once with `light-dark()` on `:root`; components never branch on the theme.
 
@@ -211,8 +209,8 @@ All theme colors are defined once on `:root` with `light-dark(light, dark)`; `:r
 All faces are self-hosted woff2 in `public/fonts`, split by unicode-range (latin, latin-ext, cyrillic) so Uzbek Latin, Russian and English each load only what they use, with `font-display: optional` so nothing swaps after first paint.
 
 ### Hierarchy
-- **Display** (Unbounded 500, clamp 30px to 56px, line-height 1.08, -0.03em): the hero headline only, capped at 14ch, carries the terminus roundel.
-- **Headline** (Unbounded 500, clamp 24px to 38px, 1.15, -0.025em): every section heading (each one is a stop), the proverb and the closing lines in the halls. Sector card titles use the signage face at clamp 20px to 28px.
+- **Display** (Unbounded 500, clamp 30px to 56px, line-height 1.08, -0.03em): the hero headline only, capped at 14ch.
+- **Headline** (Unbounded 500, clamp 24px to 38px, 1.15, -0.025em): every section heading and the closing lines in the hall. Sector card titles use the signage face at clamp 20px to 28px.
 - **Title** (Onest 500, clamp 19px to 22px, 1.3, -0.01em): plan names, feature rows, card titles.
 - **Lead** (Onest 400, clamp 17px to 19px, 1.55, Fog): the line under a headline, max about 46ch in the hero.
 - **Body** (Onest 400, 16px, 1.6): reading text, descriptions capped near 52ch. Inputs stay at 16px so phones do not zoom.
@@ -222,7 +220,7 @@ All faces are self-hosted woff2 in `public/fonts`, split by unicode-range (latin
 Headings use `text-wrap: balance`, paragraphs `text-wrap: pretty`.
 
 ### Named Rules
-**The Signage Rule.** Unbounded is for headlines, stop names and the mobile line-map menu (22px). Never for body text, buttons or labels.
+**The Signage Rule.** Unbounded is for headlines, the hero motto, nav stop names and the mobile line-map menu (22px). Never for body text, buttons or labels.
 
 **The Two Weights Rule.** Weights are 400 and 500. Size and color carry hierarchy, not bold.
 
@@ -230,13 +228,13 @@ Headings use `text-wrap: balance`, paragraphs `text-wrap: pretty`.
 
 ## Layout
 
-- **Container:** max 1200px, side padding 20px on phones and 32px from 640px. Inside `main`, the container's left padding widens to make room for the rail: 36px on phones, 96px from 1024px.
+- **Container:** max 1200px, side padding 20px on phones and 32px from 640px.
 - **Section rhythm:** vertical padding `clamp(4.5rem, 9vw, 7.5rem)`; sections alternate between the ground and `bg-alt`. The hero starts below the 60px header plus `clamp(3rem, 7vw, 6rem)`.
-- **Section heads:** left-aligned, max 640px, lead 16px below the heading. Only the two halls are centered.
+- **Section heads:** left-aligned, max 640px, lead 16px below the heading. Only the closing hall is centered.
 - **Hero stage:** a container-query composition (`container-type: inline-size`) at aspect 100:45: the desktop till at 82cqw from 5cqw, the phone payment screen at 20cqw straddling its right edge. Below 640px it recomposes to 100:66 with a larger phone (31cqw). Positions are in container units so the pair holds at any width.
 - **Tile layout in halls:** hall padding is whole tiles, 64px on phones and 128px from 768px, with minimum heights of 5 and 7 tiles, so the content block starts and ends on a grout line; the grid is anchored at center top.
 - **Grids:** features are a sticky heading column beside ruled rows (5:7 from 1024px); pricing is three columns from 1024px; hardware is a snap-scrolling row (78vw cards, max 300px) or a 2/3-column grid when expanded.
-- **Breakpoints:** 640px (gutter, hero recomposition), 768px (call bar hides, halls grow), 1024px (desktop rail, line-map nav, multi-column grids).
+- **Breakpoints:** 640px (gutter, hero recomposition), 768px (call bar hides, halls grow), 1024px (line-map nav, multi-column grids); 1280px (the hero motto moves beside the headline).
 - **Phones:** a fixed two-button call bar (call, Telegram) sits at the bottom below 768px; the body reserves 72px for it. No horizontal page scroll at 360px in any language (`overflow-x: clip` on body).
 - **Anchors:** `scroll-padding-top: 64px` so in-page jumps land under the header.
 
@@ -260,22 +258,19 @@ The system is flat. Surfaces separate by tone (ground, alt, card, raised) and by
 
 ## Shapes
 
-Gently rounded rectangles against perfect circles. Rectangles step up in radius with size: 6px focus rings, 7px segments, 8px small buttons and icon buttons, 10px buttons, fields and segmented tracks, 12px screenshots, 16px cards, 20px modals. Nested radii are concentric (segmented 10px outside, 3px padding, 7px inside; hardware photo 10px inside a 16px card with 8px margin). Circles belong to the line alone: stop roundels, the terminus ring-and-disc, nav and menu stops. The rail has 2px rounded ends; the train is a capsule (10 x 22px, 14 x 30px on desktop). Borders are always hairlines drawn as inset shadows, so they never change layout.
+Gently rounded rectangles against perfect circles. Rectangles step up in radius with size: 6px focus rings, 7px segments, 8px small buttons and icon buttons, 10px buttons, fields and segmented tracks, 12px screenshots, 16px cards, 20px modals. Nested radii are concentric (segmented 10px outside, 3px padding, 7px inside; hardware photo 10px inside a 16px card with 8px margin). Circles belong to the line alone: the nav and menu stops. Borders are always hairlines drawn as inset shadows, so they never change layout.
 
 ## Components
 
-### The Line (signature)
-The rail, its stops and the train are one grammar.
-- **Rail:** a solid green bar (3px on phones at 12px from the container edge, 4px at 42px from 1024px), absolutely positioned in `main`, from the hero terminus to the Aloqa terminus. Its end is measured once (`--rail-end`, ResizeObserver in App.jsx).
-- **Stop:** every section heading carries a roundel on the rail via `::before`: 14px (20px desktop) circle, a 3px (4px) green inner ring, and a 4px knock-out ring in the surrounding surface color (ground, alt or card) so the rail appears to pass behind it. Centered at 0.58em from the heading top.
-- **Stop passing:** with `animation-timeline: view()`, a stop's fill steps from the ground color to green once its heading has passed mid-viewport (`entry 0%` to `cover 50%`, `steps(1)`), animating a registered `--stop` color property. No scroll listener.
-- **Terminus:** the hero headline and the contact heading carry a larger roundel, ring plus inner disc (`radial-gradient` 30%): 24px on phones and 64px on desktop in the hero; 24px / 34px at Aloqa.
-- **Train:** a capsule in the text color with a 2px (3px) green ring, `position: sticky; top: 50vh` inside the rail, so it rides at mid-viewport.
+### Hero Motto Badge
+- **Content:** the proverb in Unbounded (17 to 20px, 1.25, -0.02em) in typographic quotes, its one-line meaning in Fog at 14px, and "O'zbek xalq maqoli" in green at 12px, 500.
+- **Surface:** Raised fill, 14px radius, 18px 20px 16px padding, Float shadow, max 340 to 360px wide.
+- **Placement:** from 1280px it sits in the hero's empty right side, its foot level with the action buttons; below that it follows the buttons in the flow (32px above it). It never covers the product screenshots.
 
 ### Cobalt Tile Hall (signature)
 - **Surface:** Glazed Cobalt with a 64px grid of 2px grout lines from two linear gradients; full bleed.
 - **Content:** centered, headline type in Hall White, supporting text in Hall Mist; at most one primary button (the closing).
-- **Use:** exactly the proverb ("Hisobli do'st ayrilmas") and the closing statement.
+- **Use:** the closing statement only.
 
 ### Buttons
 - **Shape:** gently rounded (10px), 44px minimum height, 10px 18px padding, 15px Onest 500, 8px icon gap.
@@ -325,7 +320,6 @@ The rail, its stops and the train are one grammar.
 ## Do's and Don'ts
 
 ### Do:
-- **Do** make every new section heading a stop (`t-h2 stop`) so the line keeps running through it, and keep the Aloqa terminus as the last stop.
 - **Do** declare any new theme color once on `:root` with `light-dark()`, and check contrast in both modes against the values in the Colors section.
 - **Do** set every price and total in Till Digits, and roll changing amounts with the Number Roll.
 - **Do** put product screenshots and hardware photos on Screen White with a 12px radius, hairline and Float.
@@ -335,10 +329,10 @@ The rail, its stops and the train are one grammar.
 
 ### Don't:
 - **Don't** introduce a second accent color; green is the line and the action.
-- **Don't** use cobalt outside the two tile halls, or add a third hall.
+- **Don't** use cobalt outside the closing tile hall, or add a second hall.
 - **Don't** set body text, buttons or labels in Unbounded, or use weights above 500.
 - **Don't** add drop shadows to page-level cards or sections; only placed objects (screens, phones, totals, dialogs) float.
-- **Don't** use circles for anything but the line's stops and roundels.
-- **Don't** add eyebrow or kicker labels above headings; the stop roundel already marks the section.
+- **Don't** use circles for anything but the nav line map's stops.
+- **Don't** add eyebrow or kicker labels above headings, or a rail down the side of the page; the heading carries the section.
 - **Don't** build a CSS device frame around phone screenshots; the screenshots arrive framed.
 - **Don't** add a theme editor or palette controls; the only theme control is the light/dark toggle, dark by default.

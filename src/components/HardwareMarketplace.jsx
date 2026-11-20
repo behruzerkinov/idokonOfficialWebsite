@@ -22,7 +22,7 @@ export const HardwareMarketplace = ({ lang, t, picked, onTogglePick, onClearPick
       <div className="wrap">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <header className="head">
-            <h2 className="t-h2 stop">{e.title}</h2>
+            <h2 className="t-h2">{e.title}</h2>
             <p className="t-lead">{e.lead}</p>
           </header>
           {!all && (

@@ -133,6 +133,17 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Finish: impeccable finish reviewer returned fix, then ship on all 8 fixes; detector shows only false positives on the <Img> component plus the intended tile grout; DESIGN.md and .impeccable/design.json written by the impeccable documenter.",
       "Checks: build, i18n (228 keys), 8 API tests, 22 e2e (1 skipped offline); no page overflow and CLS 0 at 360/375 in uz/ru/en. Lighthouse mobile 94-95/100/100/100, desktop 100/100/100/100."
     ]
+  },
+  {
+    "date": "2026-11-20",
+    "summary": "Owner feedback: removed the page-length green line and the proverb's tile hall; the proverb is now a badge in the hero.",
+    "changes": [
+      "Removed the rail, stop roundels, terminus roundels and the sticky train (CSS block, the rail element and its ResizeObserver in App.jsx, every stop/terminus class); section content uses the normal container gutter again.",
+      "Removed the Proverb section and its cobalt grid background (Proverb.jsx deleted). The closing statement keeps its tile hall.",
+      "Hero motto badge: the proverb in the signage face, its one-line meaning and 'O‘zbek xalq maqoli', on a raised card with the float shadow. From 1280px it sits in the hero's empty right side, level with the action buttons; below that it follows the buttons. It never covers the screenshots.",
+      "Kept the line-map navigation (desktop and the phone menu). DESIGN.md, .impeccable/design.json and the surface brief updated to match.",
+      "Checks: build, i18n (228 keys), 8 API tests, 22 e2e (1 skipped offline); no page overflow and CLS 0 at 360/375 in uz/ru/en. Lighthouse mobile 97/100/100/100, desktop 100/100/100/100."
+    ]
   }
 ]
 ```

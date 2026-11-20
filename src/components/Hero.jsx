@@ -8,7 +8,8 @@ export const HERO_SIZES = '(min-width: 1200px) 932px, (min-width: 640px) 78vw, 8
 
 /**
  * Left-aligned statement over the product. The stage is a device pair: the till on the desktop,
- * the payment step of the same sale on a phone straddling its edge.
+ * the payment step of the same sale on a phone straddling its edge. The proverb is a badge: in the hero's
+ * empty right side on wide screens, level with the actions; under the actions everywhere else.
  */
 export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
   const h = t.hero;
@@ -17,10 +18,10 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
   return (
     <section id="home" className="pt-[calc(60px+clamp(3rem,7vw,6rem))]">
       <div className="wrap">
-        <div className="max-w-[760px]">
-          <h1 className="t-display stop terminus max-w-[14ch]">{h.titleStart} {h.titleHighlight} {h.titleEnd}</h1>
-          <div className="mt-6">
-            <p className="t-lead max-w-[46ch]">{h.subtitle}</p>
+        <div className="relative">
+          <div className="max-w-[760px]">
+            <h1 className="t-display max-w-[14ch]">{h.titleStart} {h.titleHighlight} {h.titleEnd}</h1>
+            <p className="t-lead mt-6 max-w-[46ch]">{h.subtitle}</p>
             <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 text-[14px] fg-2">
               {meta.map((m) => (
                 <li key={m} className="flex items-center gap-2"><Check size={16} strokeWidth={1.75} className="fg-3" />{m}</li>
@@ -31,6 +32,13 @@ export const Hero = ({ t, onOpenDemo, onOpenLightbox }) => {
               <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToId('contact'); }} className="btn-secondary">{h.ctaSecondary}</a>
             </div>
           </div>
+          <figure className="motto">
+            <blockquote className="motto-quote">“{h.quote.replace(/\.$/, '')}”</blockquote>
+            <figcaption className="mt-2">
+              <p className="t-small fg-2">{h.quoteNote}</p>
+              <p className="mt-2 text-[12px] font-medium" style={{ color: 'var(--accent)' }}>{h.quoteBy}</p>
+            </figcaption>
+          </figure>
         </div>
 
         <div className="stage mt-[clamp(3rem,6vw,4.5rem)]">
