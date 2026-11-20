@@ -5,7 +5,6 @@ import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { StickyBar } from './components/StickyBar';
 import { useDark } from './lib/theme';
-import { useSpotlight } from './lib/interactions';
 import { scrollToId } from './lib/scroll';
 
 const BelowFold = lazy(() => import('./components/BelowFold'));
@@ -25,7 +24,6 @@ export default function App() {
   const [lightbox, setLightbox] = useState(null);
   const [prefill, setPrefill] = useState({});
   const [picked, setPicked] = useState(() => new Set());
-  useSpotlight();
   const t = translations[lang];
 
   useEffect(() => {
@@ -36,7 +34,7 @@ export default function App() {
   }, [lang, t]);
 
   const openDemo = useCallback(() => setIsDemoOpen(true), []);
-  const openLightbox = useCallback((url, title) => setLightbox({ url, title }), []);
+  const openLightbox = useCallback((name, title) => setLightbox({ name, title }), []);
   const togglePick = useCallback((id) => setPicked((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; }), []);
   const clearPicked = useCallback(() => setPicked(new Set()), []);
   const contactWith = useCallback((p) => { setPrefill(p); scrollToId('contact'); }, []);
@@ -46,7 +44,7 @@ export default function App() {
       <Navbar lang={lang} setLang={setLang} t={t} isDark={isDark} toggleTheme={toggleTheme} onOpenDemo={openDemo} />
       <main id="main">
         <Hero t={t} onOpenDemo={openDemo} onOpenLightbox={openLightbox} />
-        <Suspense fallback={<div className="min-h-[150vh]" />}>
+        <Suspense fallback={<div className="min-h-[200vh]" />}>
           <BelowFold t={t} lang={lang} picked={picked} onTogglePick={togglePick} onClearPicked={clearPicked} onOpenSpecs={setSpecs} onContact={contactWith} onOpenLightbox={openLightbox} onOpenDemo={openDemo} prefill={prefill} />
         </Suspense>
       </main>
@@ -55,7 +53,7 @@ export default function App() {
       <Suspense fallback={null}>
         {isDemoOpen && <DemoModal onClose={() => setIsDemoOpen(false)} t={t} lang={lang} />}
         {specs && <HardwareSpecsModal onClose={() => setSpecs(null)} product={specs} lang={lang} t={t} picked={picked.has(specs.id)} onTogglePick={togglePick} />}
-        {lightbox && <LightboxModal onClose={() => setLightbox(null)} image={lightbox.url} title={lightbox.title} closeLabel={t.lightbox.close} />}
+        {lightbox && <LightboxModal onClose={() => setLightbox(null)} image={lightbox.name} title={lightbox.title} closeLabel={t.lightbox.close} />}
       </Suspense>
     </>
   );

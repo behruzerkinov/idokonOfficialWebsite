@@ -1,10 +1,13 @@
 import { Modal } from './Modal';
+import { Img } from './Img';
 
 export default function LightboxModal({ onClose, image, title, closeLabel }) {
   return (
-    <Modal onClose={onClose} title={title} closeLabel={closeLabel} maxWidth="max-w-5xl">
-      <p className="mb-3 pr-10 text-sm font-medium">{title}</p>
-      <img src={image} alt={title} decoding="async" className="h-auto max-h-[75vh] w-full rounded-lg object-contain" />
+    <Modal onClose={onClose} title={title} closeLabel={closeLabel} maxWidth="max-w-6xl">
+      <p className="mb-4 pr-10 text-[17px] font-semibold">{title}</p>
+      <div className="shot">
+        <Img name={image} alt={title} sizes="(min-width: 1200px) 1100px, 100vw" />
+      </div>
     </Modal>
   );
 }

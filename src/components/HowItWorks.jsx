@@ -1,20 +1,18 @@
-import { Reveal } from './Reveal';
-
-/** Three numbered steps on one ruled row. */
+/** Three real steps, so they are numbered. */
 export const HowItWorks = ({ t }) => (
-  <section className="section">
-    <div className="container-page">
-      <Reveal className="max-w-2xl">
-        <h2 className="h2">{t.how.title}</h2>
-        <p className="lede mt-5">{t.how.lead}</p>
-      </Reveal>
-      <ol className="mt-12 grid border-t md:grid-cols-3" style={{ borderColor: 'var(--line)' }}>
+  <section className="section section-alt">
+    <div className="wrap">
+      <header className="head">
+        <h2 className="t-headline">{t.how.title}</h2>
+        <p className="t-intro">{t.how.lead}</p>
+      </header>
+      <ol className="mt-[clamp(3rem,6vw,4.5rem)] grid gap-10 md:grid-cols-3 md:gap-8">
         {[1, 2, 3].map((n) => (
-          <Reveal as="li" key={n} delay={(n - 1) * 0.1} className="border-b py-8 md:border-b-0 md:pr-8 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:pl-8" style={{ borderColor: 'var(--line)' }}>
-            <span className="chip-num">0{n}</span>
-            <h3 className="mt-6 text-lg font-bold tracking-tight">{t.how[`s${n}_title`]}</h3>
-            <p className="mt-2 text-[15px]" style={{ color: 'var(--muted)' }}>{t.how[`s${n}_desc`]}</p>
-          </Reveal>
+          <li key={n} className="text-center md:text-left">
+            <span className="block text-[48px] font-semibold leading-none tracking-tight" style={{ color: 'var(--accent)' }} aria-hidden="true">{n}</span>
+            <h3 className="t-title mt-5">{t.how[`s${n}_title`]}</h3>
+            <p className="muted mx-auto mt-2 max-w-[36ch] md:mx-0">{t.how[`s${n}_desc`]}</p>
+          </li>
         ))}
       </ol>
     </div>

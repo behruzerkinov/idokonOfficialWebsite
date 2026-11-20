@@ -4,6 +4,9 @@ export const SITE = {
   telegram: 'https://t.me/idokonuz',
   instagram: 'https://www.instagram.com/idokon_uz/',
   courseUrl: 'https://idokon-course.vercel.app',
+  // Store pages for the phone app. Each button shows only once its link is filled in.
+  appStore: null,
+  googlePlay: null,
   domain: 'https://idokon.uz',
   // Offline mode: forms are hidden and visitors see call / Telegram buttons.
   // Set true once TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are set (see api/lead.js).
@@ -12,7 +15,6 @@ export const SITE = {
   supportHours: null,
   brand: {
     logo: '/idokon_logo.webp',
-    heroImage: '/brand/hero-shop.webp', // Higgsfield doodle, 757x558
   },
   plans: [
     { id: 'start', monthly: 100000, '6m': 500000, '12m': 1000000 },

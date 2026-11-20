@@ -25,15 +25,13 @@ export const translations = {
       "ctaPrimary": "Demo ishlatib ko‘rish",
       "ctaSecondary": "Bog‘lanish",
       "imageAlt": "iDokon kassa dasturi oynasi: tovarlar ro‘yxati va savdo hisobi",
-      "eyebrow": "SAVDO BOSHQARUVINING YANGI STANDARTI",
+      "eyebrow": "Savdo boshqaruvining yangi standarti",
       "titleStart": "Savdoni",
       "titleHighlight": "aniq raqamlar",
       "titleEnd": "bilan boshqaring",
       "meta1": "Windows va Web",
       "meta2": "10 daqiqada ishga tushadi",
       "meta3": "Telefon va Telegram orqali yordam",
-      "liveStatus": "Tizim ishlamoqda",
-      "windowTitle": "iDokon · Kassalar",
       "zoom": "Kattalashtirish",
       "quote": "Hisobli do‘st ayrilmas.",
       "quoteBy": "O‘zbek xalq maqoli",
@@ -62,7 +60,6 @@ export const translations = {
         "stock": "Qoldiqlar",
         "abc": "ABC tahlil"
       },
-      "eyebrow": "DASTURNING ASOSIY XUSUSIYATLARI",
       "tablist": "Dastur ekranlari",
       "p1_title": "Inventarizatsiyani boshqarish",
       "p1_desc": "Zaxira va kirim–chiqimni avtomatik kuzatib, minimal qoldiqni eslatadi.",
@@ -71,13 +68,7 @@ export const translations = {
       "p3_title": "Hisobot va tahlil",
       "p3_desc": "Aylanma va foydani real vaqtda ko‘rsatib, eksport va filial kesimini beradi.",
       "p4_title": "Xavfsiz tezkor tranzaksiya",
-      "p4_desc": "EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija.",
-      "screens": {
-        "pos": "KASSA · SOTUV OYNASI",
-        "sales": "SAVDO HISOBOTI",
-        "stock": "QOLDIQLAR HISOBOTI",
-        "abc": "ABC TAHLIL"
-      }
+      "p4_desc": "EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija."
     },
     "sectors": {
       "title": "Har xil savdo formati. Bitta ishonchli tizim.",
@@ -87,8 +78,7 @@ export const translations = {
       "s2": "Supermarketlar",
       "s2_desc": "Yuqori oqim va ko‘p kassali savdo",
       "s3": "Mini-marketlar",
-      "s3_desc": "Sodda, tez va tejamkor boshqaruv",
-      "eyebrow": "KIMLAR UCHUN"
+      "s3_desc": "Sodda, tez va tejamkor boshqaruv"
     },
     "care": {
       "title": "Biz sizning yoningizda bo'lamiz",
@@ -116,17 +106,15 @@ export const translations = {
       "next": "Keyingi qurilmalar",
       "details": "Batafsil ma'lumot",
       "close": "Yopish",
-      "officialPrice": "Rasmiy Narxi:",
       "parameters": "Parametrlar:",
-      "eyebrow": "POS QURILMALARI",
       "viewAll": "Barcha qurilmalarni ko‘rish",
       "viewRow": "Qatorda ko‘rish",
       "cat": {
-        "monoblock": "MONOBLOK TERMINAL",
-        "printers": "CHEK VA ETIKETKA PRINTERI",
-        "scanners": "SHTRIX SKANER",
-        "drawers": "KASSA QUTISI",
-        "scales": "TAROZI"
+        "monoblock": "Monoblok terminal",
+        "printers": "Chek va etiketka printeri",
+        "scanners": "Shtrix skaner",
+        "drawers": "Kassa qutisi",
+        "scales": "Tarozi"
       },
       "pick": "Tanlash",
       "picked": "Tanlandi",
@@ -189,7 +177,6 @@ export const translations = {
           "Seyf: barcha pul mablag‘lari bitta joyda"
         ]
       },
-      "eyebrow": "SHAFFOF NARXLASH",
       "isNew": "Yangi",
       "plus": "{p} tarifidagi barcha imkoniyatlar, va:",
       "plus2": "{a} va {b} tariflaridagi barcha imkoniyatlar, va:"
@@ -219,14 +206,12 @@ export const translations = {
           "q": "Biznesim uchun to‘g‘ri POS tizimini qanday tanlayman?",
           "a": "Do‘koningiz hajmi, tovarlar soni va kundalik ehtiyojlaringizdan kelib chiqib tanlang. Eng muhimi — dastur oflayn ishlay olishi, texnik yordam xizmati tezkor bo‘lishi hamda skaner va chek printeri kabi qurilmalar bilan muammosiz ulanishi kerak."
         }
-      ],
-      "eyebrow": "SAVOLINGIZ BORMI?"
+      ]
     },
     "contact": {
       "title": "Do‘koningiz uchun to‘g‘ri konfiguratsiyani topamiz",
       "lead": "Savollaringizni yozib qoldiring — jamoamiz ehtiyojingizni o‘rganib, mos tarif va qurilmalar bo‘yicha yordam beradi.",
       "formTitle": "Biz bilan bog‘laning",
-      "eyebrow": "BIZ BILAN BOG‘LANISH",
       "storeTypeOptions": [
         "Oziq-ovqat / Supermarket",
         "Kiyim-kechak va poyabzal",
@@ -286,24 +271,22 @@ export const translations = {
       "w2": "Endi siz ham do‘koningizda sinab ko‘ring!"
     },
     "features": {
-      "eyebrow": "iDokon BILAN BIZNESINGIZNI RIVOJLANTIRING",
       "title": "Sodda interfeys. Kuchli boshqaruv.",
       "lead": "Kassirga tezlik, rahbarga nazorat, mijozga esa silliq xarid tajribasi beradigan savdo nuqtasi tizimi.",
-      "f1_title": "Savdo tezligi ↑",
+      "f1_title": "Savdo tezligi",
       "f1_desc": "Bir bosishda to‘lov — kam xatolik va tez navbat. Kunning oxirida natijalar darhol ko‘rinadi.",
-      "f1_tag": "NAQD · KARTA · QR",
+      "f1_tag": "Naqd · Karta · QR",
       "f2_title": "Kassirlar uchun sodda",
       "f2_desc": "Skaner bilan tez qidiruv, chegirma va bonuslar. Yangi kassir ham interfeysni tez o‘rganadi.",
-      "f2_tag": "QULAY INTERFEYS",
+      "f2_tag": "Qulay interfeys",
       "f3_title": "Hisobot va nazorat",
       "f3_desc": "Aylanma, foyda va top mahsulotlar onlayn. Filiallar kesimida ko‘rish va eksport bir tugmada.",
-      "f3_tag": "REAL VAQT",
+      "f3_tag": "Real vaqt",
       "f4_title": "O‘rnatish va integratsiya",
       "f4_desc": "Windows’da 10 daqiqada ishga tushadi. Printer, skaner, terminal va Tez QR bilan kengayadi.",
-      "f4_tag": "TAYYOR EKOTIZIM"
+      "f4_tag": "Tayyor ekotizim"
     },
     "integrations": {
-      "eyebrow": "TIZIMLAR BILAN INTEGRATSIYA",
       "title": "Mavjud tizimdan uzilmasdan yangisiga o‘ting",
       "lead": "iDokon mavjud kassa tizimlari bilan oson bog‘lanadi. Ma’lumotlaringiz saqlanadi, jamoamiz esa o‘tish jarayonida yoningizda bo‘ladi.",
       "c1_title": "Tez ulanish",
@@ -312,19 +295,17 @@ export const translations = {
       "c2_desc": "Barcha ma’lumotlar saqlanib qoladi",
       "c3_title": "Texnik yordam",
       "c3_desc": "Integratsiya jarayonida to‘liq qo‘llab-quvvatlash",
-      "supported": "QO‘LLAB-QUVVATLANADIGAN TIZIMLAR",
       "mk": "Soliq idorasi bilan bog‘langan onlayn kassa tizimi",
       "ar": "Keng tarqalgan kassa va hisobot tizimi",
       "otherTitle": "Boshqa tizimlar",
       "otherDesc": "Tizimingiz ro‘yxatda yo‘qmi? Integratsiya imkoniyatlarini biz bilan muhokama qiling.",
-      "payments": "TO‘LOV TIZIMLARI",
-      "fiscal": "ONLAYN KASSA VA SOLIQ",
+      "payments": "To‘lov tizimlari",
+      "fiscal": "Onlayn kassa va soliq",
       "click": "Click orqali to‘lov qabul qilish",
       "payme": "Payme orqali to‘lov qabul qilish",
       "uzum": "Uzum orqali to‘lov qabul qilish"
     },
     "course": {
-      "eyebrow": "BILIM BAZASI",
       "title": "iDokon Kursi",
       "lead": "POS dasturini to‘liq va oson o‘rganing. Har bir modulda amaliy misollar va video darslar bor.",
       "highlight": "Kursni tugatgan har bir mijoz programmani mustaqil ishlata oladi va savollarga tez javob topadi.",
@@ -334,7 +315,6 @@ export const translations = {
       "shot3": "Kurs: qurilmalar"
     },
     "mobileApp": {
-      "eyebrow": "MOBIL ILOVALAR",
       "title": "iDokon doimo cho‘ntagingizda: iOS va Android",
       "lead": "Do‘koningiz qayerda bo‘lsangiz ham nazoratingizda. Savdolar, kunlik tushum va kassa holatini real vaqtda kuzating, yoki to‘g‘ridan-to‘g‘ri telefoningizdan savdo qiling.",
       "f1_title": "Real vaqt nazorati",
@@ -343,30 +323,10 @@ export const translations = {
       "f2_desc": "Telefon kamerasi orqali tovarlar shtrixkodini bir zumda skaner qiling va savdoga qo‘shing.",
       "f3_title": "Doimiy onlayn sinxronizatsiya",
       "f3_desc": "Barcha savdolar real vaqtda yagona bulut bazasiga uzatiladi — do‘koningiz doimo onlayn nazoratda.",
-      "downloadFrom": "Yuklab oling",
       "appStore": "App Store",
       "googlePlay": "Google Play",
-      "compatible": "iOS 15+ va Android 8.0+ uchun mos · Doimiy onlayn sinxronizatsiya",
-      "tabPos": "Kassa & Skaner (POS)",
-      "tabDashboard": "Boshqaruv paneli",
-      "uiScanTitle": "Skaner va Tezkor Kassa",
-      "uiPay": "To‘lov qabul qilish",
-      "uiProd1": "Pepsi 1.5L",
-      "uiProd1Qty": "2 dona x 8 000",
-      "uiTodaySales": "Bugungi tushum",
-      "uiSum": "4 850 000 so‘m",
-      "uiChecks": "128 ta chek",
-      "uiAvgCheck": "37 890 so‘m",
-      "uiRecentSales": "Oxirgi cheklar",
-      "uiCheck1": "Chek #1048 · Karta",
-      "uiCheck1Sum": "145 000 so‘m",
-      "uiCheck2": "Chek #1047 · Naqd",
-      "uiCheck2Sum": "32 000 so‘m",
-      "badgeReceipt": "Yangi chek: 145 000 so‘m",
-      "badgeReceiptTime": "hozirgina",
-      "badgeSync": "Bulut bilan faol bog‘lanish",
-      "badgeSyncDesc": "Doimiy onlayn yangilanmoqda"
-}
+      "compatible": "iOS 15+ va Android 8.0+ uchun mos · Doimiy onlayn sinxronizatsiya"
+    }
   },
   "ru": {
     "skip": "Перейти к содержанию",
@@ -394,15 +354,13 @@ export const translations = {
       "ctaPrimary": "Попробовать демо",
       "ctaSecondary": "Связаться",
       "imageAlt": "Окно кассовой программы iDokon: список товаров и учет продаж",
-      "eyebrow": "НОВЫЙ СТАНДАРТ УПРАВЛЕНИЯ ТОРГОВЛЕЙ",
+      "eyebrow": "Новый стандарт управления торговлей",
       "titleStart": "Управляйте продажами",
       "titleHighlight": "по точным цифрам",
       "titleEnd": "",
       "meta1": "Windows и Web",
       "meta2": "Запуск за 10 минут",
       "meta3": "Поддержка по телефону и в Telegram",
-      "liveStatus": "Система работает",
-      "windowTitle": "iDokon · Кассы",
       "zoom": "Увеличить",
       "quote": "Счёт дружбы не портит.",
       "quoteBy": "Народная мудрость",
@@ -431,7 +389,6 @@ export const translations = {
         "stock": "Остатки",
         "abc": "ABC-анализ"
       },
-      "eyebrow": "ОСНОВНЫЕ ВОЗМОЖНОСТИ ПРОГРАММЫ",
       "tablist": "Экраны программы",
       "p1_title": "Управление запасами",
       "p1_desc": "Автоматически отслеживает остатки и приход–расход, напоминает о минимальном остатке.",
@@ -440,13 +397,7 @@ export const translations = {
       "p3_title": "Отчеты и аналитика",
       "p3_desc": "Показывает оборот и прибыль в реальном времени, дает экспорт и разрез по филиалам.",
       "p4_title": "Безопасные быстрые транзакции",
-      "p4_desc": "Защищенная оплата на основе EMV, быстрое подтверждение и надежный результат.",
-      "screens": {
-        "pos": "КАССА · ОКНО ПРОДАЖИ",
-        "sales": "ОТЧЁТ О ПРОДАЖАХ",
-        "stock": "ОТЧЁТ ПО ОСТАТКАМ",
-        "abc": "ABC-АНАЛИЗ"
-      }
+      "p4_desc": "Защищенная оплата на основе EMV, быстрое подтверждение и надежный результат."
     },
     "sectors": {
       "title": "Разные форматы торговли. Одна надежная система.",
@@ -456,8 +407,7 @@ export const translations = {
       "s2": "Супермаркеты",
       "s2_desc": "Высокий поток и несколько касс",
       "s3": "Мини-маркеты",
-      "s3_desc": "Простое, быстрое и экономичное управление",
-      "eyebrow": "ДЛЯ КОГО"
+      "s3_desc": "Простое, быстрое и экономичное управление"
     },
     "care": {
       "title": "Мы остаёмся рядом с вами",
@@ -485,17 +435,15 @@ export const translations = {
       "next": "Следующие устройства",
       "details": "Подробнее",
       "close": "Закрыть",
-      "officialPrice": "Официальная цена:",
       "parameters": "Параметры:",
-      "eyebrow": "POS-ОБОРУДОВАНИЕ",
       "viewAll": "Показать все устройства",
       "viewRow": "Показать в ряд",
       "cat": {
-        "monoblock": "МОНОБЛОК-ТЕРМИНАЛ",
-        "printers": "ПРИНТЕР ЧЕКОВ И ЭТИКЕТОК",
-        "scanners": "СКАНЕР ШТРИХКОДОВ",
-        "drawers": "ДЕНЕЖНЫЙ ЯЩИК",
-        "scales": "ВЕСЫ"
+        "monoblock": "Моноблок-терминал",
+        "printers": "Принтер чеков и этикеток",
+        "scanners": "Сканер штрихкодов",
+        "drawers": "Денежный ящик",
+        "scales": "Весы"
       },
       "pick": "Выбрать",
       "picked": "Выбрано",
@@ -558,7 +506,6 @@ export const translations = {
           "Сейф: все денежные средства в одном месте"
         ]
       },
-      "eyebrow": "ПРОЗРАЧНЫЕ ЦЕНЫ",
       "isNew": "Новое",
       "plus": "Всё, что есть в тарифе {p}, а также:",
       "plus2": "Всё, что есть в тарифах {a} и {b}, а также:"
@@ -588,14 +535,12 @@ export const translations = {
           "q": "Как выбрать подходящую POS-систему для своего бизнеса?",
           "a": "Выбирайте исходя из масштаба магазина, количества товаров и повседневных потребностей. Главное — программа должна стабильно работать офлайн, служба поддержки должна быть оперативной, а подключение сканеров и принтеров чеков — бесперебойным."
         }
-      ],
-      "eyebrow": "ЕСТЬ ВОПРОСЫ?"
+      ]
     },
     "contact": {
       "title": "Подберем правильную конфигурацию для вашего магазина",
       "lead": "Оставьте вопросы — команда изучит вашу потребность и поможет с тарифом и оборудованием.",
       "formTitle": "Свяжитесь с нами",
-      "eyebrow": "СВЯЖИТЕСЬ С НАМИ",
       "storeTypeOptions": [
         "Продукты питания / Супермаркет",
         "Одежда и обувь",
@@ -655,24 +600,22 @@ export const translations = {
       "w2": "Теперь попробуйте и в своём магазине!"
     },
     "features": {
-      "eyebrow": "РАЗВИВАЙТЕ БИЗНЕС С iDokon",
       "title": "Простой интерфейс. Мощное управление.",
       "lead": "Система, которая дает кассиру скорость, руководителю контроль, а покупателю — удобную покупку.",
-      "f1_title": "Скорость продаж ↑",
+      "f1_title": "Скорость продаж",
       "f1_desc": "Оплата в один клик — меньше ошибок и короче очередь. Итоги дня видны сразу.",
-      "f1_tag": "НАЛИЧНЫЕ · КАРТА · QR",
+      "f1_tag": "Наличные · Карта · QR",
       "f2_title": "Просто для кассиров",
       "f2_desc": "Быстрый поиск сканером, скидки и бонусы. Новый кассир быстро осваивает интерфейс.",
-      "f2_tag": "УДОБНЫЙ ИНТЕРФЕЙС",
+      "f2_tag": "Удобный интерфейс",
       "f3_title": "Отчеты и контроль",
       "f3_desc": "Оборот, прибыль и топ-товары онлайн. Просмотр по филиалам и экспорт в один клик.",
-      "f3_tag": "РЕАЛЬНОЕ ВРЕМЯ",
+      "f3_tag": "Реальное время",
       "f4_title": "Установка и интеграция",
       "f4_desc": "Запускается на Windows за 10 минут. Расширяется принтерами, сканерами, терминалами и Tez QR.",
-      "f4_tag": "ГОТОВАЯ ЭКОСИСТЕМА"
+      "f4_tag": "Готовая экосистема"
     },
     "integrations": {
-      "eyebrow": "ИНТЕГРАЦИЯ С СИСТЕМАМИ",
       "title": "Перейдите на новую систему без остановки работы",
       "lead": "iDokon легко подключается к существующим кассовым системам. Ваши данные сохраняются, а наша команда рядом на время перехода.",
       "c1_title": "Быстрое подключение",
@@ -681,19 +624,17 @@ export const translations = {
       "c2_desc": "Все данные сохраняются",
       "c3_title": "Техническая поддержка",
       "c3_desc": "Полная поддержка в процессе интеграции",
-      "supported": "ПОДДЕРЖИВАЕМЫЕ СИСТЕМЫ",
       "mk": "Онлайн-касса, связанная с налоговой службой",
       "ar": "Распространенная кассовая и отчетная система",
       "otherTitle": "Другие системы",
       "otherDesc": "Вашей системы нет в списке? Обсудите возможности интеграции с нами.",
-      "payments": "ПЛАТЁЖНЫЕ СИСТЕМЫ",
-      "fiscal": "ОНЛАЙН-КАССА И НАЛОГОВАЯ",
+      "payments": "Платёжные системы",
+      "fiscal": "Онлайн-касса и налоговая",
       "click": "Приём оплаты через Click",
       "payme": "Приём оплаты через Payme",
       "uzum": "Приём оплаты через Uzum"
     },
     "course": {
-      "eyebrow": "БАЗА ЗНАНИЙ",
       "title": "Курс iDokon",
       "lead": "Освойте POS-программу полностью и легко. В каждом модуле есть практические примеры и видеоуроки.",
       "highlight": "Каждый клиент, прошедший курс, сможет самостоятельно работать в программе и быстро находить ответы на вопросы.",
@@ -703,7 +644,6 @@ export const translations = {
       "shot3": "Курс: устройства"
     },
     "mobileApp": {
-      "eyebrow": "МОБИЛЬНЫЕ ПРИЛОЖЕНИЯ",
       "title": "iDokon всегда в вашем кармане: iOS и Android",
       "lead": "Ваш магазин под контролем, где бы вы ни находились. Отслеживайте продажи, выручку и статус кассы в реальном времени или пробивайте чеки прямо со смартфона.",
       "f1_title": "Контроль в реальном времени",
@@ -712,30 +652,10 @@ export const translations = {
       "f2_desc": "Считывайте штрихкоды камерой смартфона мгновенно и сразу добавляйте в чек.",
       "f3_title": "Постоянная онлайн-синхронизация",
       "f3_desc": "Все продажи передаются в единую облачную базу в реальном времени — ваш магазин всегда на связи.",
-      "downloadFrom": "Загрузите в",
       "appStore": "App Store",
       "googlePlay": "Google Play",
-      "compatible": "Совместимо с iOS 15+ и Android 8.0+ · Постоянная онлайн-синхронизация",
-      "tabPos": "Касса и Сканер (POS)",
-      "tabDashboard": "Панель управления",
-      "uiScanTitle": "Сканер и Мобильная Касса",
-      "uiPay": "Принять оплату",
-      "uiProd1": "Pepsi 1.5L",
-      "uiProd1Qty": "2 шт x 8 000",
-      "uiTodaySales": "Выручка за сегодня",
-      "uiSum": "4 850 000 сум",
-      "uiChecks": "128 чеков",
-      "uiAvgCheck": "37 890 сум",
-      "uiRecentSales": "Последние чеки",
-      "uiCheck1": "Чек #1048 · Карта",
-      "uiCheck1Sum": "145 000 сум",
-      "uiCheck2": "Чек #1047 · Наличные",
-      "uiCheck2Sum": "32 000 сум",
-      "badgeReceipt": "Новый чек: 145 000 сум",
-      "badgeReceiptTime": "только что",
-      "badgeSync": "Связь с облаком активна",
-      "badgeSyncDesc": "Постоянно онлайн в реальном времени"
-}
+      "compatible": "Совместимо с iOS 15+ и Android 8.0+ · Постоянная онлайн-синхронизация"
+    }
   },
   "en": {
     "skip": "Skip to content",
@@ -763,15 +683,13 @@ export const translations = {
       "ctaPrimary": "Try the demo",
       "ctaSecondary": "Get in touch",
       "imageAlt": "iDokon till software window: product list and sales record",
-      "eyebrow": "THE NEW STANDARD IN RETAIL MANAGEMENT",
+      "eyebrow": "The new standard in retail management",
       "titleStart": "Run your sales with",
       "titleHighlight": "accurate numbers",
       "titleEnd": "",
       "meta1": "Windows & Web",
       "meta2": "Live in 10 minutes",
       "meta3": "Phone and Telegram support",
-      "liveStatus": "System online",
-      "windowTitle": "iDokon · Tills",
       "zoom": "Enlarge",
       "quote": "Clear accounts keep good friends.",
       "quoteBy": "Uzbek proverb",
@@ -800,7 +718,6 @@ export const translations = {
         "stock": "Stock",
         "abc": "ABC analysis"
       },
-      "eyebrow": "CORE FEATURES",
       "tablist": "Software screens",
       "p1_title": "Inventory management",
       "p1_desc": "Tracks stock and goods in and out, and reminds you of the minimum level.",
@@ -809,13 +726,7 @@ export const translations = {
       "p3_title": "Reports and analysis",
       "p3_desc": "Shows turnover and profit in real time, with export and branch view.",
       "p4_title": "Safe, fast transactions",
-      "p4_desc": "EMV-based protected payment, quick confirmation and a reliable result.",
-      "screens": {
-        "pos": "TILL · SALE SCREEN",
-        "sales": "SALES REPORT",
-        "stock": "STOCK REPORT",
-        "abc": "ABC ANALYSIS"
-      }
+      "p4_desc": "EMV-based protected payment, quick confirmation and a reliable result."
     },
     "sectors": {
       "title": "Every kind of shop. One reliable system.",
@@ -825,8 +736,7 @@ export const translations = {
       "s2": "Supermarkets",
       "s2_desc": "High traffic and several tills",
       "s3": "Mini-markets",
-      "s3_desc": "Simple, fast and low-cost management",
-      "eyebrow": "WHO IT IS FOR"
+      "s3_desc": "Simple, fast and low-cost management"
     },
     "care": {
       "title": "We stay with you",
@@ -854,17 +764,15 @@ export const translations = {
       "next": "Next devices",
       "details": "Details",
       "close": "Close",
-      "officialPrice": "Official Price:",
       "parameters": "Parameters:",
-      "eyebrow": "POS HARDWARE",
       "viewAll": "See all devices",
       "viewRow": "Show in a row",
       "cat": {
-        "monoblock": "ALL-IN-ONE TERMINAL",
-        "printers": "RECEIPT AND LABEL PRINTER",
-        "scanners": "BARCODE SCANNER",
-        "drawers": "CASH DRAWER",
-        "scales": "SCALE"
+        "monoblock": "All-in-one terminal",
+        "printers": "Receipt and label printer",
+        "scanners": "Barcode scanner",
+        "drawers": "Cash drawer",
+        "scales": "Scale"
       },
       "pick": "Select",
       "picked": "Selected",
@@ -927,7 +835,6 @@ export const translations = {
           "Safe: all your cash in one place"
         ]
       },
-      "eyebrow": "CLEAR PRICING",
       "isNew": "New",
       "plus": "Everything in {p}, plus:",
       "plus2": "Everything in {a} and {b}, plus:"
@@ -957,14 +864,12 @@ export const translations = {
           "q": "How do I choose the right POS system for my business?",
           "a": "Choose based on your store size, number of items, and daily business needs. Most importantly: reliable offline operation, fast responsive customer support, and seamless connection with barcode scanners and receipt printers."
         }
-      ],
-      "eyebrow": "GOT A QUESTION?"
+      ]
     },
     "contact": {
       "title": "We will find the right setup for your shop",
       "lead": "Leave your questions. Our team will look at your needs and help with a plan and devices.",
       "formTitle": "Contact us",
-      "eyebrow": "GET IN TOUCH",
       "storeTypeOptions": [
         "Grocery / Supermarket",
         "Apparel & Footwear",
@@ -1024,24 +929,22 @@ export const translations = {
       "w2": "Now try it in your own shop!"
     },
     "features": {
-      "eyebrow": "GROW YOUR BUSINESS WITH iDokon",
       "title": "Simple interface. Strong control.",
       "lead": "A point-of-sale system that gives cashiers speed, managers control and customers a smooth checkout.",
-      "f1_title": "Faster sales ↑",
+      "f1_title": "Faster sales",
       "f1_desc": "One-tap payment means fewer errors and shorter lines. Results are visible right at closing time.",
-      "f1_tag": "CASH · CARD · QR",
+      "f1_tag": "Cash · Card · QR",
       "f2_title": "Easy for cashiers",
       "f2_desc": "Fast scanner search, discounts and bonuses. A new cashier learns the screen quickly.",
-      "f2_tag": "FRIENDLY INTERFACE",
+      "f2_tag": "Friendly interface",
       "f3_title": "Reports and control",
       "f3_desc": "Turnover, profit and top products online. Branch view and export in one click.",
-      "f3_tag": "REAL TIME",
+      "f3_tag": "Real time",
       "f4_title": "Setup and integration",
       "f4_desc": "Starts on Windows in 10 minutes. Extends with printers, scanners, terminals and Tez QR.",
-      "f4_tag": "READY ECOSYSTEM"
+      "f4_tag": "Ready ecosystem"
     },
     "integrations": {
-      "eyebrow": "SYSTEM INTEGRATION",
       "title": "Move to the new system without stopping work",
       "lead": "iDokon connects easily to existing till systems. Your data is kept, and our team stays with you through the switch.",
       "c1_title": "Quick connection",
@@ -1050,19 +953,17 @@ export const translations = {
       "c2_desc": "All your data is kept",
       "c3_title": "Technical support",
       "c3_desc": "Full support during the integration",
-      "supported": "SUPPORTED SYSTEMS",
       "mk": "Online till system linked to the tax office",
       "ar": "A widely used till and reporting system",
       "otherTitle": "Other systems",
       "otherDesc": "Is your system not listed? Talk to us about integration options.",
-      "payments": "PAYMENT SYSTEMS",
-      "fiscal": "ONLINE TILL AND TAX",
+      "payments": "Payment systems",
+      "fiscal": "Online till and tax",
       "click": "Accept payments with Click",
       "payme": "Accept payments with Payme",
       "uzum": "Accept payments with Uzum"
     },
     "course": {
-      "eyebrow": "KNOWLEDGE BASE",
       "title": "iDokon Course",
       "lead": "Learn the POS software fully and easily. Each module has practical examples and video lessons.",
       "highlight": "Every client who finishes the course can use the program on their own and find answers quickly.",
@@ -1072,7 +973,6 @@ export const translations = {
       "shot3": "Course: devices"
     },
     "mobileApp": {
-      "eyebrow": "MOBILE APPS",
       "title": "iDokon in your pocket: iOS and Android",
       "lead": "Your shop stays under control wherever you are. Monitor live sales, daily turnover and checkout status in real time, or ring up sales directly from your smartphone.",
       "f1_title": "Real-time monitoring",
@@ -1081,29 +981,9 @@ export const translations = {
       "f2_desc": "Scan barcodes instantly using your phone camera and add directly to the cart.",
       "f3_title": "Always-online cloud sync",
       "f3_desc": "All transactions stream to the central cloud database in real time — your store is always live.",
-      "downloadFrom": "Download on",
       "appStore": "App Store",
       "googlePlay": "Google Play",
-      "compatible": "Compatible with iOS 15+ and Android 8.0+ · Always-online cloud sync",
-      "tabPos": "Checkout & Scanner (POS)",
-      "tabDashboard": "Management Dashboard",
-      "uiScanTitle": "Scanner & Mobile POS",
-      "uiPay": "Accept payment",
-      "uiProd1": "Pepsi 1.5L",
-      "uiProd1Qty": "2 pcs x 8,000",
-      "uiTodaySales": "Today's sales",
-      "uiSum": "4,850,000 UZS",
-      "uiChecks": "128 receipts",
-      "uiAvgCheck": "37,890 UZS",
-      "uiRecentSales": "Recent receipts",
-      "uiCheck1": "Receipt #1048 · Card",
-      "uiCheck1Sum": "145,000 UZS",
-      "uiCheck2": "Receipt #1047 · Cash",
-      "uiCheck2Sum": "32,000 UZS",
-      "badgeReceipt": "New receipt: 145,000 UZS",
-      "badgeReceiptTime": "just now",
-      "badgeSync": "Active Cloud Connection",
-      "badgeSyncDesc": "Syncing live in real time"
-}
+      "compatible": "Compatible with iOS 15+ and Android 8.0+ · Always-online cloud sync"
+    }
   }
 };

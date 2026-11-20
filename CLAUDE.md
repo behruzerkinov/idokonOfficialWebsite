@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6 + Tailwind 3, bun. Copy in uz (default), ru, en.
+Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6 + Tailwind 3, bun. Copy in uz (default), ru, en. Runtime dependencies: react and react-dom only.
 
 ## Rules from the owner
 
@@ -20,9 +20,11 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
 
 - `src/data/site.js`: facts (phones, links, plans and prices, claims, `leadsEnabled`), `formatNum` / `formatPrice`.
 - `src/data/translations.js`: all copy, same keys in every language (`bun run check:i18n`).
-- `src/index.css`: tokens, components, navbar, dialogs, scroll-driven motion, `NumberRoll` styles.
+- `src/index.css`: tokens (light-dark), type scale, tiles, pill buttons, navbar material, dialogs, FAQ, `NumberRoll`.
+- `src/components/Img.jsx` + `scripts/images.mjs` (`bun run images`, needs ffmpeg): masters live in `assets/`, responsive AVIF/WebP go to `public/img/`. Every image has width/height; lazy ones fade in once decoded.
+- `src/components/icons.jsx`: inline line icons (Lucide paths), no icon package.
 - `src/components/BelowFold.jsx`: everything under the hero, one lazy chunk.
-- `src/lib/scroll.js`: in-page navigation (`scrollToId`); `src/lib/theme.js`: dark toggle; `src/lib/interactions.js`: spotlight glow, drag-scroll.
+- `src/lib/scroll.js`: in-page navigation (`scrollToId`); `src/lib/theme.js`: dark toggle.
 - `api/lead.js`: lead delivery to Telegram (off while `SITE.leadsEnabled` is false).
 
 ## History
@@ -87,6 +89,22 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Always-online cloud sync: removed 100% offline claims and offline badges. Updated to always-online real-time cloud sync with live active connection telemetry badge.",
       "Premier store badge aesthetics: redesigned App Store and Google Play badges to match official vendor branding in luxury obsidian style with authentic Apple & 4-color Google Play vector marks, refined typography, and removed awkward arrows & generative pseudo-QR.",
       "Interactive screenshot transitions: added view toggle between POS Kassa (scanner & checkout) and Management Dashboard with smooth 3D perspective depth, rotational transitions, and ambient lighting."
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "summary": "Apple-grade rebuild (apple-design skill, HIG): quieter type and colour, tiles instead of templated cards, production images, purposeful motion only, two runtime dependencies.",
+    "changes": [
+      "Design: system UI font (SF Pro / Segoe UI) with one type scale (80/56/28/21/17/14), black/white surfaces with #1d1d1f / #f5f5f7 tiles, brand green kept for primary actions and links only (contrast ratios noted in index.css), pill buttons, translucent system-style nav.",
+      "Removed as templated: eyebrow pills on every section, 01/02/03 markers on non-sequences, cursor-glow grid background, spotlight cards, gradient headline text, mac window dots, floating 'live' pill, inset deep panels, word cascade, the doodle in the closing.",
+      "Hero is centred with the product screenshot at full width; the proverb 'Hisobli do‘st ayrilmas' is its own quiet section.",
+      "Mobile app section rebuilt without the fabricated phone UI (fps, 5G, Wi-Fi %, sample sums) and without hand-drawn App Store / Google Play badges; store buttons show once SITE.appStore / SITE.googlePlay are set.",
+      "Images: masters moved to assets/, scripts/images.mjs builds AVIF + WebP at 400–1400 px; hardware photos now served locally (were ~7 MB of PNGs from idokon.uz, now 2–8 KB AVIF each), LCP image preloaded as AVIF with matching sizes, lazy images fade in on decode.",
+      "Motion: kept only NumberRoll, tab cross-fade, dialog fade, FAQ height, image fade, mobile call bar slide-in; everything else removed. One reduced-motion rule covers all; reduced transparency swaps the blur for a solid bar.",
+      "FAQ is a native exclusive <details name> accordion; contact no longer lists the phones twice while offline; hardware total floats only on desktop and never over the heading.",
+      "Dependencies removed: lucide-react, @fontsource-variable/inter, autoprefixer, playwright (kept @playwright/test), @types/react, @types/react-dom. CSS 52 → 24 KB, below-fold JS 80 → 48 KB, no web fonts.",
+      "Copy: removed unused keys (fake UI strings, eyebrows, window labels), sentence case instead of ALL CAPS labels, dropped the arrow from 'Savdo tezligi'.",
+      "Checks: build, i18n, 8 API tests, 21 e2e (1 skipped offline); no overflow at 360/375 in uz/ru/en; CLS 0 while scrolling the whole page. Lighthouse mobile 98/100/100/100, desktop 100/100/100/100."
     ]
   }
 ]

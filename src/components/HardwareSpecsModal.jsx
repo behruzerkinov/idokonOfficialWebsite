@@ -1,6 +1,7 @@
-import { Check, Plus, ShieldCheck } from 'lucide-react';
+import { Check, Plus, ShieldCheck } from './icons';
 import { formatPrice } from '../data/site';
 import { Modal } from './Modal';
+import { Img } from './Img';
 
 export default function HardwareSpecsModal({ onClose, product, lang, t, picked, onTogglePick }) {
   const pick = (v) => (v && typeof v === 'object' ? v[lang] || v.uz : v);
@@ -8,32 +9,29 @@ export default function HardwareSpecsModal({ onClose, product, lang, t, picked, 
   const e = t.equipment;
   return (
     <Modal onClose={onClose} title={title} closeLabel={e.close} maxWidth="max-w-lg">
-      <h3 className="pr-10 text-lg font-semibold">{title}</h3>
-      <div className="my-4 flex items-center gap-4">
-        <img src={product.image} alt={title} width="96" height="96" decoding="async" className="h-24 w-24 shrink-0 rounded-lg bg-white object-contain p-2" style={{ boxShadow: 'var(--ring)' }} />
-        <div>
-          <p className="text-sm" style={{ color: 'var(--muted)' }}>{e.officialPrice}</p>
-          <p className="text-xl font-semibold tabular-nums">{formatPrice(product.price, lang)}</p>
-          <p className="mt-1 inline-flex items-center gap-1.5 text-sm" style={{ color: 'var(--accent)' }}>
-            <ShieldCheck size={18} strokeWidth={1.75} aria-hidden="true" />{pick(product.warranty)}
-          </p>
-        </div>
+      <div className="overflow-hidden rounded-2xl bg-white">
+        <Img name={product.image} kind="hardware" alt={title} sizes="(min-width: 560px) 448px, 90vw" />
       </div>
-      {product.desc && <p className="mb-4" style={{ color: 'var(--muted)' }}>{pick(product.desc)}</p>}
+      <h3 className="t-title mt-6 pr-6">{title}</h3>
+      <p className="mt-2 text-[21px] tabular-nums">{formatPrice(product.price, lang)}</p>
+      <p className="t-caption mt-1 inline-flex items-center gap-1.5">
+        <ShieldCheck size={16} strokeWidth={1.75} aria-hidden="true" />{pick(product.warranty)}
+      </p>
+      {product.desc && <p className="muted mt-4">{pick(product.desc)}</p>}
       {product.specs.length > 0 && (
         <>
-          <h4 className="mb-2 text-sm font-semibold">{e.parameters}</h4>
-          <dl className="mb-6 divide-y overflow-hidden rounded-xl text-sm" style={{ boxShadow: 'var(--ring)' }}>
+          <h4 className="mt-6 text-[17px] font-semibold">{e.parameters.replace(/:$/, '')}</h4>
+          <dl className="mt-2 text-[14px]">
             {product.specs.map((s, i) => (
-              <div key={i} className="flex justify-between gap-4 p-3" style={{ borderColor: 'var(--line)' }}>
-                <dt style={{ color: 'var(--muted)' }}>{pick(s.key)}</dt>
-                <dd className="text-right font-medium">{pick(s.val)}</dd>
+              <div key={i} className="flex justify-between gap-4 py-2.5" style={{ borderTop: i ? '1px solid var(--hairline)' : undefined }}>
+                <dt className="muted">{pick(s.key)}</dt>
+                <dd className="text-right">{pick(s.val)}</dd>
               </div>
             ))}
           </dl>
         </>
       )}
-      <button type="button" aria-pressed={picked} className={`${picked ? 'btn-primary' : 'btn-outline'} w-full`} onClick={() => onTogglePick(product.id)}>
+      <button type="button" aria-pressed={picked} className={`${picked ? 'btn-primary' : 'btn-secondary'} mt-6 w-full`} onClick={() => onTogglePick(product.id)}>
         {picked ? <Check size={18} strokeWidth={2} aria-hidden="true" /> : <Plus size={18} strokeWidth={2} aria-hidden="true" />}
         {picked ? e.picked : e.pick}
       </button>

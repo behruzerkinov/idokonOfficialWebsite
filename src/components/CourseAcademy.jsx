@@ -1,6 +1,5 @@
-import { ArrowRight } from 'lucide-react';
 import { SITE } from '../data/site';
-import { Reveal } from './Reveal';
+import { Img } from './Img';
 
 const SHOTS = [
   ['course_test', 'shot1', 'big'],
@@ -8,28 +7,25 @@ const SHOTS = [
   ['course_qurilmalar', 'shot3'],
 ];
 
-/** Course teaser: real course screens on the left, short pitch and link on the right. */
+/** Free course: the pitch, then real course screens. */
 export const CourseAcademy = ({ t, onOpenLightbox }) => {
   const c = t.course;
   return (
-    <section id="course" className="section">
-      <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        <Reveal>
-          <div className="spot grid grid-cols-2 gap-2 rounded-3xl p-3" style={{ background: 'var(--alt)', boxShadow: 'inset 0 0 0 1px var(--line)' }}>
-            {SHOTS.map(([file, k, big]) => (
-              <button key={file} type="button" onClick={() => onOpenLightbox(`/screenshots/${file}.webp`, c[k])} aria-label={c[k]} className={`overflow-hidden rounded-xl bg-white ${big ? 'col-span-2' : ''}`} style={{ boxShadow: 'var(--ring)' }}>
-                <img src={`/screenshots/${file}.webp`} alt={c[k]} width="1400" height="875" loading="lazy" decoding="async" className="h-auto w-full object-cover" />
-              </button>
-            ))}
-          </div>
-        </Reveal>
-        <Reveal>
-          <span className="eyebrow">{c.eyebrow}</span>
-          <h2 className="h2 mt-5">{c.title}</h2>
-          <p className="lede mt-5 max-w-[48ch]">{c.lead}</p>
-          <p className="mt-6 max-w-[48ch] rounded-r-xl border-l-4 p-5 text-[15px] font-semibold" style={{ borderColor: 'var(--accent)', background: 'var(--accent-soft)' }}>{c.highlight}</p>
-          <a href={SITE.courseUrl} target="_blank" rel="noopener" className="btn-primary mt-8 !px-7">{c.cta}<ArrowRight size={18} strokeWidth={2} aria-hidden="true" /></a>
-        </Reveal>
+    <section id="course" className="section section-alt">
+      <div className="wrap">
+        <header className="head">
+          <h2 className="t-headline">{c.title}</h2>
+          <p className="t-intro">{c.lead}</p>
+          <p className="mx-auto mt-4 max-w-[560px]">{c.highlight}</p>
+          <a href={SITE.courseUrl} target="_blank" rel="noopener" className="btn-primary mt-8">{c.cta}</a>
+        </header>
+        <div className="mt-[clamp(3rem,6vw,4.5rem)] grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
+          {SHOTS.map(([file, k, big]) => (
+            <button key={file} type="button" onClick={() => onOpenLightbox(file, c[k])} aria-label={c[k]} className={`shot cursor-zoom-in ${big ? 'col-span-2 md:row-span-2' : ''}`}>
+              <Img name={file} alt={c[k]} sizes={big ? '(min-width: 768px) 66vw, 100vw' : '(min-width: 768px) 33vw, 50vw'} />
+            </button>
+          ))}
+        </div>
       </div>
     </section>
   );

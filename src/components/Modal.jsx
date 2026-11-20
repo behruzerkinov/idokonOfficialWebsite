@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import { X } from './icons';
 
 /**
  * Native <dialog> modal: the browser traps focus, handles Esc and restores focus.
@@ -18,8 +18,8 @@ export const Modal = ({ onClose, title, closeLabel, children, maxWidth = 'max-w-
       onCancel={(e) => { e.preventDefault(); onClose(); }}
       onClick={(e) => e.target === ref.current && onClose()}
     >
-      <div className="relative p-6">
-        <button type="button" onClick={onClose} aria-label={closeLabel} className="icon-btn absolute right-3 top-3"><X size={20} strokeWidth={1.75} /></button>
+      <div className="relative p-6 sm:p-8">
+        <button type="button" onClick={onClose} aria-label={closeLabel} className="icon-btn absolute right-2 top-2"><X size={20} strokeWidth={1.75} /></button>
         {children}
       </div>
     </dialog>

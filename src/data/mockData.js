@@ -15,7 +15,7 @@ export const hardwareProducts = [
       "ru": "1 год гарантии",
       "en": "1-year warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/monoblok1.png",
+    "image": "monoblok1",
     "specs": [
       {
         "key": {
@@ -117,7 +117,7 @@ export const hardwareProducts = [
       "ru": "Хит продаж",
       "en": "Best Seller"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/monoblok2.png",
+    "image": "monoblok2",
     "specs": [
       {
         "key": {
@@ -214,7 +214,7 @@ export const hardwareProducts = [
       "ru": "1 год гарантии",
       "en": "1-year warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/printer1.png",
+    "image": "printer1",
     "specs": [
       {
         "key": {
@@ -311,7 +311,7 @@ export const hardwareProducts = [
       "ru": "1 год гарантии",
       "en": "1-year warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/printer2.png",
+    "image": "printer2",
     "specs": [
       {
         "key": {
@@ -408,7 +408,7 @@ export const hardwareProducts = [
       "ru": "1 год гарантии",
       "en": "1-year warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/scanner1.png",
+    "image": "scanner1",
     "specs": [
       {
         "key": {
@@ -493,7 +493,7 @@ export const hardwareProducts = [
       "ru": "1 год гарантии",
       "en": "1-year warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/box1.png",
+    "image": "box1",
     "specs": [
       {
         "key": {
@@ -578,7 +578,7 @@ export const hardwareProducts = [
       "ru": "6 месяцев гарантии",
       "en": "6-month warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/scale1.png",
+    "image": "scale1",
     "specs": [
       {
         "key": {
@@ -663,7 +663,7 @@ export const hardwareProducts = [
       "ru": "6 месяцев гарантии",
       "en": "6-month warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/scale2.png",
+    "image": "scale2",
     "specs": [
       {
         "key": {
@@ -748,7 +748,7 @@ export const hardwareProducts = [
       "ru": "6 месяцев гарантии",
       "en": "6-month warranty"
     },
-    "image": "https://idokon.uz/assets/img/Oborodvniya/scale3.png",
+    "image": "scale3",
     "specs": [],
     "desc": {
       "uz": "Xitoy, 30 kg gacha, 4000 tagacha PLU. Kafolat 6 oy.",

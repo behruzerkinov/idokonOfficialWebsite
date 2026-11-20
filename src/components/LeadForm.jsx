@@ -1,5 +1,5 @@
 import { useEffect, useId, useState } from 'react';
-import { CheckCircle2, Phone, Send } from 'lucide-react';
+import { CircleCheck, Phone, Send } from './icons';
 import { SITE, formatPhone } from '../data/site';
 import { submitLead, maskPhone, isValidPhone } from '../lib/submitLead';
 
@@ -63,7 +63,7 @@ export const LeadForm = ({
   if (state === 'done') {
     return (
       <div className="py-6 text-center" role="status">
-        <CheckCircle2 className="mx-auto mb-4 text-emerald-600" size={40} strokeWidth={1.75} />
+        <CircleCheck className="mx-auto mb-4" style={{ color: 'var(--accent)' }} size={40} strokeWidth={1.75} />
         <h3 className="text-lg font-semibold">{f.successTitle}</h3>
         <p className="mx-auto mt-2 max-w-xs text-sm" style={{ color: 'var(--muted)' }}>{f.successDesc}</p>
         <button type="button" className="btn-secondary mt-6 w-full" onClick={onDone || (() => { setV({ name: '', phone: '+998 ', storeType: '', plan: '', message: '', website: '' }); setState('idle'); })}>
@@ -124,7 +124,7 @@ export const LeadForm = ({
       />
 
       {state === 'failed' && (
-        <div role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200">
+        <div role="alert" className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200">
           <p className="font-medium">{f.failTitle}</p>
           <p className="mt-1">{f.failDesc}</p>
           <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-medium">
