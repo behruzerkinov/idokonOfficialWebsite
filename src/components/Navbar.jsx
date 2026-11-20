@@ -24,15 +24,15 @@ export const LangMenu = ({ lang, setLang, label, up = false, full = false }) => 
   const current = LANGS.find((l) => l.code === lang) || LANGS[0];
   return (
     <div ref={ref} className="relative">
-      <button type="button" aria-haspopup="true" aria-expanded={open} aria-label={label} onClick={() => setOpen((o) => !o)} className="icon-btn !w-auto gap-1.5 px-3 text-[13px]">
-        <Globe size={15} strokeWidth={1.75} aria-hidden="true" />{full ? current.name : current.short}
+      <button type="button" aria-haspopup="true" aria-expanded={open} onClick={() => setOpen((o) => !o)} className="icon-btn !w-auto gap-1.5 px-2.5 text-[14px]">
+        <Globe size={16} strokeWidth={1.5} aria-hidden="true" /><span className="sr-only">{label}: </span>{full ? current.name : current.short}
       </button>
       {open && (
-        <ul className={`absolute z-10 w-44 rounded-2xl p-1.5 ${up ? 'bottom-full left-0 mb-2' : 'right-0 top-full mt-1'}`} style={{ background: 'var(--tile)', boxShadow: '0 0 0 1px var(--hairline), 0 12px 32px -12px rgb(0 0 0 / 0.35)' }}>
+        <ul className={`absolute z-10 w-44 rounded-xl p-1 ${up ? 'bottom-full left-0 mb-2' : 'right-0 top-full mt-1.5'}`} style={{ background: 'var(--card)', boxShadow: 'inset 0 0 0 1px var(--line), var(--shadow-float)' }}>
           {LANGS.map((l) => (
             <li key={l.code}>
-              <button type="button" aria-pressed={lang === l.code} onClick={() => { setLang(l.code); setOpen(false); }} className="flex min-h-[40px] w-full items-center justify-between rounded-xl px-3 text-left text-[14px]">
-                {l.name}{lang === l.code && <Check size={15} strokeWidth={2.25} style={{ color: 'var(--accent)' }} aria-hidden="true" />}
+              <button type="button" aria-pressed={lang === l.code} onClick={() => { setLang(l.code); setOpen(false); }} className="flex min-h-[40px] w-full items-center justify-between rounded-lg px-3 text-left text-[14px] hover:bg-[var(--raised)]">
+                {l.name}{lang === l.code && <Check size={16} strokeWidth={1.75} style={{ color: 'var(--accent)' }} aria-hidden="true" />}
               </button>
             </li>
           ))}
@@ -99,45 +99,45 @@ export const Navbar = ({ lang, setLang, t, isDark, toggleTheme, onOpenDemo }) =>
   };
   const Theme = (
     <button type="button" onClick={toggleTheme} className="icon-btn" aria-label={t.nav.theme}>
-      {isDark ? <Sun size={16} strokeWidth={1.75} /> : <Moon size={16} strokeWidth={1.75} />}
+      {isDark ? <Sun size={18} strokeWidth={1.5} /> : <Moon size={18} strokeWidth={1.5} />}
     </button>
   );
 
   return (
     <header className="site-header">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded-lg focus:bg-[var(--bg)] focus:px-3 focus:py-2">{t.skip}</a>
-      <div className="wrap flex h-full items-center justify-between gap-4">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded-lg focus:bg-[var(--card)] focus:px-3 focus:py-2">{t.skip}</a>
+      <div className="wrap flex h-full items-center gap-6">
         <a href="#home" onClick={nav('home')} aria-label="iDokon" className="flex shrink-0 items-center">
-          <img src="/img/logo-196.webp" alt="iDokon" width="98" height="30" className="h-[26px] w-auto" />
+          <img src="/img/logo-196.webp" alt="iDokon" width="98" height="30" className="h-7 w-auto" />
         </a>
 
         <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-0.5">
             {LINKS.map((id) => (
               <li key={id}><a href={`#${id}`} aria-current={active === id ? 'true' : undefined} onClick={nav(id)} className="nav-link">{t.nav[id]}</a></li>
             ))}
           </ul>
         </nav>
 
-        <div className="flex shrink-0 items-center">
+        <div className="ml-auto flex shrink-0 items-center gap-1">
           <div className="hidden items-center md:flex">
             <LangMenu lang={lang} setLang={setLang} label={t.nav.language} />
             {Theme}
           </div>
           <button type="button" onClick={onOpenDemo} className="btn-primary btn-sm ml-2 hidden sm:inline-flex">{t.nav.tryDemo}</button>
-          <button type="button" className="icon-btn -mr-2 lg:hidden" aria-label={t.menu.open} onClick={() => menu.current?.showModal()}><Menu size={20} strokeWidth={1.75} /></button>
+          <button type="button" className="icon-btn -mr-2 lg:hidden" aria-label={t.menu.open} onClick={() => menu.current?.showModal()}><Menu size={20} strokeWidth={1.5} /></button>
         </div>
       </div>
 
       <dialog ref={menu} className="menu" aria-label={t.menu.open}>
         <div className="wrap flex h-full flex-col">
-          <div className="flex h-[52px] items-center justify-between">
-            <img src="/img/logo-196.webp" alt="" width="98" height="30" className="h-[26px] w-auto" />
-            <button type="button" onClick={() => menu.current?.close()} className="icon-btn -mr-2" aria-label={t.menu.close}><X size={20} strokeWidth={1.75} /></button>
+          <div className="flex h-[60px] items-center justify-between">
+            <img src="/img/logo-196.webp" alt="" width="98" height="30" className="h-7 w-auto" />
+            <button type="button" onClick={() => menu.current?.close()} className="icon-btn -mr-2" aria-label={t.menu.close}><X size={20} strokeWidth={1.5} /></button>
           </div>
-          <nav className="mt-6 flex flex-col" aria-label="Mobile">
+          <nav className="mt-4 flex flex-col" aria-label="Mobile">
             {LINKS.map((id) => (
-              <a key={id} href={`#${id}`} onClick={nav(id)} className="py-2.5 text-[28px] font-semibold tracking-tight">{t.nav[id]}</a>
+              <a key={id} href={`#${id}`} onClick={nav(id)} className="flex min-h-[52px] items-center border-b text-[22px] font-medium" style={{ borderColor: 'var(--line)' }}>{t.nav[id]}</a>
             ))}
           </nav>
           <button type="button" onClick={() => { menu.current?.close(); onOpenDemo(); }} className="btn-primary mt-8 w-full">{t.nav.tryDemo}</button>

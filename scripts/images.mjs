@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, existsSync } from 'node:fs';
 
 const OUT = 'public/img';
+const ONLY = process.argv[2]; // e.g. `node scripts/images.mjs phones` rebuilds one group
 mkdirSync(OUT, { recursive: true });
 
 // Screens keep full chroma (yuv444) so small coloured UI text stays sharp.
@@ -27,10 +28,19 @@ const encode = (input, vf, name, w, pix) => {
   run(['-i', input, '-vf', `${filter},format=${pix}`, '-c:v', 'libaom-av1', '-still-picture', '1', '-crf', '30', '-b:v', '0', '-cpu-used', '4', `${OUT}/${name}-${w}.avif`]);
 };
 
-for (const [name, widths] of screens) for (const w of widths) encode(`assets/screens/${name}.webp`, '', name, w, 'yuv444p');
+if (!ONLY || ONLY === 'screens') for (const [name, widths] of screens) for (const w of widths) encode(`assets/screens/${name}.webp`, '', name, w, 'yuv444p');
 
 const canvas = 'scale=720:540:force_original_aspect_ratio=decrease:flags=lanczos,pad=800:600:(ow-iw)/2:(oh-ih)/2:white';
-for (const name of hardware) for (const w of [400, 800]) encode(`assets/hardware/${name}.webp`, canvas, name, w, 'yuv420p');
+if (!ONLY || ONLY === 'hardware') for (const name of hardware) for (const w of [400, 800]) encode(`assets/hardware/${name}.webp`, canvas, name, w, 'yuv420p');
+
+// Phone screenshots arrive already framed in their device, on a transparent ground: keep the alpha.
+// AVIF stores it as a second (gray) plane; WebP carries it natively.
+const phones = ['ios-catalog', 'ios-cart', 'ios-payment', 'android-catalog', 'android-cart', 'android-payment'];
+if (!ONLY || ONLY === 'phones') for (const name of phones) for (const w of [300, 600]) {
+  const src = `assets/phones/${name}.png`;
+  run(['-i', src, '-vf', `scale=${w}:-2:flags=lanczos`, '-c:v', 'libwebp', '-quality', '86', `${OUT}/${name}-${w}.webp`]);
+  run(['-i', src, '-filter_complex', `[0]scale=${w}:-2:flags=lanczos,format=yuva420p,split[c][a];[a]alphaextract[al]`, '-map', '[c]', '-map', '[al]', '-c:v', 'libaom-av1', '-still-picture', '1', '-crf', '28', '-b:v', '0', '-cpu-used', '4', `${OUT}/${name}-${w}.avif`]);
+}
 
 // Logo: 2x of its 98px display width, alpha kept (WebP only; AVIF alpha via ffmpeg is unreliable)
 run(['-i', 'assets/brand/idokon_logo.webp', '-vf', 'scale=196:-2:flags=lanczos', '-c:v', 'libwebp', '-quality', '90', `${OUT}/logo-196.webp`]);

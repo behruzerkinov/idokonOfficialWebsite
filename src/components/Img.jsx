@@ -13,6 +13,9 @@ export const IMAGES = {
   course_kassa_sotish: { w: 700, h: 438, widths: [480, 700] },
   course_qurilmalar: { w: 700, h: 438, widths: [480, 700] },
   hardware: { w: 800, h: 600, widths: [400, 800] },
+  // Phone screenshots, already framed in their device on a transparent ground
+  ios: { w: 600, h: 1154, widths: [300, 600] },
+  android: { w: 600, h: 1150, widths: [300, 600] },
 };
 
 const set = (name, widths, ext) => widths.map((x) => `/img/${name}-${x}.${ext} ${x}w`).join(', ');

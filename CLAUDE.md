@@ -20,8 +20,9 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
 
 - `src/data/site.js`: facts (phones, links, plans and prices, claims, `leadsEnabled`), `formatNum` / `formatPrice`.
 - `src/data/translations.js`: all copy, same keys in every language (`bun run check:i18n`).
-- `src/index.css`: tokens (light-dark), type scale, tiles, pill buttons, navbar material, dialogs, FAQ, `NumberRoll`.
-- `src/components/Img.jsx` + `scripts/images.mjs` (`bun run images`, needs ffmpeg): masters live in `assets/`, responsive AVIF/WebP go to `public/img/`. Every image has width/height; lazy ones fade in once decoded.
+- `src/index.css`: warm neutral tokens (light-dark), Onest + digits-only mono (`.num`, the till-receipt signature), type scale (weights 400/500), cards, buttons, hero stage, dialogs, FAQ, `NumberRoll`.
+- `public/fonts/`: self-hosted Onest (latin, latin-ext, cyrillic) and a 2 KB digits-only JetBrains Mono subset, both OFL; `font-display: optional` + preload, so no swap shift.
+- `src/components/Img.jsx` + `scripts/images.mjs` (`bun run images`, needs ffmpeg): masters live in `assets/` (screens, hardware, phones), responsive AVIF/WebP go to `public/img/`; phone screenshots keep their transparency (AVIF alpha plane). Every image has width/height; lazy ones fade in once decoded.
 - `src/components/icons.jsx`: inline line icons (Lucide paths), no icon package.
 - `src/components/BelowFold.jsx`: everything under the hero, one lazy chunk.
 - `src/lib/scroll.js`: in-page navigation (`scrollToId`); `src/lib/theme.js`: dark toggle.
@@ -105,6 +106,19 @@ Marketing site for **iDokon** (shop POS software, Uzbekistan). React 19 + Vite 6
       "Dependencies removed: lucide-react, @fontsource-variable/inter, autoprefixer, playwright (kept @playwright/test), @types/react, @types/react-dom. CSS 52 → 24 KB, below-fold JS 80 → 48 KB, no web fonts.",
       "Copy: removed unused keys (fake UI strings, eyebrows, window labels), sentence case instead of ALL CAPS labels, dropped the arrow from 'Savdo tezligi'.",
       "Checks: build, i18n, 8 API tests, 21 e2e (1 skipped offline); no overflow at 360/375 in uz/ru/en; CLS 0 while scrolling the whole page. Lighthouse mobile 98/100/100/100, desktop 100/100/100/100."
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "summary": "Whole-site redesign with unslop (heydamir/unslop) and Stageshow (benjitaylor/skills), plus a mobile app gallery from the owner's real iOS and Android screenshots.",
+    "changes": [
+      "Direction (unslop): exact, honest, neighbourly; world = the shop counter and receipt paper; warm neutral ramp instead of pure grey, brand green as the one accent; signature = money in monospaced digits like a till printout.",
+      "Type: Onest self-hosted (latin/latin-ext/cyrillic), weights 400 and 500 only, no negative tracking on small text, headlines without trailing periods, hero eyebrow removed.",
+      "Layout: no more everything-centred template. Hero is left-aligned over a Stageshow device pair (the till on desktop, the payment step on a phone straddling its edge, compact design under 640px). Features, How it works, Integrations and FAQ use a heading column plus ruled rows; sectors are one ruled row; equal cards kept only where the content is truly parallel (plans, hardware, care).",
+      "Mobile app section is now a gallery of the six real screenshots (catalog, cart, payment on iOS and Android) with a platform switch that cross-fades, step captions, and a swipeable row on phones. AVIF with alpha at 300/600 px, 5–25 KB each.",
+      "Components: 10px buttons and inputs, 16px cards, 20px dialogs; secondary buttons are a raised surface with a hairline; icons 16–20px at stroke 1.5 in the muted text colour; solid nav with a hairline (no glass).",
+      "Copy: new keys mobileApp.platform / stepsLabel / steps.*, hero.phoneAlt in uz, ru, en; trailing periods dropped from headlines. The closing line keeps its exclamation marks because it is the owner's exact copy.",
+      "Checks: build, i18n (228 keys), 8 API tests, 22 e2e (1 skipped offline, new gallery test); no page overflow and CLS 0 at 360/375 in uz/ru/en. Lighthouse mobile 97–98/100/100/100, desktop 100/100/100/100."
     ]
   }
 ]

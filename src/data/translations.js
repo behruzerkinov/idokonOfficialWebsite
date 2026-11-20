@@ -25,7 +25,6 @@ export const translations = {
       "ctaPrimary": "Demo ishlatib ko‘rish",
       "ctaSecondary": "Bog‘lanish",
       "imageAlt": "iDokon kassa dasturi oynasi: tovarlar ro‘yxati va savdo hisobi",
-      "eyebrow": "Savdo boshqaruvining yangi standarti",
       "titleStart": "Savdoni",
       "titleHighlight": "aniq raqamlar",
       "titleEnd": "bilan boshqaring",
@@ -35,7 +34,8 @@ export const translations = {
       "zoom": "Kattalashtirish",
       "quote": "Hisobli do‘st ayrilmas.",
       "quoteBy": "O‘zbek xalq maqoli",
-      "quoteNote": "Har bir so‘mi hisoblangan do‘kon mijozini ham, foydasini ham yo‘qotmaydi."
+      "quoteNote": "Har bir so‘mi hisoblangan do‘kon mijozini ham, foydasini ham yo‘qotmaydi.",
+      "phoneAlt": "iDokon mobil ilovasi: to‘lov ekrani"
     },
     "partners": {
       "title": "Do‘koningiz ishlatadigan tizimlar bilan mos"
@@ -71,7 +71,7 @@ export const translations = {
       "p4_desc": "EMV asosida himoyalangan to‘lov, tez tasdiq va ishonchli natija."
     },
     "sectors": {
-      "title": "Har xil savdo formati. Bitta ishonchli tizim.",
+      "title": "Har xil savdo formati. Bitta ishonchli tizim",
       "lead": "Dasturiy ta’minotimiz keng ko‘lamli biznes va sanoat sohalariga moslashtirilgan.",
       "s1": "Chakana do‘konlar",
       "s1_desc": "Kundalik savdo va qoldiq nazorati",
@@ -271,7 +271,7 @@ export const translations = {
       "w2": "Endi siz ham do‘koningizda sinab ko‘ring!"
     },
     "features": {
-      "title": "Sodda interfeys. Kuchli boshqaruv.",
+      "title": "Sodda interfeys. Kuchli boshqaruv",
       "lead": "Kassirga tezlik, rahbarga nazorat, mijozga esa silliq xarid tajribasi beradigan savdo nuqtasi tizimi.",
       "f1_title": "Savdo tezligi",
       "f1_desc": "Bir bosishda to‘lov — kam xatolik va tez navbat. Kunning oxirida natijalar darhol ko‘rinadi.",
@@ -325,7 +325,23 @@ export const translations = {
       "f3_desc": "Barcha savdolar real vaqtda yagona bulut bazasiga uzatiladi — do‘koningiz doimo onlayn nazoratda.",
       "appStore": "App Store",
       "googlePlay": "Google Play",
-      "compatible": "iOS 15+ va Android 8.0+ uchun mos · Doimiy onlayn sinxronizatsiya"
+      "compatible": "iOS 15+ va Android 8.0+ uchun mos · Doimiy onlayn sinxronizatsiya",
+      "platform": "Platforma",
+      "stepsLabel": "Bitta savdo uch ekranda",
+      "steps": {
+        "catalog": {
+          "title": "Katalog",
+          "desc": "Tovarni qidiruv yoki toifa orqali toping va sonini shu yerning o‘zida belgilang."
+        },
+        "cart": {
+          "title": "Savat",
+          "desc": "Har bir tovarning narxi va soni ko‘rinib turadi, jami summa pastda."
+        },
+        "payment": {
+          "title": "To‘lov",
+          "desc": "Chegirma, mijoz va loyallik, so‘ng naqd, terminal yoki qarzga to‘lov."
+        }
+      }
     }
   },
   "ru": {
@@ -354,7 +370,6 @@ export const translations = {
       "ctaPrimary": "Попробовать демо",
       "ctaSecondary": "Связаться",
       "imageAlt": "Окно кассовой программы iDokon: список товаров и учет продаж",
-      "eyebrow": "Новый стандарт управления торговлей",
       "titleStart": "Управляйте продажами",
       "titleHighlight": "по точным цифрам",
       "titleEnd": "",
@@ -364,7 +379,8 @@ export const translations = {
       "zoom": "Увеличить",
       "quote": "Счёт дружбы не портит.",
       "quoteBy": "Народная мудрость",
-      "quoteNote": "Магазин, где посчитан каждый сум, не теряет ни клиентов, ни прибыль."
+      "quoteNote": "Магазин, где посчитан каждый сум, не теряет ни клиентов, ни прибыль.",
+      "phoneAlt": "Мобильное приложение iDokon: экран оплаты"
     },
     "partners": {
       "title": "Совместимо с системами, которыми вы пользуетесь"
@@ -400,7 +416,7 @@ export const translations = {
       "p4_desc": "Защищенная оплата на основе EMV, быстрое подтверждение и надежный результат."
     },
     "sectors": {
-      "title": "Разные форматы торговли. Одна надежная система.",
+      "title": "Разные форматы торговли. Одна надежная система",
       "lead": "Наше программное обеспечение адаптировано для широкого круга бизнеса и отраслей.",
       "s1": "Розничные магазины",
       "s1_desc": "Ежедневные продажи и контроль остатков",
@@ -600,7 +616,7 @@ export const translations = {
       "w2": "Теперь попробуйте и в своём магазине!"
     },
     "features": {
-      "title": "Простой интерфейс. Мощное управление.",
+      "title": "Простой интерфейс. Мощное управление",
       "lead": "Система, которая дает кассиру скорость, руководителю контроль, а покупателю — удобную покупку.",
       "f1_title": "Скорость продаж",
       "f1_desc": "Оплата в один клик — меньше ошибок и короче очередь. Итоги дня видны сразу.",
@@ -654,7 +670,23 @@ export const translations = {
       "f3_desc": "Все продажи передаются в единую облачную базу в реальном времени — ваш магазин всегда на связи.",
       "appStore": "App Store",
       "googlePlay": "Google Play",
-      "compatible": "Совместимо с iOS 15+ и Android 8.0+ · Постоянная онлайн-синхронизация"
+      "compatible": "Совместимо с iOS 15+ и Android 8.0+ · Постоянная онлайн-синхронизация",
+      "platform": "Платформа",
+      "stepsLabel": "Одна продажа на трёх экранах",
+      "steps": {
+        "catalog": {
+          "title": "Каталог",
+          "desc": "Найдите товар через поиск или категорию и сразу укажите количество."
+        },
+        "cart": {
+          "title": "Корзина",
+          "desc": "Цена и количество каждого товара на виду, итог внизу."
+        },
+        "payment": {
+          "title": "Оплата",
+          "desc": "Скидка, клиент и лояльность, затем наличные, терминал или в долг."
+        }
+      }
     }
   },
   "en": {
@@ -683,7 +715,6 @@ export const translations = {
       "ctaPrimary": "Try the demo",
       "ctaSecondary": "Get in touch",
       "imageAlt": "iDokon till software window: product list and sales record",
-      "eyebrow": "The new standard in retail management",
       "titleStart": "Run your sales with",
       "titleHighlight": "accurate numbers",
       "titleEnd": "",
@@ -693,7 +724,8 @@ export const translations = {
       "zoom": "Enlarge",
       "quote": "Clear accounts keep good friends.",
       "quoteBy": "Uzbek proverb",
-      "quoteNote": "A shop that counts every som keeps both its customers and its profit."
+      "quoteNote": "A shop that counts every som keeps both its customers and its profit.",
+      "phoneAlt": "iDokon mobile app: payment screen"
     },
     "partners": {
       "title": "Works with the systems your shop already uses"
@@ -729,7 +761,7 @@ export const translations = {
       "p4_desc": "EMV-based protected payment, quick confirmation and a reliable result."
     },
     "sectors": {
-      "title": "Every kind of shop. One reliable system.",
+      "title": "Every kind of shop. One reliable system",
       "lead": "Our software is adapted to a wide range of businesses and trades.",
       "s1": "Retail shops",
       "s1_desc": "Daily sales and stock control",
@@ -929,7 +961,7 @@ export const translations = {
       "w2": "Now try it in your own shop!"
     },
     "features": {
-      "title": "Simple interface. Strong control.",
+      "title": "Simple interface. Strong control",
       "lead": "A point-of-sale system that gives cashiers speed, managers control and customers a smooth checkout.",
       "f1_title": "Faster sales",
       "f1_desc": "One-tap payment means fewer errors and shorter lines. Results are visible right at closing time.",
@@ -983,7 +1015,23 @@ export const translations = {
       "f3_desc": "All transactions stream to the central cloud database in real time — your store is always live.",
       "appStore": "App Store",
       "googlePlay": "Google Play",
-      "compatible": "Compatible with iOS 15+ and Android 8.0+ · Always-online cloud sync"
+      "compatible": "Compatible with iOS 15+ and Android 8.0+ · Always-online cloud sync",
+      "platform": "Platform",
+      "stepsLabel": "One sale across three screens",
+      "steps": {
+        "catalog": {
+          "title": "Catalog",
+          "desc": "Find a product by search or category and set the quantity right there."
+        },
+        "cart": {
+          "title": "Cart",
+          "desc": "Every item shows its price and quantity, with the total below."
+        },
+        "payment": {
+          "title": "Payment",
+          "desc": "Discount, customer and loyalty, then cash, card terminal or on credit."
+        }
+      }
     }
   }
 };

@@ -7,11 +7,11 @@ const TABS = [
   { id: 'stock', img: 'showcase_ombor' },
   { id: 'abc', img: 'showcase_analitika' },
 ];
-const SIZES = '(min-width: 1120px) 1056px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)';
+const SIZES = '(min-width: 1200px) 1136px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)';
 
 /**
- * Real admin screens behind a segmented control. All four images stay mounted, stacked in one
- * grid cell, so switching is an instant cross-fade with no loading gap.
+ * Real admin screens behind a segmented control. All four stay mounted in one grid cell,
+ * so switching is an instant cross-fade with no loading gap.
  */
 export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   const s = t.software;
@@ -37,15 +37,14 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
   };
 
   return (
-    <section id="software" className="section section-alt">
+    <section id="software" className="section">
       <div className="wrap">
-        <header className="head">
-          <h2 className="t-headline">{s.title}</h2>
-          <p className="t-intro">{s.lead}</p>
-        </header>
-
-        <div className="mt-10 flex justify-center">
-          <div role="tablist" aria-label={s.tablist} onKeyDown={onKey} className="segmented no-scrollbar max-w-full overflow-x-auto">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <header className="head">
+            <h2 className="t-h2">{s.title}</h2>
+            <p className="t-lead">{s.lead}</p>
+          </header>
+          <div role="tablist" aria-label={s.tablist} onKeyDown={onKey} className="segmented no-scrollbar max-w-full self-start overflow-x-auto lg:self-auto">
             {TABS.map((x, n) => (
               <button
                 key={x.id} ref={(el) => (refs.current[n] = el)} role="tab" id={`tab-${x.id}`} type="button"
@@ -58,7 +57,7 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
           </div>
         </div>
 
-        <div role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} className="mt-8" onTouchStart={(e) => (touchX.current = e.touches[0].clientX)} onTouchEnd={onTouchEnd}>
+        <div role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} className="mt-10" onTouchStart={(e) => (touchX.current = e.touches[0].clientX)} onTouchEnd={onTouchEnd}>
           <button type="button" onClick={() => onOpenLightbox(tab.img, s.tabs[tab.id])} aria-label={`${s.tabs[tab.id]}: ${s.zoom}`} className="shot grid w-full cursor-zoom-in" style={{ aspectRatio: '1359 / 757' }}>
             {TABS.map((x, n) => (
               <span key={x.id} className="col-start-1 row-start-1 transition-opacity duration-300" style={{ opacity: n === i ? 1 : 0 }}>
@@ -68,11 +67,11 @@ export const PosInteractiveShowcase = ({ t, onOpenLightbox }) => {
           </button>
         </div>
 
-        <ul className="mt-[clamp(3rem,6vw,4.5rem)] grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-12 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
           {[1, 2, 3, 4].map((n) => (
-            <li key={n}>
-              <h3 className="text-[17px] font-semibold">{s[`p${n}_title`]}</h3>
-              <p className="t-caption mt-2">{s[`p${n}_desc`]}</p>
+            <li key={n} className="rule pt-5">
+              <h3 className="font-medium">{s[`p${n}_title`]}</h3>
+              <p className="t-small mt-1.5">{s[`p${n}_desc`]}</p>
             </li>
           ))}
         </ul>

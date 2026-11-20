@@ -19,23 +19,24 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
   const includes = (k) => (k === 1 ? pr.plus.replace('{p}', names[0]) : k === 2 ? pr.plus2.replace('{a}', names[0]).replace('{b}', names[1]) : null);
 
   return (
-    <section id="pricing" className="section">
+    <section id="pricing" className="section section-alt">
       <div className="wrap">
-        <header className="head">
-          <h2 className="t-headline">{pr.title}</h2>
-          <p className="t-intro">{pr.lead}</p>
-        </header>
-
-        <div className="mt-10 flex flex-col items-center gap-3">
-          <div role="group" aria-label={pr.periodLabel} className="segmented">
-            {PERIODS.map((x) => (
-              <button key={x.key} type="button" aria-pressed={period === x.key} onClick={() => setPeriod(x.key)} className="seg min-w-[84px]">{pr[x.label]}</button>
-            ))}
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <header className="head">
+            <h2 className="t-h2">{pr.title}</h2>
+            <p className="t-lead">{pr.lead}</p>
+          </header>
+          <div className="flex flex-col items-start gap-2 lg:items-end">
+            <div role="group" aria-label={pr.periodLabel} className="segmented">
+              {PERIODS.map((x) => (
+                <button key={x.key} type="button" aria-pressed={period === x.key} onClick={() => setPeriod(x.key)} className="seg min-w-[76px]">{pr[x.label]}</button>
+              ))}
+            </div>
+            <p className="t-small h-5" style={{ color: 'var(--accent)' }}>{p.badge ? pr[p.badge] : ''}</p>
           </div>
-          <p className="t-caption h-5" style={{ color: 'var(--accent)' }}>{p.badge ? pr[p.badge] : ''}</p>
         </div>
 
-        <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-3 lg:gap-5">
+        <div className="mt-10 grid items-stretch gap-4 lg:grid-cols-3">
           {SITE.plans.map((plan, k) => {
             const info = pr[plan.id];
             const total = plan[period];
@@ -43,28 +44,30 @@ export const PricingCalculator = ({ t, lang, onSelectPlan }) => {
             return (
               <article
                 key={plan.id}
-                className="tile relative flex flex-col"
-                style={on ? { boxShadow: 'inset 0 0 0 2px var(--accent)' } : undefined}
+                className="card relative flex flex-col p-6 sm:p-7"
+                style={on ? { boxShadow: 'inset 0 0 0 1.5px var(--accent), var(--shadow-float)' } : undefined}
                 aria-label={on ? `${info.name} · ${pr.popular}` : info.name}
               >
-                <p className="t-caption h-5 font-semibold" style={{ color: 'var(--accent)' }}>{on ? pr.popular : ''}</p>
-                <h3 className="t-title mt-2">{info.name}</h3>
-                <p className="muted mt-1 lg:min-h-[2.94em]">{info.subtitle}</p>
-                <p className="mt-8 flex flex-wrap items-baseline gap-x-2">
-                  <NumberRoll value={Math.round(total / p.months)} className="text-[40px] font-semibold leading-none tracking-tight" />
-                  <span className="muted">{currencyLabel(lang)} / {pr.perMonth}</span>
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="t-h3">{info.name}</h3>
+                  {on && <p className="text-[13px] font-medium" style={{ color: 'var(--accent)' }}>{pr.popular}</p>}
+                </div>
+                <p className="t-small mt-1 lg:min-h-[3em]">{info.subtitle}</p>
+                <p className="mt-6 flex flex-wrap items-baseline gap-x-2">
+                  <NumberRoll value={Math.round(total / p.months)} className="text-[36px] font-medium leading-none" />
+                  <span className="fg-3 text-[14px]">{currencyLabel(lang)} / {pr.perMonth}</span>
                 </p>
-                <p className="t-caption mt-2 h-5">{period !== 'monthly' && `${pr.total}: ${formatPrice(total, lang)}`}</p>
-                <button type="button" onClick={() => onSelectPlan(plan.id)} className={`${on ? 'btn-primary' : 'btn-secondary'} mt-6 w-full`}>{pr.choose}</button>
-                <div className="mt-8 border-t pt-6 text-[15px]" style={{ borderColor: 'var(--hairline)' }}>
-                  {includes(k) && <p className="mb-4 font-semibold">{includes(k)}</p>}
-                  <ul className="space-y-3">
+                <p className="t-small mt-2 h-5">{period !== 'monthly' && <>{pr.total}: <span className="num">{formatPrice(total, lang)}</span></>}</p>
+                <button type="button" onClick={() => onSelectPlan(plan.id)} className={`${on ? 'btn-primary' : 'btn-secondary'} mt-5 w-full`}>{pr.choose}</button>
+                <div className="rule mt-7 pt-6 text-[15px]">
+                  {includes(k) && <p className="mb-4 font-medium">{includes(k)}</p>}
+                  <ul className="space-y-2.5">
                     {info.features.map((f, n) => (
                       <li key={f} className="flex gap-2.5">
-                        <Check size={16} strokeWidth={2.5} className="mt-[3px] shrink-0" style={{ color: 'var(--accent)' }} aria-hidden="true" />
-                        <span>
+                        <Check size={16} strokeWidth={1.75} className="mt-[4px] shrink-0 fg-3" aria-hidden="true" />
+                        <span className="fg-2">
                           {f}
-                          {NEW_FEATURE[plan.id] === n && <span className="ml-2 align-baseline text-[13px] font-semibold" style={{ color: 'var(--accent)' }}>{pr.isNew}</span>}
+                          {NEW_FEATURE[plan.id] === n && <span className="ml-2 text-[13px] font-medium" style={{ color: 'var(--accent)' }}>{pr.isNew}</span>}
                         </span>
                       </li>
                     ))}

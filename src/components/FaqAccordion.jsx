@@ -1,25 +1,25 @@
-import { ChevronDown, Phone } from './icons';
+import { Phone, Plus } from './icons';
 import { SITE, formatPhone } from '../data/site';
 
-/** Native exclusive accordion (<details name>): keyboard, find-in-page and screen readers work for free. */
+/** Native exclusive accordion (<details name>); questions the page can't answer go to the call centre. */
 export const FaqAccordion = ({ t }) => (
-  <section id="faq" className="section">
-    <div className="wrap">
-      <header className="head">
-        <h2 className="t-headline">{t.faq.title}</h2>
-        <p className="t-intro">{t.faq.lead}</p>
-        <a href={`tel:${SITE.phones[0]}`} className="link mt-5 flex-wrap justify-center gap-x-1.5">
-          <Phone size={17} strokeWidth={2} aria-hidden="true" />{t.faq.ask} <span className="whitespace-nowrap">· {formatPhone(SITE.phones[0])}</span>
+  <section id="faq" className="section section-alt">
+    <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+      <header className="head lg:sticky lg:top-24 lg:self-start">
+        <h2 className="t-h2">{t.faq.title}</h2>
+        <p className="t-lead">{t.faq.lead}</p>
+        <a href={`tel:${SITE.phones[0]}`} className="btn-secondary mt-7 whitespace-normal">
+          <Phone size={16} strokeWidth={1.5} aria-hidden="true" />{t.faq.ask} <span className="num fg-2 whitespace-nowrap">{formatPhone(SITE.phones[0])}</span>
         </a>
       </header>
-      <div className="faq mx-auto mt-[clamp(3rem,6vw,4.5rem)] max-w-[760px] border-t" style={{ borderColor: 'var(--hairline)' }}>
+      <div className="faq border-b" style={{ borderColor: 'var(--line)' }}>
         {t.faq.items.map((it, n) => (
-          <details key={it.q} name="faq" open={n === 0} className="border-b" style={{ borderColor: 'var(--hairline)' }}>
-            <summary className="flex min-h-[64px] items-center justify-between gap-6 py-5 text-[19px] font-semibold leading-snug tracking-tight">
+          <details key={it.q} name="faq" open={n === 0} className="rule">
+            <summary className="flex min-h-[64px] items-center justify-between gap-6 py-5 text-[17px] font-medium leading-snug">
               {it.q}
-              <ChevronDown size={20} strokeWidth={2} className="shrink-0 muted" />
+              <Plus size={18} strokeWidth={1.5} className="shrink-0 fg-3" />
             </summary>
-            <p className="muted pb-6 pr-10">{it.a}</p>
+            <p className="fg-2 max-w-[60ch] pb-6 pr-8">{it.a}</p>
           </details>
         ))}
       </div>

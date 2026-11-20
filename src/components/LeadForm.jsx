@@ -51,7 +51,7 @@ export const LeadForm = ({
   if (!SITE.leadsEnabled) {
     return (
       <div className="space-y-3">
-        <p className="text-sm" style={{ color: 'var(--muted)' }}>{f.offlineDesc}</p>
+        <p className="text-sm" style={{ color: 'var(--fg-3)' }}>{f.offlineDesc}</p>
         {SITE.phones.map((p) => (
           <a key={p} href={`tel:${p}`} className="btn-primary w-full"><Phone size={20} strokeWidth={1.75} aria-hidden="true" />{formatPhone(p)}</a>
         ))}
@@ -64,8 +64,8 @@ export const LeadForm = ({
     return (
       <div className="py-6 text-center" role="status">
         <CircleCheck className="mx-auto mb-4" style={{ color: 'var(--accent)' }} size={40} strokeWidth={1.75} />
-        <h3 className="text-lg font-semibold">{f.successTitle}</h3>
-        <p className="mx-auto mt-2 max-w-xs text-sm" style={{ color: 'var(--muted)' }}>{f.successDesc}</p>
+        <h3 className="t-h3">{f.successTitle}</h3>
+        <p className="mx-auto mt-2 max-w-xs text-sm" style={{ color: 'var(--fg-3)' }}>{f.successDesc}</p>
         <button type="button" className="btn-secondary mt-6 w-full" onClick={onDone || (() => { setV({ name: '', phone: '+998 ', storeType: '', plan: '', message: '', website: '' }); setState('idle'); })}>
           {doneLabel || f.again}
         </button>
@@ -91,7 +91,7 @@ export const LeadForm = ({
 
       {store && (
         <div>
-          <label htmlFor={`${uid}-store`} className={LABEL}>{f.storeType} <span style={{ color: 'var(--muted)' }}>{f.optional}</span></label>
+          <label htmlFor={`${uid}-store`} className={LABEL}>{f.storeType} <span style={{ color: 'var(--fg-3)' }}>{f.optional}</span></label>
           <select id={`${uid}-store`} className="field" value={v.storeType} onChange={set('storeType')}>
             <option value="">{f.storeTypeNone}</option>
             {t.contact.storeTypeOptions.map((o) => <option key={o} value={o}>{o}</option>)}
@@ -101,7 +101,7 @@ export const LeadForm = ({
 
       {plan && (
         <div>
-          <label htmlFor={`${uid}-plan`} className={LABEL}>{f.plan} <span style={{ color: 'var(--muted)' }}>{f.optional}</span></label>
+          <label htmlFor={`${uid}-plan`} className={LABEL}>{f.plan} <span style={{ color: 'var(--fg-3)' }}>{f.optional}</span></label>
           <select id={`${uid}-plan`} className="field" value={v.plan} onChange={set('plan')}>
             <option value="">{f.planNone}</option>
             {SITE.plans.map((p) => <option key={p.id} value={t.pricing[p.id].name}>{t.pricing[p.id].name}</option>)}
@@ -111,7 +111,7 @@ export const LeadForm = ({
 
       {message && (
         <div>
-          <label htmlFor={`${uid}-msg`} className={LABEL}>{f.message} <span style={{ color: 'var(--muted)' }}>{f.optional}</span></label>
+          <label htmlFor={`${uid}-msg`} className={LABEL}>{f.message} <span style={{ color: 'var(--fg-3)' }}>{f.optional}</span></label>
           <textarea id={`${uid}-msg`} rows={3} className="field" value={v.message} onChange={set('message')} placeholder={f.messagePh} maxLength={1000} />
         </div>
       )}
@@ -138,7 +138,7 @@ export const LeadForm = ({
         <Send size={20} strokeWidth={1.75} aria-hidden="true" />
         {state === 'sending' ? f.sending : f.submit}
       </button>
-      <p className="text-center text-xs" style={{ color: 'var(--muted)' }}>{f.privacy}</p>
+      <p className="text-center text-xs" style={{ color: 'var(--fg-3)' }}>{f.privacy}</p>
     </form>
   );
 };

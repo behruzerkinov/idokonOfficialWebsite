@@ -147,10 +147,10 @@ test('software tabs: arrow keys switch the screen', async ({ page }) => {
   await expect(shown.locator('xpath=ancestor::span[1]')).toHaveCSS('opacity', '1');
 });
 
-test('features: four tiles, no fake step numbers', async ({ page }) => {
+test('features: four rows, no fake step numbers', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
-  const cards = page.locator('#features article');
+  const cards = page.locator('#features li');
   await expect(cards).toHaveCount(4);
   await expect(page.locator('#features')).not.toContainText('01');
 });
@@ -194,12 +194,23 @@ test('faq: native exclusive accordion, first answer open', async ({ page }) => {
 test('images: responsive AVIF with WebP fallback and reserved size', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
-  const hero = page.locator('#home picture');
-  await expect(hero.locator('source[type="image/avif"]')).toHaveAttribute('srcset', /kassa-640\.avif 640w/);
+  const hero = page.locator('#home picture').first();
+  await expect(hero.locator('source[type="image/avif"]')).toHaveAttribute('srcset', /showcase_kassirlar-640\.avif 640w/);
   const img = hero.locator('img');
-  await expect(img).toHaveAttribute('width', '1280');
-  await expect(img).toHaveAttribute('height', '542');
+  await expect(img).toHaveAttribute('width', '1359');
+  await expect(img).toHaveAttribute('height', '716');
   await expect(img).toHaveAttribute('fetchpriority', 'high');
   const missing = await page.evaluate(() => [...document.images].filter((i) => !i.getAttribute('width') || !i.getAttribute('height')).map((i) => i.src));
   expect(missing).toEqual([]);
+});
+
+test('mobile gallery: real screenshots, platform switch', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const g = page.locator('#mobile-app');
+  await g.scrollIntoViewIfNeeded();
+  await expect(g.locator('img[alt^="iOS"]')).toHaveCount(3);
+  await g.getByRole('button', { name: 'Android', exact: true }).click();
+  await expect(g.locator('img[alt^="Android"]')).toHaveCount(3);
+  await expect(g.locator('source[type="image/avif"]').first()).toHaveAttribute('srcset', /-300\.avif 300w/);
 });
